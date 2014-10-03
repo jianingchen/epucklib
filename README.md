@@ -3,7 +3,7 @@ Jianing Chen
 
 j.n.chen@sheffield.ac.uk
 
-==== e-puck lib ====
+==== e-puck lib (Work In Progress) ====
 
  - This is a interfacing library for the e-puck robot. 
  
@@ -11,7 +11,9 @@ j.n.chen@sheffield.ac.uk
  
  - Unlike the official e-puck lib (has several modules), this library used all-in-one design. 
  
- - Support pretty much everything on e-puck but the sound related and fft functionalities. 
+ - Support pretty much everything on the e-puck but the sound related and fft functionalities. 
+ 
+ - A more user-friendly and potentially more powerful (40x15 @ ~20 fps) interface for the camera on the e-puck. 
  
  - Three advanced concepts in the API: _Timer_, _Process_ and _Trigger_. 
 
