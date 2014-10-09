@@ -1,14 +1,12 @@
 
 #include "el_context.h"
-#include "elu.h"
-#include <stdio.h>
-#include <stdarg.h>
+#include "elu_stdio.h"
 
 int8_t elu_stdio_target;
 char eluart_stdio_buffer[ELU_STDIO_BUFFER_SIZE];
 
 void elu_set_stdio_target(int n){
-    
+    elu_stdio_target = n;
 }
 
 int elu_warp_vsnprintf(const int offset,char*s,size_t n,const char*format,va_list arg){
@@ -75,6 +73,7 @@ int elu_printf(const char *format,...){
         el_uart_putch(EL_UART_1,buffer[i]);
     }
 
+    return length;
 }
 
 int elu_scanf(const char *format,...){

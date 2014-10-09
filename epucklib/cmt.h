@@ -3,54 +3,11 @@
 Jianing Chen
 j.n.chen@sheffield.ac.uk
 
-==== Minimum Cooperative Multitasking Library ====
-
-process function example:
-
-    void ProcessFunctionA(void*data){
-        // no large local variables. (limited by stack size)
-        // int data[32]; - OK
-        // int buffer[1000]; - NO
-        // int *buffer = (int*)malloc(sizeof(int)*1000); - OK
-        
-        //... code here ...
-        
-        // delay like this:
-        cmt_wait(500);
-        
-        // polled wait like this:
-        while(some_condition()){
-            cmt_cooperate();
-        }
-        
-    }
-
-
-main loop example:
-    
-    ...(...){
-        
-        ...
-        
-        while(1){
-            
-            ...
-            
-            cmt_main_routine();
-            cmt_process_timers(time_between_iteration);
-            
-            ...
-            
-            Sleep(time_between_iteration);// any delay method (if needed)
-        }
-        
-        ...
-    }
-
+==== Simple Cooperative Multitasking ====
 
 **/
-#ifndef MINIMUM_COOPERATIVE_MULTITASKING
-#define MINIMUM_COOPERATIVE_MULTITASKING
+#ifndef SIMPLE_COOPERATIVE_MULTITASKING
+#define SIMPLE_COOPERATIVE_MULTITASKING
 
 #include <stdlib.h>
 #include <setjmp.h>
@@ -69,11 +26,11 @@ extern "C" {
 typedef struct CMT_INI{
     unsigned int MaxNumberOfProcess;
     unsigned int ProcessStackSzie;
-    unsigned int MainStackReservation;
+    unsigned int ProcessStackOffset;
 } cmt_ini;
 
 typedef void (*cmt_function)(void*);
-typedef signed long cmt_timer;// being signed is important
+typedef signed long cmt_timer;// must be signed, do not change.
 typedef long cmt_time;
 
 

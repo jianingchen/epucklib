@@ -2,44 +2,49 @@
 #ifndef EL_CAMERA_H
 #define	EL_CAMERA_H
 
-#include <stdint.h>
+#include "el_common.h"
 
-#define EL_FRAME_BUFFER_WIDTH  40
-#define EL_FRAME_BUFFER_HEIGHT 15
+#define EL_CAMERA_FRAME_BUFFER_WIDTH  40
+#define EL_CAMERA_FRAME_BUFFER_HEIGHT 15
+#define EL_CAMERA_EXPOSURE_MODE_INTERNAL        0
+#define EL_CAMERA_EXPOSURE_MODE_REGISTER        1
+#define EL_CAMERA_EXPOSURE_MODE_EIT_X_LG        2
+#define EL_CAMERA_EXPOSURE_MODE_EIT_X_GG        3
 
 typedef struct DCIM{
     uint16_t dim_x;
     uint16_t dim_y;
-    uint16_t RawData[EL_FRAME_BUFFER_HEIGHT][EL_FRAME_BUFFER_WIDTH];
+    uint16_t RawData[EL_CAMERA_FRAME_BUFFER_HEIGHT][EL_CAMERA_FRAME_BUFFER_WIDTH];
 } el_camera_image;
 
 typedef struct EL_CAMERA_INI{
+    el_enum ExposureMode;
     bool AutoWhiteBalance;
-    bool AutoExposure;
+    bool AutoDigitalGain;
     float ExposureTime;
-    float LinearGain;
     float RedGain;
     float GreenGain;
     float BlueGain;
+    float LinearGain;
+    float ExternalIntergationTime;
 } el_camera_ini;
 
 extern const uint16_t RED_BITS;
 extern const uint16_t GREEN_BITS;
 extern const uint16_t BLUE_BITS;
 
-EL_API void el_apply_camera_setting(el_camera_ini *setting);
+EL_API void el_config_camera(el_camera_ini*setting);
 EL_API void el_enable_camera();
 EL_API void el_disable_camera();
+
 EL_API void el_camera_lock_frame();
 EL_API void el_camera_unlock_frame();
 EL_API uint16_t el_camera_get_frame_counter();
 EL_API el_camera_image*el_camera_get_frame();
 
-
-
 #ifdef EL_INCLUDE_CONTEXT
 
-#define EL_CAM_I2C_ID   0xDC 
+#define EL_CAM_I2C_ID   0xDC
 
 extern el_camera_image el_frame_buffer_a;
 extern el_camera_image el_frame_buffer_b;
@@ -59,8 +64,5 @@ void el_cam_init_register(void);
 void el_cam_swap_buffer(void);
 
 #endif	/* EL_INCLUDE_CONTEXT */
-
-
-
 
 #endif	/* EL_CAMERA_H */

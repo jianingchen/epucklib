@@ -10,13 +10,13 @@ void el_uart_putch(int channel,char c){
     switch(channel){
         
     case EL_UART_1:
-        e_send_uart1_char(&c,1);
         while(e_uart1_sending()) NOP();
+        e_send_uart1_char(&c,1);
         break;
         
     case EL_UART_2:
-        e_send_uart2_char(&c,1);
         while(e_uart2_sending()) NOP();
+        e_send_uart2_char(&c,1);
         break;
     }
 }

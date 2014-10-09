@@ -36,7 +36,7 @@ uint32_t el_random_uint32(void){
     return (m_z<<16) + (m_w&0xFFFF);
 }
 
-bool el_random_rate(int num,int den){
+int el_random_rate(int num,int den){
     uint32_t r = el_random_uint16();
     return ((den*r)<(num*65536UL));
 }

@@ -1,6 +1,8 @@
 
 #include "el_context.h"
-#include "el_interrupt.h"
+#include "el_clock.h"
+#include "el_stepper_motor.h"
+#include "el_ir_receiver.h"
 
 void el_init_interrupt_T3(){
     
@@ -23,9 +25,11 @@ void __attribute__((interrupt, no_auto_psv)) _T3Interrupt(void){
     
     el_routine_masterclock();
 
-    el_routine_stepper_motor();
+    if(el_stpm_enabled){
+        el_routine_stepper_motor_14400hz();
+    }
     
-    el_routine_ir_receiver();
+    el_routine_ir_receiver_14400hz();
     
     //el_routine_ir_proximity_noise();
     

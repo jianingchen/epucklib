@@ -4,8 +4,6 @@
 
 #ifdef EL_INCLUDE_CONTEXT
 
-#define EL_T3_FREQ  14400
-
 void el_init_interrupt_ADC();
 void el_init_interrupt_INT0();
 void el_init_interrupt_T1();

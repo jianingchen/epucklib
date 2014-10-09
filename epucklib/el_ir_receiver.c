@@ -1,6 +1,6 @@
 
 #include "el_context.h"
-#include "el_camera.h"
+#include "el_ir_receiver.h"
 
 uint8_t el_irrc_address = 0;
 uint8_t el_irrc_data = 0;
@@ -52,8 +52,8 @@ The ir receiver on e-puck is TSOP36236. It is supposed to be used with remote co
 based RC5 protocol. 64/36000 sec is the time interval between two data bits in the protocol. 
 
  **/
-void el_routine_ir_receiver(void){
-    const el_ct dk = EL_MASTERCLOCK_FREQ/EL_IRRC_INTERRUPT_FREQ;// should be 10 exactly
+void el_routine_ir_receiver_14400hz(void){
+    const el_ct dk = EL_MASTERCLOCK_FREQ/14400;// should be 10 exactly
     const el_ct period = EL_MASTERCLOCK_FREQ*(64/36000);// should be 256 exactly. 
     int input;
     

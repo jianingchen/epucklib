@@ -22,7 +22,7 @@ uint16_t el_cam_device_id;
 uint16_t el_cam_revision_n;
 uint8_t el_cam_auto_function;
 
-static uint16_t el_cam_register_read(uint8_t address){
+static uint16_t el_cam_register_read_uint16(uint8_t address){
     uint8_t H;
     uint8_t L;
     H = e_i2cp_read(EL_CAM_I2C_ID,address);
@@ -30,7 +30,7 @@ static uint16_t el_cam_register_read(uint8_t address){
     return (H<<8)|L;
 }
 
-static void el_cam_register_write(uint8_t address,uint16_t w){
+static void el_cam_register_write_uint16(uint8_t address,uint16_t w){
     uint8_t H = w>>8;
     uint8_t L = w&0xFF;
     e_i2cp_write(EL_CAM_I2C_ID,address,H);
@@ -61,8 +61,8 @@ void el_init_camera(){
     el_frame_buffer_a.dim_y = 0;
     el_frame_buffer_b.dim_x = 0;
     el_frame_buffer_b.dim_y = 0;
-    for(Y=0;Y<EL_FRAME_BUFFER_HEIGHT;Y++){
-        for(X=0;X<EL_FRAME_BUFFER_WIDTH;X++){
+    for(Y=0;Y<EL_CAMERA_FRAME_BUFFER_HEIGHT;Y++){
+        for(X=0;X<EL_CAMERA_FRAME_BUFFER_WIDTH;X++){
             el_frame_buffer_a.RawData[Y][X] = 0;
             el_frame_buffer_b.RawData[Y][X] = 0;
         }
@@ -84,8 +84,8 @@ void el_cam_init_register(void){
     e_i2cp_enable();
 
     // read the camera model info
-    el_cam_device_id = el_cam_register_read(0x00);
-    el_cam_revision_n = el_cam_register_read(0x02);
+    el_cam_device_id = el_cam_register_read_uint16(0x00);
+    el_cam_revision_n = el_cam_register_read_uint16(0x02);
 
     // set target to register group B
     e_i2cp_write(EL_CAM_I2C_ID,0x03,0x01);
@@ -122,11 +122,11 @@ void el_cam_init_register(void){
     e_i2cp_write(EL_CAM_I2C_ID,0x1F,0x50);
 
     // set exposure control & white balance
-    e_i2cp_write(EL_CAM_I2C_ID,0x04,0b10011010);//Auto White Balance ON + Auto Exposure Control OFF
+    e_i2cp_write(EL_CAM_I2C_ID,0x04,0b10011010);//Auto White Balance ON + Exposure Control using EIT
     e_i2cp_write(EL_CAM_I2C_ID,0x24,0b00000000);//External Integration Time H
     e_i2cp_write(EL_CAM_I2C_ID,0x25,0b10000000);//External Integration Time M
     e_i2cp_write(EL_CAM_I2C_ID,0x26,0b00000000);//External Integration Time L
-    el_cam_register_write(0x28,0x1000);//External Linear Gain
+    el_cam_register_write_uint16(0x28,0x1000);//External Linear Gain
     e_i2cp_write(EL_CAM_I2C_ID,0x55,0x00);
     e_i2cp_write(EL_CAM_I2C_ID,0x56,0x00);
     e_i2cp_write(EL_CAM_I2C_ID,0xA4,64*1.0000);//Red Gain
@@ -141,7 +141,7 @@ void el_cam_init_register(void){
     
 }
 
-void el_apply_camera_setting(el_camera_ini *setting){
+void el_config_camera(el_camera_ini*setting){
     uint8_t R = 64*setting->RedGain;
     uint8_t G = 64*setting->GreenGain;
     uint8_t B = 64*setting->BlueGain;
@@ -160,8 +160,8 @@ void el_apply_camera_setting(el_camera_ini *setting){
     union{
         uint8_t all_bits;
         struct{
-            uint8_t bit0_AutoWhiteBalance:1;
-            uint8_t bit1_2_AutoExposureMode:2;
+            uint8_t bit0_1_ExposureMode:2;
+            uint8_t bit2_FixedWhiteBalance:1;
             uint8_t bit3_unused:1;
             uint8_t bit4_unused:1;
             uint8_t bit5_unused:1;
@@ -170,7 +170,11 @@ void el_apply_camera_setting(el_camera_ini *setting){
         };
     } flags;
     
-    time.d = 32768;
+    time.d = 32768*setting->ExternalIntergationTime;
+    
+    flags.bit0_1_ExposureMode = setting->ExposureMode;
+    flags.bit2_FixedWhiteBalance = !setting->AutoWhiteBalance;
+
     
     e_i2cp_enable();
     
@@ -178,10 +182,10 @@ void el_apply_camera_setting(el_camera_ini *setting){
     e_i2cp_write(EL_CAM_I2C_ID,0x03,0x02);
     
     e_i2cp_write(EL_CAM_I2C_ID,0x04,flags.all_bits);
-    e_i2cp_write(EL_CAM_I2C_ID,0x24,0b00000000);//External Integration Time H
-    e_i2cp_write(EL_CAM_I2C_ID,0x25,0b10000000);//External Integration Time M
-    e_i2cp_write(EL_CAM_I2C_ID,0x26,0b00000000);//External Integration Time L
-    el_cam_register_write(0x28,K);//External Linear Gain
+    e_i2cp_write(EL_CAM_I2C_ID,0x24,time.byte2);//External Integration Time H
+    e_i2cp_write(EL_CAM_I2C_ID,0x25,time.byte1);//External Integration Time M
+    e_i2cp_write(EL_CAM_I2C_ID,0x26,time.byte0);//External Integration Time L
+    el_cam_register_write_uint16(0x28,K);//External Linear Gain
     e_i2cp_write(EL_CAM_I2C_ID,0x55,0x00);
     e_i2cp_write(EL_CAM_I2C_ID,0x56,0x00);
     e_i2cp_write(EL_CAM_I2C_ID,0xA4,R);//Red Gain

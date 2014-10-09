@@ -1,5 +1,6 @@
 
 #include "el_context.h"
+#include "el_ir_receiver.h"
 
 void el_init_interrupt_INT0(){
     

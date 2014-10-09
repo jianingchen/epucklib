@@ -1,6 +1,6 @@
 
 #include "el_context.h"
-#include "el_interrupt.h"
+#include "el_camera.h"
 
 void el_init_interrupt_T5(){
 

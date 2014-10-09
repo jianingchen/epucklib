@@ -36,7 +36,9 @@ EPFL Ecole polytechnique federale de Lausanne http://www.epfl.ch
 
 #include "e_I2C_master_module.h"
 
-char e_i2c_mode;
+#define NOP() {__asm__ volatile ("nop");}
+
+volatile char e_i2c_mode;
 int  e_interrupts[3];
 
 /*! \brief Wait until I2C Bus is Inactive */
@@ -61,7 +63,7 @@ char e_i2c_init(void)
 	IEC0bits.SI2CIE=0;			// diseble slave I2C interrupt
 	
 
-	for(i=10000;i;i--);
+	for(i=10000;i;i--) NOP();// added NOP()
 	return 1;
 }
 
@@ -75,12 +77,12 @@ char e_i2c_reset(void)
 	IFS0bits.MI2CIF=0;			// 
 	IFS0bits.SI2CIF=0;			// 
 	IEC0bits.SI2CIE=0;			// 
-	for(i=10000;i;i--);
+	for(i=10000;i;i--) NOP();// added NOP()
 
 	e_i2c_init();				// intit I2C
 	e_i2c_enable();				//enable interrupt	
 
-	for(i=10000;i;i--);
+	for(i=10000;i;i--) NOP();// added NOP()
 
 	return 1;
 }
@@ -122,7 +124,7 @@ char e_i2c_disable(void)
 char e_i2c_start(void)
 {
 	long i;
-	e_i2c_mode=START;
+	e_i2c_mode=E_I2C_START;
 	if(I2CSTATbits.P)
 	{	
 		I2CCONbits.SEN=1;
@@ -140,7 +142,7 @@ char e_i2c_start(void)
 char e_i2c_restart(void)
 {
 	long i;
-	e_i2c_mode=RESTART;
+	e_i2c_mode=E_I2C_RESTART;
 	if(I2CSTATbits.S)
 	{	
 		I2CCONbits.RSEN=1;
@@ -158,7 +160,7 @@ char e_i2c_restart(void)
 char e_i2c_stop(void)
 {
 	long i;
-	e_i2c_mode=STOP;
+	e_i2c_mode=E_I2C_STOP;
 
 		I2CCONbits.PEN=1;
 
@@ -174,7 +176,7 @@ char e_i2c_stop(void)
 char e_i2c_ack(void)
 {
 	long i;
-	e_i2c_mode=ACKNOWLEDGE;
+	e_i2c_mode=E_I2C_ACKNOWLEDGE;
 
 	// make sure I2C bus is inactive
     if(I2CCONbits.SEN || I2CCONbits.PEN || I2CCONbits.RCEN || I2CCONbits.ACKEN || I2CCONbits.RSEN)	
@@ -196,7 +198,7 @@ char e_i2c_ack(void)
 char e_i2c_nack(void)
 {
 	long i;
-	e_i2c_mode=ACKNOWLEDGE;
+	e_i2c_mode=E_I2C_ACKNOWLEDGE;
 
 	// make sure I2C bus is inactive
     if(I2CCONbits.SEN || I2CCONbits.PEN || I2CCONbits.RCEN || I2CCONbits.ACKEN || I2CCONbits.RSEN)	
@@ -221,7 +223,7 @@ char e_i2c_read(char *buf)
 	long i=10000;
 	char read_ok=0;
 //	int	test=0;
-	e_i2c_mode=READ;
+	e_i2c_mode=E_I2C_READ;
 	
 	for(i=10000;i;i--)
 		if(!(I2CCONbits.SEN || I2CCONbits.PEN || I2CCONbits.RCEN || I2CCONbits.ACKEN || I2CSTATbits.TRSTAT))
@@ -254,7 +256,7 @@ char e_i2c_read(char *buf)
 char e_i2c_write(char byte)
 {
 	long i;
-	e_i2c_mode=WRITE;
+	e_i2c_mode=E_I2C_WRITE;
 	I2CTRN=byte;
 
 	// poll for I2C interrupt
@@ -268,5 +270,5 @@ char e_i2c_write(char byte)
 void  __attribute__((__interrupt__, auto_psv)) _MI2CInterrupt(void)
 {
 	IFS0bits.MI2CIF=0;			// clear master interrupt flag
-	e_i2c_mode=OPERATION_OK;	
+	e_i2c_mode=E_I2C_OPERATION_OK;
 }
