@@ -12,9 +12,9 @@
 #define EL_CAMERA_EXPOSURE_MODE_EIT_X_GG        3
 
 typedef struct DCIM{
-    uint16_t dim_x;
-    uint16_t dim_y;
-    uint16_t RawData[EL_CAMERA_FRAME_BUFFER_HEIGHT][EL_CAMERA_FRAME_BUFFER_WIDTH];
+    uint16_t width;
+    uint16_t height;
+    uint16_t data[EL_CAMERA_FRAME_BUFFER_HEIGHT][EL_CAMERA_FRAME_BUFFER_WIDTH];
 } el_camera_image;
 
 typedef struct EL_CAMERA_INI{
@@ -41,6 +41,7 @@ EL_API void el_camera_lock_frame();
 EL_API void el_camera_unlock_frame();
 EL_API uint16_t el_camera_get_frame_counter();
 EL_API el_camera_image*el_camera_get_frame();
+EL_API void el_camera_get_pixel_rgb(int X,int Y,uint8_t*rgb3v);
 
 #ifdef EL_INCLUDE_CONTEXT
 
@@ -48,10 +49,10 @@ EL_API el_camera_image*el_camera_get_frame();
 
 extern el_camera_image el_frame_buffer_a;
 extern el_camera_image el_frame_buffer_b;
-extern el_camera_image *el_reading_frame;
-extern el_camera_image *el_writing_frame;
-extern uint16_t *el_cam_line;
-extern uint16_t *el_cam_pixel;
+extern el_camera_image *el_cam_r_frame;
+extern el_camera_image *el_cam_w_frame;
+extern uint16_t *el_cam_line_pointer;
+extern uint16_t *el_cam_pixel_pointer;
 extern uint16_t el_cam_x;
 extern uint16_t el_cam_y;
 extern uint16_t el_cam_byte_high;

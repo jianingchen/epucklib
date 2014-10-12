@@ -16,11 +16,9 @@ void el_init_interrupt_T5(){
 }
 
 // frame interrput
-void __attribute__((interrupt, auto_psv)) _T5Interrupt(void){
+void __attribute__((interrupt, no_auto_psv)) _T5Interrupt(void){
+    T4CONbits.TON = 1;
+    el_cam_frame_counter++;
     IFS1bits.T5IF = 0;
     TMR5 = 0;
-
-    el_cam_frame_counter++;
-    T4CONbits.TON = 1;
-
 }

@@ -2,25 +2,23 @@
 #include "el_context.h"
 #include "el_camera.h"
 
-el_camera_image *el_reading_frame;//for reading
-el_camera_image *el_writing_frame;//for writing
 el_camera_image el_frame_buffer_a;
 el_camera_image el_frame_buffer_b;
-uint8_t el_cam_margin[8];
-
-uint16_t *el_cam_line;
-uint16_t *el_cam_pixel;
-uint16_t el_cam_x;
-uint16_t el_cam_y;
-uint16_t el_cam_byte_high;
-uint16_t el_cam_byte_low;
+uint16_t el_cam_device_id;
+uint16_t el_cam_revision_n;
+uint8_t el_cam_auto_function;
 
 bool el_cam_enabled;
 volatile bool el_cam_lock_buffer;
 volatile uint16_t el_cam_frame_counter;
-uint16_t el_cam_device_id;
-uint16_t el_cam_revision_n;
-uint8_t el_cam_auto_function;
+el_camera_image *el_cam_r_frame;//for reading
+el_camera_image *el_cam_w_frame;//for writing
+uint16_t *el_cam_line_pointer;
+uint16_t *el_cam_pixel_pointer;
+uint16_t el_cam_x;
+uint16_t el_cam_y;
+uint16_t el_cam_byte_high;
+uint16_t el_cam_byte_low;
 
 static uint16_t el_cam_register_read_uint16(uint8_t address){
     uint8_t H;
@@ -50,21 +48,23 @@ void el_init_camera(){
     el_cam_frame_counter = 0;
     el_cam_x = 0;
     el_cam_y = 0;
-    el_reading_frame = &el_frame_buffer_a;
-    el_writing_frame = &el_frame_buffer_b;
+    el_cam_r_frame = &el_frame_buffer_a;
+    el_cam_w_frame = &el_frame_buffer_b;
+    el_cam_line_pointer = el_cam_w_frame->data;
+    el_cam_pixel_pointer = el_cam_w_frame->data;
 
     el_cam_device_id = 0;
     el_cam_revision_n = 0;
     el_cam_auto_function = 0;
 
-    el_frame_buffer_a.dim_x = 0;
-    el_frame_buffer_a.dim_y = 0;
-    el_frame_buffer_b.dim_x = 0;
-    el_frame_buffer_b.dim_y = 0;
+    el_frame_buffer_a.width = 0;
+    el_frame_buffer_a.height = 0;
+    el_frame_buffer_b.width = 0;
+    el_frame_buffer_b.height = 0;
     for(Y=0;Y<EL_CAMERA_FRAME_BUFFER_HEIGHT;Y++){
         for(X=0;X<EL_CAMERA_FRAME_BUFFER_WIDTH;X++){
-            el_frame_buffer_a.RawData[Y][X] = 0;
-            el_frame_buffer_b.RawData[Y][X] = 0;
+            el_frame_buffer_a.data[Y][X] = 0;
+            el_frame_buffer_b.data[Y][X] = 0;
         }
     }
     
@@ -202,9 +202,9 @@ void el_config_camera(el_camera_ini*setting){
 void el_cam_swap_buffer(){
     el_camera_image* temp;
     
-    temp = el_writing_frame;
-    el_writing_frame = el_reading_frame;
-    el_reading_frame = temp;
+    temp = el_cam_w_frame;
+    el_cam_w_frame = el_cam_r_frame;
+    el_cam_r_frame = temp;
     
 }
 
@@ -237,5 +237,15 @@ uint16_t el_camera_get_frame_counter(){
 }
 
 el_camera_image*el_camera_get_frame(){
-    return el_reading_frame;
+    return el_cam_r_frame;
+}
+
+void el_camera_get_pixel_rgb(int X,int Y,uint8_t*rgb3v){
+    const uint16_t red_bits   = 0b1111100000000000;
+    const uint16_t green_bits = 0b0000011111100000;
+    const uint16_t blue_bits  = 0b0000000000011111;
+    uint16_t w = el_cam_r_frame->data[Y][X];
+    rgb3v[0] = (w&red_bits)>>8;
+    rgb3v[1] = (w&green_bits)>>3;
+    rgb3v[2] = (w&blue_bits)<<3;
 }

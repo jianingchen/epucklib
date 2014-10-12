@@ -64,7 +64,7 @@ EL_PROCESS RoutineMotorTest(void*data){
 
 EL_PROCESS Routine_CameraDebugLoop(void*data){
     int i,j,k;
-    int x,y,f;
+    int f;
     el_camera_image *p;
 
     el_enable_camera();
@@ -78,24 +78,27 @@ EL_PROCESS Routine_CameraDebugLoop(void*data){
 
         //elu_printf("%d\n",el_camera_get_frame_counter());
 
-        elu_printf("<p>\n");el_process_cooperate();
+
+        el_camera_lock_frame();
+        p = el_camera_get_frame();
         
+        elu_printf("p: %p\n",p);
+        el_process_cooperate();
+
+        elu_printf("<p>\n");
+        el_process_cooperate();
         elu_printf("FPS: %d\n",f);
         el_process_cooperate();
         elu_printf("FMT: %d\n",565);
         el_process_cooperate();
-
-        el_camera_lock_frame();
-        p = el_camera_get_frame();
-
-        elu_printf("RAW: %d,%d\n",p->dim_x,p->dim_y);
+        elu_printf("RAW: %d,%d\n",p->width,p->height);
         el_process_cooperate();
         elu_printf("DAT: %d,%d\n",EL_CAMERA_FRAME_BUFFER_WIDTH,EL_CAMERA_FRAME_BUFFER_HEIGHT);
         el_process_cooperate();
         
         for(i=0;i<EL_CAMERA_FRAME_BUFFER_HEIGHT;i++){
             for(j=0;j<EL_CAMERA_FRAME_BUFFER_WIDTH;j++){
-                elu_printf("%4.4X,",p->RawData[i][j]);
+                elu_printf("%4.4X,",p->data[i][j]);
                 el_process_cooperate();
             }
             elu_printf("\n");
@@ -236,7 +239,7 @@ int main(int argc,char*argv[]){
     el_trigger_register_exclusive_event(trg,EL_EVENT_IR_PROXIMITY_UPDATE);
 #endif
 
-#if 1
+#if 0
     el_enable_accelerometer();
 
     trg = el_create_trigger();
@@ -249,7 +252,7 @@ int main(int argc,char*argv[]){
     
 #endif
 
-#if 0
+#if 1
     el_launch_process(Routine_CameraDebugLoop,NULL);
 #endif
 

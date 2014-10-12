@@ -20,7 +20,7 @@ void el_init_interrupt_T1(){
 
 #ifdef _BUILD_CONCEPT
 
-// xc16-gcc el_interrupt_T1.c -c -mcpu=30F6014A -S -D_BUILD_CONCEPT -o el_interrupt_T1_concept.s
+// xc16-gcc el_interrupt_T1.c -c -mcpu=30F6014A -O1 -S -D_BUILD_CONCEPT -o el_interrupt_T1_concept.s
 
 void __attribute__((interrupt, no_auto_psv))_T1Interrupt(void){
     register unsigned int W;
@@ -48,32 +48,29 @@ void __attribute__((interrupt, no_auto_psv))_T1Interrupt(void){
 
 #else
 
-// xc16-gcc el_interrupt_T1.c -c -mcpu=30F6014A -S -o el_interrupt_T1.s
-
 void __attribute__((interrupt, no_auto_psv))_T1Interrupt(void){
     __asm__ volatile ("push.s   ");// save original data in w0,w1,w2,w3
-    __asm__ volatile ("bclr.b   _IFS0bits,#3");// IFS0bits.T1IF = 0;
-    __asm__ volatile ("mov      _PORTD,w0");// CAM_DATA
-    __asm__ volatile ("mov	_PORTCbits,w3");// CAM_HREF
-    __asm__ volatile ("mov      _PORTD,w1");// CAM_DATA
-    __asm__ volatile ("and	w3,#8,w3");// mask _PORTC to get CAM_HREF
-    __asm__ volatile ("sub      w3,#0,w3");// a dummy op to set flag reg
+    __asm__ volatile ("");
+    __asm__ volatile ("mov      _PORTD,w2");// get the pixel's high byte from CAM_DATA
+    __asm__ volatile ("mov	_PORTCbits,w0");// get PORTC
+    __asm__ volatile ("mov      _PORTD,w3");// get the pixel's low byte from CAM_DATA
+    __asm__ volatile ("and	w0,#8,w0");// mask PORTC to get CAM_HREF
+    __asm__ volatile ("sub      w0,#0,w0");// check if CAM_HREF is zero
     __asm__ volatile ("bra      z,LINE_FINISH");// branch check if last op is zero
-    __asm__ volatile ("mov      #0xFF00,w2");
-    __asm__ volatile ("and      w0,w2,w0");
-    __asm__ volatile ("lsr      w1,#8,w1");
-    __asm__ volatile ("ior      w0,w1,w3");
-    __asm__ volatile ("mov      _el_cam_pixel,w2");
-    __asm__ volatile ("mov      w3,[w2]");
-    __asm__ volatile ("inc2     w2,w2");
-    __asm__ volatile ("mov      w2,_el_cam_pixel");
+__asm__ volatile ("READ_PIXEL:");
+    __asm__ volatile ("mov      #0xFF00,w0");// prepare the mask of the high byte (first 8 bits)
+    __asm__ volatile ("and      w0,w2,w2");// masking for the high byte (keep only first 8 bits)
+    __asm__ volatile ("lsr      w3,#8,w3");// shift the low byte to the low 8 bits (keep only last 8 bits)
+    __asm__ volatile ("ior      w2,w3,w3");// merge the high byte and the low byte of the pixel
+    __asm__ volatile ("mov      _el_cam_pixel_pointer,w0");
+    __asm__ volatile ("mov      w3,[w0]");
+    __asm__ volatile ("inc2     w0,w0");
+    __asm__ volatile ("mov      w0,_el_cam_pixel_pointer");
     __asm__ volatile ("bra      END");
 __asm__ volatile ("LINE_FINISH:");
     __asm__ volatile ("bclr.b	_T1CONbits+1,#7");// T1CONbits.TON = 0;
-    //__asm__ volatile ("mov      _el_cam_y,w0");
-    //__asm__ volatile ("inc      w0,w0");
-    //__asm__ volatile ("mov      w0,_el_cam_y");
 __asm__ volatile ("END:");
+    __asm__ volatile ("bclr.b   _IFS0bits,#3");// IFS0bits.T1IF = 0;
     __asm__ volatile ("pop.s    ");// restore w0,w1,w2,w3
 }
 
