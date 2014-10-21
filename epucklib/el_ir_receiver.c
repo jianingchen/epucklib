@@ -2,12 +2,13 @@
 #include "el_context.h"
 #include "el_ir_receiver.h"
 
-uint8_t el_irrc_address = 0;
-uint8_t el_irrc_data = 0;
-uint8_t el_irrc_check = 2;
+uint8_t el_irrc_address;
+uint8_t el_irrc_data;
+uint8_t el_irrc_check;
+uint16_t el_irrc_counter;
 
 uint8_t el_irrc_phase;
-el_ct el_irrc_timer;
+el_mcd el_irrc_timer;
 
 union{
     uint16_t FullBits;
@@ -28,9 +29,9 @@ void el_init_ir_receiver(){
     el_irrc_address = 0;
     el_irrc_data = 0;
     el_irrc_check = 2;
+    el_irrc_counter = 0;
     el_irrc_phase = 0;
     el_irrc_timer = 0;
-    
 }
 
 void el_ir_receiver_reset(){
@@ -53,8 +54,8 @@ based RC5 protocol. 64/36000 sec is the time interval between two data bits in t
 
  **/
 void el_routine_ir_receiver_14400hz(void){
-    const el_ct dk = EL_MASTERCLOCK_FREQ/14400;// should be 10 exactly
-    const el_ct period = EL_MASTERCLOCK_FREQ*(64/36000);// should be 256 exactly. 
+    const el_mcd dk = EL_MASTERCLOCK_FREQ/14400;// should be 10 exactly
+    const el_mcd period = EL_MASTERCLOCK_FREQ*(64/36000);// should be 256 exactly.
     int input;
     
     if(el_irrc_phase==0){
@@ -176,6 +177,9 @@ void el_routine_ir_receiver_14400hz(void){
         /// automatic reset INT0
         //IFS0bits.INT0IF = 0;
         //IEC0bits.INT0IE = 1;
+        el_irrc_counter++;
+        /// signal a trigger event
+        el_trg_event_flag_ex_irrc = 1;
         break;
         
     case 20:// abort
@@ -188,6 +192,10 @@ void el_routine_ir_receiver_14400hz(void){
         
     }
     
+}
+
+uint16_t el_ir_receiver_get_counter(){
+    return el_irrc_counter;
 }
 
 uint8_t el_ir_receiver_get_check(){

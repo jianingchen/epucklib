@@ -38,23 +38,23 @@ EL_PROCESS RoutineMotorTest(void*data){
 
     el_enable_stepper_motor();
 
-    el_stepper_motor_set(EL_STEPPER_MOTOR_LEFT,500);
-    el_stepper_motor_set(EL_STEPPER_MOTOR_RIGHT,500);
+    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_LEFT,500);
+    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_RIGHT,500);
 
     el_process_wait(1000);
 
-    el_stepper_motor_set(EL_STEPPER_MOTOR_LEFT,0);
-    el_stepper_motor_set(EL_STEPPER_MOTOR_RIGHT,0);
+    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_LEFT,0);
+    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_RIGHT,0);
 
     el_process_wait(1000);
 
-    el_stepper_motor_set(EL_STEPPER_MOTOR_LEFT,-500);
-    el_stepper_motor_set(EL_STEPPER_MOTOR_RIGHT,-500);
+    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_LEFT,-500);
+    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_RIGHT,-500);
 
     el_process_wait(1000);
 
-    el_stepper_motor_set(EL_STEPPER_MOTOR_LEFT,0);
-    el_stepper_motor_set(EL_STEPPER_MOTOR_RIGHT,0);
+    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_LEFT,0);
+    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_RIGHT,0);
 
     el_process_wait(100);
     
@@ -126,7 +126,7 @@ EL_PROCESS Routine_ProximityDebugLoop(void*data){
 
         el_process_wait(1000);
 
-        el_ir_proximity_get_all(EL_IR_PROXIMITY_GET_REFLECTION,value);
+        el_ir_proximity_get_all(EL_IR_REFLECTION,value);
         elu_printf("%d: ",el_ir_proximity_get_counter());
         el_process_cooperate();
         for(i=0;i<8;i++){
@@ -141,7 +141,7 @@ EL_PROCESS Routine_ProximityDebugLoop(void*data){
     el_disable_ir_proximity();
 }
 
-EL_CONDITION ProximitySensors_Condition(el_handle this_trigger){
+bool ProximitySensors_Condition(el_handle this_trigger){
     if(el_ir_proximity_get_counter()%30){
         return false;
     }
@@ -195,9 +195,9 @@ EL_PROCESS Accelerometer_Process(el_handle this_trigger){
         magnitude_s += (long)dy*dy;
         magnitude_s += (long)dz*dz;
         if(magnitude_s > threshold_s){
-            el_led_set(EL_LED_RING_4,EL_LED_ON);
+            el_led_set(EL_LED_RING_4,EL_ON);
             el_process_wait(200);
-            el_led_set(EL_LED_RING_4,EL_LED_OFF);
+            el_led_set(EL_LED_RING_4,EL_OFF);
             el_process_wait(200);
             // 400 ms past, need to refresh values
             el_accelerometer_get_all(xyz);
@@ -280,9 +280,9 @@ void booting_procedure01_selector_barrier(){
 
 void booting_procedure02_led_pattern(){
     
-    el_led_set(EL_LED_RING_ALL,EL_LED_ON);
+    el_led_set(EL_LED_RING_ALL,EL_ON);
     el_sleep(500);
-    el_led_set(EL_LED_RING_ALL,EL_LED_OFF);
+    el_led_set(EL_LED_RING_ALL,EL_OFF);
     el_sleep(500);
     
 }

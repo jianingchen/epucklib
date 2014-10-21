@@ -4,7 +4,7 @@
 
 #include <stdlib.h>
 
-#define EL_LIST_LOOP_NEST   3
+#define EL_LIST_LOOP_DEPTH   3
 
 typedef struct EL_LIST_NODE{
     struct EL_LIST_NODE *next;
@@ -16,8 +16,8 @@ typedef struct EL_LIST{
     el_list_node *tail;
     unsigned int length;
     el_list_node *loop_prev;
-    el_list_node *loop_node[EL_LIST_LOOP_NEST];
-    el_list_node *loop_next[EL_LIST_LOOP_NEST];
+    el_list_node *loop_node[EL_LIST_LOOP_DEPTH];
+    el_list_node *loop_next[EL_LIST_LOOP_DEPTH];
     int loop;
 } el_list;
 

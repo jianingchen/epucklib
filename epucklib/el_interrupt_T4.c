@@ -96,6 +96,7 @@ __asm__ volatile ("SWAP_BUFFER:");
     __asm__ volatile ("mov	_el_cam_r_frame,w1");
     __asm__ volatile ("mov	w0,_el_cam_r_frame");
     __asm__ volatile ("mov	w1,_el_cam_w_frame");
+    __asm__ volatile ("inc	_el_trg_event_flag_ex_cam");// signal a trigger event
 __asm__ volatile ("END:");
     __asm__ volatile ("bclr.b	_IFS1bits,#5");// IFS1bits.T4IF = 0;
     __asm__ volatile ("pop.d    w2");// restore w2,w3

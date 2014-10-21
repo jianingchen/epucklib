@@ -7,18 +7,16 @@
 // stepper motor rate is in range [-max,-min] and [min,max]
 #define EL_STEPPER_MOTOR_RATE_MAX   1000
 #define EL_STEPPER_MOTOR_RATE_MIN   50
+
 #define EL_STEPPER_MOTOR_LEFT               0
 #define EL_STEPPER_MOTOR_RIGHT              1
-#define EL_STEPPER_MOTOR_GET_LEFT_COUNT     0
-#define EL_STEPPER_MOTOR_GET_RIGHT_COUNT    1
-#define EL_STEPPER_MOTOR_GET_LEFT_SPEED     2
-#define EL_STEPPER_MOTOR_GET_RIGHT_SPEED    3
 
-EL_API void el_enable_stepper_motor(void);
-EL_API void el_disable_stepper_motor(void);
-EL_API void el_stepper_motor_set(int which,int speed);
-EL_API int el_stepper_motor_get(int what);
+void el_stepper_motor_set_speed(el_index which,int speed);
+void el_stepper_motor_set_counter(el_index which,int steps);
+int el_stepper_motor_get_counter(el_index which);
 
+void el_enable_stepper_motor(void);
+void el_disable_stepper_motor(void);
 
 //==============================================================================
 
@@ -33,11 +31,11 @@ EL_API int el_stepper_motor_get(int what);
 #define EL_STPM_DIR_REVERSE 2
 #define EL_STPM_INTERRUPT_FREQ  EL_T3_FREQ
 
-typedef struct EL_STEPPER_MOTOR_STRUCT{
+typedef struct{
     int8_t direction;
     uint8_t phase;
-    el_ct period;
-    el_ct timer;
+    el_mcd period;
+    el_mcd timer;
     int16_t counter;
 } el_stpm;
 

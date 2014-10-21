@@ -12,7 +12,7 @@
 
 #endif
 
-/** improtant stdio functions for UART **/
+/** some old handy stdio functions for UART **/
 
 #define ELU_STDIO_BUFFER_SIZE   96
 #define ELU_STDIO_STACK_SIZE    384

@@ -3,34 +3,37 @@
 #define EL_IR_PROXIMITY_H
 
 #include "el_common.h"
+#include "el_clock.h"
+#include "el_trigger.h"
 
-#define EL_IR_PROXIMITY_MODE_PASSIVE     0
-#define EL_IR_PROXIMITY_MODE_PULSE       1
-#define EL_IR_PROXIMITY_MODE_EMIT        2
-#define EL_IR_PROXIMITY_MODE_NOISE       3
+typedef enum{
+    EL_IR_PROXIMITY_MODE_PASSIVE,
+    EL_IR_PROXIMITY_MODE_PULSE,
+    EL_IR_PROXIMITY_MODE_EMIT,
+    EL_IR_PROXIMITY_MODE_NOISE,
+} el_ir_proximity_mode;
 
-EL_API void el_config_ir_proximity(el_enum mode);
-EL_API void el_enable_ir_proximity(void);
-EL_API void el_disable_ir_proximity(void);
+void el_config_ir_proximity(el_ir_proximity_mode mode);
+void el_enable_ir_proximity(void);
+void el_disable_ir_proximity(void);
 
-#define EL_IR_PROXIMITY_MAX   4095
+#define EL_IR_PROXIMITY_OUTPUT_MAX   4095
 
-#define EL_IR_PROXIMITY_GET_AMBIENT      0
-#define EL_IR_PROXIMITY_GET_REFLECTION   1
-#define EL_IR_PROXIMITY_GET_NOISE        2
+typedef enum{
+    EL_IR_AMBIENT,
+    EL_IR_REFLECTION,
+    EL_IR_NOISE,
+} el_ir_proximity_output;
 
-EL_API int el_ir_proximity_get(el_enum type,int which);
-EL_API void el_ir_proximity_get_all(el_enum type,int*result_8v);
-EL_API int el_ir_proximity_get_counter();
+int el_ir_proximity_get(el_ir_proximity_output type,el_index which);
+void el_ir_proximity_get_all(el_ir_proximity_output type,int*result_8v);
+int el_ir_proximity_get_counter();
 
 
 //==============================================================================
 
 
 #ifdef EL_INCLUDE_CONTEXT
-
-#include "el_clock.h"
-#include "el_trigger.h"
 
 extern bool el_irps_enabled;
 extern uint8_t el_irps_working_mode;

@@ -11,9 +11,10 @@ void el_initialization(){
     e_i2cp_init();
 
     el_init_masterclock();
+    el_init_process();
     el_init_timers();
-    el_init_triggers();// including cmt
-
+    el_init_triggers();
+    
     el_init_stepper_motor();
     el_init_ir_receiver();
     el_init_accelerometer();
@@ -31,27 +32,27 @@ void el_initialization(){
 }
 
 void el_main_loop(){
-
+    
+    el_process_mck = el_get_masterclock();
     el_timer_mck = el_get_masterclock();
     el_trigger_mck = el_get_masterclock();
-
+    
     while(1){
-
+        el_routine_process();
         el_routine_timers();
         el_routine_triggers();
-
     }
-
+    
 }
 
 void el_sleep(el_time time_ms){
-    el_mct k;
-    
-    if(el_is_in_cmt_process){
+    el_mci k = el_get_masterclock() + EL_TIME_TO_MCT(time_ms);
+    if(el_is_in_condition){
         return;
     }
-    
-    k = el_get_masterclock() + EL_TIME_TO_MTK(time_ms);;
+    if(el_is_in_process){
+        return;
+    }
     while(el_get_masterclock() < k){
         NOP();
     }

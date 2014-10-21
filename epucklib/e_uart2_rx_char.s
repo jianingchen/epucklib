@@ -60,7 +60,9 @@ __U2RXInterrupt:
 		mov.b   U2RXREG, WREG				; Transfer received byte to w0
 		mov.b	w0, [w1]					; Store received byte
 		inc		_U2RXRcvCnt					; Increment amount of received bytes
-		
+
+        bset.b   _el_trg_event_flag_ex_uart2,#0; signal a trigger event (featured in el)
+
 		pop.d   w0							; Restore context - w0, w1
 
 		retfie								; Return from Interrupt

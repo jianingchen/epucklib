@@ -72,7 +72,7 @@ void el_init_ir_proximity(){
     
 }
 
-void el_config_ir_proximity(el_enum mode){
+void el_config_ir_proximity(el_ir_proximity_mode mode){
     el_irps_working_mode = mode;
 }
 
@@ -122,7 +122,8 @@ void el_routine_ir_proximity_passive(void){
         
     case 1:
         el_irps_counter++;
-        el_trg_event_handler_irps();
+        /// signal a trigger event
+        el_trg_event_flag_ex_irps = 1;
         break;
     }
 
@@ -159,7 +160,8 @@ void el_routine_ir_proximity_pulse(void){
         
     case 3:
         el_irps_counter++;
-        el_trg_event_handler_irps();
+        /// signal a trigger event
+        el_trg_event_flag_ex_irps = 1;
         break;
         
     }
@@ -197,7 +199,8 @@ void el_routine_ir_proximity_emit(void){
         
     case 3:
         el_irps_counter++;
-        el_trg_event_handler_irps();
+        /// signal a trigger event
+        el_trg_event_flag_ex_irps = 1;
         break;
         
     }
@@ -333,17 +336,18 @@ int el_ir_proximity_get_counter(){
     return el_irps_counter;
 }
 
-int el_ir_proximity_get(el_enum type,int i){
+int el_ir_proximity_get(el_ir_proximity_output type,el_index which){
+    int i = which%8;
     
     switch(type){
         
-    case EL_IR_PROXIMITY_GET_AMBIENT:
+    case EL_IR_AMBIENT:
         return el_irps_get_ambient(i);
         
-    case EL_IR_PROXIMITY_GET_REFLECTION:
+    case EL_IR_REFLECTION:
         return el_irps_get_reflection(i);
         
-    case EL_IR_PROXIMITY_GET_NOISE:
+    case EL_IR_NOISE:
         return el_irps_get_noise(i);
         
     }
@@ -351,7 +355,7 @@ int el_ir_proximity_get(el_enum type,int i){
     return 0;
 }
 
-void el_ir_proximity_get_all(el_enum type,int*result_8v){
+void el_ir_proximity_get_all(el_ir_proximity_output type,int*result_8v){
     int i;
     
     if(result_8v==NULL){
@@ -360,19 +364,19 @@ void el_ir_proximity_get_all(el_enum type,int*result_8v){
     
     switch(type){
         
-    case EL_IR_PROXIMITY_GET_AMBIENT:
+    case EL_IR_AMBIENT:
         for(i=0;i<8;i++){
             result_8v[i] = el_irps_get_ambient(i);
         }
         break;
         
-    case EL_IR_PROXIMITY_GET_REFLECTION:
+    case EL_IR_REFLECTION:
         for(i=0;i<8;i++){
             result_8v[i] = el_irps_get_reflection(i);
         }
         break;
         
-    case EL_IR_PROXIMITY_GET_NOISE:
+    case EL_IR_NOISE:
         for(i=0;i<8;i++){
             result_8v[i] = el_irps_get_noise(i);
         }

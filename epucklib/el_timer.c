@@ -2,12 +2,15 @@
 #include "el_context.h"
 #include "el_timer.h"
 
-el_mct el_timer_mck;
+el_mci el_timer_mck;
+bool el_is_in_timer_callback;
 el_list *el_timer_list;
 volatile bool el_timer_list_lock;
 
 void el_init_timers(){
 
+    el_is_in_timer_callback = false;
+    
     el_timer_list = el_create_list();
     el_timer_list_lock = false;
     
@@ -29,12 +32,12 @@ el_handle el_create_timer(){
     p->repeat = true;
     p->remove = false;
 
-    while(el_timer_list_lock) NOP();
-    el_timer_list_lock = true;
-
+    //while(el_timer_list_lock) NOP();
+    //el_timer_list_lock = true;
+    
     el_list_append_item(el_timer_list,p);
 
-    el_timer_list_lock = false;
+    //el_timer_list_lock = false;
 
     return EL_POINTER_TO_HANDLE(p);
 }
@@ -45,13 +48,13 @@ void el_delete_timer(el_handle h){
 }
 
 void el_routine_timers(){
-    el_mct current_clock;
-    el_ct dk;
+    el_mci current_clock;
+    el_mct dk;
     el_timer *p;
 
     // wait for on-going list operation
-    while(el_timer_list_lock) NOP();
-    el_timer_list_lock = true;
+    //while(el_timer_list_lock) NOP();
+    //el_timer_list_lock = true;
 
     // calculate time difference
     current_clock = el_get_masterclock();
@@ -81,7 +84,9 @@ void el_routine_timers(){
                     p->rounds++;
                     
                     if(p->callback){
+                        el_is_in_timer_callback = true;
                         p->callback(p->append_data);
+                        el_is_in_timer_callback = false;
                     }
                     
                 }
@@ -101,13 +106,13 @@ void el_routine_timers(){
     }
     el_list_loop_end(el_timer_list);
     
-    el_timer_list_lock = false;
+    //el_timer_list_lock = false;
 
 }
 
 void el_timer_start(el_handle h,el_time time_ms){
     el_timer *p = (el_timer*)EL_HANDLE_TO_POINTER(h);
-    el_mct k = EL_TIME_TO_MTK(time_ms);
+    el_mct k = EL_TIME_TO_MCT(time_ms);
     p->period = k;
     p->count_down = k;
     p->rounds = 0;
@@ -126,15 +131,15 @@ void el_timer_start_fraction(el_handle h,int num,int den){
     p->remove = false;
 }
 
-void el_timer_set_callback(el_handle h,void (*f)(void*),void*a){
+void el_timer_set_callback(el_handle h,el_timer_callback f,void*arg){
     el_timer *p = (el_timer*)EL_HANDLE_TO_POINTER(h);
-    p->append_data = a;
+    p->append_data = arg;
     p->callback = f;
 }
 
-void el_timer_set_perodic(el_handle h,bool perodic){
+void el_timer_set_perodic(el_handle h,bool is_perodic){
     el_timer *p = (el_timer*)EL_HANDLE_TO_POINTER(h);
-    p->repeat = perodic;
+    p->repeat = is_perodic;
 }
 
 void el_timer_pause(el_handle h){

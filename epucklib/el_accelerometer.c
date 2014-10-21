@@ -48,7 +48,8 @@ void el_routine_accelerometer_2400hz(void){
         el_adc_callback_accelerometer = el_routine_accelerometer_adc;
     }else
     if(el_acc_working_phase==1){
-        el_trg_event_handler_acc();
+        /// signal a trigger event
+        el_trg_event_flag_ex_acc = 1;
     }
 
     el_acc_working_phase++;

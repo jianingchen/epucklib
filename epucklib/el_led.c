@@ -3,14 +3,14 @@
 #include "el_led.h"
 
 #define EL_DEAL_WITH_IT(v)\
-    if(action==EL_LED_TOGGLE){\
+    if(action==EL_TOGGLE){\
         v = v^1;\
     }else{\
         v = action;\
     }
 
-void el_led_set(int which,int action){
-
+void el_led_set(el_index which,el_led_action action){
+    
     switch(which){
 
         case EL_LED_RING_0:
@@ -46,7 +46,7 @@ void el_led_set(int which,int action){
         break;
 
         case EL_LED_RING_ALL:
-        if(action==EL_LED_TOGGLE){
+        if(action==EL_TOGGLE){
             LED0 = LED0^1;
             LED1 = LED1^1;
             LED2 = LED2^1;
@@ -68,7 +68,7 @@ void el_led_set(int which,int action){
         break;
 
         case EL_LED_BODY:
-        if(action==EL_LED_TOGGLE){
+        if(action==EL_TOGGLE){
             BODY_LED = BODY_LED^1;
         }else{
             BODY_LED = action;
@@ -76,7 +76,7 @@ void el_led_set(int which,int action){
         break;
 
         case EL_LED_FRONT:
-        if(action==EL_LED_TOGGLE){
+        if(action==EL_TOGGLE){
             FRONT_LED = FRONT_LED^1;
         }else{
             FRONT_LED = action;

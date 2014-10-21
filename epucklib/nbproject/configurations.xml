@@ -58,6 +58,8 @@
       <itemPath>el.c</itemPath>
       <itemPath>el_led.h</itemPath>
       <itemPath>el_led.c</itemPath>
+      <itemPath>el_process.c</itemPath>
+      <itemPath>el_process.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f5" displayName="elu" projectFiles="true">
       <itemPath>elu.h</itemPath>

@@ -3,6 +3,8 @@
 #define	EL_IR_RECEIVER_H
 
 #include "el_common.h"
+#include "el_clock.h"
+#include "el_trigger.h"
 
 #define IR_REMOTE_KEY_START     53
 #define IR_REMOTE_KEY_STOP      54
@@ -28,6 +30,7 @@
 #define IR_REMOTE_KEY_PRESET    14
 
 void el_ir_receiver_reset();
+uint16_t el_ir_receiver_get_counter();
 uint8_t el_ir_receiver_get_check();
 uint8_t el_ir_receiver_get_address();
 uint8_t el_ir_receiver_get_data();
@@ -41,7 +44,7 @@ uint8_t el_ir_receiver_get_data();
 #include "el_clock.h"
 
 extern uint8_t el_irrc_phase;
-extern el_ct el_irrc_timer;
+extern el_mcd el_irrc_timer;
 
 void el_init_ir_receiver();
 void el_routine_ir_receiver_14400hz();

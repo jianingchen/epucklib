@@ -12,7 +12,7 @@ el_list* el_create_list(void){
     this->length = 0;
     this->loop = -1;
 
-    for(i=0;i<EL_LIST_LOOP_NEST;i++){
+    for(i=0;i<EL_LIST_LOOP_DEPTH;i++){
         this->loop_node[i] = NULL;
         this->loop_next[i] = NULL;
     }

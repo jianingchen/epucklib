@@ -3,6 +3,8 @@
 #define	EL_ACCELEROMETER_H
 
 #include "el_common.h"
+#include "el_clock.h"
+#include "el_trigger.h"
 
 #ifdef EL_INCLUDE_CONTEXT
 

@@ -56,8 +56,8 @@ void el_init_camera(){
     el_cam_y = 0;
     el_cam_r_frame = &el_frame_buffer_a;
     el_cam_w_frame = &el_frame_buffer_b;
-    el_cam_line_pointer = el_cam_w_frame->data;
-    el_cam_pixel_pointer = el_cam_w_frame->data;
+    el_cam_line_pointer = (uint16_t*)el_cam_w_frame->data;
+    el_cam_pixel_pointer = (uint16_t*)el_cam_w_frame->data;
 
     el_cam_device_id = 0;
     el_cam_revision_n = 0;
@@ -263,8 +263,8 @@ void el_disable_camera(){
 
         el_cam_x = 0;
         el_cam_y = 0;
-        el_cam_line_pointer = el_cam_w_frame->data;
-        el_cam_pixel_pointer = el_cam_w_frame->data;
+        el_cam_line_pointer = (uint16_t*)el_cam_w_frame->data;
+        el_cam_pixel_pointer = (uint16_t*)el_cam_w_frame->data;
 
         el_cam_enabled = 0;
     }
