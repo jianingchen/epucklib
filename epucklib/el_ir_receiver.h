@@ -1,4 +1,21 @@
 
+/*!
+
+\defgroup EL_IR_RECEIVER Infrared Receiver
+
+\section Introduction
+
+*/
+ 
+/*!
+
+\file
+\ingroup EL_IR_RECEIVER
+
+\author Jianing Chen
+
+*/
+
 #ifndef EL_IR_RECEIVER_H
 #define	EL_IR_RECEIVER_H
 

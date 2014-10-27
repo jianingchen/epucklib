@@ -16,14 +16,15 @@ such type of object need to be achieved by its related functions.
 
 \section sec_el_index About 'el_index' (component index)
 
-A variable of this type is typically used to refered to a hardware component. 
-The index of the components in the same module is also in serial and
-always start from 0, for example, 0 for left stepper motor and 1 for right
-stepper motor. Typically, macros are defined to assign a readable tag to 
-the indices, for example, "EL_LED_RING_2" and "EL_LED_RING_3". 
+A variable of this type is typically used to refer to a hardware component. 
+Regardless of the physical arrangement in the circuit, the indices of 
+the components in the same module is made to be in serial and always start 
+from 0, for example, 0 for left stepper motor and 1 for right stepper motor. 
+Typically, macros are defined to assign a readable tag to the indices, 
+for example, "EL_LED_RING_2" and "EL_LED_RING_3". 
 
-'el_index' is a signed type as a negative value typically has specific
-meaning. For example, for the led module, -1 (EL_LED_RING_ALL) means
+'el_index' is a signed type in which a negative value typically has specific
+meaning. For example, for the led module, -1 ("EL_LED_RING_ALL") means 
 all leds on the ring of the e-puck. 
 
 
@@ -36,10 +37,10 @@ can only be YES or NO.
 
 \section sec_el_mci About Masterclock
 
-Masterclock of the system is a incremental timer that keeps 
+Masterclock of the system is an incremental timer that keeps 
 increasing after the system is initialized. In each real time second, 
 Masterclock will be increased by 144000. Masterclock is frequenctly 
-used to calculate the interval between two time point. 
+used to calculate the interval between two time points. 
 
 Note: Masterclock is an internal component of this library and thus 
 not supposed to be used in high level development. 

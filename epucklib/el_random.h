@@ -1,4 +1,15 @@
 
+/*!
+
+\file
+\ingroup EL
+
+This is the header file of the random generator
+
+\author Jianing Chen
+
+*/
+
 #ifndef EL_RANDOM_H
 #define	EL_RANDOM_H
 

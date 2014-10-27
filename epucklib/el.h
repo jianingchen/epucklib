@@ -14,6 +14,16 @@ This library has been developed as a part of the PhD of Jianing Chen in The Univ
 
 /*!
 
+\defgroup EL Initialization and Misc Functions
+
+\section Introduction
+
+This group contains some misc functions, for example, initialization and time delay.
+
+**/
+ 
+/*!
+
 \file
 \ingroup EL
 
@@ -23,16 +33,6 @@ This library has been developed as a part of the PhD of Jianing Chen in The Univ
 
 */
 
-/*!
-
-\defgroup EL Initialization and Misc Functions
-
-\section Introduction
-
-This group contains some misc functions, for example, initialization and time delay.
-
-**/
- 
 #ifndef EL_H
 #define EL_H
 

@@ -1,4 +1,21 @@
 
+/*!
+
+\defgroup EL_IR_PROXIMITY Infrared Proximity Sensor
+
+\section Introduction
+
+*/
+ 
+/*!
+
+\file
+\ingroup EL_IR_PROXIMITY
+
+\author Jianing Chen
+
+*/
+
 #ifndef EL_IR_PROXIMITY_H
 #define EL_IR_PROXIMITY_H
 

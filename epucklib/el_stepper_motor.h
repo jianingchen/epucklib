@@ -1,4 +1,23 @@
 
+/*!
+
+\defgroup EL_STEPPER_MOTOR Stepper Motor
+
+\section Introduction
+
+The e-puck driven by two stepper-motors. 
+
+*/
+ 
+/*!
+
+\file
+\ingroup EL_STEPPER_MOTOR
+
+\author Jianing Chen
+
+*/
+
 #ifndef EL_STEPPER_MOTOR_H
 #define EL_STEPPER_MOTOR_H
 

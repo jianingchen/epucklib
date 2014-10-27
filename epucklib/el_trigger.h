@@ -12,7 +12,9 @@ a set of samples ready for use.
 
 \section Usage
 
-Blah blah blah.
+Call the function "el_create_trigger" to create a trigger in the system. 
+Use the handle returned by this function to refer to the created trigger 
+in the related function. 
 
 */
  
@@ -54,14 +56,11 @@ typedef bool (*el_condition)(void*);
 */
 el_handle el_create_trigger();
 
+
 /*!
     \brief delete the trigger
 
     \param handle to the trigger
-
-    This function create a trigger in the system. 
-    It returns a handle to the trigger created. This handle is used 
-    to refer the trigger in the related functions. 
 */
 void el_delete_trigger(el_handle trigger);
 
