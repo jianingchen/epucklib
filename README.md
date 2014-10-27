@@ -3,7 +3,7 @@ Jianing Chen
 
 j.n.chen@sheffield.ac.uk
 
-==== e-puck lib (Work In Progress) ====
+==== embedded system library for e-puck (Work In Progress) ====
 
  - This is a library for the embedded system of the e-puck robot. 
  
