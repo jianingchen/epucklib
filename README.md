@@ -5,11 +5,13 @@ j.n.chen@sheffield.ac.uk
 
 ==== e-puck lib (Work In Progress) ====
 
- - This is a interfacing library for the e-puck robot. 
+ - This is a library for the embedded system of the e-puck robot. 
  
- - All source files start with "e_" are borrowed from the official e-puck library. 
+ - This library currently only works on e-puck with the camera model PO6030K but not PO3030K.  
  
- - Unlike the official e-puck lib (has several modules), this library used all-in-one design. 
+ - All source files starting with "e_" are from the official e-puck library, and attribute to whom ever own the authorship. 
+ 
+ - Unlike the official e-puck lib (has several modules), this library used all-in-one design (one header path, one .a file). 
  
  - Support pretty much everything on the e-puck but the sound related and fft functionalities. 
  
@@ -19,7 +21,7 @@ j.n.chen@sheffield.ac.uk
 
  - _Timer_ can be used to produce delay, as well as creating periodic callbacks (similar to the agenda in the official library)
 
- - _Process_ let you multi-tasking. So several loop with delays can run concurrently (this is borrowed from my simple multi-task system > https://github.com/jianingchen/cmt ). 
+ - _Process_ let you multi-tasking. So several loop with time delays can run concurrently (this achieved using cooperative multi-tasking > https://github.com/jianingchen/cmt ). 
 
  - A _Trigger_ can automatically launch a _Process_ once something happened, which let you do things only interrupts can do without dealing with hardware interrupts. 
 
