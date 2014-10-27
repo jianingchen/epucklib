@@ -25,3 +25,6 @@ j.n.chen@sheffield.ac.uk
 
  - A _Trigger_ can automatically launch a _Process_ once something happened, which let you do things only interrupts can do without dealing with hardware interrupts. 
 
+ - The project file in the distribution is for MPLABX with xc16 compiler.
+ 
+ 
