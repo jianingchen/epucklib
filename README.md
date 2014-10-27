@@ -17,7 +17,7 @@ j.n.chen@sheffield.ac.uk
  
  - A more user-friendly and potentially more powerful (40x15 @ ~20 fps) interface for the camera on the e-puck. 
  
- - Three advanced concepts in the API: _Timer_, _Process_ and _Trigger_. 
+ - Organize the development using three object-oriented concepts: _Timer_, _Process_ and _Trigger_. 
 
  - _Timer_ can be used to produce delay, as well as creating periodic callbacks (similar to the agenda in the official library)
 
