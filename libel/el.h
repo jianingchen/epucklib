@@ -39,7 +39,6 @@ This group contains some misc functions, for example, initialization and time de
 #include "el_common.h"
 #include "el_clock.h"
 #include "el_random.h"
-#include "el_list.h"
 #include "el_process.h"
 #include "el_timer.h"
 #include "el_trigger.h"
@@ -52,10 +51,12 @@ This group contains some misc functions, for example, initialization and time de
 #include "el_ir_proximity.h"
 #include "el_uart.h"
 
-EL_API void el_initialization();
-EL_API void el_sleep(el_time time_ms);// cannot be used in a process
-EL_API int el_get_selector_value();
-EL_API void el_main_loop();
-EL_API void el_reset();
+void el_set_version(int v);
+int el_get_version();
+void el_initialization();
+void el_sleep(el_time time_ms);// cannot be used in a process
+int el_get_selector_value();
+void el_main_loop();
+void el_reset();
 
 #endif
