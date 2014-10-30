@@ -7,7 +7,7 @@ j.n.chen@sheffield.ac.uk
 
  - This is a library for the embedded system of the e-puck robot. 
  
- - This library currently only works on e-puck with the camera model PO6030K but not PO3030K.  
+ - This library currently only works on e-puck with the camera model PO6030K but not PO3030K. 
  
  - All source files starting with "e_" are from the official e-puck library, and attribute to whom ever own the authorship. 
  
@@ -25,6 +25,7 @@ j.n.chen@sheffield.ac.uk
 
  - A _Trigger_ can automatically launch a _Process_ once something happened, which let you do things only interrupts can do without dealing with hardware interrupts. 
 
- - The project file in the distribution is for MPLABX with xc16 compiler.
+ - The project is developed using xc16 compiler. 
  
+ - The project format in the distribution is for MPLABX.
  
