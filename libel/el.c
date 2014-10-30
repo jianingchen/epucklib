@@ -3,23 +3,12 @@
 #include "el_interrupt.h"
 #include "el.h"
 
-int el_version;
-
-void el_set_version(int v){
-    el_version = v + 1;
-}
-
-int el_get_version(){
-    return el_version;
-}
-
 void el_initialization(){
 
     e_init_port();
     e_i2cp_init();
 
     el_init_masterclock();
-
     el_init_timers();
     el_init_process();
     el_init_triggers();
@@ -72,4 +61,8 @@ void el_reset(){
 
 int el_get_selector_value(){
     return (SELECTOR3<<3)|(SELECTOR2<<2)|(SELECTOR1<<1)|SELECTOR0;
+}
+
+void el_calibrate_sensors(){
+    
 }

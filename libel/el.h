@@ -3,6 +3,7 @@
 
 \mainpage embedded system library for e-puck
 
+\image html el_logo_color.png
 \section sec_intro Introduction
 
 This library has been developed as a part of the PhD of Jianing Chen in The University of Sheffield.
@@ -51,9 +52,8 @@ This group contains some misc functions, for example, initialization and time de
 #include "el_ir_proximity.h"
 #include "el_uart.h"
 
-void el_set_version(int v);
-int el_get_version();
 void el_initialization();
+void el_calibrate_sensors();
 void el_sleep(el_time time_ms);// cannot be used in a process
 int el_get_selector_value();
 void el_main_loop();
