@@ -1,11 +1,11 @@
 
-Example 1: Blinking LEDs
+Example 1: Blinking LEDs and a bit of UART communication
 
 
-Example 2: Following Any Red Object 
+Example 2: Following Any Green Object using Camera and Proximity Sensors
 
 
-Example 3: A Composite Dmo
+Example 3: A Demo Showing How to Organize Multiple Tasks
 
 
 
