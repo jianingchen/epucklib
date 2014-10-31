@@ -1,14 +1,26 @@
 
 /*! 
 
-\mainpage embedded system library for e-puck
+\mainpage e-puck embedded system library
 
 \image html el_logo_color.png
 \section sec_intro Introduction
 
-This library has been developed as a part of the PhD of Jianing Chen in The University of Sheffield.
+This is a library for develop the embedded system on the e-puck robot platform. 
+
+
+\section sec_license License & Attribution
+
+The e-puck embedded system library is distributed under the MIT license.
+
+The logo of e-puck embedded system library is licensed under 
+a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+
+This library has been developed as a part of the PhD of Jianing Chen in 
+Natural Robotics Lab, The University of Sheffield. 
 
 \section sec_link External links
+- http://www.e-puck.org/                 The official site of the e-puck
 - http://www.e-puck.org/                 The official site of the e-puck
 
 */
