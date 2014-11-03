@@ -1,6 +1,7 @@
 var searchData=
 [
   ['el_2eh',['el.h',['../el_8h.html',1,'']]],
+  ['el_5fcamera_2eh',['el_camera.h',['../el__camera_8h.html',1,'']]],
   ['el_5fclock_2eh',['el_clock.h',['../el__clock_8h.html',1,'']]],
   ['el_5fcommon_2eh',['el_common.h',['../el__common_8h.html',1,'']]],
   ['el_5fir_5fproximity_2eh',['el_ir_proximity.h',['../el__ir__proximity_8h.html',1,'']]],
