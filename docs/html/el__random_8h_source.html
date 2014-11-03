@@ -87,24 +87,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="el__random_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef EL_RANDOM_H</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define EL_RANDOM_H</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="el__common_8h.html">el_common.h</a>&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> el_random_set_seed(<span class="keywordtype">int</span> seed);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> el_random_reset_seed(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;uint16_t el_random_uint16(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;uint32_t el_random_uint32(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">int</span> el_random_rate(<span class="keywordtype">int</span> num,<span class="keywordtype">int</span> den);<span class="comment">// rate of (num/den) returing 1</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* EL_RANDOM_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifndef EL_RANDOM_H</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define EL_RANDOM_H</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="el__common_8h.html">el_common.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">void</span> <a class="code" href="el__random_8h.html#ac444097bd87f81e8ce08b436811bf0d1">el_random_set_seed</a>(<span class="keywordtype">int</span> seed);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> <a class="code" href="el__random_8h.html#a987f051a1e8591d5ccb9a85c2ce9c7e1">el_random_reset_seed</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;el_uint16 <a class="code" href="el__random_8h.html#ace80ec1d84ebecba4808d0e5b0dad3a3">el_random_get_seed</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;el_uint16 <a class="code" href="el__random_8h.html#a3654ea5e3a61ea09daa94c41467a4ffa">el_random_uint16</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;el_uint32  <a class="code" href="el__random_8h.html#a2c171512231cd23a543a3797fa96f501">el_random_uint32</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;el_int16 <a class="code" href="el__random_8h.html#a4c6af4373b35535dbb736a5000f15774">el_random_int</a>(el_int16 min,el_int16 max);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;el_bool <a class="code" href="el__random_8h.html#a484d81d2df007f11eee83789b24364e9">el_random_rate</a>(el_uint16 num,el_uint16 den);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* EL_RANDOM_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="ttc" id="el__random_8h_html_ace80ec1d84ebecba4808d0e5b0dad3a3"><div class="ttname"><a href="el__random_8h.html#ace80ec1d84ebecba4808d0e5b0dad3a3">el_random_get_seed</a></div><div class="ttdeci">el_uint16 el_random_get_seed(void)</div><div class="ttdoc">get seed of the current random sequence </div></div>
+<div class="ttc" id="el__random_8h_html_a2c171512231cd23a543a3797fa96f501"><div class="ttname"><a href="el__random_8h.html#a2c171512231cd23a543a3797fa96f501">el_random_uint32</a></div><div class="ttdeci">el_uint32 el_random_uint32(void)</div><div class="ttdoc">returning a random unsigned long int in [0,2^32] </div></div>
+<div class="ttc" id="el__random_8h_html_a3654ea5e3a61ea09daa94c41467a4ffa"><div class="ttname"><a href="el__random_8h.html#a3654ea5e3a61ea09daa94c41467a4ffa">el_random_uint16</a></div><div class="ttdeci">el_uint16 el_random_uint16(void)</div><div class="ttdoc">returning a random unsigned short int in [0,65535] </div></div>
+<div class="ttc" id="el__random_8h_html_ac444097bd87f81e8ce08b436811bf0d1"><div class="ttname"><a href="el__random_8h.html#ac444097bd87f81e8ce08b436811bf0d1">el_random_set_seed</a></div><div class="ttdeci">void el_random_set_seed(int seed)</div><div class="ttdoc">set seed of the random generator module </div></div>
+<div class="ttc" id="el__random_8h_html_a4c6af4373b35535dbb736a5000f15774"><div class="ttname"><a href="el__random_8h.html#a4c6af4373b35535dbb736a5000f15774">el_random_int</a></div><div class="ttdeci">el_int16 el_random_int(el_int16 min, el_int16 max)</div><div class="ttdoc">returning a random int in [min,max] </div></div>
+<div class="ttc" id="el__random_8h_html_a987f051a1e8591d5ccb9a85c2ce9c7e1"><div class="ttname"><a href="el__random_8h.html#a987f051a1e8591d5ccb9a85c2ce9c7e1">el_random_reset_seed</a></div><div class="ttdeci">void el_random_reset_seed(void)</div><div class="ttdoc">reset the random seed to default value </div></div>
+<div class="ttc" id="el__random_8h_html_a484d81d2df007f11eee83789b24364e9"><div class="ttname"><a href="el__random_8h.html#a484d81d2df007f11eee83789b24364e9">el_random_rate</a></div><div class="ttdeci">el_bool el_random_rate(el_uint16 num, el_uint16 den)</div><div class="ttdoc">returning true at a probablity of (num/den) </div></div>
 <div class="ttc" id="el__common_8h_html"><div class="ttname"><a href="el__common_8h.html">el_common.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:22:29 for e-puck embedded system library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 00:43:20 for e-puck embedded system library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

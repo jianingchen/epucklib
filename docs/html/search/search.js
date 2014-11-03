@@ -7,10 +7,10 @@
 
 var indexSectionsWithContent =
 {
-  0: "beipst",
+  0: "bceiprst",
   1: "e",
   2: "e",
-  3: "bipst",
+  3: "bciprst",
   4: "e"
 };
 

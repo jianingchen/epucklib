@@ -94,11 +94,12 @@ Introduction</h1>
 <p>A Process runs concurrently with other process.</p>
 <h1><a class="anchor" id="Usage"></a>
 Usage</h1>
-<p>This library has multi-tasking capability as it can process 8 'Process' concurrently. Call the function "el_launch_process" to launch a function into a Process. In a Process, call "el_process_wait" to wait for a certain amount of time. Within this wait period, other process are being executed. This approach of multitasking is often called "Cooperative Multitasking". It is useful when several timing based programs need to run concurrently. See the example project for how &amp; the suitable situation to use Process. </p>
+<p>This library has multi-tasking capability &mdash; upto 6 functions can run concurrently. Each of these functions is called a 'process'. Call the function "el_launch_process" to launch a process. In a process, call "el_process_wait" to wait for a certain amount of time. Within this wait period, other process are being executed.</p>
+<p>This approach of multitasking is often called "Cooperative Multitasking". It is useful when several timing based programs need to run concurrently. See the examples for how &amp; the suitable situation to use the process. </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 31 2014 18:22:29 for e-puck embedded system library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Nov 3 2014 00:43:20 for e-puck embedded system library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
