@@ -218,3 +218,47 @@ el_uint16 el_uart_get_string(el_index channel,char*buf,unsigned int l){
 
     return length;
 }
+
+char el_uart_peek_first_char(el_index channel){
+    int i,o;
+
+    switch(channel){
+
+    case EL_UART_1:
+        i = el_uart1_rx_buf_i;
+        o = el_uart1_rx_buf_o;
+        if(i != o){
+            return el_uart1_rx_buffer[o];
+        }
+        break;
+
+    case EL_UART_2:
+        break;
+
+    }
+
+    return 0xFF;
+}
+
+char el_uart_peek_last_char(el_index channel){
+    int i,o;
+
+    switch(channel){
+
+    case EL_UART_1:
+        i = el_uart1_rx_buf_i;
+        o = el_uart1_rx_buf_o;
+        if(i != o){
+            i--;
+            i %= EL_UART_RX_BUF_DIM;
+            return el_uart1_rx_buffer[i];
+        }
+        break;
+
+    case EL_UART_2:
+        break;
+
+    }
+
+    return 0xFF;
+}
