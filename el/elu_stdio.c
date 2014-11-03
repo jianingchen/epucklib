@@ -6,10 +6,10 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-#define ELU_STDIO_STACK_SIZE    384
+#define ELU_STDIO_UART          EL_UART_1
+#define ELU_STDIO_STACK_SIZE    400
 #define ELU_STDIO_BUFFER_SIZE   80
 
-const el_index elu_stdio_target = EL_UART_1;
 char elu_stdio_buffer[ELU_STDIO_BUFFER_SIZE];
 
 int elu_warp_vsnprintf(const int offset,char*s,size_t n,const char*format,va_list arg){
@@ -69,11 +69,11 @@ int elu_printf(const char *format,...){
 
     if(length > 0){
 
-        while(el_uart_is_sending(elu_stdio_target)){
+        while(el_uart_is_sending(ELU_STDIO_UART)){
             el_process_cooperate();
         }
         
-        el_uart_send_string(elu_stdio_target,elu_stdio_buffer);
+        el_uart_send_string(ELU_STDIO_UART,elu_stdio_buffer);
 
     }
 
@@ -86,11 +86,11 @@ int elu_scanf(const char *format,...){
     int entries;
     int offset;
 
-    while(el_uart_get_char_counter(elu_stdio_target)==0){
+    while(el_uart_get_char_counter(ELU_STDIO_UART)==0){
         el_process_cooperate();
     }
 
-    length = el_uart_get_string(elu_stdio_target,elu_stdio_buffer,ELU_STDIO_BUFFER_SIZE);
+    length = el_uart_get_string(ELU_STDIO_UART,elu_stdio_buffer,ELU_STDIO_BUFFER_SIZE);
 
     va_start(args,format);
     

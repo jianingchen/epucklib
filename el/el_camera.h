@@ -1,4 +1,27 @@
 
+/*!
+
+\defgroup EL_CAMERA Camera
+
+\section Introduction
+
+(TODO)
+
+\section Usage
+
+(TODO)
+
+*/
+ 
+/*!
+
+\file
+\ingroup EL_CAMERA
+
+\author Jianing Chen
+
+*/
+
 #ifndef EL_CAMERA_H
 #define	EL_CAMERA_H
 
@@ -36,11 +59,14 @@ void el_disable_camera();
 
 void el_camera_lock_frame();
 void el_camera_unlock_frame();
+bool el_camera_is_frame_locked();
 uint16_t el_camera_get_frame_counter();
 void el_camera_get_frame_pixel(int X,int Y,uint8_t*rgb3v);
 unsigned int el_camera_get_frame_width();
 unsigned int el_camera_get_frame_height();
 el_camera_image*el_camera_get_frame();
+
+
 
 #ifdef EL_INCLUDE_CONTEXT
 

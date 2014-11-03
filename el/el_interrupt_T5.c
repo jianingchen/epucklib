@@ -1,12 +1,13 @@
 
 #include "el_context.h"
+#include "el_interrupt.h"
 #include "el_camera.h"
 
 void el_init_interrupt_T5(){
 
     IFS1bits.T5IF = 0;
     IEC1bits.T5IE = 1;//T5 Interrupt Enabled
-    IPC5bits.T5IP = 5;//T5 Interrupt Priority
+    IPC5bits.T5IP = EL_INTP_T5;//T5 Interrupt Priority
     
     TMR5 = 0;
     PR5 = 1;

@@ -23,17 +23,27 @@ void el_random_reset_seed(void){
     m_z = 362436069;
 }
 
-uint16_t el_random_uint16(void){
+el_uint16 el_random_get_seed(void){
+    return el_rand_seed;
+}
+
+el_uint16 el_random_uint16(void){
     el_rand_roll();
     return (m_z<<8) + (m_w&0xFF);
 }
 
-uint32_t el_random_uint32(void){
+el_uint32 el_random_uint32(void){
     el_rand_roll();
     return (m_z<<16) + (m_w&0xFFFF);
 }
 
-int el_random_rate(int num,int den){
+el_int16 el_random_int(el_int16 min,el_int16 max){
+    el_int32 s = max - min + 1;
+    el_int32 r = el_random_uint16();
+    return r*s/65536UL + min;
+}
+
+el_bool el_random_rate(el_uint16 num,el_uint16 den){
     uint32_t r = el_random_uint16();
     return ((den*r)<(num*65536UL));
 }

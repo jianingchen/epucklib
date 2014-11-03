@@ -287,6 +287,10 @@ void el_camera_unlock_frame(){
     el_cam_lock_buffer = 0;
 }
 
+bool el_camera_is_frame_locked(){
+    return el_cam_lock_buffer;
+}
+
 uint16_t el_camera_get_frame_counter(){
     return el_cam_frame_counter;
 }

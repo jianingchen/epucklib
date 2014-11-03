@@ -38,7 +38,7 @@ typedef bool (*el_condition)(void*);
 /*!
     \brief create a trigger in the system
 
-    \return handle to the trigger
+    \return handle of the trigger
 
     This function create a trigger in the system. 
     It returns a handle to the trigger created. This handle is used 
@@ -50,14 +50,14 @@ el_handle el_create_trigger();
 /*!
     \brief delete the trigger
 
-    \param handle to the trigger
+    \param handle of the trigger
 */
 void el_delete_trigger(el_handle trigger);
 
 /*! 
     \brief enable a trigger
 
-    \param h    handle to a trigger
+    \param h    handle of the trigger
 
     Only when a trigger is enabled, its event will be effective.
     A trigger is enabled by default after its creation.
@@ -67,7 +67,7 @@ void el_trigger_enable(el_handle h);
 /*! 
     \brief disable a trigger
 
-    \param h    handle to a trigger
+    \param h    handle of the trigger
 
     When a trigger is disabled, its event will be ignored. 
     A trigger is automatically disabled when its process is launched. 
@@ -91,7 +91,7 @@ void el_trigger_disable(el_handle h);
 /*! 
     \brief set the event of the trigger
 
-    \param h    handle to a trigger
+    \param h    handle of the trigger
     \param e    type of the event within the category
 
     This function defines the event of the trigger. 
@@ -101,7 +101,7 @@ void el_trigger_set_event(el_handle h,el_enum e);
 /*! 
     \brief set the condition callback function of the trigger
     
-    \param h    handle to a trigger
+    \param h    handle of the trigger
     \param f    pointer to the callback function
     
     When the event of the trigger occurs, the trigger's condition callback will
@@ -116,7 +116,7 @@ void el_trigger_set_condition(el_handle h,el_condition f);
 /*!
     \brief set the process entry function of the trigger
 
-    \param h    handle to a trigger
+    \param h    handle of the trigger
     \param f    pointer to the process function
 
     When the trigger passes its condition and it has a registered process,
@@ -127,7 +127,7 @@ void el_trigger_set_process(el_handle h,el_process f);
 /*! 
     \brief get the number of times the trigger passed its condition
 
-    \param h    handle to a trigger
+    \param h    handle of the trigger
     \return counter of the trigger
 
     For each time the trigger passes its condition, its counter will +1. 

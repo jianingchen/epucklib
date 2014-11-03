@@ -22,6 +22,8 @@ typedef enum{
     EL_TOGGLE = -1,
 } el_led_action;
 
-void el_led_set(el_index which,el_led_action what);
+void el_led_set(el_index w,el_led_action a);
+
+int el_get_selector_value();
 
 #endif

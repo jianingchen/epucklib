@@ -60,6 +60,15 @@ extern uint16_t el_irps_counter;
 extern bool el_irps_is_calibrated;
 extern uint16_t el_irps_environment_ambient;
 
+extern uint16_t el_irps_samples_Ambient[8];//Noise + Ambient
+extern uint16_t el_irps_samples_Mixed[8];//Noise + Ambient + Emitter Reflection
+extern uint16_t el_irps_samples_Temp[8];
+extern uint16_t el_irps_samples_Last[8];
+extern uint32_t el_irps_samples_Spikes[8];
+extern uint16_t el_irps_samples_Noise[8];
+extern uint16_t el_irps_samples_NeutralReflection[8];// need calibration
+extern uint16_t el_irps_samples_NeutralNoise[8];
+
 void el_init_ir_proximity(void);
 void el_routine_ir_proximity_2400hz(void);
 

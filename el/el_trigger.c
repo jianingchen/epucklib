@@ -2,16 +2,16 @@
 #include "el_context.h"
 #include "el_trigger.h"
 
-bool el_is_in_trigger_condition = 0;
-el_uint8 el_trigger_reg_i = 0;
-el_trigger*el_trigger_reg[EL_TRIGGER_DIM] = {0};
+bool el_is_in_trigger_condition;
+el_uint8 el_trigger_reg_i;
+el_trigger*el_trigger_reg[EL_TRIGGER_DIM];
 
-volatile uint8_t el_trg_event_flag_ex_uart1 = 0;
-volatile uint8_t el_trg_event_flag_ex_uart2 = 0;
-volatile uint8_t el_trg_event_flag_ex_irrc = 0;
-volatile uint8_t el_trg_event_flag_ex_cam = 0;
-volatile uint8_t el_trg_event_flag_ex_acc = 0;
-volatile uint8_t el_trg_event_flag_ex_irps = 0;
+volatile uint8_t el_trg_event_flag_ex_uart1;
+volatile uint8_t el_trg_event_flag_ex_uart2;
+volatile uint8_t el_trg_event_flag_ex_irrc;
+volatile uint8_t el_trg_event_flag_ex_cam;
+volatile uint8_t el_trg_event_flag_ex_acc;
+volatile uint8_t el_trg_event_flag_ex_irps;
 
 void el_init_triggers(){
     int i;
@@ -66,7 +66,7 @@ void el_routine_triggers(){
     d = el_trigger_reg_i;
     
     if(el_trg_event_flag_ex_uart1){
-        el_trg_event_flag_ex_uart1 = 0;
+        el_trg_event_flag_ex_uart1--;
         for(i=0;i<d;i++){
             if(el_trigger_reg[i]->event_type==EL_EVENT_UART1_ENTERED){
                 el_trg_proceed(el_trigger_reg[i]);
@@ -75,7 +75,7 @@ void el_routine_triggers(){
     }
     
     if(el_trg_event_flag_ex_uart2){
-        el_trg_event_flag_ex_uart2 = 0;
+        el_trg_event_flag_ex_uart2--;
         for(i=0;i<d;i++){
             if(el_trigger_reg[i]->event_type==EL_EVENT_UART2_ENTERED){
                 el_trg_proceed(el_trigger_reg[i]);
@@ -84,7 +84,7 @@ void el_routine_triggers(){
     }
     
     if(el_trg_event_flag_ex_irrc){
-        el_trg_event_flag_ex_irrc = 0;
+        el_trg_event_flag_ex_irrc--;
         for(i=0;i<d;i++){
             if(el_trigger_reg[i]->event_type==EL_EVENT_IR_RECEIVER_INCOME){
                 el_trg_proceed(el_trigger_reg[i]);
@@ -93,7 +93,7 @@ void el_routine_triggers(){
     }
     
     if(el_trg_event_flag_ex_acc){
-        el_trg_event_flag_ex_acc = 0;
+        el_trg_event_flag_ex_acc--;
         for(i=0;i<d;i++){
             if(el_trigger_reg[i]->event_type==EL_EVENT_ACCELEROMETER_UPDATE){
                 el_trg_proceed(el_trigger_reg[i]);
@@ -102,7 +102,7 @@ void el_routine_triggers(){
     }
     
     if(el_trg_event_flag_ex_irps){
-        el_trg_event_flag_ex_irps = 0;
+        el_trg_event_flag_ex_irps--;
         for(i=0;i<d;i++){
             if(el_trigger_reg[i]->event_type==EL_EVENT_IR_PROXIMITY_UPDATE){
                 el_trg_proceed(el_trigger_reg[i]);
@@ -111,7 +111,7 @@ void el_routine_triggers(){
     }
     
     if(el_trg_event_flag_ex_cam){
-        el_trg_event_flag_ex_cam = 0;
+        el_trg_event_flag_ex_cam--;
         for(i=0;i<d;i++){
             if(el_trigger_reg[i]->event_type==EL_EVENT_CAMERA_FRAME_UPDATE){
                 el_trg_proceed(el_trigger_reg[i]);

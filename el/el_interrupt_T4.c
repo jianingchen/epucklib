@@ -1,5 +1,6 @@
 
 #include "el_context.h"
+#include "el_interrupt.h"
 #include "el_camera.h"
 
 #ifdef _BUILD_CONCEPT
@@ -47,7 +48,7 @@ void el_init_interrupt_T4(){
 
     IFS1bits.T4IF = 0;
     IEC1bits.T4IE = 1;//T4 Interrupt Enabled
-    IPC5bits.T4IP = 6;//T4 Interrupt Priority
+    IPC5bits.T4IP = EL_INTP_T4;//T4 Interrupt Priority
     
     TMR4 = 0;
     PR4 = 1;

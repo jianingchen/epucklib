@@ -1,12 +1,13 @@
 
 #include "el_context.h"
+#include "el_interrupt.h"
 #include "el_camera.h"
 
 void el_init_interrupt_T1(){
     
     IFS0bits.T1IF = 0;
     IEC0bits.T1IE = 1;//T1 Interrupt Enabled
-    IPC0bits.T1IP = 7;//T1 Interrupt Priority (highest in the system)
+    IPC0bits.T1IP = EL_INTP_T1;//T1 Interrupt Priority
 
     TMR1 = 0;
     PR1 = 1;

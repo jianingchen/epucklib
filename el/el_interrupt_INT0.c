@@ -1,5 +1,6 @@
 
 #include "el_context.h"
+#include "el_interrupt.h"
 #include "el_ir_receiver.h"
 
 void el_init_interrupt_INT0(){
@@ -9,7 +10,7 @@ void el_init_interrupt_INT0(){
     INTCON2bits.INT0EP = 1;// set interrupt polarity to falling edge
     IFS0bits.INT0IF = 0;
     IEC0bits.INT0IE = 1;// enable INT0
-    IPC0bits.INT0IP = 4;// INT0 Interrupt Priority
+    IPC0bits.INT0IP = EL_INTP_INT0;// INT0 Interrupt Priority
     
 }
     

@@ -16,10 +16,10 @@ el_mci el_get_masterclock(){
     return el_masterclock;
 }
 
-el_time el_get_time_diff(el_mci c0,el_mci c1,el_mct*residue){
+el_time el_get_time_diff(el_mci c0,el_mci c1,el_mci*residue){
     const el_mct ratio = EL_MASTERCLOCK_FREQ/EL_TIME_FREQ;
     el_mct d;
-    el_mct r;
+    el_mci r;
     el_time dt;
 
     if(c0<c1){
@@ -48,4 +48,3 @@ el_time el_get_time_diff(el_mci c0,el_mci c1,el_mct*residue){
     
     return dt;
 }
-

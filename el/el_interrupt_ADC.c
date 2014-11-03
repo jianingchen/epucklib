@@ -1,5 +1,6 @@
 
 #include "el_context.h"
+#include "el_interrupt.h"
 #include "el_ir_proximity.h"
 #include "el_accelerometer.h"
 
@@ -81,7 +82,7 @@ void el_init_interrupt_ADC(){
     
     IFS0bits.ADIF = 0;// ADC Interrupt Flag
     IEC0bits.ADIE = 0;// ADC Interrupt Enable
-    IPC2bits.ADIP = 2;// ADC Interrupt Priority
+    IPC2bits.ADIP = EL_INTP_ADC;// ADC Interrupt Priority
     
 }
 

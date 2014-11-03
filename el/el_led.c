@@ -89,3 +89,7 @@ void el_led_set(el_index which,el_led_action action){
 }
 
 #undef EL_DEAL_WITH_IT
+
+int el_get_selector_value(){
+    return (SELECTOR3<<3)|(SELECTOR2<<2)|(SELECTOR1<<1)|SELECTOR0;
+}
