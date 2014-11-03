@@ -82,8 +82,8 @@ void el_trigger_disable(el_handle h);
 #define EL_EVENT_INTERNAL_E                 5
 #define EL_EVENT_INTERNAL_F                 6
 #define EL_EVENT_IR_RECEIVER_INCOME         10
-#define EL_EVENT_UART1_ENTERED              11
-#define EL_EVENT_UART2_ENTERED              12
+#define EL_EVENT_UART1_RECEIVED             11
+#define EL_EVENT_UART2_RECEIVED             12
 #define EL_EVENT_ACCELEROMETER_UPDATE       20
 #define EL_EVENT_IR_PROXIMITY_UPDATE        21
 #define EL_EVENT_CAMERA_FRAME_UPDATE        22

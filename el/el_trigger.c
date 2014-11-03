@@ -66,25 +66,25 @@ void el_routine_triggers(){
     d = el_trigger_reg_i;
     
     if(el_trg_event_flag_ex_uart1){
-        el_trg_event_flag_ex_uart1--;
+        el_trg_event_flag_ex_uart1 = 0;
         for(i=0;i<d;i++){
-            if(el_trigger_reg[i]->event_type==EL_EVENT_UART1_ENTERED){
+            if(el_trigger_reg[i]->event_type==EL_EVENT_UART1_RECEIVED){
                 el_trg_proceed(el_trigger_reg[i]);
             }
         }
     }
     
     if(el_trg_event_flag_ex_uart2){
-        el_trg_event_flag_ex_uart2--;
+        el_trg_event_flag_ex_uart2 = 0;
         for(i=0;i<d;i++){
-            if(el_trigger_reg[i]->event_type==EL_EVENT_UART2_ENTERED){
+            if(el_trigger_reg[i]->event_type==EL_EVENT_UART2_RECEIVED){
                 el_trg_proceed(el_trigger_reg[i]);
             }
         }
     }
     
     if(el_trg_event_flag_ex_irrc){
-        el_trg_event_flag_ex_irrc--;
+        el_trg_event_flag_ex_irrc = 0;
         for(i=0;i<d;i++){
             if(el_trigger_reg[i]->event_type==EL_EVENT_IR_RECEIVER_INCOME){
                 el_trg_proceed(el_trigger_reg[i]);
@@ -93,7 +93,7 @@ void el_routine_triggers(){
     }
     
     if(el_trg_event_flag_ex_acc){
-        el_trg_event_flag_ex_acc--;
+        el_trg_event_flag_ex_acc = 0;
         for(i=0;i<d;i++){
             if(el_trigger_reg[i]->event_type==EL_EVENT_ACCELEROMETER_UPDATE){
                 el_trg_proceed(el_trigger_reg[i]);
@@ -102,7 +102,7 @@ void el_routine_triggers(){
     }
     
     if(el_trg_event_flag_ex_irps){
-        el_trg_event_flag_ex_irps--;
+        el_trg_event_flag_ex_irps = 0;
         for(i=0;i<d;i++){
             if(el_trigger_reg[i]->event_type==EL_EVENT_IR_PROXIMITY_UPDATE){
                 el_trg_proceed(el_trigger_reg[i]);
@@ -111,7 +111,7 @@ void el_routine_triggers(){
     }
     
     if(el_trg_event_flag_ex_cam){
-        el_trg_event_flag_ex_cam--;
+        el_trg_event_flag_ex_cam = 0;
         for(i=0;i<d;i++){
             if(el_trigger_reg[i]->event_type==EL_EVENT_CAMERA_FRAME_UPDATE){
                 el_trg_proceed(el_trigger_reg[i]);

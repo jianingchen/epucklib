@@ -56,8 +56,8 @@ void el_init_camera(){
     el_cam_y = 0;
     el_cam_r_frame = &el_frame_buffer_a;
     el_cam_w_frame = &el_frame_buffer_b;
-    el_cam_line_pointer = (uint16_t*)el_cam_w_frame->data;
-    el_cam_pixel_pointer = (uint16_t*)el_cam_w_frame->data;
+    el_cam_line_pointer = &el_cam_w_frame->data[0][0];
+    el_cam_pixel_pointer = &el_cam_w_frame->data[0][0];
 
     el_cam_device_id = 0;
     el_cam_revision_n = 0;
@@ -67,8 +67,8 @@ void el_init_camera(){
     el_frame_buffer_a.height = 0;
     el_frame_buffer_b.width = 0;
     el_frame_buffer_b.height = 0;
-    for(Y=0;Y<EL_CAMERA_FRAME_BUFFER_HEIGHT;Y++){
-        for(X=0;X<EL_CAMERA_FRAME_BUFFER_WIDTH;X++){
+    for(Y=0;Y<EL_CAMERA_FRAME_DIM_Y;Y++){
+        for(X=0;X<EL_CAMERA_FRAME_DIM_X;X++){
             el_frame_buffer_a.data[Y][X] = 0;
             el_frame_buffer_b.data[Y][X] = 0;
         }
@@ -110,10 +110,14 @@ void el_cam_init_register(void){
     el_cam_register_write_uint8(0x80,0x40);
     el_cam_register_write_uint8(0x81,0x40);
     el_cam_register_write_uint8(0x82,0x01);
+    
+    // use test pattern
+    //el_cam_register_write_uint8(0x40,0x1A);
 
     // set target to register group C
     el_cam_register_write_uint8(0x03,0x02);
     el_cam_auto_function = el_cam_register_read_uint8(0x04);
+
 
     // change image format to 320x240
     el_cam_register_write_uint8(0x11,0x12);
@@ -130,7 +134,7 @@ void el_cam_init_register(void){
     // set exposure control & white balance
     el_cam_register_write_uint8(0x04,0b10011010);//Auto White Balance ON + Exposure Control using EIT
     el_cam_register_write_uint8(0x24,0b00000000);//External Integration Time H
-    el_cam_register_write_uint8(0x25,0b10000000);//External Integration Time M
+    el_cam_register_write_uint8(0x25,0b01110000);//External Integration Time M
     el_cam_register_write_uint8(0x26,0b00000000);//External Integration Time L
     el_cam_register_write_uint16(0x28,0x1000);//External Linear Gain
     el_cam_register_write_uint8(0x55,0x00);
@@ -228,9 +232,11 @@ void el_enable_camera(){
         e_i2cp_disable();
 #endif
 
-        IEC0bits.T1IE = 1;// enable pixel interrupt (T1 Interrupt)
-        IEC1bits.T4IE = 1;// enable line interrupt (T4 Interrupt)
-        IEC1bits.T5IE = 1;// enable frame interrupt (T5 Interrupt)
+        IEC0bits.T1IE = 1;
+        IEC1bits.T4IE = 1;
+        IEC1bits.T5IE = 1;
+        T1CONbits.TON = 0;
+        T4CONbits.TON = 0;
         T5CONbits.TON = 1;
 
         el_cam_enabled = 1;
@@ -244,9 +250,9 @@ void el_disable_camera(){
         IEC0bits.T1IE = 0;// disable pixel interrupt (T1 Interrupt)
         IEC1bits.T4IE = 0;// disable line interrupt (T4 Interrupt)
         IEC1bits.T5IE = 0;// disable frame interrupt (T5 Interrupt)
-        T5CONbits.TON = 0;
-        T4CONbits.TON = 0;
         T1CONbits.TON = 0;
+        T4CONbits.TON = 0;
+        T5CONbits.TON = 0;
 
 #ifdef EL_CAM_USE_STANDBY
         e_i2cp_enable();
@@ -269,7 +275,7 @@ void el_disable_camera(){
         el_cam_enabled = 0;
     }
 }
-/*
+
 void el_cam_swap_buffer(){
     el_camera_image* temp;
 
@@ -278,7 +284,7 @@ void el_cam_swap_buffer(){
     el_cam_r_frame = temp;
 
 }
-*/
+
 void el_camera_lock_frame(){
     el_cam_lock_buffer = 1;
 }

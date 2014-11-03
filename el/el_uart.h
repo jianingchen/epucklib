@@ -18,6 +18,7 @@ void el_uart_send_hex_uint(el_index ch,el_uint16 h);
 
 el_uint16 el_uart_get_char_counter(el_index ch);
 char el_uart_get_char(el_index ch);
+void el_uart_flush_char(el_index ch);
 el_uint16 el_uart_get_string(el_index ch,char*buf,unsigned int size);
 char el_uart_peek_first_char(el_index ch);
 char el_uart_peek_last_char(el_index ch);

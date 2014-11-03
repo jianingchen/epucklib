@@ -42,10 +42,8 @@ void __attribute__((interrupt, no_auto_psv))_U1RXInterrupt(void){
         el_uart1_rx_buf_o++;
         el_uart1_rx_buf_o %= EL_UART_RX_BUF_DIM;
     }
-
-    if(c=='\r'){
-        el_trg_event_flag_ex_uart1++;
-    }
+    
+    el_trg_event_flag_ex_uart1++;
 
 }
 

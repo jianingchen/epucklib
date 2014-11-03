@@ -262,3 +262,19 @@ char el_uart_peek_last_char(el_index channel){
 
     return 0xFF;
 }
+
+void el_uart_flush_char(el_index channel){
+
+    switch(channel){
+
+    case EL_UART_1:
+        el_uart1_rx_buf_i = 0;
+        el_uart1_rx_buf_o = 0;
+        break;
+
+    case EL_UART_2:
+        break;
+
+    }
+
+}
