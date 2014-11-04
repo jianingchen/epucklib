@@ -246,8 +246,8 @@ char el_uart_peek_last_char(el_index channel){
     switch(channel){
 
     case EL_UART_1:
-        i = el_uart1_rx_buf_i;
         o = el_uart1_rx_buf_o;
+        i = el_uart1_rx_buf_i;
         if(i != o){
             i--;
             i %= EL_UART_RX_BUF_DIM;
@@ -261,6 +261,28 @@ char el_uart_peek_last_char(el_index channel){
     }
 
     return 0xFF;
+}
+
+void el_uart_erase_last_char(el_index channel){
+    int i,o;
+
+    switch(channel){
+
+    case EL_UART_1:
+        o = el_uart1_rx_buf_o;
+        i = el_uart1_rx_buf_i;
+        if(i != o){
+            i--;
+            i %= EL_UART_RX_BUF_DIM;
+            el_uart1_rx_buf_i = i;
+        }
+        break;
+        
+    case EL_UART_2:
+        break;
+
+    }
+
 }
 
 void el_uart_flush_char(el_index channel){

@@ -1,0 +1,136 @@
+/**
+
+\mainpage embedded system library for e-puck
+
+\image html el_logo_color.png
+
+\section sec_intro Introduction
+
+This is a library for the e-puck robot platform. 
+(TODO)
+
+
+\n 
+\section sec_environment Environment
+
+- MPLAB X with xc16 compiler 
+- Support only e-pucks with the camera model PO6030K. 
+- A computer with Bluetooth 
+- Tiny Bootloader (preferably version 1.10.3) 
+- (Recommended) Tera Term (a serial terminal application)
+
+
+\n 
+\section sec_link External Links
+
+- official site of the e-puck robot > http://www.e-puck.org/ 
+- official page to download MPLAB X IDE > http://www.microchip.com/mplabx/
+- official page to download XC16 Compiler > http://www.microchip.com/compilers/
+- homepage of Tiny Bootloader > http://www.etc.ugal.ro/cchiculita/software/picbootloader.htm 
+- homepage of the Natural Robotics Lab > http://naturalrobotics.group.shef.ac.uk/ 
+
+
+\n 
+\section sec_build Build & Link
+
+Download and install MPLAB X IDE and the XC16 Compiler. 
+
+
+\subsection sec_buildlib Build This Library
+
+1. In MPLAB X, a project is opened by locating its directory. 
+Open the directory of this project (named "el"). 
+
+2. On the tool bar, select the build configuration to be "Static_Lib_xc16_O1" and 
+then click "Build Main Project" (see the image below). 
+\image html images/doc_build_lib.png
+
+3. Wait until the building process is finished. 
+
+4. The static library ("el.a") will be generated in "dist/Static_Lib_xc16_O1/production" 
+under the project directory. 
+
+
+\subsection sec_build_project Build A Project
+
+To develop for e-puck based on this library, it is recommended to setup a 
+standalone project that links "el.a". 
+
+The example project "el_example_hw" is nearly an empty project. Therefore, 
+it can be copied and used as a project with necessary configurations. 
+To setup a project in MPLAB X IDE from scratch, see \ref PAGE_PROJECT_SETUP. 
+
+To get more details on using the IDE, read "MPLAB X IDE User's Guide" on 
+the official site of Microchip. 
+
+When the building process of the project is finished, a report similar to 
+the following one will appear in the "Output" panel of the IDE: 
+\image html images/doc_build_project.png
+To guarantee the functioning of the Process module, "maximum length" of stack must be 
+at least 2048 bytes. 
+
+The generated HEX file will be in the "dist" folder under the project's folder. 
+
+
+\subsection sec_prog_hex Program The Microcontroller
+
+If the e-puck has Tiny Bootloader's bootloader, the HEX file can be programmed 
+onto the microcontroller using the Tiny Bootloader application via Bluetooth. 
+Otherwise, used a wired programmer (e.g. ICD3 or PICkit3) to program 
+the microcontroller through the ISP port on the e-puck. 
+
+To get more details about putting the HEX file into the e-puck, check 
+the homepage of Tiny Bootloader or the official site of e-puck robot.
+
+
+\n 
+\section sec_examples Examples
+
+In all of these examples, the e-puck will not do anything if the selector position 
+is below 4. 
+
+\subsection sec_ex01 Example 1
+
+In this example, the e-puck flashes some of its LEDs. Sending a char of 'f' 
+through UART1 (the UART channel used by the Bluetooth module) will toggle 
+the front led. In UART1, the e-puck will also report the number of seconds 
+since start running. 
+
+This example includes the usage of following modules:
+- Timer
+- Process
+- UART
+
+
+\subsection sec_ex02 Example 2
+
+The e-puck follows any green object in front of it. By sending command
+strings through UART1, one can select which color the e-puck should follow. 
+
+This example includes the usage of following modules:
+- Process
+- Trigger
+- Camera
+- Stepper Motor
+- IR Proximity Sensors
+- UART STDIO
+
+
+\n 
+\section sec_license License & Attributions
+
+The e-puck embedded system library is distributed under the MIT license. 
+
+The source files starting with "e_" are copied from the e-puck standard 
+library and attribute to whomever own the authorship. 
+
+Logo of the e-puck embedded system library (see top left of this page) is 
+licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 
+International License. 
+
+This library has been developed as a part of the PhD of Jianing Chen in 
+Natural Robotics Lab, The University of Sheffield. 
+
+(TODO)
+
+**/

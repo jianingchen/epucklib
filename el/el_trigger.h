@@ -134,6 +134,13 @@ void el_trigger_set_process(el_handle h,el_process f);
 */
 uint16_t el_trigger_get_counter(el_handle h);
 
+/*! 
+    \brief issue an internal event
+
+    \param e    event type (must be internal events)
+
+    This will affect the triggers using "EL_EVENT_INTERNAL_*" as their events. 
+*/
 void el_trigger_issue_internal_event(el_enum e);
 
 

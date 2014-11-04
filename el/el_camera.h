@@ -72,6 +72,10 @@ el_camera_image*el_camera_get_frame();
 
 #define EL_CAM_I2C_ID   0xDC
 
+extern uint16_t el_cam_device_id;
+extern uint16_t el_cam_revision_n;
+extern uint8_t el_cam_auto_function;
+
 extern el_camera_image el_frame_buffer_a;
 extern el_camera_image el_frame_buffer_b;
 extern el_camera_image *el_cam_r_frame;

@@ -10,5 +10,6 @@ int elu_sscanf(char*s,const char*format,...) __attribute__ ((format(scanf,2,3)))
 
 int elu_printf(const char*format,...) __attribute__ ((format(printf,1,2)));
 int elu_scanf(const char*format,...) __attribute__ ((format(scanf,1,2)));
+void elu_scanf_set_echo(bool k);
 
 #endif	/* ELU_STDIO_H */

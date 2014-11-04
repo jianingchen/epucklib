@@ -26,6 +26,14 @@ EL_PROCESS Process_DebugControl(void*data){
 
     CameraLoop = false;
 
+    elu_printf("ENTER YOUR PIN >>");
+    elu_scanf("%d",&i);
+    if(i==9527){
+        elu_printf("PIN OK.\n");
+    }else{
+        elu_printf("PIN ERROR.\n");
+    }
+
     while(1){
 
         if(el_camera_is_frame_locked()==false){

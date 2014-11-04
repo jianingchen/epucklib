@@ -11,6 +11,7 @@
 #define ELU_STDIO_BUFFER_SIZE   80
 
 char elu_stdio_buffer[ELU_STDIO_BUFFER_SIZE];
+bool elu_stdio_scanf_echo = true;
 
 int elu_warp_vsnprintf(const int offset,char*s,size_t n,const char*format,va_list arg){
     unsigned char warp_space[offset];
@@ -85,10 +86,42 @@ int elu_scanf(const char *format,...){
     int length;
     int entries;
     int offset;
+    char c;
+    
+    length = 0;
 
-    while(el_uart_get_char_counter(ELU_STDIO_UART)==0){
-        el_process_cooperate();
-    }
+    do{
+
+        // wait for a incoming char
+        while(el_uart_get_char_counter(ELU_STDIO_UART)<=length){
+            el_process_cooperate();
+        }
+        
+        // check the incoming char
+        c = el_uart_peek_last_char(ELU_STDIO_UART);
+
+        // apply backsapce
+        if(c=='\b'){
+            el_uart_erase_last_char(ELU_STDIO_UART);
+            el_uart_erase_last_char(ELU_STDIO_UART);
+        }
+        
+        length = el_uart_get_char_counter(ELU_STDIO_UART);
+        
+        if(elu_stdio_scanf_echo){
+            while(el_uart_is_sending(ELU_STDIO_UART)){
+                el_process_cooperate();
+            }
+            if(c=='\r'){
+                el_uart_send_char(ELU_STDIO_UART,'\n');
+            }else{
+                el_uart_send_char(ELU_STDIO_UART,c);
+            }
+        }
+
+        //proceed to scan when the key pressed is ENTER
+
+    }while(c!='\r');
 
     length = el_uart_get_string(ELU_STDIO_UART,elu_stdio_buffer,ELU_STDIO_BUFFER_SIZE);
 
@@ -100,5 +133,11 @@ int elu_scanf(const char *format,...){
 
     va_end(args);
 
+    elu_stdio_buffer[0] = '\0';
+
     return entries;
+}
+
+void elu_scanf_set_echo(bool k){
+    elu_stdio_scanf_echo = k;
 }

@@ -12,16 +12,13 @@ void el_uart_send_char(el_index ch,char c);
 void el_uart_send_string(el_index ch,const char*str);
 bool el_uart_is_sending(el_index ch);
 
-void el_uart_send_dec_int(el_index ch,el_int16 d);// send the integer as a string of it's decimal form
-void el_uart_send_dec_uint(el_index ch,el_uint16 d);
-void el_uart_send_hex_uint(el_index ch,el_uint16 h);
-
 el_uint16 el_uart_get_char_counter(el_index ch);
 char el_uart_get_char(el_index ch);
 void el_uart_flush_char(el_index ch);
 el_uint16 el_uart_get_string(el_index ch,char*buf,unsigned int size);
 char el_uart_peek_first_char(el_index ch);
 char el_uart_peek_last_char(el_index ch);
+void el_uart_erase_last_char(el_index ch);
 
 
 

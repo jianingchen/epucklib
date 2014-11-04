@@ -1,0 +1,66 @@
+/**
+
+\page PAGE_PROJECT_SETUP New Project Setup
+
+
+\section sec_proj_stp_01 Create A New Project
+
+1. Click "File" -> "New Project". In the dialog poped, configure as the image below:
+\image html images/doc_setup_01.png
+
+2. In "Select Device" step, set "Family" to "16-bit DSCs (dsPIC30)", "Device" to "dsPIC30F6014A".
+
+3. In "Select Tool" step, nothing need to be changed.
+
+4. In "Select Compiler" step, select "XC16". 
+
+5. In "Select Project Name and Folder" step, choose the Folder to place the project. 
+
+
+
+
+\section sec_proj_stp_02 Configure to Link The Library
+
+1. Then the project will be ready. In the "Projects" treeview on the left, right click
+on the project just created and click "Set as Main Project". This gurantees the operations 
+in the following step are applied to the project. 
+
+2. Right click "Libraries" under the project's tree and then click "Add Library Object/File". 
+Then, locate the "el.a" file. 
+
+3. Right click the project's and then click "Properties". 
+This opens the project configuration window. 
+
+4. Continue the configuration following the images below: 
+\image html images/doc_setup_02.png
+\image html images/doc_setup_03.png
+\image html images/doc_setup_04.png
+\image html images/doc_setup_05.png
+
+
+
+\section sec_proj_stp_03 Test Build
+
+
+The "Hello World" program based on this library may be written as follow:
+\code
+
+#include <el.h>
+#include <elu.h>
+
+int main(int argc,char*argv[]){
+
+    el_initialization();
+
+    el_led_set(EL_LED_BODY,EL_ON);
+    
+    elu_printf("Hello World!\n");
+
+    el_main_loop();
+
+    return 0;
+}
+
+\endcode
+
+**/
