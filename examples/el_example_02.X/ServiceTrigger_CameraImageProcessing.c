@@ -34,7 +34,6 @@ bool IsColorBlue(unsigned char*RGB){
 
 void Trigger_CameraImageProcessing_Process(el_handle this_trigger){
     el_uint8 RGB[3];
-    el_camera_image *frame;
     int X,Y;
     int x0,s0,x1,s1,x2,s2;
 
@@ -46,7 +45,6 @@ void Trigger_CameraImageProcessing_Process(el_handle this_trigger){
     x2 = 0;
     
     el_camera_lock_frame();
-    frame = el_camera_get_frame();
     for(X=0;X<EL_CAMERA_FRAME_DIM_X;X++){
         for(Y=0;Y<EL_CAMERA_FRAME_DIM_Y;Y++){
 
