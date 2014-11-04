@@ -47,14 +47,11 @@ typedef struct EL_CAMERA_INI{
 #define EL_CAMERA_FRAME_DIM_X   40
 #define EL_CAMERA_FRAME_DIM_Y   15
 
-#pragma pack(push)
-#pragma pack(2)
 typedef struct DCIM{
     uint16_t width;
     uint16_t height;
     uint16_t data[EL_CAMERA_FRAME_DIM_Y][EL_CAMERA_FRAME_DIM_X];
 } el_camera_image;
-#pragma pack(pop)
 
 void el_config_camera(el_camera_ini*setting);
 void el_enable_camera();

@@ -95,11 +95,12 @@ int main(int argc,char*argv[]){
 
     el_initialization();
 
+    //el_calibrate_sensors();
+
     booting_procedure01_selector_barrier();// very essential
     booting_procedure02_led_pattern();// recommended
     booting_procedure03_say_hello();// recommended
 
-    el_calibrate_sensors();
 
 #if 0
     p1 = malloc(16);
@@ -115,8 +116,8 @@ int main(int argc,char*argv[]){
     el_timer_start(T,1000);
 
 
-    el_config_ir_proximity(EL_IR_PROXIMITY_MODE_PULSE);
-    el_enable_ir_proximity();
+    //el_config_ir_proximity(EL_IR_PROXIMITY_MODE_PULSE);
+    //el_enable_ir_proximity();
     el_enable_camera();
 
     el_launch_process(Process_DebugControl,NULL);
