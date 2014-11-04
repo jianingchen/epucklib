@@ -115,7 +115,7 @@ void booting_procedure01_selector_barrier(){
     // do nothing until selector >= 4
     while(el_get_selector_value()<4){
         el_led_set(EL_LED_RING_5,EL_ON);
-        el_sleep(100);// "el_sleep" does not work in a process
+        el_sleep(100);// note: "el_sleep" does not work in a process
         el_led_set(EL_LED_RING_5,EL_OFF);
         el_sleep(900);
     }

@@ -36,14 +36,14 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>../../libel/dist/Static_Lib_xc16_O1/production/libel.a</linkerLibFileItem>
+            <linkerLibFileItem>../../el/dist/Static_Lib_xc16_O1/production/el.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
         </archiverTool>
         <loading>
           <useAlternateLoadableFile>false</useAlternateLoadableFile>
-          <parseOnProdLoad>true</parseOnProdLoad>
+          <parseOnProdLoad>false</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
       </compileType>
@@ -70,7 +70,7 @@
         <property key="enable-short-double" value="false"/>
         <property key="enable-symbols" value="false"/>
         <property key="enable-unroll-loops" value="false"/>
-        <property key="extra-include-directories" value="..\..\libel"/>
+        <property key="extra-include-directories" value="..\..\el"/>
         <property key="isolate-each-function" value="false"/>
         <property key="keep-inline" value="false"/>
         <property key="oXC16gcc-align-arr" value="false"/>
