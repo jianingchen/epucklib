@@ -7,10 +7,10 @@
 
 var indexSectionsWithContent =
 {
-  0: "bceinprstu",
+  0: "abceinprstu",
   1: "e",
   2: "e",
-  3: "bciprstu",
+  3: "abciprstu",
   4: "en"
 };
 

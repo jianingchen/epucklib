@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['new_20project_20setup',['New Project Setup',['../_p_a_g_e__p_r_o_j_e_c_t__s_e_t_u_p.html',1,'']]]
+  ['initialization_20functions',['Initialization Functions',['../group___e_l.html',1,'']]],
+  ['infrared_20proximity_20sensor',['Infrared Proximity Sensor',['../group___e_l___i_r___p_r_o_x_i_m_i_t_y.html',1,'']]],
+  ['infrared_20receiver',['Infrared Receiver',['../group___e_l___i_r___r_e_c_e_i_v_e_r.html',1,'']]]
 ];
