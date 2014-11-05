@@ -1,28 +1,6 @@
 
 /*!
 
-\defgroup EL_PROCESS Process
-
-\section Introduction
-
-A Process runs concurrently with other process. 
-
-\section Usage
-
-This library has multi-tasking capability --- upto 6 functions can run 
-concurrently. Each of these functions is called a 'process'. 
-Call the function "el_launch_process" to launch a process. In a process, 
-call "el_process_wait" to wait for a certain amount of time. Within this 
-wait period, other process are being executed. 
-
-This approach of multitasking is often called "Cooperative Multitasking". 
-It is useful when several timing based programs need to run concurrently. 
-See the examples for how & the suitable situation to use the process. 
-
-*/
- 
-/*!
-
 \file
 \ingroup EL_PROCESS
 

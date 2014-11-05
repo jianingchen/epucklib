@@ -1,7 +1,7 @@
 
 /*!
 
-\defgroup EL_RANDOM Random
+\defgroup EL_RANDOM Random Generator
 
 \section Introduction
 

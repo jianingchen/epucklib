@@ -1,25 +1,6 @@
 
 /*!
 
-\defgroup EL_TRIGGER Trigger
-
-\section Introduction
-
-A trigger can launch a process when a specified event occurs in the system. 
-For example, a process can be launched automatically when the proximity sensors has 
-a set of samples ready for use. 
-
-
-\section Usage
-
-Call the function "el_create_trigger" to create a trigger in the system. 
-Use the handle returned by this function to refer to the created trigger 
-in the related function. 
-
-*/
- 
-/*!
-
 \file
 \ingroup EL_TRIGGER
 

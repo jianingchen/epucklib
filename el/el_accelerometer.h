@@ -1,16 +1,6 @@
 
 /*!
 
-\defgroup EL_ACC Accelerometer
-
-\section Introduction
-
-(TODO)
-
-*/
- 
-/*!
-
 \file
 \ingroup EL_ACC
 

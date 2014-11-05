@@ -1,16 +1,6 @@
 
 /*!
 
-\defgroup EL_IR_PROXIMITY Infrared Proximity Sensors
-
-\section Introduction
-
-(TODO)
-
-*/
- 
-/*!
-
 \file
 \ingroup EL_IR_PROXIMITY
 
