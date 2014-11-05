@@ -5,7 +5,8 @@
 
 \section Introduction
 
-The e-puck driven by two stepper-motors. 
+The e-puck is driven by two stepper-motors. 
+The maximum speed of these motors are 1000 steps per second. 
 
 */
  
@@ -30,12 +31,54 @@ The e-puck driven by two stepper-motors.
 #define EL_STEPPER_MOTOR_LEFT               0
 #define EL_STEPPER_MOTOR_RIGHT              1
 
-void el_stepper_motor_set_speed(el_index which,int speed);
-void el_stepper_motor_set_counter(el_index which,int steps);
-int el_stepper_motor_get_counter(el_index which);
+/*! 
+    \brief enable the stepper motor module
 
+*/
 void el_enable_stepper_motor(void);
+
+
+/*! 
+    \brief disable the stepper motor module
+
+*/
 void el_disable_stepper_motor(void);
+
+
+/*! 
+    \brief set the stepping rate of motor i
+
+    \param i    index of the motor
+    \param u    stepping rate of the motor
+    
+    The valid range of the stepping speed is in [-1000,-50] and [50,1000]. 
+    This function does handle the range issue internally. 
+*/
+void el_stepper_motor_set_speed(el_index i,int u);
+
+
+/*! 
+    \brief get the step counter of motor i
+
+    \param i    index of the motor
+    
+    \return u    number of steps
+    
+*/
+int el_stepper_motor_get_counter(el_index i);
+
+/*! 
+    \brief set the step counter of motor i
+
+    \param i    index of the motor
+    \param u    number of steps
+    
+*/
+void el_stepper_motor_set_counter(el_index i,int n);
+
+
+void el_set_wheel_speed(int left,int right);
+
 
 //==============================================================================
 

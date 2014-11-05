@@ -1,4 +1,23 @@
 
+/*!
+
+\defgroup ELU_STDIO UART STDIO
+
+\section Introduction
+
+(TODO)
+
+*/
+ 
+/*!
+
+\file
+\ingroup ELU_STDIO
+
+\author Jianing Chen
+
+*/
+
 #ifndef ELU_STDIO_H
 #define	ELU_STDIO_H
 

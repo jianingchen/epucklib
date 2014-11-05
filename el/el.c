@@ -38,8 +38,8 @@ void el_main_loop(){
     
     while(1){
         el_routine_timers();
-        el_routine_process();
         el_routine_triggers();
+        el_routine_process();
     }
     
 }

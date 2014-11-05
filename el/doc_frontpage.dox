@@ -86,8 +86,8 @@ the homepage of Tiny Bootloader or the official site of e-puck robot.
 \n 
 \section sec_examples Examples
 
-In all of these examples, the e-puck will not do anything if the selector position 
-is below 4. 
+In all of these examples, the e-puck will not do anything if the selector 
+position is below 4. 
 
 \subsection sec_ex01 Example 1
 
@@ -99,13 +99,13 @@ since start running.
 This example includes the usage of following modules:
 - Timer
 - Process
-- UART
+- UART STDIO
 
 
 \subsection sec_ex02 Example 2
 
-The e-puck follows any green object in front of it. By sending command
-strings through UART1, one can select which color the e-puck should follow. 
+The e-puck follows any green object in front of it. Through UART1, 
+color of the object to be followed can be selected among red, green and blue. 
 
 This example includes the usage of following modules:
 - Process

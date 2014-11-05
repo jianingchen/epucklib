@@ -1,4 +1,23 @@
 
+/*!
+
+\defgroup EL_ACC UART Accelerometer
+
+\section Introduction
+
+(TODO)
+
+*/
+ 
+/*!
+
+\file
+\ingroup EL_ACC
+
+\author Jianing Chen
+
+*/
+
 #ifndef EL_ACCELEROMETER_H
 #define	EL_ACCELEROMETER_H
 

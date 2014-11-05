@@ -6,37 +6,41 @@ bool el_is_in_trigger_condition;
 el_uint8 el_trigger_reg_i;
 el_trigger*el_trigger_reg[EL_TRIGGER_DIM];
 
-volatile uint8_t el_trg_event_flag_ex_uart1;
-volatile uint8_t el_trg_event_flag_ex_uart2;
-volatile uint8_t el_trg_event_flag_ex_irrc;
-volatile uint8_t el_trg_event_flag_ex_cam;
-volatile uint8_t el_trg_event_flag_ex_acc;
-volatile uint8_t el_trg_event_flag_ex_irps;
+volatile el_uint8 el_trg_event_flag_in[6];
+volatile el_uint8 el_trg_event_flag_ex_uart1;
+volatile el_uint8 el_trg_event_flag_ex_uart2;
+volatile el_uint8 el_trg_event_flag_ex_irrc;
+volatile el_uint8 el_trg_event_flag_ex_cam;
+volatile el_uint8 el_trg_event_flag_ex_acc;
+volatile el_uint8 el_trg_event_flag_ex_irps;
 
 void el_init_triggers(){
     int i;
-    
+
     el_is_in_trigger_condition = false;
 
     el_trigger_reg_i = 0;
     for(i=0;i<EL_TRIGGER_DIM;i++){
         el_trigger_reg[i] = NULL;
     }
-    
+
+    for(i=0;i<6;i++){
+        el_trg_event_flag_in[i] = 0;
+    }
     el_trg_event_flag_ex_uart1 = 0;
     el_trg_event_flag_ex_uart2 = 0;
     el_trg_event_flag_ex_irrc = 0;
     el_trg_event_flag_ex_cam = 0;
     el_trg_event_flag_ex_acc = 0;
     el_trg_event_flag_ex_irps = 0;
-    
+
 }
 
 static void el_trg_proceed(el_trigger *trg){
     bool K;
-    
+
     if(trg->enabled){
-        
+
         if(trg->condition){
             el_is_in_trigger_condition = true;
             K = trg->condition(trg);
@@ -44,7 +48,7 @@ static void el_trg_proceed(el_trigger *trg){
         }else{
             K = true;
         }
-        
+
         if(K){
             trg->counter++;
             if(trg->process){
@@ -52,19 +56,30 @@ static void el_trg_proceed(el_trigger *trg){
                 el_launch_process(trg->process,trg);
             }
         }
-        
+
     }
-    
+
 }
 
 void el_routine_triggers(){
     el_trigger *p;
     int i,d;
-    
-    /** deal with different events **/
-    
+
     d = el_trigger_reg_i;
-    
+
+    /** deal with different events **/
+
+    for(i=0;i<6;i++){
+        if(el_trg_event_flag_in[i]){
+            el_trg_event_flag_in[i] = 0;
+            for(i=0;i<d;i++){
+                if(el_trigger_reg[i]->event_type==(EL_EVENT_INTERNAL_A + i)){
+                    el_trg_proceed(el_trigger_reg[i]);
+                }
+            }
+        }
+    }
+
     if(el_trg_event_flag_ex_uart1){
         el_trg_event_flag_ex_uart1 = 0;
         for(i=0;i<d;i++){
@@ -73,7 +88,7 @@ void el_routine_triggers(){
             }
         }
     }
-    
+
     if(el_trg_event_flag_ex_uart2){
         el_trg_event_flag_ex_uart2 = 0;
         for(i=0;i<d;i++){
@@ -82,7 +97,7 @@ void el_routine_triggers(){
             }
         }
     }
-    
+
     if(el_trg_event_flag_ex_irrc){
         el_trg_event_flag_ex_irrc = 0;
         for(i=0;i<d;i++){
@@ -91,7 +106,7 @@ void el_routine_triggers(){
             }
         }
     }
-    
+
     if(el_trg_event_flag_ex_acc){
         el_trg_event_flag_ex_acc = 0;
         for(i=0;i<d;i++){
@@ -100,7 +115,7 @@ void el_routine_triggers(){
             }
         }
     }
-    
+
     if(el_trg_event_flag_ex_irps){
         el_trg_event_flag_ex_irps = 0;
         for(i=0;i<d;i++){
@@ -109,7 +124,7 @@ void el_routine_triggers(){
             }
         }
     }
-    
+
     if(el_trg_event_flag_ex_cam){
         el_trg_event_flag_ex_cam = 0;
         for(i=0;i<d;i++){
@@ -118,9 +133,9 @@ void el_routine_triggers(){
             }
         }
     }
-    
+
     /** register maintenance (remove&squeeze) **/
-    
+
     d = 0;
     for(i=0;i<el_trigger_reg_i;i++){
         p = el_trigger_reg[i];
@@ -132,18 +147,18 @@ void el_routine_triggers(){
         }
     }
     el_trigger_reg_i = d;
-    
+
 }
 
 el_handle el_create_trigger(){
     el_trigger *p;
-    
+
     if(el_trigger_reg_i>=EL_TRIGGER_DIM){
         return NULL;
     }
-    
+
     p = (el_trigger*)malloc(sizeof(el_trigger));
-    
+
     p->counter = 0;
     p->event_type = 0;
     p->event_data = NULL;
@@ -151,10 +166,10 @@ el_handle el_create_trigger(){
     p->process = NULL;
     p->enabled = true;
     p->remove = false;
-    
+
     el_trigger_reg[el_trigger_reg_i] = p;
     el_trigger_reg_i++;
-    
+
     return EL_POINTER_TO_HANDLE(p);
 }
 
@@ -192,4 +207,10 @@ void el_trigger_disable(el_handle trigger){
 uint16_t el_trigger_get_counter(el_handle trigger){
     el_trigger *p = EL_HANDLE_TO_POINTER(trigger);
     return p->counter;
+}
+
+void el_trigger_issue_internal_event(el_enum e){
+    if((EL_EVENT_INTERNAL_A <= e)&&(e <= EL_EVENT_INTERNAL_F)){
+        el_trg_event_flag_in[e - EL_EVENT_INTERNAL_A] = 1;
+    }
 }

@@ -21,17 +21,17 @@
 
 \section sec_proj_stp_02 Configure to Link The Library
 
-1. Then the project will be ready. In the "Projects" treeview on the left, right click
-on the project just created and click "Set as Main Project". This gurantees the operations 
-in the following step are applied to the project. 
+1. In the "Projects" treeview on the left side of the IDE, right click on 
+the project just created and click "Set as Main Project". This guarantees the operations 
+in the IDE will be applied to the project. 
 
 2. Right click "Libraries" under the project's tree and then click "Add Library Object/File". 
 Then, locate the "el.a" file. 
 
-3. Right click the project's and then click "Properties". 
-This opens the project configuration window. 
+3. Right click the project in the treeview and then click "Properties". 
+This opens the project properties window. 
 
-4. Continue the configuration following the images below: 
+4. In the project properties window, the configure as the following images: 
 \image html images/doc_setup_02.png
 \image html images/doc_setup_03.png
 \image html images/doc_setup_04.png

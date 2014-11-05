@@ -1,4 +1,23 @@
 
+/*!
+
+\defgroup EL_UART UART Serial Communication
+
+\section Introduction
+
+(TODO)
+
+*/
+ 
+/*!
+
+\file
+\ingroup EL_UART
+
+\author Jianing Chen
+
+*/
+
 #ifndef EL_UART_H
 #define	EL_UART_H
 

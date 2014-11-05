@@ -4,19 +4,19 @@
 
 el_camera_image el_frame_buffer_a;
 el_camera_image el_frame_buffer_b;
-uint16_t el_cam_device_id;
-uint16_t el_cam_revision_n;
+el_uint16 el_cam_device_id;
+el_uint16 el_cam_revision_n;
 uint8_t el_cam_auto_function;
 
 bool el_cam_enabled;
 volatile bool el_cam_lock_buffer;
-volatile uint16_t el_cam_frame_counter;
+volatile el_uint16 el_cam_frame_counter;
 el_camera_image *el_cam_r_frame;//for reading
 el_camera_image *el_cam_w_frame;//for writing
-uint16_t *el_cam_line_pointer;
-uint16_t *el_cam_pixel_pointer;
-uint16_t el_cam_x;
-uint16_t el_cam_y;
+el_uint16 *el_cam_line_pointer;
+el_uint16 *el_cam_pixel_pointer;
+el_uint16 el_cam_x;
+el_uint16 el_cam_y;
 
 static uint8_t el_cam_register_read_uint8(uint8_t address){
     return e_i2cp_read(EL_CAM_I2C_ID,address);
@@ -26,7 +26,7 @@ static void el_cam_register_write_uint8(uint8_t address,uint8_t b){
     e_i2cp_write(EL_CAM_I2C_ID,address,b);
 }
 
-static uint16_t el_cam_register_read_uint16(uint8_t address){
+static el_uint16 el_cam_register_read_uint16(uint8_t address){
     uint8_t H;
     uint8_t L;
     H = e_i2cp_read(EL_CAM_I2C_ID,address);
@@ -34,7 +34,7 @@ static uint16_t el_cam_register_read_uint16(uint8_t address){
     return (H<<8)|L;
 }
 
-static void el_cam_register_write_uint16(uint8_t address,uint16_t w){
+static void el_cam_register_write_uint16(uint8_t address,el_uint16 w){
     uint8_t H = w>>8;
     uint8_t L = w&0xFF;
     e_i2cp_write(EL_CAM_I2C_ID,address,H);
@@ -161,7 +161,7 @@ void el_config_camera(el_camera_ini*setting){
     uint8_t R = 64*setting->RedGain;
     uint8_t G = 64*setting->GreenGain;
     uint8_t B = 64*setting->BlueGain;
-    uint16_t LG = 4096*setting->LinearGain;
+    el_uint16 LG = 4096*setting->LinearGain;
     union{
         uint32_t dword;
         struct{
@@ -269,8 +269,8 @@ void el_disable_camera(){
 
         el_cam_x = 0;
         el_cam_y = 0;
-        el_cam_line_pointer = (uint16_t*)el_cam_w_frame->data;
-        el_cam_pixel_pointer = (uint16_t*)el_cam_w_frame->data;
+        el_cam_line_pointer = (el_uint16*)el_cam_w_frame->data;
+        el_cam_pixel_pointer = (el_uint16*)el_cam_w_frame->data;
 
         el_cam_enabled = 0;
     }
@@ -297,7 +297,7 @@ bool el_camera_is_frame_locked(){
     return el_cam_lock_buffer;
 }
 
-uint16_t el_camera_get_frame_counter(){
+el_uint16 el_camera_get_frame_counter(){
     return el_cam_frame_counter;
 }
 
@@ -306,10 +306,10 @@ el_camera_image*el_camera_get_frame(){
 }
 
 void el_camera_get_frame_pixel(int X,int Y,uint8_t*rgb3v){
-    const uint16_t red_bits   = 0b1111100000000000;
-    const uint16_t green_bits = 0b0000011111100000;
-    const uint16_t blue_bits  = 0b0000000000011111;
-    uint16_t w = el_cam_r_frame->data[Y][X];
+    const el_uint16 red_bits   = 0b1111100000000000;
+    const el_uint16 green_bits = 0b0000011111100000;
+    const el_uint16 blue_bits  = 0b0000000000011111;
+    el_uint16 w = el_cam_r_frame->data[Y][X];
     rgb3v[0] = (w&red_bits)>>8;
     rgb3v[1] = (w&green_bits)>>3;
     rgb3v[2] = (w&blue_bits)<<3;

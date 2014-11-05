@@ -194,3 +194,8 @@ int el_stepper_motor_get_counter(el_index which){
     int i = which%EL_STPM_NUMBER;
     return el_stpm_unit[i].counter;
 }
+
+void el_set_wheel_speed(int left,int right){
+    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_LEFT,left);
+    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_RIGHT,right);
+}

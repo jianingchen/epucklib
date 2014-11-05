@@ -61,7 +61,7 @@ el_uint16 el_random_uint16(void);
 
 
 /*! 
-    \brief returning a random unsigned long int in [0,2^32]
+    \brief returning a random unsigned long int in [0,2^32 - 1]
     
     \return the unsigned long int
 */

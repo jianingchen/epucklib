@@ -164,12 +164,13 @@ typedef struct{
 } el_trigger;
 
 extern bool el_is_in_trigger_condition;
-extern volatile uint8_t el_trg_event_flag_ex_uart1;
-extern volatile uint8_t el_trg_event_flag_ex_uart2;
-extern volatile uint8_t el_trg_event_flag_ex_irrc;
-extern volatile uint8_t el_trg_event_flag_ex_cam;
-extern volatile uint8_t el_trg_event_flag_ex_acc;
-extern volatile uint8_t el_trg_event_flag_ex_irps;
+extern volatile el_uint8 el_trg_event_flag_in[6];
+extern volatile el_uint8 el_trg_event_flag_ex_uart1;
+extern volatile el_uint8 el_trg_event_flag_ex_uart2;
+extern volatile el_uint8 el_trg_event_flag_ex_irrc;
+extern volatile el_uint8 el_trg_event_flag_ex_cam;
+extern volatile el_uint8 el_trg_event_flag_ex_acc;
+extern volatile el_uint8 el_trg_event_flag_ex_irps;
 
 void el_init_triggers();
 void el_routine_triggers();
