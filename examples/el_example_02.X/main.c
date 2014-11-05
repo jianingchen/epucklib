@@ -27,19 +27,27 @@ int main(int argc,char*argv[]){
 
 void Process_ConsoleLoop(void*arg){
     char c;
-    int ir0,ir7;
+    int i;
+    int ir_ref[8];
 
     elu_printf("EL_EXAMPLE_02\n");
 
     Trigger_CameraImageProcessing_Setup();
     Trigger_ObjectFollowing_Setup();
 
-    el_config_ir_proximity(EL_IR_PROXIMITY_MODE_PULSE);
+    el_config_ir_proximity(EL_IR_PROXIMITY_PULSE);
     el_enable_ir_proximity();
+    
+    el_config_stepper_motor(EL_SPEED_ACC_ENABLE,true);
+    el_config_stepper_motor(EL_SPEED_ACC_LINEAR_TERM,2000);
     el_enable_stepper_motor();
+
     el_enable_camera();
+    
+    el_process_wait(500);// wait for 500 ms
 
     el_led_set(EL_LED_BODY,EL_ON);
+    el_uart_flush_char(EL_UART_1);
 
     while(1){
 
@@ -55,14 +63,14 @@ void Process_ConsoleLoop(void*arg){
                 el_led_set(EL_LED_FRONT,EL_TOGGLE);
                 break;
 
-            case 'r':// report reading of the two ir sensors on the front
-                ir0 = el_ir_proximity_get(EL_IR_REFLECTION,0);// front front right
-                ir7 = el_ir_proximity_get(EL_IR_REFLECTION,7);// front front left
+            case 'r':// report ir proximity sensor outputs
                 elu_printf("<IR>\n");
-                elu_printf("%d\t%d\n\n",ir7,ir0);
+                el_ir_proximity_get_all(EL_IR_REFLECTION,ir_ref);
+                elu_printf("%d\t%d\t%d\t%d\t",ir_ref[0],ir_ref[1],ir_ref[2],ir_ref[3]);
+                elu_printf("%d\t%d\t%d\t%d\n\n",ir_ref[4],ir_ref[5],ir_ref[6],ir_ref[7]);
                 break;
 
-            case 'p':// report the image processing result
+            case 'p':// report image processing result
                 elu_printf("<IMG>\n");
                 elu_printf("MASS:\t%d\t%d\t%d\n",IMG_RedMass,IMG_GreenMass,IMG_BlueMass);
                 elu_printf("BIAS:\t%d\t%d\t%d\n\n",IMG_RedBias,IMG_GreenBias,IMG_BlueBias);

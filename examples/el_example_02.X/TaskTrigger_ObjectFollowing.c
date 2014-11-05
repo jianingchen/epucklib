@@ -8,7 +8,7 @@ el_uint8 TT_ObjectColor;
 
 void Trigger_ObjectFollowing_Process(el_handle this_trigger){
     int w,x;
-    int ir_reflection[8];
+    int ir0,ir7;
     int LinearSpeed,AngularSpeed;
     int SpeedLeft,SpeedRight;
 
@@ -35,11 +35,12 @@ void Trigger_ObjectFollowing_Process(el_handle this_trigger){
         break;
     }
     
-    el_ir_proximity_get_all(EL_IR_REFLECTION,ir_reflection);
-
+    ir0 = el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_0,EL_IR_REFLECTION);
+    ir7 = el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_7,EL_IR_REFLECTION);
+    
     // calculate the angular speed according to the horizontal bias of the color
     if(w >= 8){
-        LinearSpeed = 500;
+        LinearSpeed = 600;
         AngularSpeed = -4*x;
         el_led_set(EL_LED_RING_0,EL_ON);
     }else{
@@ -49,23 +50,22 @@ void Trigger_ObjectFollowing_Process(el_handle this_trigger){
     }
 
     // do not chase if any object is closely in front of the robot
-    if((ir_reflection[0] + ir_reflection[7]) > 120 ){
+    if((ir0 + ir7) > 120){
         LinearSpeed = 0;
     }
     
     SpeedLeft = LinearSpeed - AngularSpeed;
     SpeedRight = LinearSpeed + AngularSpeed;
 
-    // apply the speed values to the motor
-    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_LEFT,SpeedLeft);
-    el_stepper_motor_set_speed(EL_STEPPER_MOTOR_RIGHT,SpeedRight);
+    // apply the speed values to the motors
+    el_set_wheel_speed(SpeedLeft,SpeedRight);
     
     el_trigger_enable(this_trigger);
 }
 
 void Trigger_ObjectFollowing_Setup(){
 
-    TT_ObjectColor = 1;
+    TT_ObjectColor = TT_OBJECT_COLOR_GREEN;
 
     TT_ObjectFollowing = el_create_trigger();
     el_trigger_set_event(TT_ObjectFollowing,EL_EVENT_IR_PROXIMITY_UPDATE);
