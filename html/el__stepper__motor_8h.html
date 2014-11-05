@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>e-puck embedded system library: el_stepper_motor.h File Reference</title>
+<title>embedded system library for e-puck: el_stepper_motor.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -14,6 +14,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doc_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -23,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">e-puck embedded system library
+   <div id="projectname">embedded system library for e-puck
    &#160;<span id="projectnumber">0.95</span>
    </div>
    <div id="projectbrief">This project is now a work in progress. The first completed version will be version 1.0.</div>
@@ -40,6 +41,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -110,28 +112,130 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a42cc2b40df39135ec52046be573d95cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42cc2b40df39135ec52046be573d95cc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_stepper_motor_set_speed</b> (el_index which, int speed)</td></tr>
-<tr class="separator:a42cc2b40df39135ec52046be573d95cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13703fd8ebdd30e66f9deddbdb1d7451"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a13703fd8ebdd30e66f9deddbdb1d7451"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_stepper_motor_set_counter</b> (el_index which, int steps)</td></tr>
-<tr class="separator:a13703fd8ebdd30e66f9deddbdb1d7451"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47db1db9a76af3b497b68e7f86855238"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47db1db9a76af3b497b68e7f86855238"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>el_stepper_motor_get_counter</b> (el_index which)</td></tr>
-<tr class="separator:a47db1db9a76af3b497b68e7f86855238"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a909852833e84d483d5f6b18a3e8757ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a909852833e84d483d5f6b18a3e8757ad"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_enable_stepper_motor</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__stepper__motor_8h.html#a909852833e84d483d5f6b18a3e8757ad">el_enable_stepper_motor</a> (void)</td></tr>
+<tr class="memdesc:a909852833e84d483d5f6b18a3e8757ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable the stepper motor module <br /></td></tr>
 <tr class="separator:a909852833e84d483d5f6b18a3e8757ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e691245e5b17a1aef17469696b1e6d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e691245e5b17a1aef17469696b1e6d3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_disable_stepper_motor</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__stepper__motor_8h.html#a3e691245e5b17a1aef17469696b1e6d3">el_disable_stepper_motor</a> (void)</td></tr>
+<tr class="memdesc:a3e691245e5b17a1aef17469696b1e6d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable the stepper motor module <br /></td></tr>
 <tr class="separator:a3e691245e5b17a1aef17469696b1e6d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc185a86917fa56a61fe1a847c385a19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__stepper__motor_8h.html#afc185a86917fa56a61fe1a847c385a19">el_stepper_motor_set_speed</a> (el_index i, int u)</td></tr>
+<tr class="memdesc:afc185a86917fa56a61fe1a847c385a19"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the stepping rate of motor i  <a href="#afc185a86917fa56a61fe1a847c385a19">More...</a><br /></td></tr>
+<tr class="separator:afc185a86917fa56a61fe1a847c385a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cd4bacbcdfd1edbba6865e256e17572"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__stepper__motor_8h.html#a2cd4bacbcdfd1edbba6865e256e17572">el_stepper_motor_get_counter</a> (el_index i)</td></tr>
+<tr class="memdesc:a2cd4bacbcdfd1edbba6865e256e17572"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the step counter of motor i  <a href="#a2cd4bacbcdfd1edbba6865e256e17572">More...</a><br /></td></tr>
+<tr class="separator:a2cd4bacbcdfd1edbba6865e256e17572"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a866cbbfc26abed0432485709768881be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__stepper__motor_8h.html#a866cbbfc26abed0432485709768881be">el_stepper_motor_set_counter</a> (el_index i, int n)</td></tr>
+<tr class="memdesc:a866cbbfc26abed0432485709768881be"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the step counter of motor i  <a href="#a866cbbfc26abed0432485709768881be">More...</a><br /></td></tr>
+<tr class="separator:a866cbbfc26abed0432485709768881be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac598d24601f69e215db8a5e364fa1f0d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac598d24601f69e215db8a5e364fa1f0d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>el_set_wheel_speed</b> (int left, int right)</td></tr>
+<tr class="separator:ac598d24601f69e215db8a5e364fa1f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a2cd4bacbcdfd1edbba6865e256e17572"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int el_stepper_motor_get_counter </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the step counter of motor i </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>index of the motor</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>u number of steps </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a866cbbfc26abed0432485709768881be"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_stepper_motor_set_counter </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set the step counter of motor i </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>index of the motor </td></tr>
+    <tr><td class="paramname">u</td><td>number of steps </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afc185a86917fa56a61fe1a847c385a19"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_stepper_motor_set_speed </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>u</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set the stepping rate of motor i </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>index of the motor </td></tr>
+    <tr><td class="paramname">u</td><td>stepping rate of the motor</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The valid range of the stepping speed is in [-1000,-50] and [50,1000]. This function does handle the range issue internally. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 3 2014 00:43:20 for e-puck embedded system library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 5 2014 01:02:04 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

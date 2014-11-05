@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>e-puck embedded system library: el_trigger.h File Reference</title>
+<title>embedded system library for e-puck: el_trigger.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -14,6 +14,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doc_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -23,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">e-puck embedded system library
+   <div id="projectname">embedded system library for e-puck
    &#160;<span id="projectnumber">0.95</span>
    </div>
    <div id="projectbrief">This project is now a work in progress. The first completed version will be version 1.0.</div>
@@ -40,6 +41,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -121,12 +123,12 @@ Macros</h2></td></tr>
 <tr class="memitem:af8f99c468385416573349e6c8e14b9c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8f99c468385416573349e6c8e14b9c1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_IR_RECEIVER_INCOME</b>&#160;&#160;&#160;10</td></tr>
 <tr class="separator:af8f99c468385416573349e6c8e14b9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d7e6f724bbf01db2756683cc305eed5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d7e6f724bbf01db2756683cc305eed5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_UART1_ENTERED</b>&#160;&#160;&#160;11</td></tr>
-<tr class="separator:a2d7e6f724bbf01db2756683cc305eed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41c3151a0761024b9423cf71d936088d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41c3151a0761024b9423cf71d936088d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_UART2_ENTERED</b>&#160;&#160;&#160;12</td></tr>
-<tr class="separator:a41c3151a0761024b9423cf71d936088d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4073389fada0ea866e5601dfb0ae09c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4073389fada0ea866e5601dfb0ae09c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_UART1_RECEIVED</b>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:ac4073389fada0ea866e5601dfb0ae09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06722c39dbb17c7c1552203b7f40c247"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06722c39dbb17c7c1552203b7f40c247"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_UART2_RECEIVED</b>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:a06722c39dbb17c7c1552203b7f40c247"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e2a4149fbfe8a11c19ce1c27e1e77f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e2a4149fbfe8a11c19ce1c27e1e77f9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_ACCELEROMETER_UPDATE</b>&#160;&#160;&#160;20</td></tr>
 <tr class="separator:a7e2a4149fbfe8a11c19ce1c27e1e77f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,8 +171,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a7c87d98b743b4596d2b3ecc74f5e665d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__trigger_8h.html#a7c87d98b743b4596d2b3ecc74f5e665d">el_trigger_get_counter</a> (el_handle h)</td></tr>
 <tr class="memdesc:a7c87d98b743b4596d2b3ecc74f5e665d"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the number of times the trigger passed its condition  <a href="#a7c87d98b743b4596d2b3ecc74f5e665d">More...</a><br /></td></tr>
 <tr class="separator:a7c87d98b743b4596d2b3ecc74f5e665d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af595b837a4b0c95a623884e9db86487d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af595b837a4b0c95a623884e9db86487d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_trigger_issue_internal_event</b> (el_enum e)</td></tr>
+<tr class="memitem:af595b837a4b0c95a623884e9db86487d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__trigger_8h.html#af595b837a4b0c95a623884e9db86487d">el_trigger_issue_internal_event</a> (el_enum e)</td></tr>
+<tr class="memdesc:af595b837a4b0c95a623884e9db86487d"><td class="mdescLeft">&#160;</td><td class="mdescRight">issue an internal event  <a href="#af595b837a4b0c95a623884e9db86487d">More...</a><br /></td></tr>
 <tr class="separator:af595b837a4b0c95a623884e9db86487d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -295,6 +297,31 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>el_trigger_issue_inte
 
 </div>
 </div>
+<a class="anchor" id="af595b837a4b0c95a623884e9db86487d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_trigger_issue_internal_event </td>
+          <td>(</td>
+          <td class="paramtype">el_enum&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>issue an internal event </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>event type (must be internal events)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This will affect the triggers using "EL_EVENT_INTERNAL_*" as their events. </p>
+
+</div>
+</div>
 <a class="anchor" id="a40e49c09f2deb3a73b9c2c42d784c04a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -407,7 +434,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>el_trigger_issue_inte
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 3 2014 00:43:20 for e-puck embedded system library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 5 2014 01:02:04 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

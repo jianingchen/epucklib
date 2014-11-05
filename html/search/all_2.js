@@ -1,6 +1,7 @@
 var searchData=
 [
   ['el_2eh',['el.h',['../el_8h.html',1,'']]],
+  ['el_5faccelerometer_2eh',['el_accelerometer.h',['../el__accelerometer_8h.html',1,'']]],
   ['el_5fcamera_2eh',['el_camera.h',['../el__camera_8h.html',1,'']]],
   ['el_5fclock_2eh',['el_clock.h',['../el__clock_8h.html',1,'']]],
   ['el_5fcommon_2eh',['el_common.h',['../el__common_8h.html',1,'']]],
@@ -8,6 +9,8 @@ var searchData=
   ['el_5fcreate_5ftrigger',['el_create_trigger',['../el__trigger_8h.html#a8ac98c499857cb3c18cd4093d5724264',1,'el_trigger.h']]],
   ['el_5fdelete_5ftimer',['el_delete_timer',['../el__timer_8h.html#a0b93eb04bc2b765b88ef545584b09f09',1,'el_timer.h']]],
   ['el_5fdelete_5ftrigger',['el_delete_trigger',['../el__trigger_8h.html#ad7941dead60d00b66ba64a8a7c952b1f',1,'el_trigger.h']]],
+  ['el_5fdisable_5fstepper_5fmotor',['el_disable_stepper_motor',['../el__stepper__motor_8h.html#a3e691245e5b17a1aef17469696b1e6d3',1,'el_stepper_motor.h']]],
+  ['el_5fenable_5fstepper_5fmotor',['el_enable_stepper_motor',['../el__stepper__motor_8h.html#a909852833e84d483d5f6b18a3e8757ad',1,'el_stepper_motor.h']]],
   ['el_5fir_5fproximity_2eh',['el_ir_proximity.h',['../el__ir__proximity_8h.html',1,'']]],
   ['el_5fir_5freceiver_2eh',['el_ir_receiver.h',['../el__ir__receiver_8h.html',1,'']]],
   ['el_5flaunch_5fprocess',['el_launch_process',['../el__process_8h.html#a334bdb64d988375e48eaa9ea8beafc58',1,'el_process.h']]],
@@ -24,6 +27,9 @@ var searchData=
   ['el_5frandom_5fuint16',['el_random_uint16',['../el__random_8h.html#a3654ea5e3a61ea09daa94c41467a4ffa',1,'el_random.h']]],
   ['el_5frandom_5fuint32',['el_random_uint32',['../el__random_8h.html#a2c171512231cd23a543a3797fa96f501',1,'el_random.h']]],
   ['el_5fstepper_5fmotor_2eh',['el_stepper_motor.h',['../el__stepper__motor_8h.html',1,'']]],
+  ['el_5fstepper_5fmotor_5fget_5fcounter',['el_stepper_motor_get_counter',['../el__stepper__motor_8h.html#a2cd4bacbcdfd1edbba6865e256e17572',1,'el_stepper_motor.h']]],
+  ['el_5fstepper_5fmotor_5fset_5fcounter',['el_stepper_motor_set_counter',['../el__stepper__motor_8h.html#a866cbbfc26abed0432485709768881be',1,'el_stepper_motor.h']]],
+  ['el_5fstepper_5fmotor_5fset_5fspeed',['el_stepper_motor_set_speed',['../el__stepper__motor_8h.html#afc185a86917fa56a61fe1a847c385a19',1,'el_stepper_motor.h']]],
   ['el_5ftimer_2eh',['el_timer.h',['../el__timer_8h.html',1,'']]],
   ['el_5ftimer_5fcallback_5fget_5fhandle',['el_timer_callback_get_handle',['../el__timer_8h.html#a56f7a965a8b0cb8c5accc9c4ddee2a8f',1,'el_timer.h']]],
   ['el_5ftimer_5fget_5frounds',['el_timer_get_rounds',['../el__timer_8h.html#a9f9e82fe9ec52dc074456fc6cc5d3e00',1,'el_timer.h']]],
@@ -38,8 +44,11 @@ var searchData=
   ['el_5ftrigger_5fdisable',['el_trigger_disable',['../el__trigger_8h.html#a71a05b6dbe49cc1c878a93cfa7e60d85',1,'el_trigger.h']]],
   ['el_5ftrigger_5fenable',['el_trigger_enable',['../el__trigger_8h.html#ae8ee35672fb010ce11467750f6bfc63b',1,'el_trigger.h']]],
   ['el_5ftrigger_5fget_5fcounter',['el_trigger_get_counter',['../el__trigger_8h.html#a7c87d98b743b4596d2b3ecc74f5e665d',1,'el_trigger.h']]],
+  ['el_5ftrigger_5fissue_5finternal_5fevent',['el_trigger_issue_internal_event',['../el__trigger_8h.html#af595b837a4b0c95a623884e9db86487d',1,'el_trigger.h']]],
   ['el_5ftrigger_5fset_5fcondition',['el_trigger_set_condition',['../el__trigger_8h.html#a40e49c09f2deb3a73b9c2c42d784c04a',1,'el_trigger.h']]],
   ['el_5ftrigger_5fset_5fevent',['el_trigger_set_event',['../el__trigger_8h.html#a68686ad3e6b1b6b21968980e0b9e3544',1,'el_trigger.h']]],
   ['el_5ftrigger_5fset_5fprocess',['el_trigger_set_process',['../el__trigger_8h.html#a71a3ed94bf7273bfddeafb6c225bbb7d',1,'el_trigger.h']]],
-  ['e_2dpuck_20embedded_20system_20library',['e-puck embedded system library',['../index.html',1,'']]]
+  ['el_5fuart_2eh',['el_uart.h',['../el__uart_8h.html',1,'']]],
+  ['elu_5fstdio_2eh',['elu_stdio.h',['../elu__stdio_8h.html',1,'']]],
+  ['embedded_20system_20library_20for_20e_2dpuck',['embedded system library for e-puck',['../index.html',1,'']]]
 ];

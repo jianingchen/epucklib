@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['timer',['Timer',['../group___e_l___t_i_m_e_r.html',1,'']]],
-  ['trigger',['Trigger',['../group___e_l___t_r_i_g_g_e_r.html',1,'']]]
+  ['stepper_20motor',['Stepper Motor',['../group___e_l___s_t_e_p_p_e_r___m_o_t_o_r.html',1,'']]]
 ];

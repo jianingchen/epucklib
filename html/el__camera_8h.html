@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>e-puck embedded system library: el_camera.h File Reference</title>
+<title>embedded system library for e-puck: el_camera.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -14,6 +14,7 @@
   $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doc_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -23,7 +24,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
-   <div id="projectname">e-puck embedded system library
+   <div id="projectname">embedded system library for e-puck
    &#160;<span id="projectnumber">0.95</span>
    </div>
    <div id="projectbrief">This project is now a work in progress. The first completed version will be version 1.0.</div>
@@ -40,6 +41,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -108,12 +110,12 @@ Macros</h2></td></tr>
 <tr class="memitem:a3b70d1ec173af15d54c13ac2f5d9d4fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b70d1ec173af15d54c13ac2f5d9d4fd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_CAMERA_EXPOSURE_MODE_EIT_X_GG</b>&#160;&#160;&#160;3</td></tr>
 <tr class="separator:a3b70d1ec173af15d54c13ac2f5d9d4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b3f7abc96c86c88ea8302267bf7b86e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b3f7abc96c86c88ea8302267bf7b86e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_CAMERA_FRAME_BUFFER_WIDTH</b>&#160;&#160;&#160;40</td></tr>
-<tr class="separator:a6b3f7abc96c86c88ea8302267bf7b86e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25f1e24630a19b633b94a9adfe136e88"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25f1e24630a19b633b94a9adfe136e88"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_CAMERA_FRAME_BUFFER_HEIGHT</b>&#160;&#160;&#160;15</td></tr>
-<tr class="separator:a25f1e24630a19b633b94a9adfe136e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4516458a5258aa2381c748431914ad8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4516458a5258aa2381c748431914ad8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_CAMERA_FRAME_DIM_X</b>&#160;&#160;&#160;40</td></tr>
+<tr class="separator:ae4516458a5258aa2381c748431914ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadd509e8a127f6d4afff0ac93f95989a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aadd509e8a127f6d4afff0ac93f95989a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_CAMERA_FRAME_DIM_Y</b>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:aadd509e8a127f6d4afff0ac93f95989a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -144,9 +146,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>el_camera_unlock_fram
 <tr class="memitem:a92f695141c5005e558a9d84f86ce6837"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a92f695141c5005e558a9d84f86ce6837"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>el_camera_is_frame_locked</b> ()</td></tr>
 <tr class="separator:a92f695141c5005e558a9d84f86ce6837"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae348a4d1d222507f34b27626c0c7ef5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae348a4d1d222507f34b27626c0c7ef5c"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>el_camera_get_frame_counter</b> ()</td></tr>
-<tr class="separator:ae348a4d1d222507f34b27626c0c7ef5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fd3a851b9c75b7672418e785d6abb6f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fd3a851b9c75b7672418e785d6abb6f"></a>
+el_uint16&#160;</td><td class="memItemRight" valign="bottom"><b>el_camera_get_frame_counter</b> ()</td></tr>
+<tr class="separator:a2fd3a851b9c75b7672418e785d6abb6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ad7eacd400a7eb353af6e3bb7218146"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ad7eacd400a7eb353af6e3bb7218146"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>el_camera_get_frame_pixel</b> (int X, int Y, uint8_t *rgb3v)</td></tr>
 <tr class="separator:a3ad7eacd400a7eb353af6e3bb7218146"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,7 +167,7 @@ el_camera_image *&#160;</td><td class="memItemRight" valign="bottom"><b>el_camer
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 3 2014 00:43:20 for e-puck embedded system library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 5 2014 01:02:04 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
