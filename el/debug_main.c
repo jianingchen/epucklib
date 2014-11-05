@@ -25,7 +25,7 @@ EL_PROCESS Process_DebugControl(void*data){
     int value[8];
 
     CameraLoop = false;
-
+    /*
     elu_printf("ENTER YOUR PIN >>");
     elu_scanf("%d",&i);
     if(i==9527){
@@ -33,7 +33,8 @@ EL_PROCESS Process_DebugControl(void*data){
     }else{
         elu_printf("PIN ERROR.\n");
     }
-
+    */
+    
     while(1){
 
         if(el_camera_is_frame_locked()==false){
@@ -76,6 +77,12 @@ EL_PROCESS Process_DebugControl(void*data){
                 elu_printf("\n");
                 break;
 
+            case 'e':
+                value[0] = el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_0,EL_IR_REFLECTION);
+                value[7] = el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_7,EL_IR_REFLECTION);
+                elu_printf("%d,%d\n",value[0],value[7]);
+                break;
+
             case 'x':
                 elu_printf("IREA:\t%d\n",el_irps_environment_ambient);
                 break;
@@ -86,6 +93,38 @@ EL_PROCESS Process_DebugControl(void*data){
                 }
                 elu_printf("\n");
                 break;
+
+            case 'w':
+                el_set_wheel_speed(1000,1000);
+                break;
+
+            case 'a':
+                el_set_wheel_speed(-250,250);
+                break;
+
+            case 's':
+                el_set_wheel_speed(-500,-500);
+                break;
+
+            case 'd':
+                el_set_wheel_speed(250,-250);
+                break;
+                
+            case ' ':
+                el_set_wheel_speed(0,0);
+                break;
+                
+            case 'T':
+                el_config_stepper_motor(EL_SPEED_ACC_ENABLE,true);
+                elu_printf("MOTOR ACC ON\n");
+                break;
+                
+            case 't':
+                el_config_stepper_motor(EL_SPEED_ACC_ENABLE,false);
+                elu_printf("MOTOR ACC OFF\n");
+                break;
+
+
             }
         }
 
@@ -103,7 +142,7 @@ int main(int argc,char*argv[]){
 
     el_initialization();
 
-    //el_calibrate_sensors();
+    el_calibrate_sensors();
 
     booting_procedure01_selector_barrier();// very essential
     booting_procedure02_led_pattern();// recommended
@@ -123,9 +162,15 @@ int main(int argc,char*argv[]){
     el_timer_set_callback(T,Callback_CountCameraFPS,NULL);
     el_timer_start(T,1000);
 
-
-    //el_config_ir_proximity(EL_IR_PROXIMITY_MODE_PULSE);
-    //el_enable_ir_proximity();
+    /*
+    el_config_stepper_motor(EL_SPEED_ACC_ENABLE,true);
+    el_config_stepper_motor(EL_SPEED_ACC_LINEAR_TERM,1000);
+    el_enable_stepper_motor();
+    */
+    
+    el_config_ir_proximity(EL_IR_PROXIMITY_PULSE);
+    el_enable_ir_proximity();
+    
     el_enable_camera();
 
     el_launch_process(Process_DebugControl,NULL);
@@ -244,9 +289,9 @@ EL_PROCESS Trigger_Accelerometer_Process(el_handle this_trigger){
         magnitude_s += (long)dy*dy;
         magnitude_s += (long)dz*dz;
         if(magnitude_s > threshold_s){
-            el_led_set(EL_LED_RING_4,EL_ON);
+            el_led_set(EL_LED_BODY,EL_ON);
             el_process_wait(200);
-            el_led_set(EL_LED_RING_4,EL_OFF);
+            el_led_set(EL_LED_BODY,EL_OFF);
             el_process_wait(200);
             // 400 ms past, need to refresh values
             el_accelerometer_get_all(xyz);

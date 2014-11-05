@@ -31,6 +31,12 @@ The maximum speed of these motors are 1000 steps per second.
 #define EL_STEPPER_MOTOR_LEFT               0
 #define EL_STEPPER_MOTOR_RIGHT              1
 
+typedef enum{
+    EL_SPEED_ACC_ENABLE,
+    EL_SPEED_ACC_LINEAR_TERM,
+}el_param_stepper_motor;
+
+
 /*! 
     \brief enable the stepper motor module
 
@@ -44,6 +50,17 @@ void el_enable_stepper_motor(void);
 */
 void el_disable_stepper_motor(void);
 
+
+/*!
+    \brief configure various parameters of the stepper motor module
+
+    \param param    target parameter
+    \param value    value to be applied
+
+    Use param to select which paramter to change. 
+    
+*/
+void el_config_stepper_motor(el_param_stepper_motor param,int value);
 
 /*! 
     \brief set the stepping rate of motor i
@@ -94,17 +111,21 @@ void el_set_wheel_speed(int left,int right);
 #define EL_STPM_INTERRUPT_FREQ  EL_T3_FREQ
 
 typedef struct{
-    int8_t direction;
-    uint8_t phase;
+    el_int8 direction;
+    el_int8 phase;
     el_mcd period;
     el_mcd timer;
-    int16_t counter;
+    el_int16 counter;
+    el_int16 true_speed;
+    el_int16 ref_speed;
 } el_stpm;
 
-extern int8_t el_stpm_enabled;
+extern el_bool el_stpm_enabled;
+extern el_bool el_stpm_accel_enabled;
 
 void el_init_stepper_motor();
 void el_routine_stepper_motor_14400hz();
+void el_routine_stepper_motor_accel_2400hz();
 
 #endif
 

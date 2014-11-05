@@ -46,7 +46,7 @@ void el_init_ir_proximity(){
     
     el_irps_enabled = 0;
     el_irps_counter = 0;
-    el_irps_working_mode = EL_IR_PROXIMITY_MODE_PULSE;
+    el_irps_working_mode = EL_IR_PROXIMITY_PULSE;
     el_irps_working_phase = 0;
     
     el_irps_is_calibrated = 0;
@@ -80,7 +80,7 @@ void el_enable_ir_proximity(void){
     if(!el_irps_enabled){
         el_irps_enabled = 1;
         el_irps_working_phase = 0;
-        if(el_irps_working_mode==EL_IR_PROXIMITY_MODE_EMIT){
+        if(el_irps_working_mode==EL_IR_PROXIMITY_EMIT){
             el_irps_set_ir_leds(1);
         }
     }
@@ -277,19 +277,19 @@ void el_routine_ir_proximity_2400hz(){
         
         switch(el_irps_working_mode){
 
-        case EL_IR_PROXIMITY_MODE_PASSIVE:
+        case EL_IR_PROXIMITY_PASSIVE:
             el_routine_ir_proximity_pulse();
             break;
 
-        case EL_IR_PROXIMITY_MODE_PULSE:
+        case EL_IR_PROXIMITY_PULSE:
             el_routine_ir_proximity_pulse();
             break;
             
-        case EL_IR_PROXIMITY_MODE_EMIT:
+        case EL_IR_PROXIMITY_EMIT:
             el_routine_ir_proximity_emit();
             break;
             
-        case EL_IR_PROXIMITY_MODE_NOISE:
+        case EL_IR_PROXIMITY_NOISE:
             el_routine_ir_proximity_noise();
             break;
             

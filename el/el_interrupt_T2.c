@@ -1,5 +1,6 @@
 
 #include "el_context.h"
+#include "el_stepper_motor.h"
 #include "el_accelerometer.h"
 #include "el_ir_proximity.h"
 
@@ -23,7 +24,11 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt(void){
     
     IFS0bits.T2IF = 0;
 
-
+    // speed control routine of stepper motors
+    if(el_stpm_enabled&&el_stpm_accel_enabled){
+        el_routine_stepper_motor_accel_2400hz();
+    }
+    
     // scheduling routines of sensors
 
     if(el_acc_enabled){

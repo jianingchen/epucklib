@@ -25,11 +25,12 @@ void __attribute__((interrupt, no_auto_psv)) _T3Interrupt(void){
     
     el_routine_masterclock_14400hz();
 
+    el_routine_ir_receiver_14400hz();
+
     if(el_stpm_enabled){
         el_routine_stepper_motor_14400hz();
     }
     
-    el_routine_ir_receiver_14400hz();
     
     //el_routine_ir_proximity_noise();
     

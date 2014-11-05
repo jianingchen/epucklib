@@ -26,10 +26,10 @@
 #include "el_trigger.h"
 
 typedef enum{
-    EL_IR_PROXIMITY_MODE_PASSIVE,
-    EL_IR_PROXIMITY_MODE_PULSE,
-    EL_IR_PROXIMITY_MODE_EMIT,
-    EL_IR_PROXIMITY_MODE_NOISE,
+    EL_IR_PROXIMITY_PASSIVE,
+    EL_IR_PROXIMITY_PULSE,
+    EL_IR_PROXIMITY_EMIT,
+    EL_IR_PROXIMITY_NOISE,
 } el_ir_proximity_mode;
 
 void el_config_ir_proximity(el_ir_proximity_mode mode);
@@ -37,6 +37,14 @@ void el_enable_ir_proximity(void);
 void el_disable_ir_proximity(void);
 
 #define EL_IR_PROXIMITY_OUTPUT_MAX   4095
+#define EL_IR_PROXIMITY_SENSOR_0    0
+#define EL_IR_PROXIMITY_SENSOR_1    1
+#define EL_IR_PROXIMITY_SENSOR_2    2
+#define EL_IR_PROXIMITY_SENSOR_3    3
+#define EL_IR_PROXIMITY_SENSOR_4    4
+#define EL_IR_PROXIMITY_SENSOR_5    5
+#define EL_IR_PROXIMITY_SENSOR_6    6
+#define EL_IR_PROXIMITY_SENSOR_7    7
 
 typedef enum{
     EL_IR_AMBIENT,

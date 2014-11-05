@@ -23,8 +23,8 @@
 
 #include "el_common.h"
 
-#define EL_UART_1       1
-#define EL_UART_2       2
+#define EL_UART_1       0
+#define EL_UART_2       1
 #define EL_UART_BLUETOOTH   EL_UART_1
 
 void el_uart_send_char(el_index ch,char c);

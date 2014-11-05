@@ -66,9 +66,9 @@ This header file defines 'el_enum', 'el_flags' and 'el_handle'.
 #define false 0
 #define true 1
 typedef unsigned char   bool;
-typedef signed char     el_int8;
-typedef signed int      el_int16;
-typedef signed long     el_int32;
+typedef char            el_int8;
+typedef int             el_int16;
+typedef long            el_int32;
 typedef unsigned char   el_uint8;
 typedef unsigned int    el_uint16;
 typedef unsigned long   el_uint32;
