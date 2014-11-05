@@ -1,7 +1,7 @@
 
 /*!
 
-\defgroup EL_ACC UART Accelerometer
+\defgroup EL_ACC Accelerometer
 
 \section Introduction
 
