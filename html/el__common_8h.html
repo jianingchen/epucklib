@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -122,15 +122,15 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a97a80ca1602ebf2303258971a2c938e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97a80ca1602ebf2303258971a2c938e2"></a>
 typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>bool</b></td></tr>
 <tr class="separator:a97a80ca1602ebf2303258971a2c938e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabf02ede49fb924a433f7e128cbdff56"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aabf02ede49fb924a433f7e128cbdff56"></a>
-typedef signed char&#160;</td><td class="memItemRight" valign="bottom"><b>el_int8</b></td></tr>
-<tr class="separator:aabf02ede49fb924a433f7e128cbdff56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39838bf34f1823fad312139dbca6ec22"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39838bf34f1823fad312139dbca6ec22"></a>
-typedef signed int&#160;</td><td class="memItemRight" valign="bottom"><b>el_int16</b></td></tr>
-<tr class="separator:a39838bf34f1823fad312139dbca6ec22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72c144590cb3102b95e2f89d0131bdfc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72c144590cb3102b95e2f89d0131bdfc"></a>
-typedef signed long&#160;</td><td class="memItemRight" valign="bottom"><b>el_int32</b></td></tr>
-<tr class="separator:a72c144590cb3102b95e2f89d0131bdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afad89b347394a5cc337f7c4b1095b112"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afad89b347394a5cc337f7c4b1095b112"></a>
+typedef char&#160;</td><td class="memItemRight" valign="bottom"><b>el_int8</b></td></tr>
+<tr class="separator:afad89b347394a5cc337f7c4b1095b112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af01feb64f243d9d05468b3b6f2003bd9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af01feb64f243d9d05468b3b6f2003bd9"></a>
+typedef int&#160;</td><td class="memItemRight" valign="bottom"><b>el_int16</b></td></tr>
+<tr class="separator:af01feb64f243d9d05468b3b6f2003bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92a33d81e7e47ee5097594cc4f579dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af92a33d81e7e47ee5097594cc4f579dd"></a>
+typedef long&#160;</td><td class="memItemRight" valign="bottom"><b>el_int32</b></td></tr>
+<tr class="separator:af92a33d81e7e47ee5097594cc4f579dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ba125711b024d42dadefaa94fcbad53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ba125711b024d42dadefaa94fcbad53"></a>
 typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>el_uint8</b></td></tr>
 <tr class="separator:a2ba125711b024d42dadefaa94fcbad53"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,7 +162,7 @@ typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>el_en
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 5 2014 01:11:29 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 5 2014 20:15:16 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

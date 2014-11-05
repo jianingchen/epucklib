@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_clock.h File Reference</title>
+<title>embedded system library for e-puck: LED</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -43,7 +43,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -62,12 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
-    </ul>
-  </div>
+</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -82,51 +77,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#files">Files</a>  </div>
   <div class="headertitle">
-<div class="title">el_clock.h File Reference<div class="ingroups"><a class="el" href="group___e_l___b_a_s_i_c___c_o_n_c_e_p_t_s.html">Basic Concepts</a></div></div>  </div>
+<div class="title">LED</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="el__common_8h_source.html">el_common.h</a>&quot;</code><br />
-</div>
-<p><a href="el__clock_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a9c58304416179f1578f7a218e433a87d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c58304416179f1578f7a218e433a87d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_TIME_FREQ</b>&#160;&#160;&#160;1000</td></tr>
-<tr class="separator:a9c58304416179f1578f7a218e433a87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53c2e543e31eaac99fe7b6760be2385d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53c2e543e31eaac99fe7b6760be2385d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_MASTERCLOCK_FREQ</b>&#160;&#160;&#160;(144000L)</td></tr>
-<tr class="separator:a53c2e543e31eaac99fe7b6760be2385d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:aa104a7df2b75fb88e8d4e9c0b76f1af4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa104a7df2b75fb88e8d4e9c0b76f1af4"></a>
-typedef signed short&#160;</td><td class="memItemRight" valign="bottom"><b>el_time</b></td></tr>
-<tr class="separator:aa104a7df2b75fb88e8d4e9c0b76f1af4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a095d6033dd663f3886e5f352e416ca74"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a095d6033dd663f3886e5f352e416ca74"></a>
-typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>el_mci</b></td></tr>
-<tr class="separator:a095d6033dd663f3886e5f352e416ca74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ace594f5de7cf28e055bcc866979cbb86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace594f5de7cf28e055bcc866979cbb86"></a>
-el_mci&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_masterclock</b> ()</td></tr>
-<tr class="separator:ace594f5de7cf28e055bcc866979cbb86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58ea75b939e699dd4ced0230ce8e3c82"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58ea75b939e699dd4ced0230ce8e3c82"></a>
-el_time&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_time_diff</b> (el_mci k0, el_mci k1, el_mci *residue)</td></tr>
-<tr class="separator:a58ea75b939e699dd4ced0230ce8e3c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
+Files</h2></td></tr>
+<tr class="memitem:el__led_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__led_8h.html">el_led.h</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is the header file of Masterclock.</p>
-<dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
-</div></div><!-- contents -->
+<h1><a class="anchor" id="Introduction"></a>
+Introduction</h1>
+<p>(TODO) </p>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Wed Nov 5 2014 20:15:16 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">

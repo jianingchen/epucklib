@@ -72,6 +72,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="globals.html"><span>All</span></a></li>
       <li class="current"><a href="globals_func.html"><span>Functions</span></a></li>
+      <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -85,7 +87,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -98,6 +100,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 &#160;
 
 <h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
+<li>el_config_ir_proximity()
+: <a class="el" href="el__ir__proximity_8h.html#a1f839afa31bb95e9b77adc3820437570">el_ir_proximity.h</a>
+</li>
+<li>el_config_stepper_motor()
+: <a class="el" href="el__stepper__motor_8h.html#a2079ac8b51c83f90683684771bc9131f">el_stepper_motor.h</a>
+</li>
 <li>el_create_timer()
 : <a class="el" href="el__timer_8h.html#a32ee166a22bc99325af1bf8eba97e728">el_timer.h</a>
 </li>
@@ -110,14 +118,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>el_delete_trigger()
 : <a class="el" href="el__trigger_8h.html#ad7941dead60d00b66ba64a8a7c952b1f">el_trigger.h</a>
 </li>
+<li>el_disable_ir_proximity()
+: <a class="el" href="el__ir__proximity_8h.html#af3c897238cc8f64dbf9a2d490bb8e5ef">el_ir_proximity.h</a>
+</li>
 <li>el_disable_stepper_motor()
 : <a class="el" href="el__stepper__motor_8h.html#a3e691245e5b17a1aef17469696b1e6d3">el_stepper_motor.h</a>
+</li>
+<li>el_enable_ir_proximity()
+: <a class="el" href="el__ir__proximity_8h.html#a0bc68f95cfccbe1b072a66d2997eaa74">el_ir_proximity.h</a>
 </li>
 <li>el_enable_stepper_motor()
 : <a class="el" href="el__stepper__motor_8h.html#a909852833e84d483d5f6b18a3e8757ad">el_stepper_motor.h</a>
 </li>
+<li>el_get_selector_value()
+: <a class="el" href="el__led_8h.html#ab3823524468a2011a62d955d7277382f">el_led.h</a>
+</li>
+<li>el_ir_proximity_get()
+: <a class="el" href="el__ir__proximity_8h.html#aae489754836c37e4280e837b4bc9b407">el_ir_proximity.h</a>
+</li>
+<li>el_ir_proximity_get_all()
+: <a class="el" href="el__ir__proximity_8h.html#a5005b90627a9175643576d51f6176256">el_ir_proximity.h</a>
+</li>
+<li>el_ir_proximity_get_counter()
+: <a class="el" href="el__ir__proximity_8h.html#a16d25d19c685259699896a815a8fe911">el_ir_proximity.h</a>
+</li>
 <li>el_launch_process()
 : <a class="el" href="el__process_8h.html#a334bdb64d988375e48eaa9ea8beafc58">el_process.h</a>
+</li>
+<li>el_led_set()
+: <a class="el" href="el__led_8h.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led.h</a>
 </li>
 <li>el_process_cooperate()
 : <a class="el" href="el__process_8h.html#a3580f38f3a753bd43cd1bcec81a53903">el_process.h</a>
@@ -148,6 +177,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>el_random_uint32()
 : <a class="el" href="el__random_8h.html#a2c171512231cd23a543a3797fa96f501">el_random.h</a>
+</li>
+<li>el_set_wheel_speed()
+: <a class="el" href="el__stepper__motor_8h.html#ac598d24601f69e215db8a5e364fa1f0d">el_stepper_motor.h</a>
 </li>
 <li>el_stepper_motor_get_counter()
 : <a class="el" href="el__stepper__motor_8h.html#a2cd4bacbcdfd1edbba6865e256e17572">el_stepper_motor.h</a>
@@ -201,7 +233,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="el__trigger_8h.html#a40e49c09f2deb3a73b9c2c42d784c04a">el_trigger.h</a>
 </li>
 <li>el_trigger_set_event()
-: <a class="el" href="el__trigger_8h.html#a68686ad3e6b1b6b21968980e0b9e3544">el_trigger.h</a>
+: <a class="el" href="el__trigger_8h.html#a988d439b2dd5ee47173299dcc2666f16">el_trigger.h</a>
 </li>
 <li>el_trigger_set_process()
 : <a class="el" href="el__trigger_8h.html#a71a3ed94bf7273bfddeafb6c225bbb7d">el_trigger.h</a>
@@ -210,7 +242,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 5 2014 01:11:29 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 5 2014 20:15:16 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

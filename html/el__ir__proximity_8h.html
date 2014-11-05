@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_ir_proximity.h File Reference<div class="ingroups"><a class="el" href="group___e_l___i_r___p_r_o_x_i_m_i_t_y.html">Infrared Proximity Sensor</a></div></div>  </div>
+<div class="title">el_ir_proximity.h File Reference<div class="ingroups"><a class="el" href="group___e_l___i_r___p_r_o_x_i_m_i_t_y.html">Infrared Proximity Sensors</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="el__common_8h_source.html">el_common.h</a>&quot;</code><br />
@@ -103,48 +103,279 @@ Macros</h2></td></tr>
 <tr class="memitem:ad1e25b4d73dddb83c1f88fbb36612fb2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1e25b4d73dddb83c1f88fbb36612fb2"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_OUTPUT_MAX</b>&#160;&#160;&#160;4095</td></tr>
 <tr class="separator:ad1e25b4d73dddb83c1f88fbb36612fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf85537544aeecc27ee5cd8cb62ac013"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf85537544aeecc27ee5cd8cb62ac013"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_0</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:adf85537544aeecc27ee5cd8cb62ac013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1d3bac379f56a70ce3d16186d61e1b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1d3bac379f56a70ce3d16186d61e1b8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_1</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ac1d3bac379f56a70ce3d16186d61e1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafbd20a3e19fdea7cce857a74eb79c01"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafbd20a3e19fdea7cce857a74eb79c01"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_2</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:aafbd20a3e19fdea7cce857a74eb79c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3181f89ea51d662b5a7f750ad4e86e17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3181f89ea51d662b5a7f750ad4e86e17"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_3</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a3181f89ea51d662b5a7f750ad4e86e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8027477c85fc0c007b112509e4ce2f51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8027477c85fc0c007b112509e4ce2f51"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_4</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a8027477c85fc0c007b112509e4ce2f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a424a71e6b9b5f74c4fa3d3377a568163"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a424a71e6b9b5f74c4fa3d3377a568163"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_5</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a424a71e6b9b5f74c4fa3d3377a568163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae99ddd8320067fc7da3e286d2127ef3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae99ddd8320067fc7da3e286d2127ef3d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_6</b>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:ae99ddd8320067fc7da3e286d2127ef3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4006a7d86e417be07708e0828cf9641d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4006a7d86e417be07708e0828cf9641d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_7</b>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a4006a7d86e417be07708e0828cf9641d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ac9313b8eea9f5c0f35c39e3d205e5b2e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2e"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>el_ir_proximity_mode</b> { <b>EL_IR_PROXIMITY_MODE_PASSIVE</b>, 
-<b>EL_IR_PROXIMITY_MODE_PULSE</b>, 
-<b>EL_IR_PROXIMITY_MODE_EMIT</b>, 
-<b>EL_IR_PROXIMITY_MODE_NOISE</b>
+<tr class="memitem:a677aca5d31356b03c58882e6a206d80c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__ir__proximity_8h.html#a677aca5d31356b03c58882e6a206d80c">el_ir_proximity_param</a> { <a class="el" href="el__ir__proximity_8h.html#a677aca5d31356b03c58882e6a206d80ca982f0f8b78c0159e4176af591b666f67">EL_WORKING_MODE</a>, 
+<a class="el" href="el__ir__proximity_8h.html#a677aca5d31356b03c58882e6a206d80cab36f8b6c2364d64e5ab97576ee353f6e">EL_ENVIRONMENT_AMBIENT</a>
  }</td></tr>
-<tr class="separator:ac9313b8eea9f5c0f35c39e3d205e5b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6777dd76bceec1ac25a170762e1331c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>el_ir_proximity_output</b> { <b>EL_IR_AMBIENT</b>, 
-<b>EL_IR_REFLECTION</b>, 
-<b>EL_IR_NOISE</b>
+<tr class="separator:a677aca5d31356b03c58882e6a206d80c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ccac3ce2ddc538e5d471d887eb83ca6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__ir__proximity_8h.html#a2ccac3ce2ddc538e5d471d887eb83ca6">el_ir_proximity_working_mode</a> { <a class="el" href="el__ir__proximity_8h.html#a2ccac3ce2ddc538e5d471d887eb83ca6aa26383b47022906a527084703fff729a">EL_IR_PROXIMITY_PASSIVE</a> = 0, 
+<a class="el" href="el__ir__proximity_8h.html#a2ccac3ce2ddc538e5d471d887eb83ca6a6e61f4edccd695b26cf205c95896ea7d">EL_IR_PROXIMITY_PULSE</a> = 1, 
+<a class="el" href="el__ir__proximity_8h.html#a2ccac3ce2ddc538e5d471d887eb83ca6a769fb955698ff949a598763f2f8fd368">EL_IR_PROXIMITY_EMIT</a> = 2, 
+<a class="el" href="el__ir__proximity_8h.html#a2ccac3ce2ddc538e5d471d887eb83ca6ac5d48455f3087cc9748499bfa76bb1d0">EL_IR_PROXIMITY_NOISE</a> = 3
+ }</td></tr>
+<tr class="separator:a2ccac3ce2ddc538e5d471d887eb83ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6777dd76bceec1ac25a170762e1331c9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__ir__proximity_8h.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a> { <a class="el" href="el__ir__proximity_8h.html#a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14">EL_IR_AMBIENT</a>, 
+<a class="el" href="el__ir__proximity_8h.html#a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7">EL_IR_REFLECTION</a>, 
+<a class="el" href="el__ir__proximity_8h.html#a6777dd76bceec1ac25a170762e1331c9a42a32ba7f2d74af52892323e9dcdea7a">EL_IR_NOISE</a>
  }</td></tr>
 <tr class="separator:a6777dd76bceec1ac25a170762e1331c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0737e33cba256f1247f64bfa711cf19f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0737e33cba256f1247f64bfa711cf19f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_config_ir_proximity</b> (el_ir_proximity_mode mode)</td></tr>
-<tr class="separator:a0737e33cba256f1247f64bfa711cf19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f839afa31bb95e9b77adc3820437570"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__ir__proximity_8h.html#a1f839afa31bb95e9b77adc3820437570">el_config_ir_proximity</a> (<a class="el" href="el__ir__proximity_8h.html#a677aca5d31356b03c58882e6a206d80c">el_ir_proximity_param</a> param, int value)</td></tr>
+<tr class="memdesc:a1f839afa31bb95e9b77adc3820437570"><td class="mdescLeft">&#160;</td><td class="mdescRight">configure various parameters of the IR proximity sensors module  <a href="#a1f839afa31bb95e9b77adc3820437570">More...</a><br /></td></tr>
+<tr class="separator:a1f839afa31bb95e9b77adc3820437570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bc68f95cfccbe1b072a66d2997eaa74"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0bc68f95cfccbe1b072a66d2997eaa74"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_enable_ir_proximity</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__ir__proximity_8h.html#a0bc68f95cfccbe1b072a66d2997eaa74">el_enable_ir_proximity</a> (void)</td></tr>
+<tr class="memdesc:a0bc68f95cfccbe1b072a66d2997eaa74"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable the proximity sensors module <br /></td></tr>
 <tr class="separator:a0bc68f95cfccbe1b072a66d2997eaa74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3c897238cc8f64dbf9a2d490bb8e5ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3c897238cc8f64dbf9a2d490bb8e5ef"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_disable_ir_proximity</b> (void)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__ir__proximity_8h.html#af3c897238cc8f64dbf9a2d490bb8e5ef">el_disable_ir_proximity</a> (void)</td></tr>
+<tr class="memdesc:af3c897238cc8f64dbf9a2d490bb8e5ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable the proximity sensors module <br /></td></tr>
 <tr class="separator:af3c897238cc8f64dbf9a2d490bb8e5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c0fb2ae8c2609132b812cf040fa4faa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c0fb2ae8c2609132b812cf040fa4faa"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>el_ir_proximity_get</b> (el_index which, el_ir_proximity_output type)</td></tr>
-<tr class="separator:a2c0fb2ae8c2609132b812cf040fa4faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87318becf8b1605aed34d3d148c5e191"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87318becf8b1605aed34d3d148c5e191"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_ir_proximity_get_all</b> (el_ir_proximity_output type, int *result_8v)</td></tr>
-<tr class="separator:a87318becf8b1605aed34d3d148c5e191"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16d25d19c685259699896a815a8fe911"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16d25d19c685259699896a815a8fe911"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>el_ir_proximity_get_counter</b> ()</td></tr>
+<tr class="memitem:aae489754836c37e4280e837b4bc9b407"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__ir__proximity_8h.html#aae489754836c37e4280e837b4bc9b407">el_ir_proximity_get</a> (el_index i, <a class="el" href="el__ir__proximity_8h.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a> g)</td></tr>
+<tr class="memdesc:aae489754836c37e4280e837b4bc9b407"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a type of output value from a ir proximity sensor  <a href="#aae489754836c37e4280e837b4bc9b407">More...</a><br /></td></tr>
+<tr class="separator:aae489754836c37e4280e837b4bc9b407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5005b90627a9175643576d51f6176256"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__ir__proximity_8h.html#a5005b90627a9175643576d51f6176256">el_ir_proximity_get_all</a> (<a class="el" href="el__ir__proximity_8h.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a> g, int *out8v)</td></tr>
+<tr class="memdesc:a5005b90627a9175643576d51f6176256"><td class="mdescLeft">&#160;</td><td class="mdescRight">get a type of output value from all ir proximity sensors  <a href="#a5005b90627a9175643576d51f6176256">More...</a><br /></td></tr>
+<tr class="separator:a5005b90627a9175643576d51f6176256"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16d25d19c685259699896a815a8fe911"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__ir__proximity_8h.html#a16d25d19c685259699896a815a8fe911">el_ir_proximity_get_counter</a> ()</td></tr>
+<tr class="memdesc:a16d25d19c685259699896a815a8fe911"><td class="mdescLeft">&#160;</td><td class="mdescRight">get total number of samples obtained since initialization  <a href="#a16d25d19c685259699896a815a8fe911">More...</a><br /></td></tr>
 <tr class="separator:a16d25d19c685259699896a815a8fe911"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="el__ir__proximity_8h.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This enum is used in <a class="el" href="el__ir__proximity_8h.html#aae489754836c37e4280e837b4bc9b407" title="get a type of output value from a ir proximity sensor ">el_ir_proximity_get</a> and <a class="el" href="el__ir__proximity_8h.html#aae489754836c37e4280e837b4bc9b407" title="get a type of output value from a ir proximity sensor ">el_ir_proximity_get</a> to select the output type to get.</p>
+<p>Explanation for each of output group can be found in the introduction section of <a class="el" href="group___e_l___i_r___p_r_o_x_i_m_i_t_y.html">Infrared Proximity Sensors</a>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14"></a>EL_IR_AMBIENT&#160;</td><td class="fielddoc">
+<p>get the ambient output </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7"></a>EL_IR_REFLECTION&#160;</td><td class="fielddoc">
+<p>get the reflection output </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9a42a32ba7f2d74af52892323e9dcdea7a"></a>EL_IR_NOISE&#160;</td><td class="fielddoc">
+<p>get the noise output </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a class="anchor" id="a677aca5d31356b03c58882e6a206d80c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="el__ir__proximity_8h.html#a677aca5d31356b03c58882e6a206d80c">el_ir_proximity_param</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This enum is used in <a class="el" href="el__ir__proximity_8h.html#a1f839afa31bb95e9b77adc3820437570" title="configure various parameters of the IR proximity sensors module ">el_config_ir_proximity</a> to select the parameter to be changed. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a677aca5d31356b03c58882e6a206d80ca982f0f8b78c0159e4176af591b666f67"></a>EL_WORKING_MODE&#160;</td><td class="fielddoc">
+<p>change the working mode </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a677aca5d31356b03c58882e6a206d80cab36f8b6c2364d64e5ab97576ee353f6e"></a>EL_ENVIRONMENT_AMBIENT&#160;</td><td class="fielddoc">
+<p>change the ambient IR intensity in the environment </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a class="anchor" id="a2ccac3ce2ddc538e5d471d887eb83ca6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="el__ir__proximity_8h.html#a2ccac3ce2ddc538e5d471d887eb83ca6">el_ir_proximity_working_mode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This enum is used in <a class="el" href="el__ir__proximity_8h.html#a1f839afa31bb95e9b77adc3820437570" title="configure various parameters of the IR proximity sensors module ">el_config_ir_proximity</a> to specify the working mode of the IR proximity sensors.</p>
+<p>Explanation for each of the working mode can be found in the introduction section of <a class="el" href="group___e_l___i_r___p_r_o_x_i_m_i_t_y.html">Infrared Proximity Sensors</a>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a2ccac3ce2ddc538e5d471d887eb83ca6aa26383b47022906a527084703fff729a"></a>EL_IR_PROXIMITY_PASSIVE&#160;</td><td class="fielddoc">
+<p>use the Passive Mode </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a2ccac3ce2ddc538e5d471d887eb83ca6a6e61f4edccd695b26cf205c95896ea7d"></a>EL_IR_PROXIMITY_PULSE&#160;</td><td class="fielddoc">
+<p>use the Pulse Mode (default mode) </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a2ccac3ce2ddc538e5d471d887eb83ca6a769fb955698ff949a598763f2f8fd368"></a>EL_IR_PROXIMITY_EMIT&#160;</td><td class="fielddoc">
+<p>use the Emit Mode </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a2ccac3ce2ddc538e5d471d887eb83ca6ac5d48455f3087cc9748499bfa76bb1d0"></a>EL_IR_PROXIMITY_NOISE&#160;</td><td class="fielddoc">
+<p>use the Noise Mode (not implemented yet) </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a1f839afa31bb95e9b77adc3820437570"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_config_ir_proximity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="el__ir__proximity_8h.html#a677aca5d31356b03c58882e6a206d80c">el_ir_proximity_param</a>&#160;</td>
+          <td class="paramname"><em>param</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>configure various parameters of the IR proximity sensors module </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>target parameter </td></tr>
+    <tr><td class="paramname">value</td><td>value to be applied </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aae489754836c37e4280e837b4bc9b407"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int el_ir_proximity_get </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="el__ir__proximity_8h.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a>&#160;</td>
+          <td class="paramname"><em>g</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get a type of output value from a ir proximity sensor </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>index of the sensor </td></tr>
+    <tr><td class="paramname">g</td><td>output type</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the output value </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5005b90627a9175643576d51f6176256"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_ir_proximity_get_all </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="el__ir__proximity_8h.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a>&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>out8v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get a type of output value from all ir proximity sensors </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>output type </td></tr>
+    <tr><td class="paramname">out8v</td><td>an int array to store the eight output values. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a16d25d19c685259699896a815a8fe911"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int el_ir_proximity_get_counter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get total number of samples obtained since initialization </p>
+<dl class="section return"><dt>Returns</dt><dd>number of samples</dd></dl>
+<p>When enabled, sampling frequency of the ir proximity sensors are 30Hz. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 5 2014 01:11:29 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 5 2014 20:15:16 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

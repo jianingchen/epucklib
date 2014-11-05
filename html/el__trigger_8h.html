@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Modules</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -85,8 +85,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">el_trigger.h File Reference<div class="ingroups"><a class="el" href="group___e_l___t_r_i_g_g_e_r.html">Trigger</a></div></div>  </div>
@@ -97,53 +97,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <p><a href="el__trigger_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a17c5e342e8a225382cf39eaca2e8792c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17c5e342e8a225382cf39eaca2e8792c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_NONE</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a17c5e342e8a225382cf39eaca2e8792c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17652121f6ae20d71da4b0502408cc5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17652121f6ae20d71da4b0502408cc5c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_INTERNAL_A</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a17652121f6ae20d71da4b0502408cc5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82167d3655bf80a2d1d176a9a6affcda"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82167d3655bf80a2d1d176a9a6affcda"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_INTERNAL_B</b>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:a82167d3655bf80a2d1d176a9a6affcda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a14aef8af9abfa83f3f2b714c083c9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a14aef8af9abfa83f3f2b714c083c9b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_INTERNAL_C</b>&#160;&#160;&#160;3</td></tr>
-<tr class="separator:a8a14aef8af9abfa83f3f2b714c083c9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad002357ea341f0eadb9c531910499dbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad002357ea341f0eadb9c531910499dbe"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_INTERNAL_D</b>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:ad002357ea341f0eadb9c531910499dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad324074d5516067464308a798e524ed6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad324074d5516067464308a798e524ed6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_INTERNAL_E</b>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:ad324074d5516067464308a798e524ed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf1c7c0f750505a4278c0d30b35f573f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf1c7c0f750505a4278c0d30b35f573f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_INTERNAL_F</b>&#160;&#160;&#160;6</td></tr>
-<tr class="separator:aaf1c7c0f750505a4278c0d30b35f573f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8f99c468385416573349e6c8e14b9c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8f99c468385416573349e6c8e14b9c1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_IR_RECEIVER_INCOME</b>&#160;&#160;&#160;10</td></tr>
-<tr class="separator:af8f99c468385416573349e6c8e14b9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4073389fada0ea866e5601dfb0ae09c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4073389fada0ea866e5601dfb0ae09c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_UART1_RECEIVED</b>&#160;&#160;&#160;11</td></tr>
-<tr class="separator:ac4073389fada0ea866e5601dfb0ae09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06722c39dbb17c7c1552203b7f40c247"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06722c39dbb17c7c1552203b7f40c247"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_UART2_RECEIVED</b>&#160;&#160;&#160;12</td></tr>
-<tr class="separator:a06722c39dbb17c7c1552203b7f40c247"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e2a4149fbfe8a11c19ce1c27e1e77f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e2a4149fbfe8a11c19ce1c27e1e77f9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_ACCELEROMETER_UPDATE</b>&#160;&#160;&#160;20</td></tr>
-<tr class="separator:a7e2a4149fbfe8a11c19ce1c27e1e77f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac54e484d1e7490a6a98648d07b50d7c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac54e484d1e7490a6a98648d07b50d7c8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_IR_PROXIMITY_UPDATE</b>&#160;&#160;&#160;21</td></tr>
-<tr class="separator:ac54e484d1e7490a6a98648d07b50d7c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac343c67a1dd18c49fadd6e57b71588c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac343c67a1dd18c49fadd6e57b71588c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EVENT_CAMERA_FRAME_UPDATE</b>&#160;&#160;&#160;22</td></tr>
-<tr class="separator:aac343c67a1dd18c49fadd6e57b71588c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ab24dda3a7323473db42f176bd163d9bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab24dda3a7323473db42f176bd163d9bf"></a>
 typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><b>el_condition</b> )(void *)</td></tr>
 <tr class="separator:ab24dda3a7323473db42f176bd163d9bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a8b37a76e9a384d41426690a4cb74a044"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044">el_trigger_event_type</a> { <br />
+&#160;&#160;<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044acf92dcb36b0edeadeca7519a19c62b90">EL_EVENT_NONE</a> = 0, 
+<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044a56b9ce348594b1b452ff65011dd75f63">EL_EVENT_INTERNAL_A</a> = 1, 
+<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044af0ac8b3a6b39850e37cb29e2408ecf3d">EL_EVENT_INTERNAL_B</a> = 2, 
+<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044aa7c72a61a65ad5cbb453697616d67306">EL_EVENT_INTERNAL_C</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044ab6fbce6eb6051f289276749971059ce2">EL_EVENT_INTERNAL_D</a> = 4, 
+<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044a049d6093508fdad8c593f3ad46916be0">EL_EVENT_INTERNAL_E</a> = 5, 
+<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044af5810124b432073c4c8d3956100022dd">EL_EVENT_INTERNAL_F</a> = 6, 
+<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044aefffca9a468c39af73979a6108810a66">EL_EVENT_IR_RECEIVER_INCOME</a> = 10, 
+<br />
+&#160;&#160;<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044a7d4adc8783154972fa9bbb8d67e1be5d">EL_EVENT_UART1_RECEIVED</a> = 11, 
+<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044a98b67a6095fa1aa4e05e79312c86f16d">EL_EVENT_UART2_RECEIVED</a> = 12, 
+<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044aa40d04a02542cf4070dab20cf92b3085">EL_EVENT_ACCELEROMETER_UPDATE</a> = 20, 
+<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044a0726cee4355067c6ec484245ed5e8bdf">EL_EVENT_IR_PROXIMITY_UPDATE</a> = 21, 
+<br />
+&#160;&#160;<a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044a40a0621bbde35c65729003228527207b">EL_EVENT_CAMERA_FRAME_UPDATE</a> = 22
+<br />
+ }</td></tr>
+<tr class="separator:a8b37a76e9a384d41426690a4cb74a044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -159,9 +140,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a71a05b6dbe49cc1c878a93cfa7e60d85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__trigger_8h.html#a71a05b6dbe49cc1c878a93cfa7e60d85">el_trigger_disable</a> (el_handle h)</td></tr>
 <tr class="memdesc:a71a05b6dbe49cc1c878a93cfa7e60d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable a trigger  <a href="#a71a05b6dbe49cc1c878a93cfa7e60d85">More...</a><br /></td></tr>
 <tr class="separator:a71a05b6dbe49cc1c878a93cfa7e60d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68686ad3e6b1b6b21968980e0b9e3544"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__trigger_8h.html#a68686ad3e6b1b6b21968980e0b9e3544">el_trigger_set_event</a> (el_handle h, el_enum e)</td></tr>
-<tr class="memdesc:a68686ad3e6b1b6b21968980e0b9e3544"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the event of the trigger  <a href="#a68686ad3e6b1b6b21968980e0b9e3544">More...</a><br /></td></tr>
-<tr class="separator:a68686ad3e6b1b6b21968980e0b9e3544"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a988d439b2dd5ee47173299dcc2666f16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__trigger_8h.html#a988d439b2dd5ee47173299dcc2666f16">el_trigger_set_event</a> (el_handle h, <a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044">el_trigger_event_type</a> e)</td></tr>
+<tr class="memdesc:a988d439b2dd5ee47173299dcc2666f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the event of the trigger  <a href="#a988d439b2dd5ee47173299dcc2666f16">More...</a><br /></td></tr>
+<tr class="separator:a988d439b2dd5ee47173299dcc2666f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40e49c09f2deb3a73b9c2c42d784c04a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="el__trigger_8h.html#a40e49c09f2deb3a73b9c2c42d784c04a">el_trigger_set_condition</a> (el_handle h, el_condition f)</td></tr>
 <tr class="memdesc:a40e49c09f2deb3a73b9c2c42d784c04a"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the condition callback function of the trigger  <a href="#a40e49c09f2deb3a73b9c2c42d784c04a">More...</a><br /></td></tr>
 <tr class="separator:a40e49c09f2deb3a73b9c2c42d784c04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,7 +158,62 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044">el_trigger_event_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This enum is used in <a class="el" href="el__trigger_8h.html#a988d439b2dd5ee47173299dcc2666f16" title="set the event of the trigger ">el_trigger_set_event</a> to specify the event of a trigger. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044acf92dcb36b0edeadeca7519a19c62b90"></a>EL_EVENT_NONE&#160;</td><td class="fielddoc">
+<p>no event </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a56b9ce348594b1b452ff65011dd75f63"></a>EL_EVENT_INTERNAL_A&#160;</td><td class="fielddoc">
+<p>mannually signaled event A using <a class="el" href="el__trigger_8h.html#af595b837a4b0c95a623884e9db86487d" title="issue an internal event ">el_trigger_issue_internal_event</a> </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044af0ac8b3a6b39850e37cb29e2408ecf3d"></a>EL_EVENT_INTERNAL_B&#160;</td><td class="fielddoc">
+<p>mannually signaled event B using <a class="el" href="el__trigger_8h.html#af595b837a4b0c95a623884e9db86487d" title="issue an internal event ">el_trigger_issue_internal_event</a> </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044aa7c72a61a65ad5cbb453697616d67306"></a>EL_EVENT_INTERNAL_C&#160;</td><td class="fielddoc">
+<p>mannually signaled event C using <a class="el" href="el__trigger_8h.html#af595b837a4b0c95a623884e9db86487d" title="issue an internal event ">el_trigger_issue_internal_event</a> </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044ab6fbce6eb6051f289276749971059ce2"></a>EL_EVENT_INTERNAL_D&#160;</td><td class="fielddoc">
+<p>mannually signaled event D using <a class="el" href="el__trigger_8h.html#af595b837a4b0c95a623884e9db86487d" title="issue an internal event ">el_trigger_issue_internal_event</a> </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a049d6093508fdad8c593f3ad46916be0"></a>EL_EVENT_INTERNAL_E&#160;</td><td class="fielddoc">
+<p>mannually signaled event E using <a class="el" href="el__trigger_8h.html#af595b837a4b0c95a623884e9db86487d" title="issue an internal event ">el_trigger_issue_internal_event</a> </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044af5810124b432073c4c8d3956100022dd"></a>EL_EVENT_INTERNAL_F&#160;</td><td class="fielddoc">
+<p>mannually signaled event F using <a class="el" href="el__trigger_8h.html#af595b837a4b0c95a623884e9db86487d" title="issue an internal event ">el_trigger_issue_internal_event</a> </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044aefffca9a468c39af73979a6108810a66"></a>EL_EVENT_IR_RECEIVER_INCOME&#160;</td><td class="fielddoc">
+<p>when the ir receiver receives data </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a7d4adc8783154972fa9bbb8d67e1be5d"></a>EL_EVENT_UART1_RECEIVED&#160;</td><td class="fielddoc">
+<p>when UART1 receives data </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a98b67a6095fa1aa4e05e79312c86f16d"></a>EL_EVENT_UART2_RECEIVED&#160;</td><td class="fielddoc">
+<p>when UART2 receives data (not implemented yet) </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044aa40d04a02542cf4070dab20cf92b3085"></a>EL_EVENT_ACCELEROMETER_UPDATE&#160;</td><td class="fielddoc">
+<p>when the accelerometer output is updated </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a0726cee4355067c6ec484245ed5e8bdf"></a>EL_EVENT_IR_PROXIMITY_UPDATE&#160;</td><td class="fielddoc">
+<p>when the ir proximity sensor outputs are updated </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a40a0621bbde35c65729003228527207b"></a>EL_EVENT_CAMERA_FRAME_UPDATE&#160;</td><td class="fielddoc">
+<p>when a new image frame from the camera is ready </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a8ac98c499857cb3c18cd4093d5724264"></a>
 <div class="memitem">
 <div class="memproto">
@@ -359,7 +395,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a68686ad3e6b1b6b21968980e0b9e3544"></a>
+<a class="anchor" id="a988d439b2dd5ee47173299dcc2666f16"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -372,7 +408,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">el_enum&#160;</td>
+          <td class="paramtype"><a class="el" href="el__trigger_8h.html#a8b37a76e9a384d41426690a4cb74a044">el_trigger_event_type</a>&#160;</td>
           <td class="paramname"><em>e</em>&#160;</td>
         </tr>
         <tr>
@@ -434,7 +470,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 5 2014 01:11:29 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Nov 5 2014 20:15:16 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
