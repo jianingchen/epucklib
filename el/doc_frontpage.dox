@@ -13,7 +13,7 @@ This is a library for the e-puck robot platform.
 \n 
 \section sec_environment Environment
 
-- MPLAB X with xc16 compiler 
+- MPLAB X with XC16 compiler 
 - Support only e-pucks with the camera model PO6030K. 
 - A computer with Bluetooth 
 - Tiny Bootloader (preferably version 1.10.3) 
@@ -21,8 +21,10 @@ This is a library for the e-puck robot platform.
 
 
 \n 
-\section sec_link External Links
+\section sec_link Related Links
 
+- code distribution page of this library on GitHub > https://github.com/jianingchen/epucklib
+- online documentation for this library on GitHub > http://jianingchen.github.io/epucklib/html/
 - official site of the e-puck robot > http://www.e-puck.org/ 
 - official page to download MPLAB X IDE > http://www.microchip.com/mplabx/
 - official page to download XC16 Compiler > http://www.microchip.com/compilers/
