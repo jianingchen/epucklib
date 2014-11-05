@@ -43,6 +43,6 @@ void el_routine_accelerometer_2400hz(void);
 void el_enable_accelerometer();
 void el_disable_accelerometer();
 int el_accelerometer_get(int which);
-void el_accelerometer_get_all(int*result_3v);
+void el_accelerometer_get_all(int*out3v);
 
 #endif	/* EL_ACCELEROMETER_H */

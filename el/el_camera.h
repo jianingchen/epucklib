@@ -102,8 +102,8 @@ void el_camera_unlock_frame();
 bool el_camera_is_frame_locked();
 el_uint16 el_camera_get_frame_counter();
 void el_camera_get_frame_pixel(int X,int Y,uint8_t*rgb3v);
-unsigned int el_camera_get_frame_width();
-unsigned int el_camera_get_frame_height();
+el_uint16 el_camera_get_frame_width();
+el_uint16 el_camera_get_frame_height();
 el_camera_image*el_camera_get_frame();
 
 

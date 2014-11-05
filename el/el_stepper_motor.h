@@ -31,10 +31,14 @@ The maximum speed of these motors are 1000 steps per second.
 #define EL_STEPPER_MOTOR_LEFT               0
 #define EL_STEPPER_MOTOR_RIGHT              1
 
+/*! 
+    This enum is used in ::el_config_stepper_motor to select the parameter 
+    to be changed. 
+*/
 typedef enum{
-    EL_SPEED_ACC_ENABLE,
-    EL_SPEED_ACC_LINEAR_TERM,
-}el_param_stepper_motor;
+    EL_SPEED_ACC_ENABLE,            ///< enabling status of motor acceleration
+    EL_SPEED_ACC_LINEAR_TERM,       ///< acceleration rate of the motors
+}el_stepper_motor_param;
 
 
 /*! 
@@ -59,11 +63,29 @@ void el_disable_stepper_motor(void);
 
     Use param to select which paramter to change. 
     
+    Currently, this function is only used to configure the artificial acceleration 
+    of the stepper motors, which are typically used to make the motion of the robot 
+    more smooth. 
+    
+    For example, the following code enables a linear artificial acceleration 
+    with a rate of 2000:
+    \code
+    ...
+    el_disable_stepper_motor();
+    el_config_stepper_motor(EL_SPEED_ACC_ENABLE,true);
+    el_config_stepper_motor(EL_SPEED_ACC_LINEAR_TERM,2000);
+    el_enable_stepper_motor();
+    ...
+    \endcode
+    A linear acceleration rate of 2000 means the stepping rate of the motors can 
+    reach 1000 from 0 in 0.5 sec. By default, artificial acceleration is disabled 
+    while the acceleration rate is set to 3000.
 */
-void el_config_stepper_motor(el_param_stepper_motor param,int value);
+void el_config_stepper_motor(el_stepper_motor_param param,int value);
+
 
 /*! 
-    \brief set the stepping rate of motor i
+    \brief set the stepping rate of a motor
 
     \param i    index of the motor
     \param u    stepping rate of the motor
@@ -75,17 +97,18 @@ void el_stepper_motor_set_speed(el_index i,int u);
 
 
 /*! 
-    \brief get the step counter of motor i
+    \brief get the step counter of a motor
 
     \param i    index of the motor
     
-    \return u    number of steps
+    \return u   number of steps
     
 */
 int el_stepper_motor_get_counter(el_index i);
 
+
 /*! 
-    \brief set the step counter of motor i
+    \brief set the step counter of a motor
 
     \param i    index of the motor
     \param u    number of steps
@@ -94,6 +117,13 @@ int el_stepper_motor_get_counter(el_index i);
 void el_stepper_motor_set_counter(el_index i,int n);
 
 
+/*! 
+    \brief change the rotation speed for both of the motors on the e-puck
+
+    \param left    left motor speed
+    \param right   right motor speed
+    
+*/
 void el_set_wheel_speed(int left,int right);
 
 

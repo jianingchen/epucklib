@@ -122,7 +122,7 @@ void el_disable_stepper_motor(void){
     }
 }
 
-void el_config_stepper_motor(el_param_stepper_motor e,int v){
+void el_config_stepper_motor(el_stepper_motor_param e,int v){
 
     switch(e){
 

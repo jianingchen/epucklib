@@ -35,6 +35,28 @@ in the related function.
 
 typedef bool (*el_condition)(void*);
 
+
+/*! 
+    This enum is used in ::el_trigger_set_event to specify the event 
+    of a trigger.
+*/
+typedef enum{
+    EL_EVENT_NONE = 0,          ///< no event
+    EL_EVENT_INTERNAL_A = 1,    ///< mannually signaled event A using ::el_trigger_issue_internal_event
+    EL_EVENT_INTERNAL_B = 2,    ///< mannually signaled event B using ::el_trigger_issue_internal_event
+    EL_EVENT_INTERNAL_C = 3,    ///< mannually signaled event C using ::el_trigger_issue_internal_event
+    EL_EVENT_INTERNAL_D = 4,    ///< mannually signaled event D using ::el_trigger_issue_internal_event
+    EL_EVENT_INTERNAL_E = 5,    ///< mannually signaled event E using ::el_trigger_issue_internal_event
+    EL_EVENT_INTERNAL_F = 6,    ///< mannually signaled event F using ::el_trigger_issue_internal_event
+    EL_EVENT_IR_RECEIVER_INCOME = 10,   ///< when the ir receiver receives data
+    EL_EVENT_UART1_RECEIVED = 11,       ///< when UART1 receives data
+    EL_EVENT_UART2_RECEIVED = 12,       ///< when UART2 receives data (not implemented yet)
+    EL_EVENT_ACCELEROMETER_UPDATE = 20, ///< when the accelerometer output is updated
+    EL_EVENT_IR_PROXIMITY_UPDATE = 21,  ///< when the ir proximity sensor outputs are updated
+    EL_EVENT_CAMERA_FRAME_UPDATE = 22,  ///< when a new image frame from the camera is ready 
+} el_trigger_event_type;
+
+
 /*!
     \brief create a trigger in the system
 
@@ -74,20 +96,6 @@ void el_trigger_enable(el_handle h);
 */
 void el_trigger_disable(el_handle h);
 
-#define EL_EVENT_NONE                       0
-#define EL_EVENT_INTERNAL_A                 1
-#define EL_EVENT_INTERNAL_B                 2
-#define EL_EVENT_INTERNAL_C                 3
-#define EL_EVENT_INTERNAL_D                 4
-#define EL_EVENT_INTERNAL_E                 5
-#define EL_EVENT_INTERNAL_F                 6
-#define EL_EVENT_IR_RECEIVER_INCOME         10
-#define EL_EVENT_UART1_RECEIVED             11
-#define EL_EVENT_UART2_RECEIVED             12
-#define EL_EVENT_ACCELEROMETER_UPDATE       20
-#define EL_EVENT_IR_PROXIMITY_UPDATE        21
-#define EL_EVENT_CAMERA_FRAME_UPDATE        22
-
 /*! 
     \brief set the event of the trigger
 
@@ -96,7 +104,7 @@ void el_trigger_disable(el_handle h);
 
     This function defines the event of the trigger. 
 */
-void el_trigger_set_event(el_handle h,el_enum e);
+void el_trigger_set_event(el_handle h,el_trigger_event_type e);
 
 /*! 
     \brief set the condition callback function of the trigger

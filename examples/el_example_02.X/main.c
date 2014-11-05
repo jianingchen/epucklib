@@ -27,7 +27,6 @@ int main(int argc,char*argv[]){
 
 void Process_ConsoleLoop(void*arg){
     char c;
-    int i;
     int ir_ref[8];
 
     elu_printf("EL_EXAMPLE_02\n");
@@ -35,7 +34,7 @@ void Process_ConsoleLoop(void*arg){
     Trigger_CameraImageProcessing_Setup();
     Trigger_ObjectFollowing_Setup();
 
-    el_config_ir_proximity(EL_IR_PROXIMITY_PULSE);
+    el_config_ir_proximity(EL_WORKING_MODE,EL_IR_PROXIMITY_PULSE);
     el_enable_ir_proximity();
     
     el_config_stepper_motor(EL_SPEED_ACC_ENABLE,true);

@@ -168,7 +168,7 @@ int main(int argc,char*argv[]){
     el_enable_stepper_motor();
     */
     
-    el_config_ir_proximity(EL_IR_PROXIMITY_PULSE);
+    el_config_ir_proximity(EL_WORKING_MODE,EL_IR_PROXIMITY_PULSE);
     el_enable_ir_proximity();
     
     el_enable_camera();

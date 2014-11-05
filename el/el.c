@@ -79,7 +79,7 @@ void el_calibrate_sensors(){
     }
     
     // calibrate environment ambient intensity
-    el_config_ir_proximity(EL_IR_PROXIMITY_PASSIVE);
+    el_config_ir_proximity(EL_WORKING_MODE,EL_IR_PROXIMITY_PASSIVE);
     el_enable_ir_proximity();
     for(i=0;i<8;i++){
         el_irps_samples_Temp[i] = 0;
@@ -101,7 +101,7 @@ void el_calibrate_sensors(){
     el_sleep(100);
 
     // calibrate reflection intensity
-    el_config_ir_proximity(EL_IR_PROXIMITY_PULSE);
+    el_config_ir_proximity(EL_WORKING_MODE,EL_IR_PROXIMITY_PULSE);
     el_enable_ir_proximity();
     for(i=0;i<8;i++){
         el_irps_samples_Temp[i] = 0;

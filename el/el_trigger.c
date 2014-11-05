@@ -178,9 +178,9 @@ void el_delete_trigger(el_handle trigger){
     p->remove = true;
 }
 
-void el_trigger_set_event(el_handle trigger,el_enum event_type){
+void el_trigger_set_event(el_handle trigger,el_trigger_event_type e){
     el_trigger *p = EL_HANDLE_TO_POINTER(trigger);
-    p->event_type = event_type;
+    p->event_type = e;
     p->event_data = NULL;
 }
 

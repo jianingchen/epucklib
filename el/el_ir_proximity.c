@@ -72,8 +72,19 @@ void el_init_ir_proximity(){
     
 }
 
-void el_config_ir_proximity(el_ir_proximity_mode mode){
-    el_irps_working_mode = mode;
+void el_config_ir_proximity(el_ir_proximity_param param,int value){
+
+    switch(param){
+
+    case EL_WORKING_MODE:
+        el_irps_working_mode = value;
+        break;
+
+    case EL_ENVIRONMENT_AMBIENT:
+        el_irps_environment_ambient = value;
+        break;
+        
+    }
 }
 
 void el_enable_ir_proximity(void){
