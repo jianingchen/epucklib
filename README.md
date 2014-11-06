@@ -5,38 +5,51 @@ j.n.chen@sheffield.ac.uk
 
 ==== embedded system library for e-puck (Work In Progress) ====
 
+
 Environment:
 
  - The project format in the distribution is for MPLAB X.
  
  - This library has been developed and tested using XC16 compiler. 
  
- - This library currently only works on e-puck with the camera model PO6030K but NOT PO3030K. 
+ - This library currently only works on e-puck with the camera model PO6030K 
+ but NOT PO3030K. 
+
 
 Hightlights: 
 
  - This is a library for developing the embedded system of the e-puck robot. 
  
- - Unlike the official e-puck lib (has several modules), this library used all-in-one design (one header path, one .a file). 
+ - Unlike the standard e-puck lib (has several modules), this library used 
+ all-in-one design (one header path, one .a file). 
  
- - The online documentation page of this library is http://jianingchen.github.io/epucklib/html/.
+ - The online documentation page of this library is 
+ http://jianingchen.github.io/epucklib/html/.
  
- - Support pretty much everything on the e-puck but the sound related and fft functionalities. 
+ - Support pretty much everything on the e-puck but the sound related and fft 
+ functionalities. 
  
- - A more user-friendly and potentially faster (40x15 @ ~18.4 fps) interface for e-puck's camera. 
+ - A more user-friendly and potentially faster (40x15 @ ~18.4 fps) interface 
+ for e-puck's camera. 
  
- - Multi-tasking through _Process_ --- so several loop with time delays can run concurrently. 
+ - Multi-tasking through _Process_ --- so several loop with time delays can run 
+ concurrently. 
 
- - Organize the development using two object-oriented concepts: _Timer_ and _Trigger_. 
+ - Organize the development using two object-oriented concepts: 
+ _Timer_ and _Trigger_. 
 
- - _Timer_ can be used to produce delay, as well as creating periodic callbacks (similar to the agenda in the official library)
+ - _Timer_ can be used to produce delay, as well as creating periodic callbacks 
+ (similar to the agenda in the official library)
 
- - A _Trigger_ can automatically launch a _Process_ once something happened, which let you do things only interrupts can do without dealing with hardware interrupts. 
+ - A _Trigger_ can automatically launch a _Process_ once something happened, 
+ which let you do things only interrupts can do without dealing with hardware 
+ interrupts. 
 
 
 License: 
 
- - All source files starting with "e_" are from the official e-puck library, and attribute to whom ever own the authorship. 
+ - All source files starting with "e_" are from the official e-puck library, 
+ and attribute to whom ever own the copyright of them. 
  
  - This library is released under the terms of the MIT license:
 
