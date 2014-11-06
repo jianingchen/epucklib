@@ -5,9 +5,17 @@ j.n.chen@sheffield.ac.uk
 
 ==== embedded system library for e-puck (Work In Progress) ====
 
- - This is a library for developing the embedded system of the e-puck robot. 
+Environment:
+
+ - The project format in the distribution is for MPLAB X.
  
- - This library currently only works on e-puck with the camera model PO6030K but not PO3030K. 
+ - This library has been developed and tested using XC16 compiler. 
+ 
+ - This library currently only works on e-puck with the camera model PO6030K but NOT PO3030K. 
+
+Hightlights: 
+
+ - This is a library for developing the embedded system of the e-puck robot. 
  
  - All source files starting with "e_" are from the official e-puck library, and attribute to whom ever own the authorship. 
  
@@ -27,7 +35,27 @@ j.n.chen@sheffield.ac.uk
 
  - A _Trigger_ can automatically launch a _Process_ once something happened, which let you do things only interrupts can do without dealing with hardware interrupts. 
 
- - The project format in the distribution is for MPLAB X.
- 
- - This library has been developed using XC16 compiler. 
- 
+license: 
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Jianing Chen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
