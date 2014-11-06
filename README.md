@@ -13,7 +13,7 @@ j.n.chen@sheffield.ac.uk
  
  - Unlike the official e-puck lib (has several modules), this library used all-in-one design (one header path, one .a file). 
  
- - The online documentation page of this library is > http://jianingchen.github.io/epucklib/html/.
+ - The online documentation page of this library is http://jianingchen.github.io/epucklib/html/.
  
  - Support pretty much everything on the e-puck but the sound related and fft functionalities. 
  
@@ -30,6 +30,4 @@ j.n.chen@sheffield.ac.uk
  - The project format in the distribution is for MPLABX.
  
  - This library has been developed using XC16 compiler. 
- 
- - The documentation page of this library is > http://jianingchen.github.io/epucklib/html/
  
