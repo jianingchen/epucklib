@@ -29,8 +29,7 @@ Hightlights:
  - Support pretty much everything on the e-puck but the sound related and fft 
  functionalities. 
  
- - A more user-friendly and potentially faster (40x15 @ ~18.4 fps) interface 
- for e-puck's camera. 
+ - A user-friendly and fast (40x15 @ ~18.4 fps) interface for e-puck's camera.  
  
  - Multi-tasking through _Process_ --- so several loop with time delays can run 
  concurrently. 
