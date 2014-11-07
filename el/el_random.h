@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 /*!
 
@@ -102,5 +119,4 @@ el_int16 el_random_int(el_int16 min,el_int16 max);
 */
 el_bool el_random_rate(el_uint16 num,el_uint16 den);
 
-#endif	/* EL_RANDOM_H */
-
+#endif

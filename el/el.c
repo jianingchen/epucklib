@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution: 
+https://github.com/jianingchen/epucklib
+
+online documentation: 
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 #include "el_context.h"
 #include "el_interrupt.h"
@@ -31,7 +48,7 @@ void el_initialization(){
     
 }
 
-void el_main_loop(){
+NEVER_RETURN el_main_loop(){
     
     el_process_mck = el_get_masterclock();
     el_timer_mck = el_get_masterclock();
@@ -69,39 +86,18 @@ void el_calibrate_sensors(){
     el_led_set(EL_LED_RING_5,EL_ON);
     el_led_set(EL_LED_RING_7,EL_ON);
 
+    el_sleep(100);
+
     /** infrared proximity sensors **/
     
     el_irps_is_calibrated = false;
-    el_irps_environment_ambient = 0;
     for(i=0;i<8;i++){
         el_irps_samples_NeutralNoise[i] = 0;
         el_irps_samples_NeutralReflection[i] = 0;
     }
     
-    // calibrate environment ambient intensity
-    el_config_ir_proximity(EL_WORKING_MODE,EL_IR_PROXIMITY_PASSIVE);
-    el_enable_ir_proximity();
-    for(i=0;i<8;i++){
-        el_irps_samples_Temp[i] = 0;
-    }
-    for(n=0;n<8;n++){
-        el_sleep(50);
-        for(i=0;i<8;i++){
-            el_irps_samples_Temp[i] += el_irps_samples_Ambient[i];
-        }
-    }
-    el_irps_environment_ambient = 0;
-    for(i=0;i<8;i++){
-        el_irps_environment_ambient += el_irps_samples_Temp[i]/8;
-    }
-    el_irps_environment_ambient *= 3;
-    el_irps_environment_ambient /= 4;
-    el_disable_ir_proximity();
-    
-    el_sleep(100);
-
     // calibrate reflection intensity
-    el_config_ir_proximity(EL_WORKING_MODE,EL_IR_PROXIMITY_PULSE);
+    el_irps_working_mode = EL_IR_PROXIMITY_PULSE;
     el_enable_ir_proximity();
     for(i=0;i<8;i++){
         el_irps_samples_Temp[i] = 0;

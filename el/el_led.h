@@ -1,7 +1,24 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 /*!
 
-\defgroup EL_LED LED
+\defgroup EL_LED LED and Selector
 
 \section Introduction
 

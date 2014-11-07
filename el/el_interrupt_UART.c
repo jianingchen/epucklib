@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 #include "el_context.h"
 #include "el_interrupt.h"
@@ -35,11 +52,10 @@ void __attribute__((interrupt, no_auto_psv))_U1RXInterrupt(void){
 
     c = U1RXREG;
 
-    el_uart1_rx_buffer[el_uart1_rx_buf_i] = c;
-    el_uart1_rx_buf_i++;
+    el_uart1_rx_buffer[el_uart1_rx_buf_i++] = c;
     el_uart1_rx_buf_i %= EL_UART_RX_BUF_DIM;
     if(el_uart1_rx_buf_i==el_uart1_rx_buf_o){
-        el_uart1_rx_buf_o++;
+        ++el_uart1_rx_buf_o;
         el_uart1_rx_buf_o %= EL_UART_RX_BUF_DIM;
     }
     
@@ -56,13 +72,13 @@ void __attribute__((interrupt, no_auto_psv))_U1TXInterrupt(void){
     
     if(el_uart1_tx_counter > 0){
         // transmit next char
-        el_uart1_tx_pointer++;
+        ++el_uart1_tx_pointer;
         #ifdef EL_UART_NEWLINE_CRLF
         if(*el_uart1_tx_pointer=='\n'){
             U1TXREG = '\r';
         }
         #endif
-        el_uart1_tx_counter--;
+        --el_uart1_tx_counter;
         U1TXREG = *el_uart1_tx_pointer;
     }else{
         // transmission finished

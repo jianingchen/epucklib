@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 #include "el_context.h"
 #include "el_trigger.h"
@@ -167,8 +184,7 @@ el_handle el_create_trigger(){
     p->enabled = true;
     p->remove = false;
 
-    el_trigger_reg[el_trigger_reg_i] = p;
-    el_trigger_reg_i++;
+    el_trigger_reg[el_trigger_reg_i++] = p;
 
     return EL_POINTER_TO_HANDLE(p);
 }

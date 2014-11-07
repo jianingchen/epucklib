@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 /*!
 
@@ -31,61 +48,75 @@ The maximum speed of these motors are 1000 steps per second.
 #define EL_STEPPER_MOTOR_LEFT               0
 #define EL_STEPPER_MOTOR_RIGHT              1
 
-/*! 
-    This enum is used in ::el_config_stepper_motor to select the parameter 
-    to be changed. 
+
+/*!
+    This data structure is used in ::el_config_stepper_motor.
+    A static instance of this struct exists internally, it can be pointed to
+    through ::el_config_stepper_motor_list. 
 */
-typedef enum{
-    EL_SPEED_ACC_ENABLE,            ///< enabling status of motor acceleration
-    EL_SPEED_ACC_LINEAR_TERM,       ///< acceleration rate of the motors
-}el_stepper_motor_param;
+typedef struct {
+    el_bool UseAcceleration;
+    el_uint16 AccelerationRate;
+} el_stepper_motor_param;
+
+/*
+--------------------------------------------------------------------------------
+*/
+
+/*!
+    \brief get the pointer to a static instance of \ref el_stepper_motor_param
+
+    \return the pointer
+*/
+el_stepper_motor_param*el_config_stepper_motor_list();
+
+
+/*!
+    \brief apply the parameters to the stepper motors
+
+    \param p    pointer to the data structure containing all parameters
+
+    Currently, the parameters are mainly related to the artificial acceleration
+    of the stepper motors, which are typically used to make the motion of
+    the robot more smooth.
+
+    For example, the following code enables a linear artificial acceleration
+    with a rate of 2000:
+    \code
+    el_stepper_motor_param *StepperMotorSetting;
+    ...
+    StepperMotorSetting = el_config_stepper_motor_list();
+    StepperMotorSetting->UseAcceleration = true;
+    StepperMotorSetting->AccelerationRate = 2000;
+    el_config_stepper_motor( StepperMotorSetting );
+    ...
+    \endcode
+    A linear acceleration rate of 2000 means the stepping rate of the motors 
+    can reach 1000 from 0 in 0.5 sec. By default, the artificial acceleration
+    is enabled and the acceleration rate is 3000. 
+*/
+void el_config_stepper_motor(const el_stepper_motor_param*p);
 
 
 /*! 
     \brief enable the stepper motor module
-
 */
 void el_enable_stepper_motor(void);
 
 
 /*! 
     \brief disable the stepper motor module
-
 */
 void el_disable_stepper_motor(void);
 
 
-/*!
-    \brief configure various parameters of the stepper motor module
-
-    \param param    target parameter
-    \param value    value to be applied
-
-    Use param to select which paramter to change. 
-    
-    Currently, this function is only used to configure the artificial acceleration 
-    of the stepper motors, which are typically used to make the motion of the robot 
-    more smooth. 
-    
-    For example, the following code enables a linear artificial acceleration 
-    with a rate of 2000:
-    \code
-    ...
-    el_disable_stepper_motor();
-    el_config_stepper_motor(EL_SPEED_ACC_ENABLE,true);
-    el_config_stepper_motor(EL_SPEED_ACC_LINEAR_TERM,2000);
-    el_enable_stepper_motor();
-    ...
-    \endcode
-    A linear acceleration rate of 2000 means the stepping rate of the motors can 
-    reach 1000 from 0 in 0.5 sec. By default, artificial acceleration is disabled 
-    while the acceleration rate is set to 3000.
+/*
+--------------------------------------------------------------------------------
 */
-void el_config_stepper_motor(el_stepper_motor_param param,int value);
 
 
 /*! 
-    \brief set the stepping rate of a motor
+    \brief set the stepping rate and direction of a motor
 
     \param i    index of the motor
     \param u    stepping rate of the motor
@@ -134,11 +165,12 @@ void el_set_wheel_speed(int left,int right);
 
 #include "el_clock.h"
 
-#define EL_STPM_NUMBER      2
-#define EL_STPM_DIR_STOP    0
-#define EL_STPM_DIR_FORWARD 1
-#define EL_STPM_DIR_REVERSE 2
-#define EL_STPM_INTERRUPT_FREQ  EL_T3_FREQ
+#define EL_STPM_NUMBER              2
+#define EL_STPM_DIR_STOP            0
+#define EL_STPM_DIR_FORWARD         1
+#define EL_STPM_DIR_REVERSE         2
+#define EL_STPM_INTERRUPT_FREQ      EL_T3_FREQ
+#define EL_STPM_SPEED_CONTROL_FREQ  50
 
 typedef struct{
     el_int8 direction;

@@ -126,13 +126,10 @@ The e-puck embedded system library is distributed under the MIT license.
 The source files starting with "e_" are copied from the e-puck standard 
 library and attribute to whomever own the authorship. 
 
-Logo of the e-puck embedded system library (see top left of this page) is 
-licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 
-International License. 
-
+Logo of the library (see top left of this page) is licensed under 
+a Creative Commons Attribution-NonCommercial 4.0 International License. 
+ 
 This library has been developed as a part of the PhD of Jianing Chen in 
 Natural Robotics Lab, The University of Sheffield. 
-
-(TODO)
 
 **/

@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 #include "el_context.h"
 #include "el_uart.h"
@@ -19,6 +36,10 @@ volatile el_uint8 el_uart2_rx_buf_i;
 volatile el_uint8 el_uart2_rx_buf_o;
 char el_uart2_rx_buffer[EL_UART_RX_BUF_DIM];
 #endif
+
+/**
+--------------------------------------------------------------------------------
+**/
 
 void el_init_uart(){
     int i;
@@ -55,21 +76,6 @@ void el_init_uart(){
     
 }
 
-bool el_uart_is_sending(el_index channel){
-
-    switch(channel){
-
-    case EL_UART_1:
-        return el_uart1_tx_counter > 0;
-
-    case EL_UART_2:
-        return false;
-
-    }
-
-    return false;
-}
-
 void el_uart1_tx_clear(){
     IEC0bits.U1TXIE = 0;
     el_uart1_tx_counter = 0;
@@ -78,7 +84,7 @@ void el_uart1_tx_clear(){
 
 void el_uart1_tx_issue(){
     IEC0bits.U1TXIE = 1;
-    el_uart1_tx_counter--;
+    --el_uart1_tx_counter;
 #ifdef EL_UART_NEWLINE_CRLF
         if(*el_uart1_tx_pointer=='\n'){
             U1TXREG = '\r';
@@ -95,34 +101,23 @@ void el_uart2_tx_issue(){
 
 }
 
-void el_uart_send_string(el_index channel,const char*str){
-    int i;
-    char c;
-    
+/**
+--------------------------------------------------------------------------------
+**/
+
+bool el_uart_is_sending(el_index channel){
+
     switch(channel){
 
     case EL_UART_1:
-        el_uart1_tx_clear();
-        i = 0;
-        while(i < EL_UART_TX_BUF_DIM){
-            c = str[i];
-            if(c=='\0'){
-                break;
-            }
-            el_uart1_tx_buffer[i] = c;
-            i++;
-        }
-        if(i > 0){
-            el_uart1_tx_pointer = el_uart1_tx_buffer;
-            el_uart1_tx_counter = i;
-            el_uart1_tx_issue();
-        }
-        break;
+        return el_uart1_tx_counter > 0;
 
     case EL_UART_2:
+        return false;
 
-        break;
     }
+
+    return false;
 }
 
 void el_uart_send_char(el_index channel,char c){
@@ -141,6 +136,39 @@ void el_uart_send_char(el_index channel,char c){
         break;
     }
 }
+
+void el_uart_send_string(el_index channel,const char*str){
+    int i;
+    char c;
+    
+    switch(channel){
+
+    case EL_UART_1:
+        el_uart1_tx_clear();
+        i = 0;
+        while(i < EL_UART_TX_BUF_DIM){
+            c = str[i];
+            if(c=='\0'){
+                break;
+            }
+            el_uart1_tx_buffer[i++] = c;
+        }
+        if(i > 0){
+            el_uart1_tx_pointer = el_uart1_tx_buffer;
+            el_uart1_tx_counter = i;
+            el_uart1_tx_issue();
+        }
+        break;
+
+    case EL_UART_2:
+
+        break;
+    }
+}
+
+/**
+--------------------------------------------------------------------------------
+**/
 
 el_uint16 el_uart_get_char_counter(el_index channel){
     el_uint16 i,o;
@@ -190,7 +218,8 @@ el_uint16 el_uart_get_string(el_index channel,char*buf,unsigned int l){
     int length;
 
     length = 0;
-    l--;
+    
+    --l;
 
     switch(channel){
 
@@ -272,7 +301,7 @@ void el_uart_erase_last_char(el_index channel){
         o = el_uart1_rx_buf_o;
         i = el_uart1_rx_buf_i;
         if(i != o){
-            i--;
+            --i;
             i %= EL_UART_RX_BUF_DIM;
             el_uart1_rx_buf_i = i;
         }

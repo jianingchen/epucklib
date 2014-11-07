@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 /*!
 
@@ -14,20 +31,27 @@
 #include "el_common.h"
 #include "el_clock.h"
 
-// the entry function of a process is a function that takes a pointer and returns nothing
 typedef void (*el_process)(void*);
 #define EL_PROCESS void
 
 /*!
     \brief Execute a function as a process. 
     
-    \param func the pointer to the function to be executed
-    \param arg  an arguments passed to the function to be executed
+    \param func     the pointer to the function to be executed
+    \param arg      an arguments passed to the function to be executed
     
-    \return the index of the process (-1 is fail)
+    \return the index of the process (-1 if failed)
 
-    This function execute a function as a Process with the given argument 
-    (as "func(arg);"). Maxmum number of process is 6. 
+    This function can execute a function (entry function) as a process 
+    with the given argument (as "func(arg);"). Maxmum number of process is 7. 
+    
+    The entry function must be a function that takes a void pointer as the 
+    parameter and returns void. For example:
+    \code
+    void my_process(void*that_arg){
+        ...
+    }
+    \endcode
 */
 int el_launch_process(el_process func,void*arg);
 
@@ -94,12 +118,16 @@ void el_process_wait_fraction(unsigned int num,unsigned int den);
 void el_process_cooperate();
 
 
+/*
+--------------------------------------------------------------------------------
+*/
+
 
 #ifdef EL_INCLUDE_CONTEXT
 
-#define EL_PROCESS_STACK_OFFSET   160
+#define EL_PROCESS_STACK_OFFSET 160
 #define EL_PROCESS_STACK_SIZE   192
-#define EL_PROCESS_DIM          6
+#define EL_PROCESS_DIM          7
 
 extern el_mci el_process_mck;
 extern bool el_is_in_process;

@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 #include "el_context.h"
 #include "el_clock.h"
@@ -25,7 +42,9 @@ void __attribute__((interrupt, no_auto_psv)) _T3Interrupt(void){
     
     el_routine_masterclock_14400hz();
 
-    el_routine_ir_receiver_14400hz();
+    if(el_irrc_enabled){
+        el_routine_ir_receiver_14400hz();
+    }
 
     if(el_stpm_enabled){
         el_routine_stepper_motor_14400hz();

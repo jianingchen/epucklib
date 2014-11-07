@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 /*!
 
@@ -19,16 +36,17 @@ typedef bool (*el_condition)(void*);
 
 /*! 
     This enum is used in ::el_trigger_set_event to specify the event 
-    of a trigger.
+    of a trigger. Internal events are manually triggered using
+    ::el_trigger_issue_internal_event.
 */
-typedef enum{
+typedef enum {
     EL_EVENT_NONE = 0,          ///< no event
-    EL_EVENT_INTERNAL_A = 1,    ///< mannually signaled event A using ::el_trigger_issue_internal_event
-    EL_EVENT_INTERNAL_B = 2,    ///< mannually signaled event B using ::el_trigger_issue_internal_event
-    EL_EVENT_INTERNAL_C = 3,    ///< mannually signaled event C using ::el_trigger_issue_internal_event
-    EL_EVENT_INTERNAL_D = 4,    ///< mannually signaled event D using ::el_trigger_issue_internal_event
-    EL_EVENT_INTERNAL_E = 5,    ///< mannually signaled event E using ::el_trigger_issue_internal_event
-    EL_EVENT_INTERNAL_F = 6,    ///< mannually signaled event F using ::el_trigger_issue_internal_event
+    EL_EVENT_INTERNAL_A = 1,    ///< internal event A
+    EL_EVENT_INTERNAL_B = 2,    ///< internal event B
+    EL_EVENT_INTERNAL_C = 3,    ///< internal event C
+    EL_EVENT_INTERNAL_D = 4,    ///< internal event D
+    EL_EVENT_INTERNAL_E = 5,    ///< internal event E
+    EL_EVENT_INTERNAL_F = 6,    ///< internal event F
     EL_EVENT_IR_RECEIVER_INCOME = 10,   ///< when the ir receiver receives data
     EL_EVENT_UART1_RECEIVED = 11,       ///< when UART1 receives data
     EL_EVENT_UART2_RECEIVED = 12,       ///< when UART2 receives data (not implemented yet)
@@ -37,12 +55,15 @@ typedef enum{
     EL_EVENT_CAMERA_FRAME_UPDATE = 22,  ///< when a new image frame from the camera is ready 
 } el_trigger_event_type;
 
+/*
+--------------------------------------------------------------------------------
+*/
 
 /*!
     \brief create a trigger in the system
 
     \return handle of the trigger
-
+    
     This function create a trigger in the system. 
     It returns a handle to the trigger created. This handle is used 
     to refer the trigger in the related functions. 
@@ -57,6 +78,7 @@ el_handle el_create_trigger();
 */
 void el_delete_trigger(el_handle trigger);
 
+
 /*! 
     \brief enable a trigger
 
@@ -66,6 +88,7 @@ void el_delete_trigger(el_handle trigger);
     A trigger is enabled by default after its creation.
 */
 void el_trigger_enable(el_handle h);
+
 
 /*! 
     \brief disable a trigger
@@ -77,6 +100,7 @@ void el_trigger_enable(el_handle h);
 */
 void el_trigger_disable(el_handle h);
 
+
 /*! 
     \brief set the event of the trigger
 
@@ -86,6 +110,7 @@ void el_trigger_disable(el_handle h);
     This function defines the event of the trigger. 
 */
 void el_trigger_set_event(el_handle h,el_trigger_event_type e);
+
 
 /*! 
     \brief set the condition callback function of the trigger
@@ -102,16 +127,37 @@ void el_trigger_set_event(el_handle h,el_trigger_event_type e);
 */
 void el_trigger_set_condition(el_handle h,el_condition f);
 
+
 /*!
     \brief set the process entry function of the trigger
 
-    \param h    handle of the trigger
-    \param f    pointer to the process function
+    \param h        handle of the trigger
+    \param func     pointer to the process function
 
     When the trigger passes its condition and it has a registered process,
-    the process will be launched and the trigger will be disabled automatically.
+    the process will be launched while the trigger will be disabled 
+    automatically. 
+    
+    The parameter of the process function of a trigger will be assigned with 
+    the handle of the trigger. The following code can be used to make the hanlde
+    more explicit: 
+    \code
+    void TriggerA_Process(void*arg){
+        el_handle this_trigger = arg;
+        
+        // the program to be executed
+        ...
+        
+        // re-enable the trigger if the trigger is supposed to be perodic. 
+        el_trigger_enable(this_trigger);
+        
+    }
+    \endcode
+    
+    To learn more about the usage of a process, see \ref EL_PROCESS.  
 */
-void el_trigger_set_process(el_handle h,el_process f);
+void el_trigger_set_process(el_handle h,el_process func);
+
 
 /*! 
     \brief get the number of times the trigger passed its condition
@@ -123,15 +169,20 @@ void el_trigger_set_process(el_handle h,el_process f);
 */
 uint16_t el_trigger_get_counter(el_handle h);
 
+
 /*! 
     \brief issue an internal event
 
     \param e    event type (must be internal events)
 
-    This will affect the triggers using "EL_EVENT_INTERNAL_*" as their events. 
+    This will affect the triggers using "EL_EVENT_INTERNAL_<*>" as their events. 
 */
 void el_trigger_issue_internal_event(el_enum e);
 
+
+/*
+--------------------------------------------------------------------------------
+*/
 
 
 #ifdef EL_INCLUDE_CONTEXT

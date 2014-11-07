@@ -9,8 +9,8 @@ A Process runs concurrently with other process.
 
 \section Usage
 
-This library has multi-tasking capability --- upto 6 functions can run 
-concurrently. Each of these functions is called a 'process'. 
+This library has multi-tasking capability --- upto 7 functions with time delays 
+inside can run concurrently. Each of these functions is called a 'process'. 
 Call the function "el_launch_process" to launch a process. In a process, 
 call "el_process_wait" to wait for a certain amount of time. Within this 
 wait period, other process are being executed. 

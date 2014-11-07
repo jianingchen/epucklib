@@ -1,14 +1,32 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 #include "el_context.h"
 #include "el_ir_receiver.h"
 
-el_uint16 el_irrc_counter;
-el_uint8 el_irrc_address;
-el_uint8 el_irrc_data;
-el_uint8 el_irrc_check;
-
+el_bool el_irrc_enabled;
 el_uint8 el_irrc_phase;
 el_mcd el_irrc_timer;
+
+el_uint16 el_irrc_counter;
+el_uint8 el_irrc_check;
+el_uint8 el_irrc_address;
+el_uint8 el_irrc_data;
 
 static union{
     el_uint16 FullBits;
@@ -25,20 +43,33 @@ static union{
 
 
 void el_init_ir_receiver(){
-    
-    el_irrc_address = 0;
-    el_irrc_data = 0;
-    el_irrc_check = 2;
-    el_irrc_counter = 0;
+    el_irrc_enabled = 0;
     el_irrc_phase = 0;
     el_irrc_timer = 0;
+    el_irrc_counter = 0;
+    el_irrc_check = 2;
+    el_irrc_address = 0;
+    el_irrc_data = 0;
+}
+
+void el_enable_ir_receiver(){
+    el_irrc_phase = 0;
+    el_irrc_timer = 0;
+    el_irrc_check = 2;
+    el_irrc_address = 0;
+    el_irrc_data = 0;
+    el_irrc_enabled = true;
+}
+
+void el_disable_ir_receiver(){
+    el_irrc_enabled = false;
 }
 
 void el_ir_receiver_reset(){
-    
+
+    el_irrc_check = 2;
     el_irrc_address = 0;
     el_irrc_data = 0;
-    el_irrc_check = 2;
     el_irrc_phase = 0;
     el_irrc_timer = 0;
     

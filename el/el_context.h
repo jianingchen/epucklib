@@ -1,4 +1,22 @@
 /*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
+
+/*
  This header is only included by the components within this library.
 */
 #ifndef EL_INTERNAL_CONTEXT_H

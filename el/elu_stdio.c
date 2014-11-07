@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 #include "el_context.h"
 #include "el_process.h"
@@ -40,7 +57,7 @@ int elu_snprintf(char*s,unsigned int n,const char*format,...){
     return r;
 }
 
-int elu_sscanf(char*s,const char*format,...){
+int elu_sscanf(const char*s,const char*format,...){
     va_list args;
     int r;
     int offset;
@@ -65,7 +82,7 @@ int elu_printf(const char *format,...){
     offset = EL_EPUCK_MEMORY_SIZE - ELU_STDIO_STACK_SIZE - (int)&offset;
     
     length = elu_warp_vsnprintf(offset,elu_stdio_buffer,ELU_STDIO_BUFFER_SIZE,format,args);
-    
+
     va_end(args);
 
     if(length > 0){
@@ -74,6 +91,35 @@ int elu_printf(const char *format,...){
             el_process_cooperate();
         }
         
+        el_uart_send_string(ELU_STDIO_UART,elu_stdio_buffer);
+
+    }
+
+    return length;
+}
+
+int elu_println(const char *format,...){
+    va_list args;
+    int length;
+    int offset;
+
+    va_start(args,format);
+
+    offset = EL_EPUCK_MEMORY_SIZE - ELU_STDIO_STACK_SIZE - (int)&offset;
+
+    length = elu_warp_vsnprintf(offset,elu_stdio_buffer,ELU_STDIO_BUFFER_SIZE - 1,format,args);
+
+    elu_stdio_buffer[length++] = '\n';
+    elu_stdio_buffer[length] = '\0';
+
+    va_end(args);
+
+    if(length > 0){
+
+        while(el_uart_is_sending(ELU_STDIO_UART)){
+            el_process_cooperate();
+        }
+
         el_uart_send_string(ELU_STDIO_UART,elu_stdio_buffer);
 
     }
@@ -140,4 +186,12 @@ int elu_scanf(const char *format,...){
 
 void elu_scanf_set_echo(bool k){
     elu_stdio_scanf_echo = k;
+}
+
+int elu_putchar(int c){
+    while(el_uart_is_sending(ELU_STDIO_UART)){
+        el_process_cooperate();
+    }
+    el_uart_send_char(ELU_STDIO_UART,c);
+    return c;
 }

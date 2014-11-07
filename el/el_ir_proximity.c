@@ -1,23 +1,44 @@
+/**
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+**/
 
 #include "el_context.h"
 #include "el_ir_proximity.h"
 
 bool el_irps_enabled;
-uint8_t el_irps_working_mode;
-uint8_t el_irps_working_phase;
+el_uint8 el_irps_working_mode;
+el_uint8 el_irps_working_phase;
 void (*el_adc_callback_ir_proximity)(const unsigned int*result_8v);
-uint16_t el_irps_counter;
-bool el_irps_is_calibrated;
-uint16_t el_irps_environment_ambient;
+el_int32 el_irps_counter;
 
-uint16_t el_irps_samples_Ambient[8];//Noise + Ambient
-uint16_t el_irps_samples_Mixed[8];//Noise + Ambient + Emitter Reflection
-uint16_t el_irps_samples_Temp[8];
-uint16_t el_irps_samples_Last[8];
-uint32_t el_irps_samples_Spikes[8];
-uint16_t el_irps_samples_Noise[8];
-uint16_t el_irps_samples_NeutralReflection[8];// need calibration
-uint16_t el_irps_samples_NeutralNoise[8];
+el_bool el_irps_is_calibrated;
+el_bool el_irps_subtract_ea;
+el_uint16 el_irps_environment_ambient;
+
+el_uint16 el_irps_samples_Ambient[8];//Noise + Ambient
+el_uint16 el_irps_samples_Mixed[8];//Noise + Ambient + Emitter Reflection
+el_uint16 el_irps_samples_Temp[8];
+el_uint16 el_irps_samples_Last[8];
+el_uint32 el_irps_samples_Spikes[8];
+el_uint16 el_irps_samples_Noise[8];
+el_uint16 el_irps_samples_NeutralReflection[8];// need calibration
+el_uint16 el_irps_samples_NeutralNoise[8];
+
+el_ir_proximity_param el_irps_parameters;
 
 static void el_irps_set_ir_leds(int on){
     if(on){
@@ -33,7 +54,7 @@ static void el_irps_set_ir_leds(int on){
     }
 }
 
-static void el_irps_dump_adc_values(uint16_t*result8v,const unsigned int*adc_result_8v){
+static void el_irps_dump_adc_values(el_uint16*result8v,const unsigned int*adc_result_8v){
     int i;
     for(i=0;i<8;i++){
         result8v[i] = 4095 - adc_result_8v[i];
@@ -43,17 +64,23 @@ static void el_irps_dump_adc_values(uint16_t*result8v,const unsigned int*adc_res
 
 void el_init_ir_proximity(){
     int i;
+
+    PULSE_IR0 = 0;//Infrared Emitter 0, 4 OFF
+    PULSE_IR1 = 0;//Infrared Emitter 1, 5 OFF
+    PULSE_IR2 = 0;//Infrared Emitter 2, 6 OFF
+    PULSE_IR3 = 0;//Infrared Emitter 3, 7 OFF
     
     el_irps_enabled = 0;
     el_irps_counter = 0;
     el_irps_working_mode = EL_IR_PROXIMITY_PULSE;
     el_irps_working_phase = 0;
     
-    el_irps_is_calibrated = 0;
-    el_irps_environment_ambient = 30;
+    el_irps_is_calibrated = false;
+    el_irps_subtract_ea = false;
+    el_irps_environment_ambient = 0;
     
     el_adc_callback_ir_proximity = NULL;
-
+    
     for(i=0;i<8;i++){
         el_irps_samples_Ambient[i] = 0;
         el_irps_samples_Mixed[i] = 0;
@@ -65,26 +92,25 @@ void el_init_ir_proximity(){
         el_irps_samples_NeutralNoise[i] = 15;
     }
     
-    PULSE_IR0 = 0;//Infrared Emitter 0, 4 OFF
-    PULSE_IR1 = 0;//Infrared Emitter 1, 5 OFF
-    PULSE_IR2 = 0;//Infrared Emitter 2, 6 OFF
-    PULSE_IR3 = 0;//Infrared Emitter 3, 7 OFF
-    
+    el_irps_parameters.WorkingMode = EL_IR_PROXIMITY_PULSE;
+    el_irps_parameters.EnvironmentalAmbient = 0;
+    el_irps_parameters.SubtractEA = false;
 }
 
-void el_config_ir_proximity(el_ir_proximity_param param,int value){
+el_ir_proximity_param* el_config_ir_proximity_list(){
+    return &el_irps_parameters;
+}
 
-    switch(param){
+void el_config_ir_proximity(const el_ir_proximity_param*p){
 
-    case EL_WORKING_MODE:
-        el_irps_working_mode = value;
-        break;
-
-    case EL_ENVIRONMENT_AMBIENT:
-        el_irps_environment_ambient = value;
-        break;
-        
+    el_irps_working_mode = p->WorkingMode;
+    el_irps_environment_ambient = p->EnvironmentalAmbient;
+    el_irps_subtract_ea = p->SubtractEA;
+    
+    if(&el_irps_parameters != p){
+        el_irps_parameters = *p;
     }
+
 }
 
 void el_enable_ir_proximity(void){
@@ -115,7 +141,9 @@ void el_disable_ir_proximity(void){
     }
 }
 
-//==============================================================================
+
+//------------------------------------------------------------------------------
+
 
 static void el_irps_passive_adc_phase_0(const unsigned int*result_8v){
     el_adc_callback_ir_proximity = NULL;
@@ -140,7 +168,9 @@ void el_routine_ir_proximity_passive(void){
 
 }
 
-//==============================================================================
+
+//------------------------------------------------------------------------------
+
 
 static void el_irps_pulse_adc_phase_0(const unsigned int*result_8v){
     el_adc_callback_ir_proximity = NULL;
@@ -179,7 +209,9 @@ void el_routine_ir_proximity_pulse(void){
     
 }
 
-//==============================================================================
+
+//------------------------------------------------------------------------------
+
 
 static void el_irps_emit_adc_phase_0(const unsigned int*result_8v){
     el_adc_callback_ir_proximity = NULL;
@@ -218,7 +250,9 @@ void el_routine_ir_proximity_emit(void){
     
 }
 
-//==============================================================================
+
+//------------------------------------------------------------------------------
+
 
 void el_irps_noise_adc_phase_0(const unsigned int*result_8v){
     /*
@@ -239,7 +273,7 @@ void el_irps_noise_adc_phase_0(const unsigned int*result_8v){
 
 void el_routine_ir_proximity_noise(void){
     /*
-    uint32_t d;
+    el_uint32 d;
     int i;
     
     switch(el_irps_working_phase){
@@ -280,7 +314,9 @@ void el_routine_ir_proximity_noise(void){
     */
 }
 
-//==============================================================================
+
+//------------------------------------------------------------------------------
+
 
 void el_routine_ir_proximity_2400hz(){
     
@@ -316,21 +352,26 @@ void el_routine_ir_proximity_2400hz(){
 
 
 
-int el_irps_get_ambient(int i){
+static int el_irps_get_ambient(int i){
     int r;
-    r = el_irps_samples_Ambient[i] - el_irps_environment_ambient;
+    r = el_irps_samples_Ambient[i];
+    if(el_irps_subtract_ea){
+        r -= (int)el_irps_environment_ambient;
+    }
     return (r < 0)? 0:r;
 }
 
-int el_irps_get_reflection(int i){
+static int el_irps_get_reflection(int i){
     int r;
-    r = el_irps_samples_Mixed[i] - el_irps_samples_Ambient[i] - el_irps_samples_NeutralReflection[i];
+    r = (int)el_irps_samples_Mixed[i] - (int)el_irps_samples_Ambient[i];
+    r -= (int)el_irps_samples_NeutralReflection[i];
     return (r < 0)? 0:r;
 }
 
-int el_irps_get_noise(int i){
+static int el_irps_get_noise(int i){
     int r;
-    r = el_irps_samples_Mixed[i] - el_irps_samples_Ambient[i] - el_irps_samples_NeutralReflection[i];
+    r = (int)el_irps_samples_Mixed[i] - (int)el_irps_samples_Ambient[i];
+    r -= (int)el_irps_samples_NeutralReflection[i];
     if(r>2000){
         r = 0;
     }else{
@@ -343,56 +384,49 @@ int el_irps_get_noise(int i){
 
 
 
-int el_ir_proximity_get_counter(){
+el_int32 el_ir_proximity_get_counter(){
     return el_irps_counter;
 }
 
-int el_ir_proximity_get(el_index which,el_ir_proximity_output type){
-    int i = which%8;
-    
-    switch(type){
-        
-    case EL_IR_AMBIENT:
-        return el_irps_get_ambient(i);
-        
-    case EL_IR_REFLECTION:
-        return el_irps_get_reflection(i);
-        
-    case EL_IR_NOISE:
-        return el_irps_get_noise(i);
+int el_ir_proximity_get(el_index index,el_ir_proximity_output u,el_int16*out){
+    el_int16 length;
+    int i;
+
+    if(index==EL_IR_PROXIMITY_SENSOR_ALL){
+
+        length = 0;
+        for(i=0;i<8;i++){
+            length += el_ir_proximity_get(i,u,out + length);
+        }
+        return length;
+
+    }else{
+
+        i = index%8;
+
+        switch(u){
+
+        case EL_IR_AMBIENT:
+            *out = el_irps_get_ambient(i);
+            return 1;
+
+        case EL_IR_REFLECTION:
+            *out = el_irps_get_reflection(i);
+            return 1;
+
+        case EL_IR_NOISE:
+            *out = el_irps_get_noise(i);
+            return 1;
+
+        case EL_IR_ALL_3V:
+            out[0] = el_irps_get_ambient(i);
+            out[1] = el_irps_get_reflection(i);
+            out[2] = el_irps_get_noise(i);
+            return 3;
+
+        }
         
     }
 
     return 0;
-}
-
-void el_ir_proximity_get_all(el_ir_proximity_output type,int*result_8v){
-    int i;
-    
-    if(result_8v==NULL){
-        return;
-    }
-    
-    switch(type){
-        
-    case EL_IR_AMBIENT:
-        for(i=0;i<8;i++){
-            result_8v[i] = el_irps_get_ambient(i);
-        }
-        break;
-        
-    case EL_IR_REFLECTION:
-        for(i=0;i<8;i++){
-            result_8v[i] = el_irps_get_reflection(i);
-        }
-        break;
-        
-    case EL_IR_NOISE:
-        for(i=0;i<8;i++){
-            result_8v[i] = el_irps_get_noise(i);
-        }
-        break;
-        
-    }
-    
 }

@@ -4,6 +4,29 @@
 #include "el.h"
 #include "elu.h"
 
+#define IR_REMOTE_KEY_START     53
+#define IR_REMOTE_KEY_STOP      54
+#define IR_REMOTE_KEY_PAUSE     41
+#define IR_REMOTE_KEY_REW       37
+#define IR_REMOTE_KEY_FF        38
+#define IR_REMOTE_KEY_REC       55
+#define IR_REMOTE_KEY_RESET     12
+#define IR_REMOTE_KEY_MUTE      13
+#define IR_REMOTE_KEY_PLUS      16
+#define IR_REMOTE_KEY_MINUS     17
+#define IR_REMOTE_KEY_NUM_0     0
+#define IR_REMOTE_KEY_NUM_1     1
+#define IR_REMOTE_KEY_NUM_2     2
+#define IR_REMOTE_KEY_NUM_3     3
+#define IR_REMOTE_KEY_NUM_4     4
+#define IR_REMOTE_KEY_NUM_5     5
+#define IR_REMOTE_KEY_NUM_6     6
+#define IR_REMOTE_KEY_NUM_7     7
+#define IR_REMOTE_KEY_NUM_8     8
+#define IR_REMOTE_KEY_NUM_9     9
+#define IR_REMOTE_KEY_INFO      18
+#define IR_REMOTE_KEY_PRESET    14
+
 volatile int CameraFrameCounter;
 volatile int CameraFPS;
 volatile bool CameraLoop;
@@ -18,11 +41,15 @@ EL_PROCESS Process_AccelerometerFeedback(el_handle this_trigger);
 EL_PROCESS Trigger_Accelerometer_Process(el_handle this_trigger);
 void Callback_CountCameraFPS(void*arg);
 
+//------------------------------------------------------------------------------
+
 EL_PROCESS Process_DebugControl(void*data){
     el_camera_image *frame;
     char c;
     int i;
-    int value[8];
+    int ir0,ir7;
+    el_ir_proximity_data prox[8];
+    el_int16 xyz[3];
 
     CameraLoop = false;
     /*
@@ -41,13 +68,13 @@ EL_PROCESS Process_DebugControl(void*data){
             if(el_get_selector_value()>=12){
                 if(CameraLoop==false){
                     CameraLoop = true;
-                    elu_printf("Camera Loop ON\n");
+                    elu_println("Camera Loop ON");
                     el_launch_process(Process_TransmitCameraImage,NULL);
                 }
             }else{
                 if(CameraLoop){
                     CameraLoop = false;
-                    elu_printf("Camera Loop OFF\n");
+                    elu_println("Camera Loop OFF");
                 }
             }
         }
@@ -63,35 +90,46 @@ EL_PROCESS Process_DebugControl(void*data){
                     
             case 'p':
                 el_camera_lock_frame();
-                frame = el_camera_get_frame();
-                elu_printf("DAT: %d, %d | FPS: %d\n",frame->width,frame->height,CameraFPS);
+                frame = el_camera_frame();
+                elu_println("[CAM,%d]",(int)el_camera_get_frame_counter());
+                elu_println("DAT: %d, %d | FPS: %d",frame->Width,frame->Height,CameraFPS);
+                elu_putchar('\n');
                 el_camera_unlock_frame();
                 break;
                 
+            case 'g':
+                elu_println("[ACC]");
+                el_accelerometer_get(EL_ACCELEROMETER_ONE,EL_ACCELERATION_ALL_3V,xyz);
+                elu_println("%d\t%d\t%d",xyz[0],xyz[1],xyz[2]);
+                elu_putchar('\n');
+                break;
+                
             case 'r':
-                elu_printf("%d:",el_ir_proximity_get_counter());
-                el_ir_proximity_get_all(EL_IR_REFLECTION,value);
+                elu_println("[IR,%d]",(int)el_ir_proximity_get_counter());
+                el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_ALL,EL_IR_ALL_3V,(el_int16*)prox);
+                elu_printf("AMB:");
                 for(i=0;i<8;i++){
-                    elu_printf("\t%d",value[i]);
+                    elu_printf("\t%d",prox[i].Ambient);
                 }
-                elu_printf("\n");
+                elu_putchar('\n');
+                elu_printf("REF:");
+                for(i=0;i<8;i++){
+                    elu_printf("\t%d",prox[i].Reflection);
+                }
+                elu_putchar('\n');
                 break;
 
             case 'e':
-                value[0] = el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_0,EL_IR_REFLECTION);
-                value[7] = el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_7,EL_IR_REFLECTION);
-                elu_printf("%d,%d\n",value[0],value[7]);
-                break;
-
-            case 'x':
-                elu_printf("IREA:\t%d\n",el_irps_environment_ambient);
+                el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_0,EL_IR_REFLECTION,&ir0);
+                el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_7,EL_IR_REFLECTION,&ir7);
+                elu_println("%d,%d",ir0,ir7);
                 break;
 
             case 'c':
                 for(i=0;i<8;i++){
                     elu_printf("IRNR:\t%d",el_irps_samples_NeutralReflection[i]);
                 }
-                elu_printf("\n");
+                elu_putchar('\n');
                 break;
 
             case 'w':
@@ -115,13 +153,15 @@ EL_PROCESS Process_DebugControl(void*data){
                 break;
                 
             case 'T':
-                el_config_stepper_motor(EL_SPEED_ACC_ENABLE,true);
-                elu_printf("MOTOR ACC ON\n");
+                el_config_stepper_motor_list()->UseAcceleration = true;
+                el_config_stepper_motor(el_config_stepper_motor_list());
+                elu_println("MOTOR ACC ON");
                 break;
                 
             case 't':
-                el_config_stepper_motor(EL_SPEED_ACC_ENABLE,false);
-                elu_printf("MOTOR ACC OFF\n");
+                el_config_stepper_motor_list()->UseAcceleration = false;
+                el_config_stepper_motor(el_config_stepper_motor_list());
+                elu_println("MOTOR ACC OFF");
                 break;
 
 
@@ -134,11 +174,16 @@ EL_PROCESS Process_DebugControl(void*data){
 
 int main(int argc,char*argv[]){
     int i,j;
-    void *p0,*p1;
+    el_camera_param *CameraSetting;
+    el_mct k;
     el_handle T;
     el_handle trg;
 
-    p0 = malloc(16);
+    el_stepper_motor_param *StepperMotorSetting;
+    StepperMotorSetting = el_config_stepper_motor_list();
+    StepperMotorSetting->UseAcceleration = true;
+    StepperMotorSetting->AccelerationRate = 2000;
+    el_config_stepper_motor(StepperMotorSetting);
 
     el_initialization();
 
@@ -155,6 +200,16 @@ int main(int argc,char*argv[]){
     elu_printf("%d,%d\n",&i,&j);
 #endif
 
+    el_config_ir_proximity(el_config_ir_proximity_list());
+    el_config_stepper_motor(el_config_stepper_motor_list());
+
+    k = el_get_masterclock();
+    CameraSetting = el_config_camera_list();
+    CameraSetting->BlueGain = 1.0f;
+    el_config_camera(CameraSetting);
+    k = el_get_masterclock() - k;
+    elu_println("%lu",k);
+    
     CameraFrameCounter = 0;
     CameraFPS = 0;
 
@@ -162,31 +217,23 @@ int main(int argc,char*argv[]){
     el_timer_set_callback(T,Callback_CountCameraFPS,NULL);
     el_timer_start(T,1000);
 
-    /*
-    el_config_stepper_motor(EL_SPEED_ACC_ENABLE,true);
-    el_config_stepper_motor(EL_SPEED_ACC_LINEAR_TERM,1000);
-    el_enable_stepper_motor();
-    */
-    
-    el_config_ir_proximity(EL_WORKING_MODE,EL_IR_PROXIMITY_PULSE);
-    el_enable_ir_proximity();
-    
-    el_enable_camera();
-
     el_launch_process(Process_DebugControl,NULL);
     el_launch_process(Process_LED,NULL);
 
-    el_enable_accelerometer();
     trg = el_create_trigger();
     el_trigger_set_process(trg,Trigger_Accelerometer_Process);
     el_trigger_set_event(trg,EL_EVENT_ACCELEROMETER_UPDATE);
+
+    el_enable_ir_proximity();
+    el_enable_camera();
+    el_enable_accelerometer();
 
     el_main_loop();
     
     return 0;
 }
 
-//==============================================================================
+//------------------------------------------------------------------------------
 
 EL_PROCESS Process_LED(void*data){
 
@@ -217,7 +264,7 @@ EL_PROCESS Process_TransmitCameraImage(void*data){
         el_led_set(EL_LED_RING_0,1);
 
         el_camera_lock_frame();
-        frame = el_camera_get_frame();
+        frame = el_camera_frame();
         i = el_camera_get_frame_counter();
 
         p = str;
@@ -225,7 +272,7 @@ EL_PROCESS Process_TransmitCameraImage(void*data){
         p += elu_snprintf(p,(80 - (p - str)),"<p>\n");
         p += elu_snprintf(p,(80 - (p - str)),"NUM: %d\n",i);
         p += elu_snprintf(p,(80 - (p - str)),"DIM: %d,%d\n",EL_CAMERA_FRAME_DIM_X,EL_CAMERA_FRAME_DIM_Y);
-        p += elu_snprintf(p,(80 - (p - str)),"LEN: %d,%d\n",frame->width,frame->height);
+        p += elu_snprintf(p,(80 - (p - str)),"LEN: %d,%d\n",frame->Width,frame->Height);
         while(el_uart_is_sending(EL_UART_1)) el_process_cooperate();
         el_uart_send_string(EL_UART_1,str);
         for(Y=0;Y<EL_CAMERA_FRAME_DIM_Y;Y++){
@@ -233,7 +280,7 @@ EL_PROCESS Process_TransmitCameraImage(void*data){
             while(X < EL_CAMERA_FRAME_DIM_X){
                 p = str;
                 for(i=0;i<10;i++){
-                    p += elu_snprintf(p,80,"%4.4X",frame->data[Y][X]);
+                    p += elu_snprintf(p,80,"%4.4X",frame->Data[Y][X]);
                     X++;
                 }
                 if(X==EL_CAMERA_FRAME_DIM_X){
@@ -257,30 +304,14 @@ EL_PROCESS Process_TransmitCameraImage(void*data){
 
 }
 
-EL_PROCESS Process_AccelerometerFeedback(el_handle this_trigger){
-    int v;
-
-    v = el_accelerometer_get(EL_ACCELEROMETER_GET_X);
-    elu_printf("%d,",v);
-
-    v = el_accelerometer_get(EL_ACCELEROMETER_GET_Y);
-    elu_printf("%d,",v);
-
-    v = el_accelerometer_get(EL_ACCELEROMETER_GET_Z);
-    elu_printf("%d,",v);
-
-    elu_printf("\n");
-
-}
-
 EL_PROCESS Trigger_Accelerometer_Process(el_handle this_trigger){
     static int previous_xyz[3] = {0,0,0};
-    const long threshold_s = 250L*250L;
+    const long threshold_s = 300L*300L;
     long magnitude_s;// _s means squared;
     int xyz[3];
     int dx,dy,dz;
 
-    el_accelerometer_get_all(xyz);
+    el_accelerometer_get(EL_ACCELEROMETER_ONE,EL_ACCELERATION_ALL_3V,xyz);
     if(previous_xyz[0]!=0){
         dx = xyz[0] - previous_xyz[0];
         dy = xyz[1] - previous_xyz[1];
@@ -294,7 +325,7 @@ EL_PROCESS Trigger_Accelerometer_Process(el_handle this_trigger){
             el_led_set(EL_LED_BODY,EL_OFF);
             el_process_wait(200);
             // 400 ms past, need to refresh values
-            el_accelerometer_get_all(xyz);
+            el_accelerometer_get(EL_ACCELEROMETER_ONE,EL_ACCELERATION_ALL_3V,xyz);
         }
     }
     previous_xyz[0] = xyz[0];
@@ -309,10 +340,10 @@ void Callback_CountCameraFPS(void*arg){
     unsigned int c = el_camera_get_frame_counter();
     unsigned int d = c - CameraFrameCounter;
     CameraFrameCounter = c;
-    CameraFPS = d;// a filter to make value stable
+    CameraFPS = d;
 }
 
-//==============================================================================
+//------------------------------------------------------------------------------
 
 void booting_procedure01_selector_barrier(){
     // do nothing until selector >= 4

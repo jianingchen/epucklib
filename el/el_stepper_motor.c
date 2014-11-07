@@ -1,3 +1,20 @@
+/*
+
+embedded system library for e-puck
+
+--------------------------------------------------------------------------------
+
+code distribution:
+https://github.com/jianingchen/epucklib
+
+online documentation:
+http://jianingchen.github.io/epucklib/html/
+
+--------------------------------------------------------------------------------
+
+This file is released under the terms of the MIT license (see "el.h").
+
+*/
 
 #include "el_context.h"
 #include "el_stepper_motor.h"
@@ -7,6 +24,7 @@ el_bool el_stpm_accel_enabled;
 el_int16 el_stpm_accel_cs;
 el_int16 el_stpm_accel_linear_term;
 el_stpm el_stpm_unit[EL_STPM_NUMBER];
+el_stepper_motor_param el_stpm_parameters;
 
 static void el_set_stepper_motor_phase(el_index which,uint8_t phase){
     switch(which){
@@ -89,12 +107,7 @@ static void el_set_stepper_motor_phase(el_index which,uint8_t phase){
 void el_init_stepper_motor(){
     int i;
     el_stpm *p;
-    
-    el_stpm_enabled = 0;
-    el_stpm_accel_cs = 0;
-    el_stpm_accel_enabled = false;
-    el_stpm_accel_linear_term = 3000/50;
-    
+
     for(i=0;i<EL_STPM_NUMBER;i++){
         p = el_stpm_unit + i;
         p->direction = 0;
@@ -107,10 +120,18 @@ void el_init_stepper_motor(){
         el_set_stepper_motor_phase(i,0xFF);
     }
     
+    el_stpm_enabled = 0;
+    el_stpm_accel_cs = 0;
+    el_stpm_accel_enabled = true;
+    el_stpm_accel_linear_term = 3000/EL_STPM_SPEED_CONTROL_FREQ;
+    
+    el_stpm_parameters.UseAcceleration = true;
+    el_stpm_parameters.AccelerationRate = 3000;
 }
 
 void el_enable_stepper_motor(void){
     el_stpm_enabled = true;
+    el_stpm_accel_cs = 0;
 }
 
 void el_disable_stepper_motor(void){
@@ -122,31 +143,26 @@ void el_disable_stepper_motor(void){
     }
 }
 
-void el_config_stepper_motor(el_stepper_motor_param e,int v){
+el_stepper_motor_param*el_config_stepper_motor_list(){
+    return &el_stpm_parameters;
+}
 
-    switch(e){
+void el_config_stepper_motor(const el_stepper_motor_param*p){
 
-    case EL_SPEED_ACC_ENABLE:
-        if(v){
-            el_stpm_accel_enabled = true;
-        }else{
-            el_stpm_accel_enabled = false;
-        }
-        break;
+    el_stpm_accel_enabled = p->UseAcceleration;
 
-    case EL_SPEED_ACC_LINEAR_TERM:
-        if(v < 100){
-            el_stpm_accel_linear_term = 100/50;
-        }else
-        if(v >= 5000){
-            el_stpm_accel_linear_term = 5000/50;
-        }else{
-            el_stpm_accel_linear_term = v/50;
-        }
-        break;
-
+    if(p->AccelerationRate < 100){
+        el_stpm_accel_linear_term = 100/EL_STPM_SPEED_CONTROL_FREQ;
+    }else
+    if(p->AccelerationRate > 10000){
+        el_stpm_accel_linear_term = 10000/EL_STPM_SPEED_CONTROL_FREQ;
+    }else{
+        el_stpm_accel_linear_term = p->AccelerationRate/EL_STPM_SPEED_CONTROL_FREQ;
     }
-    
+
+    if(&el_stpm_parameters != p){
+        el_stpm_parameters = *p;
+    }
 }
 
 void el_routine_stepper_motor_accel_2400hz(){
@@ -159,7 +175,7 @@ void el_routine_stepper_motor_accel_2400hz(){
     el_mct period;
 
     // scale the routine to 50 Hz
-    el_stpm_accel_cs++;
+    ++el_stpm_accel_cs;
     if(el_stpm_accel_cs<48){
         return;
     }else{
