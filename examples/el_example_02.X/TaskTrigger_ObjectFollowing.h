@@ -18,7 +18,6 @@ extern el_uint8 TT_ObjectColor;
 #define TT_OBJECT_COLOR_GREEN   1
 #define TT_OBJECT_COLOR_BLUE    2
 
-
 void Trigger_ObjectFollowing_Setup();
 void Trigger_ObjectFollowing_Clear();
 

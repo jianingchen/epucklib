@@ -15,14 +15,14 @@ bool IsColorRed(unsigned char*RGB){
     unsigned int CR = RGB[0]*13;
     unsigned int CG = RGB[1]*19;
     unsigned int CB = RGB[2]*17;
-    return (RGB[0]>=108)&&(CR>=CG)&&(CR>=CB);
+    return (RGB[0]>=104)&&(CR>=CG)&&(CR>=CB);
 }
 
 bool IsColorGreen(unsigned char*RGB){
     unsigned int CR = RGB[0]*16;
     unsigned int CG = RGB[1]*12;
     unsigned int CB = RGB[2]*14;
-    return (RGB[0]<160)&&(RGB[1]>=112)&&(RGB[2]<200)&&(CG>=CR)&&(CG>=CB);
+    return (RGB[0]<160)&&(RGB[1]>=92)&&(RGB[2]<200)&&(CG>=CR)&&(CG>=CB);
 }
 
 bool IsColorBlue(unsigned char*RGB){

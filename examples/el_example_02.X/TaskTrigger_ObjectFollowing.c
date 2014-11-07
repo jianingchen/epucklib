@@ -35,8 +35,8 @@ void Trigger_ObjectFollowing_Process(el_handle this_trigger){
         break;
     }
     
-    ir0 = el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_0,EL_IR_REFLECTION);
-    ir7 = el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_7,EL_IR_REFLECTION);
+    el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_0,EL_IR_REFLECTION,&ir0);
+    el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_7,EL_IR_REFLECTION,&ir7);
     
     // calculate the angular speed according to the horizontal bias of the color
     if(w >= 8){
@@ -52,6 +52,9 @@ void Trigger_ObjectFollowing_Process(el_handle this_trigger){
     // do not chase if any object is closely in front of the robot
     if((ir0 + ir7) > 120){
         LinearSpeed = 0;
+        el_led_set(EL_LED_RING_4,EL_ON);
+    }else{
+        el_led_set(EL_LED_RING_4,EL_OFF);
     }
     
     SpeedLeft = LinearSpeed - AngularSpeed;
