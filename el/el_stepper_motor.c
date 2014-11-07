@@ -319,12 +319,12 @@ void el_stepper_motor_set_speed(el_index which,int speed){
     
 }
 
-void el_stepper_motor_set_counter(el_index which,int steps){
+void el_stepper_motor_set_steps(el_index which,el_int16 steps){
     int i = which%EL_STPM_NUMBER;
     el_stpm_unit[i].counter = steps;
 }
 
-int el_stepper_motor_get_counter(el_index which){
+el_int16 el_stepper_motor_get_steps(el_index which){
     int i = which%EL_STPM_NUMBER;
     return el_stpm_unit[i].counter;
 }

@@ -132,10 +132,10 @@ void el_stepper_motor_set_speed(el_index i,int u);
 
     \param i    index of the motor
     
-    \return u   number of steps
+    \return number of steps
     
 */
-int el_stepper_motor_get_counter(el_index i);
+el_int16 el_stepper_motor_get_steps(el_index i);
 
 
 /*! 
@@ -145,7 +145,7 @@ int el_stepper_motor_get_counter(el_index i);
     \param u    number of steps
     
 */
-void el_stepper_motor_set_counter(el_index i,int n);
+void el_stepper_motor_set_steps(el_index i,el_int16 n);
 
 
 /*! 

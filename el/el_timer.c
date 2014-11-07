@@ -179,12 +179,12 @@ void el_timer_resume(el_handle h){
     p->paused = false;
 }
 
-uint16_t el_timer_get_rounds(el_handle h){
+el_uint32 el_timer_get_rounds(el_handle h){
     el_timer *p = (el_timer*)EL_HANDLE_TO_POINTER(h);
     return p->rounds;
 }
 
-void el_timer_set_rounds(el_handle h,uint16_t n){
+void el_timer_set_rounds(el_handle h,el_uint32 n){
     el_timer *p = (el_timer*)EL_HANDLE_TO_POINTER(h);
     p->rounds = n;
 }

@@ -178,11 +178,11 @@ int el_ir_proximity_get(el_index i,el_ir_proximity_output u,el_int16*out);
 /*! 
     \brief get total number of samples obtained since initialization
     
-    \return number of samples
+    \return     number of samples
     
     When enabled, sampling frequency of the ir proximity sensors are 30Hz.
 */
-el_int32 el_ir_proximity_get_counter();
+el_uint32 el_ir_proximity_get_counter();
 
 
 /*

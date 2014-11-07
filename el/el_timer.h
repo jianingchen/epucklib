@@ -146,7 +146,7 @@ el_handle el_timer_callback_get_handle();
     Thus, for a on-going timer that is perodic (set via "el_timer_set_perodic"), 
     its rounds will keep increasing. 
 */
-uint16_t el_timer_get_rounds(el_handle h);
+el_uint32 el_timer_get_rounds(el_handle h);
 
 
 /*!
@@ -158,7 +158,7 @@ uint16_t el_timer_get_rounds(el_handle h);
     This function is used to manually modify the rounds of a timer. 
     It is mainly used to reset the rounds of a timer to 0. 
 */
-void el_timer_set_rounds(el_handle h,uint16_t n);
+void el_timer_set_rounds(el_handle h,el_uint32 n);
 
 
 /*
@@ -173,7 +173,7 @@ void el_timer_set_rounds(el_handle h,uint16_t n);
 typedef struct{
     el_mct period;
     el_mct count_down;
-    uint16_t rounds;
+    el_uint32 rounds;
     void *append_data;
     void (*callback)(void*);
     uint8_t paused:1;

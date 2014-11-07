@@ -94,9 +94,8 @@ void Process_LED_PatternB(void*arg){
 }
 
 void Process_LED_Control(void*arg){
-    int i = 0;
     char c;
-
+    
     while(1){
 
         // wait until there is some char
@@ -116,12 +115,16 @@ void Process_LED_Control(void*arg){
 void TimerCallback_ReportTime(void*arg){
     el_handle T = el_timer_callback_get_handle();
 
-    elu_printf("%d\n",el_timer_get_rounds(T));
-    
     /*
-    Unlike a Process, a Timer Callback cannot include any time delay or polling.
-    For details, check the documentation.
+     * Note: 
+     * Unlike a process function, a timer callback cannot contain
+     * any time delays or polling loops. However, "elu_printf" is a function 
+     * that contains a potential polling loop inside because it may need to
+     * wait for other uart transmitting works to be finished. 
+     * Try to not put any UART function in a timer callback but in a
+     * process function (See Example 2). 
     */
+    elu_printf("%lu\n",el_timer_get_rounds(T));
 }
 
 

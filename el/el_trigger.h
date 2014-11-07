@@ -163,11 +163,11 @@ void el_trigger_set_process(el_handle h,el_process func);
     \brief get the number of times the trigger passed its condition
 
     \param h    handle of the trigger
-    \return counter of the trigger
+    \return     counter of the trigger
 
     For each time the trigger passes its condition, its counter will +1. 
 */
-uint16_t el_trigger_get_counter(el_handle h);
+el_uint32 el_trigger_get_counter(el_handle h);
 
 
 /*! 
@@ -192,7 +192,7 @@ void el_trigger_issue_internal_event(el_enum e);
 #define EL_TRIGGER_DIM   16
 
 typedef struct{
-    uint16_t counter;
+    el_uint32 counter;
     el_enum event_type;
     void *event_data;
     el_condition condition;

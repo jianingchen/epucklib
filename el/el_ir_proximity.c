@@ -23,7 +23,7 @@ bool el_irps_enabled;
 el_uint8 el_irps_working_mode;
 el_uint8 el_irps_working_phase;
 void (*el_adc_callback_ir_proximity)(const unsigned int*result_8v);
-el_int32 el_irps_counter;
+el_uint32 el_irps_counter;
 
 el_bool el_irps_is_calibrated;
 el_bool el_irps_subtract_ea;
@@ -160,7 +160,7 @@ void el_routine_ir_proximity_passive(void){
         break;
         
     case 1:
-        el_irps_counter++;
+        ++el_irps_counter;
         /// signal a trigger event
         el_trg_event_flag_ex_irps = 1;
         break;
@@ -200,7 +200,7 @@ void el_routine_ir_proximity_pulse(void){
         break;
         
     case 3:
-        el_irps_counter++;
+        ++el_irps_counter;
         /// signal a trigger event
         el_trg_event_flag_ex_irps = 1;
         break;
@@ -241,7 +241,7 @@ void el_routine_ir_proximity_emit(void){
         break;
         
     case 3:
-        el_irps_counter++;
+        ++el_irps_counter;
         /// signal a trigger event
         el_trg_event_flag_ex_irps = 1;
         break;
@@ -384,7 +384,7 @@ static int el_irps_get_noise(int i){
 
 
 
-el_int32 el_ir_proximity_get_counter(){
+el_uint32 el_ir_proximity_get_counter(){
     return el_irps_counter;
 }
 
