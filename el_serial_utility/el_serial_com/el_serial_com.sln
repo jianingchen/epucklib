@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "el_serial_com", "el_serial_com.vcxproj", "{AD5DB1E0-2F17-45D7-BDB8-9855B2C49F48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD5DB1E0-2F17-45D7-BDB8-9855B2C49F48}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AD5DB1E0-2F17-45D7-BDB8-9855B2C49F48}.Debug|Win32.Build.0 = Debug|Win32
+		{AD5DB1E0-2F17-45D7-BDB8-9855B2C49F48}.Release|Win32.ActiveCfg = Release|Win32
+		{AD5DB1E0-2F17-45D7-BDB8-9855B2C49F48}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
