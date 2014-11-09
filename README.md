@@ -8,6 +8,8 @@ embedded system library for e-puck
 
 (Work In Progress)
 
+![GitHub Logo](/el/el_logo_color.png)
+
 ### Environment:
 
  - The project format in the distribution is for MPLAB X.
