@@ -57,7 +57,8 @@ int main(int argc,char*argv[]){
     booting_procedure01_selector_barrier();
 
     el_uart_send_string(EL_UART_1,"Hello World!\n");
-    elu_println("%d",el_random_int(4,79));
+    i = el_random_int(4,79);
+    elu_println("%d,%f",i,(float)i/4.0f);
     
     p = (char*)malloc(64);
     k = el_get_masterclock();
@@ -72,8 +73,10 @@ int main(int argc,char*argv[]){
 
     k = el_get_masterclock();
     CameraSetting = el_config_camera_list();
+#if 0
     CameraSetting->ExposureMode = EL_EXPOSURE_TIME;
     CameraSetting->ExposureTime = 10.0f;
+#endif
     el_config_camera(CameraSetting);
     k = el_get_masterclock() - k;
     elu_println("%lu",k);
@@ -103,6 +106,8 @@ int main(int argc,char*argv[]){
 
 //------------------------------------------------------------------------------
 
+#define WAIT_FOR_UART1_CHAR do{el_process_cooperate();}while(el_uart_get_char_counter(EL_UART_1)==0);
+
 EL_PROCESS Process_DebugControl(void*data){
     el_camera_image *frame;
     char c;
@@ -123,22 +128,24 @@ EL_PROCESS Process_DebugControl(void*data){
 
     while(1){
 
-        while(el_uart_get_char_counter(EL_UART_1)==0){
-            el_process_cooperate();
-        }
+        WAIT_FOR_UART1_CHAR;
 
         c = el_uart_get_char(EL_UART_1);
+        if(c==6){
+            el_reset();
+        }
+        
         switch(c){
 
         case 'f':
             el_led_set(EL_LED_FRONT,EL_TOGGLE);
             break;
 
-        case 'p':
-            elu_println("[CAM]\nFPS:\t%d",CameraFPS);
+        case 'y':
+            elu_println("[CAM]\nFPS:\t%d\tNUM:\t%lu",CameraFPS,el_camera_get_frame_counter());
             break;
 
-        case 'P':
+        case 't':
             el_camera_lock_frame();
             frame = el_camera_frame();
             el_print_camera_image(frame,el_camera_get_frame_counter());

@@ -202,18 +202,16 @@ el_camera_image*el_camera_frame();
 
 extern el_uint16 el_cam_device_id;
 extern el_uint16 el_cam_revision_n;
-extern uint8_t el_cam_auto_function;
-
-extern el_camera_image el_frame_buffer_a;
-extern el_camera_image el_frame_buffer_b;
+extern el_uint8 el_cam_auto_function;
+extern bool el_cam_enabled;
+extern volatile el_uint16 el_cam_lock_buffer;
+extern volatile el_uint32 el_cam_frame_counter;
 extern el_camera_image *el_cam_r_frame;
 extern el_camera_image *el_cam_w_frame;
 extern el_uint16 *el_cam_line_pointer;
 extern el_uint16 *el_cam_pixel_pointer;
 extern el_uint16 el_cam_x;
 extern el_uint16 el_cam_y;
-extern volatile el_uint16 el_cam_lock_buffer;
-extern volatile el_uint32 el_cam_frame_counter;
 
 void el_init_camera(void);
 void el_cam_init_register(void);

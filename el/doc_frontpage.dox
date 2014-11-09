@@ -16,8 +16,7 @@ This is a library for the e-puck robot platform.
 - MPLAB X with XC16 compiler 
 - Support only e-pucks with the camera model PO6030K. 
 - A computer with Bluetooth 
-- Tiny Bootloader (preferably version 1.10.3) 
-- (Recommended) Tera Term (a serial terminal application)
+- Tiny Bootloader 
 
 
 \n 
@@ -33,6 +32,27 @@ This is a library for the e-puck robot platform.
 
 
 \n 
+\section sec_files Repository Contents
+
+The repository should contains the following items: 
+
+- el --- This is the library directory. All headers and sources are inside. 
+
+- el_serial_utility
+    + el_serial_com --- This is the serial communication utlility of the library.
+    + Serial --- This is the CSerail lib 
+    (see http://www.codeproject.com/Articles/992/Serial-library-for-C).
+
+- examples
+    + el_example_01.X --- This is \ref sec_ex01.
+    + el_example_02.X --- This is \ref sec_ex02.
+    + el_example_03.X --- This is \ref sec_ex03.
+    + el_example_hw.X --- This is the "Hello World" example.
+
+- other_materials --- some other related materials
+
+
+\n 
 \section sec_build Build & Link
 
 Download and install MPLAB X IDE and the XC16 Compiler. 
@@ -41,7 +61,7 @@ Download and install MPLAB X IDE and the XC16 Compiler.
 \subsection sec_buildlib Build This Library
 
 1. In MPLAB X, a project is opened by locating its directory. 
-Open the directory of this project (named "el"). 
+Open the directory of this library. 
 
 2. On the tool bar, select the build configuration to be "Static_Lib_xc16_O1" and 
 then click "Build Main Project" (see the image below). 
@@ -99,8 +119,8 @@ the front led. In UART1, the e-puck will also report the number of seconds
 since start running. 
 
 This example includes the usage of following modules:
-- Timer
 - Process
+- LED
 - UART STDIO
 
 
@@ -113,6 +133,23 @@ This example includes the usage of following modules:
 - Process
 - Trigger
 - Camera
+- LED
+- Stepper Motor
+- IR Proximity Sensors
+- UART STDIO
+
+
+\subsection sec_ex03 Example 3
+
+The e-puck can be remotely controlled via Bluetooth. It is recommended to use 
+this program with the serial communciation utility of this library. 
+
+This example includes the usage of following modules:
+- Process
+- Trigger
+- Timer
+- Camera
+- LED
 - Stepper Motor
 - IR Proximity Sensors
 - UART STDIO

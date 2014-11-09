@@ -89,8 +89,7 @@ void Process_LED_Control(void*arg){
     while(1){
 
         // wait until something is received
-        while(el_uart_get_char_counter(EL_UART_1)==0){
-
+        do{
             /*
              * In a process, "el_process_cooperate" need to be called in any
              * polling loops. See the documentation of the Process module to
@@ -98,8 +97,8 @@ void Process_LED_Control(void*arg){
              */
             el_process_cooperate();
 
-        }
-
+        }while(el_uart_get_char_counter(EL_UART_1)==0);
+        
         c = el_uart_get_char(EL_UART_1);
         if(c=='f'){
             el_led_set(EL_LED_FRONT,EL_TOGGLE);

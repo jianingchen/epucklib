@@ -220,6 +220,11 @@ void el_trigger_disable(el_handle trigger){
     p->enabled = false;
 }
 
+el_bool el_trigger_is_enabled(el_handle trigger){
+    el_trigger *p = EL_HANDLE_TO_POINTER(trigger);
+    return p->enabled;
+}
+
 el_uint32 el_trigger_get_counter(el_handle trigger){
     el_trigger *p = EL_HANDLE_TO_POINTER(trigger);
     return p->counter;

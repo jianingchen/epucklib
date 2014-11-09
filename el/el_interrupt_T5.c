@@ -49,14 +49,21 @@ __asm__ volatile ("SWAP_BUFFERS:");
     __asm__ volatile ("push     _el_cam_r_frame");
     __asm__ volatile ("pop      _el_cam_w_frame");
     __asm__ volatile ("mov      w0,_el_cam_r_frame");// swapped
-    __asm__ volatile ("inc      _el_cam_frame_counter");
     __asm__ volatile ("inc.b    _el_trg_event_flag_ex_cam");
-    __asm__ volatile ("mov      _el_cam_w_frame,w0");
+    __asm__ volatile ("mov      _el_cam_w_frame,w0");// <<<<
     __asm__ volatile ("add      w0,#4,w0");
     __asm__ volatile ("mov      w0,_el_cam_line_pointer");
     __asm__ volatile ("mov      w0,_el_cam_pixel_pointer");
     __asm__ volatile ("clr      _el_cam_y");
     __asm__ volatile ("bset.b	_T4CONbits+1,#7");// T4CONbits.TON = 1;
+    __asm__ volatile ("push     w1");
+    __asm__ volatile ("mov      _el_cam_frame_counter,w0");
+    __asm__ volatile ("mov      _el_cam_frame_counter+2,w1");
+    __asm__ volatile ("add      w0,#1,w0");
+    __asm__ volatile ("addc     w1,#0,w1");
+    __asm__ volatile ("mov      w0,_el_cam_frame_counter");
+    __asm__ volatile ("mov      w1,_el_cam_frame_counter+2");
+    __asm__ volatile ("pop      w1");
     __asm__ volatile ("pop      w0");
     __asm__ volatile ("retfie   ");
 __asm__ volatile ("DONT_SWAP:");
@@ -64,8 +71,7 @@ __asm__ volatile ("DONT_SWAP:");
     __asm__ volatile ("nop      ");
     __asm__ volatile ("nop      ");
     __asm__ volatile ("nop      ");
-    __asm__ volatile ("nop      ");
-    __asm__ volatile ("mov      _el_cam_w_frame,w0");
+    __asm__ volatile ("mov      _el_cam_w_frame,w0");// <<<<
     __asm__ volatile ("add      w0,#4,w0");
     __asm__ volatile ("mov      w0,_el_cam_line_pointer");
     __asm__ volatile ("mov      w0,_el_cam_pixel_pointer");

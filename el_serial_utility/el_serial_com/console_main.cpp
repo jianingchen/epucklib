@@ -43,12 +43,11 @@ using namespace std;
 #define TEXT_HIGHLIGHT_FILE     {SetConsoleTextAttribute(hWnd,FOREGROUND_BLUE|FOREGROUND_INTENSITY);}
 
 HANDLE hWnd; 
+time_t StartTime;
 char RxBuffer[RX_BUFFER_DIM];
-char TxBuffer[TX_BUFFER_DIM];
-char TokenBuffer[RX_BUFFER_DIM];
+size_t RxBufferLength;
 char PageBuffer[PAGE_BUFFER_DIM];
 size_t PageLength;
-time_t StartTime;
 const char OutputDirectory[] = "CameraImages";
 unsigned int FileCounter;
 char Filename[80] = "";
@@ -61,6 +60,7 @@ int SaveBmp24(const char*Filename,int Width,int Height,const uint8_t*Data);
 
 int main(int argc,char*argv[]){
     string PortName;
+    string commandline;
     int r;
     
     hWnd = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -75,6 +75,7 @@ int main(int argc,char*argv[]){
     printf("This utility can communicate with an e-puck through a COM port.\n");
     printf("When a camera image sent by \"el_print_image\" is detected, \n");
     printf("the utility will save it as a BMP file.\n\n");
+    printf("Press H to let the robot list available commands.\n\n");
     printf("Press ESC to exit when the communication is running.\n");
     printf("________________________________________________________________\n\n");
     printf("%u\n\n",StartTime);
@@ -113,14 +114,17 @@ ENTER_NAME:
 
     SerialInterface.SetupReadTimeouts(CSerial::EReadTimeoutNonblocking);
     
-    _snprintf(PageBuffer,PAGE_BUFFER_DIM,"mkdir %s",OutputDirectory);
-    system(PageBuffer);
+    commandline = "mkdir ";
+    commandline += OutputDirectory;
+    system(commandline.c_str());
 
     MainLoop();
 
 CLOSE_DOWN:
     SerialInterface.Close();
     
+    printf("%s closed\n",PortName.c_str());
+
 MAIN_RETURN:
     system("pause");
     return 0;
@@ -133,6 +137,7 @@ void MainLoop(){
     string temp;
     bool CapturePage;
     
+    RxBufferLength = 0;
     CapturePage = false;
     PageLength = 0;
 
@@ -156,7 +161,6 @@ void MainLoop(){
         
         /** receiving from the port **/
         
-        length = 0;
         
         SerialInterface.Read(RxBuffer,RX_BUFFER_DIM,&length);
         
@@ -281,7 +285,7 @@ int SaveBmp24(const char*Filename,int Width,int Height,const uint8_t*Data){
     FILE *Output;
     int line_size,line_pad;
     const uint8_t *p;
-    int i,j;
+    int i;
     int Z = 0;
     
     Output = fopen(Filename,"wb");

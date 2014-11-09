@@ -101,6 +101,16 @@ void el_trigger_enable(el_handle h);
 void el_trigger_disable(el_handle h);
 
 
+/*!
+    \brief check whether a trigger
+
+    \param h    handle of the trigger
+    
+    \return the enabling status
+*/
+el_bool el_trigger_is_enabled(el_handle h);
+
+
 /*! 
     \brief set the event of the trigger
 

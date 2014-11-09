@@ -3,6 +3,7 @@
 \page PAGE_PROJECT_SETUP New Project Setup
 
 
+\n 
 \section sec_proj_stp_01 Create A New Project
 
 1. Click "File" -> "New Project". In the dialog poped, configure as the image below:
@@ -19,6 +20,7 @@
 
 
 
+\n 
 \section sec_proj_stp_02 Configure to Link The Library
 
 1. In the "Projects" treeview on the left side of the IDE, right click on 
@@ -39,6 +41,7 @@ This opens the project properties window.
 
 
 
+\n 
 \section sec_proj_stp_03 Test Build
 
 

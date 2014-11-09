@@ -18,6 +18,7 @@ This file is released under the terms of the MIT license (see "el.h").
 
 #include "el_context.h"
 #include "el_ir_proximity.h"
+#include "el_random.h"
 
 bool el_irps_enabled;
 el_uint8 el_irps_working_mode;
