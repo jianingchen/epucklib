@@ -10,16 +10,6 @@ embedded system library for e-puck
 
 ![GitHub Logo](/el/el_logo_color.png)
 
-### Environment:
-
- - The project format in the distribution is for MPLAB X.
- 
- - This library has been developed and tested using XC16 compiler. 
- 
- - This library currently only works on e-puck with the camera model PO6030K 
- but NOT PO3030K. 
-
-
 ### Hightlights: 
 
  - This is a library for developing the embedded system of the e-puck robot. 
@@ -47,6 +37,17 @@ embedded system library for e-puck
  - A _Trigger_ can automatically launch a _Process_ once something happened, 
  which let you do things only interrupts can do without dealing with hardware 
  interrupts. 
+
+
+### Environment:
+
+ - The project format in the distribution is for MPLAB X.
+ 
+ - This library has been developed and tested using XC16 compiler. 
+ 
+ - This library currently only works on e-puck with the camera model PO6030K 
+ but NOT PO3030K. 
+
 
 
 ### License: 
