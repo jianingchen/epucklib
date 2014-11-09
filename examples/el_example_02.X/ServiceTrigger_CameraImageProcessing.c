@@ -73,7 +73,7 @@ void Trigger_CameraImageProcessing_Process(el_handle this_trigger){
 
     IMG_RedMass = s0;
     if(s0){
-        x0 = 20*s0 - x0;
+        x0 = x0 - 20*s0;
         IMG_RedBias = 5*x0/s0;//gives a value range from -100 to +100
     }else{
         IMG_RedBias = 0;
@@ -81,7 +81,7 @@ void Trigger_CameraImageProcessing_Process(el_handle this_trigger){
 
     IMG_GreenMass = s1;
     if(s1){
-        x1 = 20*s1 - x1;
+        x1 = x1 - 20*s1;
         IMG_GreenBias = 5*x1/s1;//gives a value range from -100 to +100
     }else{
         IMG_GreenBias = 0;
@@ -89,7 +89,7 @@ void Trigger_CameraImageProcessing_Process(el_handle this_trigger){
     
     IMG_BlueMass = s2;
     if(s2){
-        x2 = 20*s2 - x2;
+        x2 = x2 - 20*s2;
         IMG_BlueBias = 5*x2/s2;//gives a value range from -100 to +100
     }else{
         IMG_BlueBias = 0;

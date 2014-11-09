@@ -29,6 +29,7 @@ This file is released under the terms of the MIT license (see "el.h").
 #define	EL_CAMERA_H
 
 #include "el_common.h"
+#include "el_clock.h"
 
 #define EL_CAMERA_FRAME_DIM_X   40
 #define EL_CAMERA_FRAME_DIM_Y   15
@@ -57,15 +58,15 @@ typedef struct {
     el_camera_exposure_mode ExposureMode;
     el_bool AutoWhiteBalance;
     el_bool AutoDigitalGain;
-    float ExposureTime;
-    float ExternalIntergationTime;
-    float ExternalLinearGain;
-    float IntegrationTime;
-    float GlobalGain;               ///< valid range is [1.0,32.0]
-    float DigitalGain;              ///< valid range is [0.015,3.98]
-    float RedGain;                  ///< valid range is [0.015,3.98]
-    float GreenGain;                ///< valid range is [0.015,3.98]
-    float BlueGain;                 ///< valid range is [0.015,3.98]
+    float ExposureTime;             ///< sensible range is [ 1.0, 20.0 ]
+    float ExternalIntergationTime;  ///< valid range is ( 0.0, 512.0 )
+    float ExternalLinearGain;       ///< valid range is ( 0.0, 256.0 )
+    float IntegrationTime;          ///< valid range is ( 0.0, 512.0 )
+    float GlobalGain;               ///< valid range is [ 1.0, 32.0 ]
+    float DigitalGain;              ///< valid range is [ 0.015, 3.98 ]
+    float RedGain;                  ///< valid range is [ 0.015, 3.98 ]
+    float GreenGain;                ///< valid range is [ 0.015, 3.98 ]
+    float BlueGain;                 ///< valid range is [ 0.015, 3.98 ]
 } el_camera_param;
 
 
@@ -171,8 +172,7 @@ el_uint32 el_camera_get_frame_counter();
     \param Y        y coordinate of the pixel
     \param out3v    pointer to the array to store the RGB components. 
     
-    The coordinates of the pixel start from bottom right. So (0,0) is 
-    the bottom right corner of the image. 
+    (0,0) is at bottom left. 
     
 */
 void el_camera_get_frame_pixel(int X,int Y,el_uint8*out3v);
@@ -212,7 +212,7 @@ extern el_uint16 *el_cam_line_pointer;
 extern el_uint16 *el_cam_pixel_pointer;
 extern el_uint16 el_cam_x;
 extern el_uint16 el_cam_y;
-extern volatile bool el_cam_lock_buffer;
+extern volatile el_uint16 el_cam_lock_buffer;
 extern volatile el_uint32 el_cam_frame_counter;
 
 void el_init_camera(void);

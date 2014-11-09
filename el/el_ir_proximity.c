@@ -116,7 +116,7 @@ void el_config_ir_proximity(const el_ir_proximity_param*p){
 void el_enable_ir_proximity(void){
     if(!el_irps_enabled){
         el_irps_enabled = 1;
-        el_irps_working_phase = 0;
+        el_irps_working_phase = el_random_int(4,79);
         if(el_irps_working_mode==EL_IR_PROXIMITY_EMIT){
             el_irps_set_ir_leds(1);
         }

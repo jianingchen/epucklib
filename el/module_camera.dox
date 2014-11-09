@@ -6,7 +6,7 @@
 \section sec1 Introduction
 
 In this library, the resolution of the image captured by the camera 
-is fixed to 40x15 with a frame rate of 18.432. 
+is fixed to 40x15 with a maximum frame rate of 18.432. 
 This resolution is a result of subsampling, which means field of view (FOV) 
 of the image is not lost. The horizontal FOV of the camera is about 56 deg 
 while the vertical FOV is about 42 deg. Both FOV are almost fully covered in 
@@ -18,6 +18,7 @@ any moment, data acquired from the camera are written to frame buffer A
 (the back buffer). Once a frame is fully written, pointers to the two buffers 
 will be swapped. This mechanism allows a frame of image to be processed 
 concurrently with the acquisition of next frame. 
+
 
 
 \section sec2 Usage
@@ -53,6 +54,30 @@ processing code needs to be less than the update interval of the frames.
 
 See Example 2 for a systematic usage of the camera module with some image 
 processing techniques. 
+
+
+
+\section sec3 Configuration
+
+In Example 3, the robot can transmit camera images via UART1. While using 
+the serial communication utility of this lib, the incoming images will be saved 
+as BMP files. A suitable camera configuration can be tuned based on the images. 
+
+The actual frame rate achieved depends on the exposure mode used. When 
+automatic exposure control is used and the environment is not well illuminated, 
+the frame rate may drop to ~9. Fixed time exposure mode may be used to stablize 
+the frame rate. For example: 
+\code
+    el_camera_param *CameraSetting;
+    ...
+    CameraSetting = el_config_camera_list();
+    CameraSetting->ExposureMode = EL_EXPOSURE_TIME;
+    CameraSetting->ExposureTime = 10.0f;// 10.0 gives you about 14 fps
+    el_config_camera( CameraSetting );
+    ...
+\endcode
+More detailed information about tuning the camera should be found in the 
+datasheet of PO6030K. 
 
 */
  

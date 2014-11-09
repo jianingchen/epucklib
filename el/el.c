@@ -45,7 +45,7 @@ void el_initialization(){
     el_init_interrupt_T4();
     el_init_interrupt_T5();
     el_init_interrupt_UART();
-    
+
 }
 
 NEVER_RETURN el_main_loop(){
@@ -78,15 +78,13 @@ void el_sleep(el_time time_ms){
 
 void el_calibrate_sensors(){
     int i,n;
-    int x;
+    int x,w;
 
 
     el_led_set(EL_LED_RING_1,EL_ON);
     el_led_set(EL_LED_RING_3,EL_ON);
     el_led_set(EL_LED_RING_5,EL_ON);
     el_led_set(EL_LED_RING_7,EL_ON);
-
-    el_sleep(100);
 
     /** infrared proximity sensors **/
     
@@ -96,12 +94,30 @@ void el_calibrate_sensors(){
         el_irps_samples_NeutralReflection[i] = 0;
     }
     
+    // get a random seed
+    el_irps_working_mode = EL_IR_PROXIMITY_PASSIVE;
+    el_enable_ir_proximity();
+    w = 0;
+    for(n=0;n<2;n++){
+        el_sleep(50);
+        for(i=0;i<8;i++){
+            w += el_irps_samples_Ambient[i];
+        }
+    }
+    el_disable_ir_proximity();
+
+    el_random_set_seed(w);
+    
+    el_sleep(50);
+
+    for(i=0;i<8;i++){
+        el_irps_samples_Temp[i] = 0;
+        el_random_uint16();
+    }
+
     // calibrate reflection intensity
     el_irps_working_mode = EL_IR_PROXIMITY_PULSE;
     el_enable_ir_proximity();
-    for(i=0;i<8;i++){
-        el_irps_samples_Temp[i] = 0;
-    }
     for(n=0;n<8;n++){
         el_sleep(50);
         for(i=0;i<8;i++){
@@ -115,6 +131,8 @@ void el_calibrate_sensors(){
         x /= 8;
         el_irps_samples_NeutralReflection[i] = x;
     }
+    el_irps_samples_NeutralReflection[2] += 15;
+    el_irps_samples_NeutralReflection[5] += 15;
     
     el_disable_ir_proximity();
 
@@ -124,7 +142,5 @@ void el_calibrate_sensors(){
     el_led_set(EL_LED_RING_7,EL_OFF);
 
     el_irps_is_calibrated = true;
-
-    el_sleep(100);
-
+    
 }

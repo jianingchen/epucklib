@@ -25,12 +25,7 @@ void Process_LED_PatternA(void*arg);
 void Process_LED_PatternB(void*arg);
 void Process_LED_Control(void*arg);
 
-void TimerCallback_ReportTime(void*arg);
-
-//==============================================================================
-
 int main(){
-    el_handle T;
 
     el_initialization();
 
@@ -44,11 +39,6 @@ int main(){
     el_launch_process(Process_LED_PatternA,NULL);
     el_launch_process(Process_LED_PatternB,NULL);
     el_launch_process(Process_LED_Control,NULL);
-
-    // setup a timer
-    T = el_create_timer();
-    el_timer_set_callback(T,TimerCallback_ReportTime,NULL);
-    el_timer_start(T,1000);// 1000 milliseconds
 
     el_led_set(EL_LED_BODY,EL_ON);
 
@@ -98,9 +88,16 @@ void Process_LED_Control(void*arg){
     
     while(1){
 
-        // wait until there is some char
+        // wait until something is received
         while(el_uart_get_char_counter(EL_UART_1)==0){
-            el_process_cooperate();// important for a polling mechnism like this.
+
+            /*
+             * In a process, "el_process_cooperate" need to be called in any
+             * polling loops. See the documentation of the Process module to
+             * learn more details.
+             */
+            el_process_cooperate();
+
         }
 
         c = el_uart_get_char(EL_UART_1);
@@ -111,24 +108,6 @@ void Process_LED_Control(void*arg){
     }
     
 }
-
-void TimerCallback_ReportTime(void*arg){
-    el_handle T = el_timer_callback_get_handle();
-
-    /*
-     * Note: 
-     * Unlike a process function, a timer callback cannot contain
-     * any time delays or polling loops. However, "elu_printf" is a function 
-     * that contains a potential polling loop inside because it may need to
-     * wait for other uart transmitting works to be finished. 
-     * Try to not put any UART function in a timer callback but in a
-     * process function (See Example 2). 
-    */
-    elu_printf("%lu\n",el_timer_get_rounds(T));
-}
-
-
-//==============================================================================
 
 void booting_procedure01_selector_barrier(){
 

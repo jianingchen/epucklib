@@ -65,3 +65,11 @@ el_time el_get_time_diff(el_mci c0,el_mci c1,el_mci*residue){
     
     return dt;
 }
+
+void el_nop_delay(int x){
+    int i;
+    while(x--){
+        i = 4996;
+        while(i--) NOP();
+    }
+}

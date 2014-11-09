@@ -54,6 +54,7 @@ typedef int16_t el_mcd;
 
 void el_init_masterclock();
 void el_routine_masterclock_14400hz();
+void el_nop_delay(int x);
 
 #endif
 

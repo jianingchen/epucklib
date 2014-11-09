@@ -25,7 +25,6 @@ This file is released under the terms of the MIT license (see "el.h").
 
 #define ELU_STDIO_UART          EL_UART_1
 #define ELU_STDIO_STACK_SIZE    400
-#define ELU_STDIO_BUFFER_SIZE   80
 
 char elu_stdio_buffer[ELU_STDIO_BUFFER_SIZE];
 bool elu_stdio_scanf_echo = true;

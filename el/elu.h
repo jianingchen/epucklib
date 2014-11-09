@@ -20,7 +20,8 @@ This file is released under the terms of the MIT license (see "el.h").
 #define ELU_H
 
 #include "el.h"
-
 #include "elu_stdio.h"
+
+void el_print_camera_image(const el_camera_image*p,el_uint32 n);
 
 #endif

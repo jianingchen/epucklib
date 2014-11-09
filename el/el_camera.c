@@ -24,10 +24,9 @@ el_camera_image el_frame_buffer_a;
 el_camera_image el_frame_buffer_b;
 el_uint16 el_cam_device_id;
 el_uint16 el_cam_revision_n;
-uint8_t el_cam_auto_function;
-
+el_uint8 el_cam_auto_function;
 bool el_cam_enabled;
-volatile bool el_cam_lock_buffer;
+volatile el_uint16 el_cam_lock_buffer;
 volatile el_uint32 el_cam_frame_counter;
 el_camera_image *el_cam_r_frame;//for reading
 el_camera_image *el_cam_w_frame;//for writing
@@ -40,25 +39,25 @@ el_camera_param el_cam_parameters;
 
 //------------------------------------------------------------------------------
 
-static uint8_t el_cam_register_read_uint8(uint8_t address){
+static el_uint8 el_cam_register_read_uint8(el_uint8 address){
     return e_i2cp_read(EL_CAM_I2C_ID,address);
 }
 
-static void el_cam_register_write_uint8(uint8_t address,uint8_t b){
+static void el_cam_register_write_uint8(el_uint8 address,el_uint8 b){
     e_i2cp_write(EL_CAM_I2C_ID,address,b);
 }
 
-static el_uint16 el_cam_register_read_uint16(uint8_t address){
-    uint8_t H;
-    uint8_t L;
+static el_uint16 el_cam_register_read_uint16(el_uint8 address){
+    el_uint8 H;
+    el_uint8 L;
     H = e_i2cp_read(EL_CAM_I2C_ID,address);
     L = e_i2cp_read(EL_CAM_I2C_ID,address+1);
     return (H<<8)|L;
 }
 /*
-static void el_cam_register_write_uint16(uint8_t address,el_uint16 w){
-    uint8_t H = w>>8;
-    uint8_t L = w&0xFF;
+static void el_cam_register_write_uint16(el_uint8 address,el_uint16 w){
+    el_uint8 H = w>>8;
+    el_uint8 L = w&0xFF;
     e_i2cp_write(EL_CAM_I2C_ID,address,H);
     e_i2cp_write(EL_CAM_I2C_ID,address+1,L);
 }
@@ -152,7 +151,16 @@ void el_cam_init_register(void){
     el_cam_register_write_uint8(0x80,0x40);
     el_cam_register_write_uint8(0x81,0x40);
     el_cam_register_write_uint8(0x82,0x01);
+
+    // enable horizontal mirror
     
+    el_cam_register_write_uint8(0x68,0b01100001);
+    el_cam_register_write_uint8(0x03,0x00);// switch to group A
+    el_cam_register_write_uint8(0x90,0b01110101);
+    el_nop_delay(50);
+    el_cam_register_write_uint8(0x03,0x01);// switch to group B
+    el_cam_register_write_uint8(0x68,0b00000001);
+
     // use test pattern
     //el_cam_register_write_uint8(0x40,0x1A);
 
@@ -199,9 +207,10 @@ void el_cam_init_register(void){
     el_cam_register_write_uint8(0x03,0x01);
     el_cam_register_write_uint8(0x34,0x02);// standby bit
 #endif
-
+    
     // set target to register group A
     el_cam_register_write_uint8(0x03,0x00);
+    
 
     e_i2cp_disable();
 

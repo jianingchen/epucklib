@@ -92,4 +92,12 @@ int elu_putchar(int c);
 
 void elu_scanf_set_echo(bool k);
 
+
+#ifdef EL_INCLUDE_CONTEXT
+
+#define ELU_STDIO_BUFFER_SIZE   80
+extern char elu_stdio_buffer[ELU_STDIO_BUFFER_SIZE];
+
+#endif
+
 #endif	/* ELU_STDIO_H */

@@ -60,6 +60,7 @@
       <itemPath>elu.h</itemPath>
       <itemPath>elu_stdio.c</itemPath>
       <itemPath>elu_stdio.h</itemPath>
+      <itemPath>elu.c</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
