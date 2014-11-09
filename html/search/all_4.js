@@ -108,6 +108,7 @@ var searchData=
   ['el_5ftrigger_5fenable',['el_trigger_enable',['../a00022.html#ae8ee35672fb010ce11467750f6bfc63b',1,'el_trigger.h']]],
   ['el_5ftrigger_5fevent_5ftype',['el_trigger_event_type',['../a00022.html#a8b37a76e9a384d41426690a4cb74a044',1,'el_trigger.h']]],
   ['el_5ftrigger_5fget_5fcounter',['el_trigger_get_counter',['../a00022.html#a5cc3b6a46910afe5a404c19ff18aa212',1,'el_trigger.h']]],
+  ['el_5ftrigger_5fis_5fenabled',['el_trigger_is_enabled',['../a00022.html#a6cf6b576e2597e5b942253e4b8cb0119',1,'el_trigger.h']]],
   ['el_5ftrigger_5fissue_5finternal_5fevent',['el_trigger_issue_internal_event',['../a00022.html#af595b837a4b0c95a623884e9db86487d',1,'el_trigger.h']]],
   ['el_5ftrigger_5fset_5fcondition',['el_trigger_set_condition',['../a00022.html#a40e49c09f2deb3a73b9c2c42d784c04a',1,'el_trigger.h']]],
   ['el_5ftrigger_5fset_5fevent',['el_trigger_set_event',['../a00022.html#a988d439b2dd5ee47173299dcc2666f16',1,'el_trigger.h']]],
@@ -119,5 +120,8 @@ var searchData=
   ['elu_5fsscanf',['elu_sscanf',['../a00025.html#a5aa4f9b88807ca98c69f4038e1d89f34',1,'elu_stdio.h']]],
   ['elu_5fstdio_2eh',['elu_stdio.h',['../a00025.html',1,'']]],
   ['environmentalambient',['EnvironmentalAmbient',['../a00006.html#a12f7fdb0aff8e22c26b04037ac39e68c',1,'el_ir_proximity_param']]],
+  ['exposuretime',['ExposureTime',['../a00004.html#a96a5f876f12e2278dd5f0fca979e368f',1,'el_camera_param']]],
+  ['externalintergationtime',['ExternalIntergationTime',['../a00004.html#ade963299cc7b68e939d341855cbcd3c1',1,'el_camera_param']]],
+  ['externallineargain',['ExternalLinearGain',['../a00004.html#a1201d921ec6ac6263c62d0c08d30228f',1,'el_camera_param']]],
   ['embedded_20system_20library_20for_20e_2dpuck',['embedded system library for e-puck',['../index.html',1,'']]]
 ];

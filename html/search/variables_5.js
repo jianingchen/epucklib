@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['subtractea',['SubtractEA',['../a00006.html#a34bf2d27a0309955441efa19e1471729',1,'el_ir_proximity_param']]]
+  ['redgain',['RedGain',['../a00004.html#a7757231840033cf3410b97ed93d3481a',1,'el_camera_param']]]
 ];
