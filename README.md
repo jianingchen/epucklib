@@ -3,10 +3,12 @@ Jianing Chen
 
 j.n.chen@sheffield.ac.uk
 
-==== embedded system library for e-puck (Work In Progress) ====
+embedded system library for e-puck 
+==================================
 
+(Work In Progress)
 
-Environment:
+### Environment:
 
  - The project format in the distribution is for MPLAB X.
  
@@ -16,7 +18,7 @@ Environment:
  but NOT PO3030K. 
 
 
-Hightlights: 
+### Hightlights: 
 
  - This is a library for developing the embedded system of the e-puck robot. 
  
@@ -45,7 +47,7 @@ Hightlights:
  interrupts. 
 
 
-License: 
+### License: 
 
  - All source files starting with "e_" are from the official e-puck library, 
  and attribute to whom ever own the copyright of them. 
