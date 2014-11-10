@@ -8,7 +8,9 @@ embedded system library for e-puck
 
 (Work In Progress)
 
-![GitHub Logo](/el/el_logo_color.png)
+<p align="center">
+<img src="/el/el_logo_color.png" />
+</p>
 
 ### Hightlights: 
 
