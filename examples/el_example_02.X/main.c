@@ -19,21 +19,31 @@ This file is released under the terms of the MIT license (see "el.h").
 #include <el.h>
 #include <elu.h>
 
-#include "ServiceTrigger_CameraImageProcessing.h"
-#include "TaskTrigger_ObjectFollowing.h"
-
 void BootingProcedure01_SelectorBarrier();
-void TimerCallback_MeasureCameraFPS(void*arg);
 void Process_ConsoleLoop(void*arg);
+void Trigger_Accelerometer_Process(void*arg);
 
 
-el_ir_proximity_data ProximitySensor[8];
+el_handle Trigger_Accelerometer;
 
 
 int main(int argc,char*argv[]){
 
     el_initialization();
+
+    /*
+     * Calibrate the sensors and generate a random seed.
+     */
     el_calibrate_sensors();
+
+    /*
+     * This is to let the robot automaticaly reset when TinyBootloader
+     * attemps to write a new HEX, so you dont need to touch the reset
+     * button.
+     * To achieve this, TinyBootloader also needs to be configured:
+     * in "Options" tab, set "Codes to send first" to 6.
+     */
+    el_uart_use_reset_code(true,6);
 
     /*
      * Put the robot in silence when the selector is in 0~3. 
@@ -41,18 +51,15 @@ int main(int argc,char*argv[]){
     BootingProcedure01_SelectorBarrier();
     
     
-    /*
-     * The values below are same as the default configurations; they are placed
-     * here just for demonstration. Note, when the automatic mode is used, the
-     * frame rate will be varied depending on the lighting condition of the
-     * environment. 
-     */
-    el_config_camera_list()->ExposureMode = EL_AUTOMATIC;
-    el_config_camera_list()->AutoWhiteBalance = true;
-    el_config_camera_list()->AutoDigitalGain = true;
-    el_config_camera(el_config_camera_list());
+    elu_printf("EL_EXAMPLE_02\n");
+
+    Trigger_Accelerometer = el_create_trigger();
+    el_trigger_set_process(Trigger_Accelerometer,Trigger_Accelerometer_Process);
+    el_trigger_set_event(Trigger_Accelerometer,EL_EVENT_ACCELEROMETER_UPDATE);
     
     el_launch_process(Process_ConsoleLoop,NULL);
+
+    el_enable_accelerometer();// never forget to enable something
 
     el_main_loop();
 
@@ -70,25 +77,8 @@ void BootingProcedure01_SelectorBarrier(){
 
 void Process_ConsoleLoop(void*arg){
     char c;
-    int i;
+    el_int16 xyz[3];
 
-    elu_printf("EL_EXAMPLE_02\n");
-
-    // setup the triggers
-    Trigger_CameraImageProcessing_Setup();
-    Trigger_ObjectFollowing_Setup();
-
-    el_config_stepper_motor_list()->UseAcceleration = true;
-    el_config_stepper_motor_list()->AccelerationRate = 2000;
-    el_config_stepper_motor(el_config_stepper_motor_list());
-    
-    el_enable_camera();
-    el_enable_ir_proximity();
-    el_enable_stepper_motor();
-    
-    el_process_wait(500);// wait for 500 ms
-
-    el_led_set(EL_LED_BODY,EL_ON);
     el_uart_flush_char(EL_UART_1);
 
     while(1){
@@ -99,62 +89,74 @@ void Process_ConsoleLoop(void*arg){
 
         c = el_uart_get_char(EL_UART_1);
 
-        /*
-         * This is to let the robot automaticaly reset when TinyBootloader
-         * attemps to write a new HEX, so you dont need to touch the reset
-         * button.
-         * To achieve this, TinyBootloader also needs to be configured:
-         * in "Options" tab, set "Codes to send first" to 6.
-         */
-        if(c==6){
-            el_reset();
-        }
-
         switch(c){
 
         case 'f':
             el_led_set(EL_LED_FRONT,EL_TOGGLE);
             break;
 
-        case 'r':// report ir proximity sensor outputs
-            elu_println("<IR>");
-            el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_ALL,EL_IR_ALL_3V,(el_int16*)ProximitySensor);
-            elu_printf("AMB:");
-            for(i=0;i<8;i++){
-                elu_printf("\t%d",ProximitySensor[i].Ambient);
-            }
-            elu_putchar('\n');
-            elu_printf("REF:");
-            for(i=0;i<8;i++){
-                elu_printf("\t%d",ProximitySensor[i].Reflection);
-            }
-            elu_putchar('\n');
-            break;
-
-        case 'p':// report image processing result
-            elu_println("<IMG>");
-            elu_println("MASS:\t%d\t%d\t%d",IMG_RedMass,IMG_GreenMass,IMG_BlueMass);
-            elu_println("BIAS:\t%d\t%d\t%d",IMG_RedBias,IMG_GreenBias,IMG_BlueBias);
-            elu_putchar('\n');
-            break;
-
-        case '1':
-            TT_ObjectColor = TT_OBJECT_COLOR_RED;
-            elu_println("FOLLOW RED");
-            break;
-
-        case '2':
-            TT_ObjectColor = TT_OBJECT_COLOR_GREEN;
-            elu_println("FOLLOW GREEN");
-            break;
-
-        case '3':
-            TT_ObjectColor = TT_OBJECT_COLOR_BLUE;
-            elu_println("FOLLOW BLUE");
+        case 'g':// report accelerometer outputs
+            elu_println("[ACC]");
+            el_accelerometer_get(EL_ACCELEROMETER_ONE,EL_ACCELERATION_ALL_3V,xyz);
+            elu_println("%d\t%d\t%d",xyz[0],xyz[1],xyz[2]);
             break;
 
         }
 
     }
+
+}
+
+void Trigger_Accelerometer_Process(el_handle this_trigger){
+    static int previous_xyz[3] = {0,0,0};
+    const long threshold_s = 330L*330L;
+    long magnitude_s;// must be a long int otherwise may overflow
+    int xyz[3];
+    int dx,dy,dz;
+
+    el_accelerometer_get(EL_ACCELEROMETER_ONE,EL_ACCELERATION_ALL_3V,xyz);
+
+    // flash all ring LEDs if a shake or impact is detected
+    if(previous_xyz[0]!=0){
+
+        dx = xyz[0] - previous_xyz[0];
+        dy = xyz[1] - previous_xyz[1];
+        dz = xyz[2] - previous_xyz[2];
+
+        magnitude_s = (long)dx*dx;
+        magnitude_s += (long)dy*dy;
+        magnitude_s += (long)dz*dz;
+        
+        /*
+         * Tip:
+         * Keeping all values in square may save the computation cost for
+         * a square root in many circumstances. 
+         */
+        if(magnitude_s > threshold_s){
+
+            el_led_set(EL_LED_RING_ALL,EL_ON);
+            el_process_wait(200);
+
+            el_led_set(EL_LED_RING_ALL,EL_OFF);
+            el_process_wait(200);
+
+            // 400 ms past, need to refresh values
+            el_accelerometer_get(EL_ACCELEROMETER_ONE,EL_ACCELERATION_ALL_3V,xyz);
+
+        }
+
+    }
+
+    previous_xyz[0] = xyz[0];
+    previous_xyz[1] = xyz[1];
+    previous_xyz[2] = xyz[2];
+
+    /*
+     * once the process of a trigger is launched, the trigger is disabled
+     * automatically. This is to prevent nested launches of process when the
+     * event of the trigger is very frequent and there is no trigger condition.
+     * So re-enabling a trigger is often needed at the end of a trigger process.
+     */
+    el_trigger_enable(this_trigger);
 
 }

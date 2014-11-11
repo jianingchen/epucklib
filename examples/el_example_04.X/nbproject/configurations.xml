@@ -13,6 +13,10 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
+      <itemPath>ServiceTrigger_CameraImageProcessing.h</itemPath>
+      <itemPath>ServiceTrigger_CameraImageProcessing.c</itemPath>
+      <itemPath>TaskTrigger_ObjectFollowing.c</itemPath>
+      <itemPath>TaskTrigger_ObjectFollowing.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

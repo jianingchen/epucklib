@@ -19,7 +19,7 @@ This file is released under the terms of the MIT license (see "el.h").
 #include "el.h"
 #include "elu.h"
 
-void booting_procedure01_selector_barrier();
+void BootingProcedure01_SelectorBarrier();
 
 void Process_LED_PatternA(void*arg);
 void Process_LED_PatternB(void*arg);
@@ -29,8 +29,20 @@ int main(){
 
     el_initialization();
 
-    // do not transmit or do anything until the selector allows
-    booting_procedure01_selector_barrier();
+    /*
+     * This is to let the robot automaticaly reset when TinyBootloader
+     * attemps to write a new HEX, so you dont need to touch the reset
+     * button.
+     * To achieve this, TinyBootloader also needs to be configured:
+     * in "Options" tab, set "Codes to send first" to 6.
+     */
+    el_uart_use_reset_code(true,6);
+
+    /*
+     * Put the robot in silence when the selector is in 0~3.
+     */
+    BootingProcedure01_SelectorBarrier();
+
 
     // see documentation for details about "elu_printf" and the UART module
     elu_printf("Hello World! This is e-puck!\n");
@@ -108,7 +120,7 @@ void Process_LED_Control(void*arg){
     
 }
 
-void booting_procedure01_selector_barrier(){
+void BootingProcedure01_SelectorBarrier(){
 
     // do nothing until selector >= 4
     while(el_get_selector_value()<4){

@@ -37,7 +37,8 @@ int main(int argc,char*argv[]){
 
     el_initialization();
     el_calibrate_sensors();
-
+    el_uart_use_reset_code(true,6);
+    
     /*
      * Put the robot in silence when the selector is in 0~3. 
      */
@@ -109,17 +110,6 @@ void Process_ConsoleLoop(void*arg){
         
         c = el_uart_get_char(EL_UART_1);
         
-        /*
-         * This is to let the robot automaticaly reset when TinyBootloader 
-         * attemps to write a new HEX, so you dont need to touch the reset
-         * button. 
-         * To achieve this, TinyBootloader also needs to be configured: 
-         * in "Options" tab, set "Codes to send first" to 6. 
-         */
-        if(c==6){
-            el_reset();
-        }
-
         switch(c){
 
         case 'H':
