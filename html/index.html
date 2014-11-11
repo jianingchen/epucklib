@@ -83,12 +83,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">embedded system library for e-puck </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="image">
-<img src="el_logo_color.png" alt="el_logo_color.png"/>
-</div>
+<div class="textblock"><p><br />
+ </p>
 <h1><a class="anchor" id="sec_intro"></a>
 Introduction</h1>
-<p>This is a library for the e-puck robot platform. (TODO)</p>
+<p>This is a library for developing the embedded system on the e-puck robot. (TODO)</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="sec_environment"></a>
@@ -128,6 +127,7 @@ Repository Contents</h1>
 <li>el_example_01.X &mdash; This is <a class="el" href="index.html#sec_ex01">Example 1</a>.</li>
 <li>el_example_02.X &mdash; This is <a class="el" href="index.html#sec_ex02">Example 2</a>.</li>
 <li>el_example_03.X &mdash; This is <a class="el" href="index.html#sec_ex03">Example 3</a>.</li>
+<li>el_example_04.X &mdash; This is <a class="el" href="index.html#sec_ex04">Example 4</a>.</li>
 <li>el_example_hw.X &mdash; This is the "Hello World" example.</li>
 </ul>
 </li>
@@ -136,7 +136,7 @@ Repository Contents</h1>
 <p><br />
  </p>
 <h1><a class="anchor" id="sec_build"></a>
-Build &amp; Link</h1>
+Getting Started</h1>
 <p>Download and install MPLAB X IDE and the XC16 Compiler.</p>
 <h2><a class="anchor" id="sec_buildlib"></a>
 Build This Library</h2>
@@ -167,7 +167,7 @@ Program The Microcontroller</h2>
  </p>
 <h1><a class="anchor" id="sec_examples"></a>
 Examples</h1>
-<p>In all of these examples, the e-puck will not do anything if the selector position is below 4.</p>
+<p>In all of these examples, the e-puck will not do anything if the selector position is below 4. The e-puck will also automatically reset it self when the "Write Flash" button in Tiny BootLoader is clicked and proceed to programming.</p>
 <h2><a class="anchor" id="sec_ex01"></a>
 Example 1</h2>
 <p>In this example, the e-puck flashes some of its LEDs. Sending a char of 'f' through UART1 (the UART channel used by the Bluetooth module) will toggle the front led. In UART1, the e-puck will also report the number of seconds since start running.</p>
@@ -178,14 +178,12 @@ Example 1</h2>
 </ul>
 <h2><a class="anchor" id="sec_ex02"></a>
 Example 2</h2>
-<p>The e-puck follows any green object in front of it. Through UART1, color of the object to be followed can be selected among red, green and blue.</p>
+<p>When the e-puck is shaken or detects an impact, it will flash all of its ring LEDs. In UART communication, sending a 'g' makes the e-puck report the outputs of the accelerometers.</p>
 <p>This example includes the usage of following modules:</p><ul>
 <li>Process</li>
 <li>Trigger</li>
-<li>Camera</li>
+<li>Accelerometer</li>
 <li>LED</li>
-<li>Stepper Motor</li>
-<li>IR Proximity Sensors</li>
 <li>UART STDIO</li>
 </ul>
 <h2><a class="anchor" id="sec_ex03"></a>
@@ -195,6 +193,18 @@ Example 3</h2>
 <li>Process</li>
 <li>Trigger</li>
 <li>Timer</li>
+<li>Camera</li>
+<li>LED</li>
+<li>Stepper Motor</li>
+<li>IR Proximity Sensors</li>
+<li>UART STDIO</li>
+</ul>
+<h2><a class="anchor" id="sec_ex04"></a>
+Example 4</h2>
+<p>The e-puck follows any green object in front of it. Through UART1, color of the object to be followed can be selected among red, green and blue.</p>
+<p>This example includes the usage of following modules:</p><ul>
+<li>Process</li>
+<li>Trigger</li>
 <li>Camera</li>
 <li>LED</li>
 <li>Stepper Motor</li>
@@ -212,7 +222,7 @@ License &amp; Attributions</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 9 2014 17:07:21 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 11 2014 23:19:59 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

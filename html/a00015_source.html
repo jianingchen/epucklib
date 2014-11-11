@@ -136,7 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="a00006.html">   67</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="a00015.html#ac9313b8eea9f5c0f35c39e3d205e5b2e">el_ir_proximity_mode</a> WorkingMode;</div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="a00006.html#a12f7fdb0aff8e22c26b04037ac39e68c">   69</a></span>&#160;    el_uint16 <a class="code" href="a00006.html#a12f7fdb0aff8e22c26b04037ac39e68c">EnvironmentalAmbient</a>;     </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    el_uint16 EnvironmentalAmbient;</div>
 <div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="a00006.html#a34bf2d27a0309955441efa19e1471729">   70</a></span>&#160;    el_bool <a class="code" href="a00006.html#a34bf2d27a0309955441efa19e1471729">SubtractEA</a>;     </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;} <a class="code" href="a00006.html">el_ir_proximity_param</a>;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
@@ -218,10 +218,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="a00014_html"><div class="ttname"><a href="a00014.html">el_common.h</a></div></div>
 <div class="ttc" id="a00015_html_a6777dd76bceec1ac25a170762e1331c9"><div class="ttname"><a href="a00015.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a></div><div class="ttdeci">el_ir_proximity_output</div><div class="ttdef"><b>Definition:</b> el_ir_proximity.h:80</div></div>
 <div class="ttc" id="a00005_html"><div class="ttname"><a href="a00005.html">el_ir_proximity_data</a></div><div class="ttdef"><b>Definition:</b> el_ir_proximity.h:91</div></div>
-<div class="ttc" id="a00006_html_a12f7fdb0aff8e22c26b04037ac39e68c"><div class="ttname"><a href="a00006.html#a12f7fdb0aff8e22c26b04037ac39e68c">el_ir_proximity_param::EnvironmentalAmbient</a></div><div class="ttdeci">el_uint16 EnvironmentalAmbient</div><div class="ttdoc">EA. </div><div class="ttdef"><b>Definition:</b> el_ir_proximity.h:69</div></div>
 <div class="ttc" id="a00015_html_a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14"><div class="ttname"><a href="a00015.html#a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14">EL_IR_AMBIENT</a></div><div class="ttdoc">get the ambient output </div><div class="ttdef"><b>Definition:</b> el_ir_proximity.h:81</div></div>
 <div class="ttc" id="a00013_html"><div class="ttname"><a href="a00013.html">el_clock.h</a></div></div>
-<div class="ttc" id="a00006_html_a34bf2d27a0309955441efa19e1471729"><div class="ttname"><a href="a00006.html#a34bf2d27a0309955441efa19e1471729">el_ir_proximity_param::SubtractEA</a></div><div class="ttdeci">el_bool SubtractEA</div><div class="ttdoc">whether to subtract EA in the ambient output. </div><div class="ttdef"><b>Definition:</b> el_ir_proximity.h:70</div></div>
+<div class="ttc" id="a00006_html_a34bf2d27a0309955441efa19e1471729"><div class="ttname"><a href="a00006.html#a34bf2d27a0309955441efa19e1471729">el_ir_proximity_param::SubtractEA</a></div><div class="ttdeci">el_bool SubtractEA</div><div class="ttdoc">whether to subtract EnvironmentalAmbient in the ambient output. </div><div class="ttdef"><b>Definition:</b> el_ir_proximity.h:70</div></div>
 <div class="ttc" id="a00015_html_ac9313b8eea9f5c0f35c39e3d205e5b2ea6e61f4edccd695b26cf205c95896ea7d"><div class="ttname"><a href="a00015.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea6e61f4edccd695b26cf205c95896ea7d">EL_IR_PROXIMITY_PULSE</a></div><div class="ttdoc">use the Pulse Mode (default mode) </div><div class="ttdef"><b>Definition:</b> el_ir_proximity.h:56</div></div>
 <div class="ttc" id="a00015_html_a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7"><div class="ttname"><a href="a00015.html#a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7">EL_IR_REFLECTION</a></div><div class="ttdoc">get the reflection output </div><div class="ttdef"><b>Definition:</b> el_ir_proximity.h:82</div></div>
 <div class="ttc" id="a00015_html_abf26870125fabdfd772c898267716adf"><div class="ttname"><a href="a00015.html#abf26870125fabdfd772c898267716adf">el_ir_proximity_get_counter</a></div><div class="ttdeci">el_uint32 el_ir_proximity_get_counter()</div><div class="ttdoc">get total number of samples obtained since initialization </div></div>
@@ -229,7 +228,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 9 2014 17:07:20 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 11 2014 23:19:59 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

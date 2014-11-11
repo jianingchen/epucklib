@@ -119,7 +119,6 @@ var searchData=
   ['elu_5fsnprintf',['elu_snprintf',['../a00025.html#a6c5344ecf2f2b40091f06d1440ab7ff9',1,'elu_stdio.h']]],
   ['elu_5fsscanf',['elu_sscanf',['../a00025.html#a5aa4f9b88807ca98c69f4038e1d89f34',1,'elu_stdio.h']]],
   ['elu_5fstdio_2eh',['elu_stdio.h',['../a00025.html',1,'']]],
-  ['environmentalambient',['EnvironmentalAmbient',['../a00006.html#a12f7fdb0aff8e22c26b04037ac39e68c',1,'el_ir_proximity_param']]],
   ['exposuretime',['ExposureTime',['../a00004.html#a96a5f876f12e2278dd5f0fca979e368f',1,'el_camera_param']]],
   ['externalintergationtime',['ExternalIntergationTime',['../a00004.html#ade963299cc7b68e939d341855cbcd3c1',1,'el_camera_param']]],
   ['externallineargain',['ExternalLinearGain',['../a00004.html#a1201d921ec6ac6263c62d0c08d30228f',1,'el_camera_param']]],
