@@ -66,8 +66,8 @@ typedef enum {
 */
 typedef struct {
     el_ir_proximity_mode WorkingMode;
-    el_uint16 EnvironmentalAmbient;     ///< EA
-    el_bool SubtractEA;     ///< whether to subtract EA in the ambient output.
+    el_uint16 EnvironmentalAmbient;
+    el_bool SubtractEA;     ///< whether to subtract EnvironmentalAmbient in the ambient output.
 } el_ir_proximity_param;
 
 

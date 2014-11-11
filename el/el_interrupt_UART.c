@@ -46,17 +46,20 @@ void el_init_interrupt_UART(){
 }
 
 void __attribute__((interrupt, no_auto_psv))_U1RXInterrupt(void){
-    char c;
+    int w;
 
     IFS0bits.U1RXIF = 0;
 
-    c = U1RXREG;
-
-    el_uart1_rx_buffer[el_uart1_rx_buf_i++] = c;
+    w = U1RXREG;
+    
+    el_uart1_rx_buffer[el_uart1_rx_buf_i++] = w;
     el_uart1_rx_buf_i %= EL_UART_RX_BUF_DIM;
     if(el_uart1_rx_buf_i==el_uart1_rx_buf_o){
         ++el_uart1_rx_buf_o;
         el_uart1_rx_buf_o %= EL_UART_RX_BUF_DIM;
+    }
+    if(w==el_uart_reset_code){
+        RESET();
     }
     
     el_trg_event_flag_ex_uart1++;

@@ -140,7 +140,7 @@ void el_calibrate_sensors(){
     el_led_set(EL_LED_RING_3,EL_OFF);
     el_led_set(EL_LED_RING_5,EL_OFF);
     el_led_set(EL_LED_RING_7,EL_OFF);
-
+    
     el_irps_is_calibrated = true;
     
 }

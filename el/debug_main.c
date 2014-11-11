@@ -51,8 +51,8 @@ int main(int argc,char*argv[]){
     el_handle trg;
 
     el_initialization();
-
     el_calibrate_sensors();
+    el_uart_use_reset_code(true,6);
     
     booting_procedure01_selector_barrier();
 
@@ -131,9 +131,6 @@ EL_PROCESS Process_DebugControl(void*data){
         WAIT_FOR_UART1_CHAR;
 
         c = el_uart_get_char(EL_UART_1);
-        if(c==6){
-            el_reset();
-        }
         
         switch(c){
 
@@ -207,19 +204,6 @@ EL_PROCESS Process_DebugControl(void*data){
         case ' ':
             el_set_wheel_speed(0,0);
             break;
-
-        case 'T':
-            el_config_stepper_motor_list()->UseAcceleration = true;
-            el_config_stepper_motor(el_config_stepper_motor_list());
-            elu_println("MOTOR ACC ON");
-            break;
-
-        case 't':
-            el_config_stepper_motor_list()->UseAcceleration = false;
-            el_config_stepper_motor(el_config_stepper_motor_list());
-            elu_println("MOTOR ACC OFF");
-            break;
-
 
         }
     }

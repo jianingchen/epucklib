@@ -19,6 +19,8 @@ This file is released under the terms of the MIT license (see "el.h").
 #include "el_context.h"
 #include "el_uart.h"
 
+el_int16 el_uart_reset_code;
+
 el_uint16 el_uart1_tx_counter;
 char*el_uart1_tx_pointer;
 char el_uart1_tx_buffer[EL_UART_TX_BUF_DIM];
@@ -43,6 +45,8 @@ char el_uart2_rx_buffer[EL_UART_RX_BUF_DIM];
 
 void el_init_uart(){
     int i;
+
+    el_uart_reset_code = 0x0100;
 
     /** UART 1 **/
 
@@ -75,6 +79,18 @@ void el_init_uart(){
     // see "el_interrupt_UART.c" for UART RX/TX interrupt related code
     
 }
+
+void el_uart_use_reset_code(el_bool k,char w){
+    if(k){
+        el_uart_reset_code = w;
+    }else{
+        el_uart_reset_code = 0x0100;
+    }
+}
+
+/**
+--------------------------------------------------------------------------------
+**/
 
 void el_uart1_tx_clear(){
     IEC0bits.U1TXIE = 0;

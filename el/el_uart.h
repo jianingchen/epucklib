@@ -44,6 +44,8 @@ This file is released under the terms of the MIT license (see "el.h").
 #define EL_UART_2       1
 #define EL_UART_BLUETOOTH   EL_UART_1
 
+void el_uart_use_reset_code(el_bool k,char w);
+
 void el_uart_send_char(el_index ch,char c);
 void el_uart_send_string(el_index ch,const char*str);
 bool el_uart_is_sending(el_index ch);
@@ -70,6 +72,7 @@ void el_uart_erase_last_char(el_index ch);
 #define EL_UART_TX_BUF_DIM  80
 #define EL_UART_RX_BUF_DIM  64
 
+extern el_int16 el_uart_reset_code;
 extern el_uint16 el_uart1_tx_counter;
 extern char*el_uart1_tx_pointer;
 extern char el_uart1_tx_buffer[EL_UART_TX_BUF_DIM];

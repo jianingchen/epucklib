@@ -2,11 +2,11 @@
 
 \mainpage embedded system library for e-puck
 
-\image html el_logo_color.png
 
+\n 
 \section sec_intro Introduction
 
-This is a library for the e-puck robot platform. 
+This is a library for developing the embedded system on the e-puck robot. 
 (TODO)
 
 
@@ -47,13 +47,14 @@ The repository should contains the following items:
     + el_example_01.X --- This is \ref sec_ex01.
     + el_example_02.X --- This is \ref sec_ex02.
     + el_example_03.X --- This is \ref sec_ex03.
+    + el_example_04.X --- This is \ref sec_ex04.
     + el_example_hw.X --- This is the "Hello World" example.
 
 - other_materials --- some other related materials
 
 
 \n 
-\section sec_build Build & Link
+\section sec_build Getting Started
 
 Download and install MPLAB X IDE and the XC16 Compiler. 
 
@@ -109,7 +110,9 @@ the homepage of Tiny Bootloader or the official site of e-puck robot.
 \section sec_examples Examples
 
 In all of these examples, the e-puck will not do anything if the selector 
-position is below 4. 
+position is below 4. The e-puck will also automatically reset it self when 
+the "Write Flash" button in Tiny BootLoader is clicked and proceed to 
+programming. 
 
 \subsection sec_ex01 Example 1
 
@@ -126,16 +129,15 @@ This example includes the usage of following modules:
 
 \subsection sec_ex02 Example 2
 
-The e-puck follows any green object in front of it. Through UART1, 
-color of the object to be followed can be selected among red, green and blue. 
+When the e-puck is shaken or detects an impact, it will flash all of its ring 
+LEDs. In UART communication, sending a 'g' makes the e-puck report the outputs 
+of the accelerometers. 
 
 This example includes the usage of following modules:
 - Process
 - Trigger
-- Camera
+- Accelerometer
 - LED
-- Stepper Motor
-- IR Proximity Sensors
 - UART STDIO
 
 
@@ -153,6 +155,22 @@ This example includes the usage of following modules:
 - Stepper Motor
 - IR Proximity Sensors
 - UART STDIO
+
+
+\subsection sec_ex04 Example 4
+
+The e-puck follows any green object in front of it. Through UART1, 
+color of the object to be followed can be selected among red, green and blue. 
+
+This example includes the usage of following modules:
+- Process
+- Trigger
+- Camera
+- LED
+- Stepper Motor
+- IR Proximity Sensors
+- UART STDIO
+
 
 
 \n 
