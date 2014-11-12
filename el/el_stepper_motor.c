@@ -159,10 +159,7 @@ void el_config_stepper_motor(const el_stepper_motor_param*p){
     }else{
         el_stpm_accel_linear_term = p->AccelerationRate/EL_STPM_SPEED_CONTROL_FREQ;
     }
-
-    if(&el_stpm_parameters != p){
-        el_stpm_parameters = *p;
-    }
+    
 }
 
 void el_routine_stepper_motor_accel_2400hz(){

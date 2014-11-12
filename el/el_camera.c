@@ -292,10 +292,7 @@ void el_config_camera(const el_camera_param*p){
     el_cam_register_write_uint8(0x03,0x00);// Register Group A
 
     e_i2cp_disable();
-
-    if(&el_cam_parameters != p){
-        el_cam_parameters = *p;
-    }
+    
 }
 
 

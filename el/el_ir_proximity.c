@@ -108,10 +108,6 @@ void el_config_ir_proximity(const el_ir_proximity_param*p){
     el_irps_environment_ambient = p->EnvironmentalAmbient;
     el_irps_subtract_ea = p->SubtractEA;
     
-    if(&el_irps_parameters != p){
-        el_irps_parameters = *p;
-    }
-
 }
 
 void el_enable_ir_proximity(void){
