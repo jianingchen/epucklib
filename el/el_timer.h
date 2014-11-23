@@ -79,6 +79,12 @@ void el_timer_set_perodic(el_handle h,bool b);
     the 'agenda' in the official e-puck library, which creates a perodic 
     routine in the system. 
     
+    Compared to a loop with time wait in a process, using timer callback to 
+    run a perodic routine has no accumulated error. For example, a timer 
+    with 50 ms period can stably run its callback for 72000 times in 1 hour. 
+    If it is written as a loop in a process with a 50 ms delay, it will be 
+    slightly less than 36000 times due to the time cost of the body of the loop. 
+    
     Use NULL to not using any callback function. 
     By default, the timer does not has a callback function. 
 */

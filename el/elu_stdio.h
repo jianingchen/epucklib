@@ -22,7 +22,15 @@ This file is released under the terms of the MIT license (see "el.h").
 
 \section Introduction
 
-(TODO)
+This module let the user interface UART1 in a similar fashion as the stdio 
+functions. For example, sending formated string using "printf" alike functions 
+and recieving string using "scanf" alike functions. 
+
+Compared to the relatively native interfacing functions in \ref EL_UART, 
+the functions provide more convience. However, it is only OK to use them in 
+one process. In other word, one should avoid call these functions concurently 
+in more than one process in the system. 
+
 
 */
  
@@ -69,6 +77,7 @@ int elu_sscanf(const char*s,const char*format,...) _SSCANF_FAMILY;
 /*!
     \brief send a string with data fields to UART1
 
+    \param format   same rule as the format string of "printf"
     \return length of the string with data formatted
 
 */
@@ -78,19 +87,35 @@ int elu_printf(const char*format,...) _PRINTF_FAMILY;
 /*!
     \brief send a string with data fields + a newline char to UART1
 
+    \param format   same rule as the format string of "printf"
     \return length of the string with data formatted
 
 */
 int elu_println(const char*format,...) _PRINTF_FAMILY;
 
 
+/*!
+    \brief scanf to be used here
+    
+    \param format   same rule as the format string of "scanf"
+    \return number of data field successfuly scanned
+    
+    This function behaves similarly to the "scanf": it receives and stores
+    characters. When a carriage return (the Enter key) occurs, this function 
+    analyzes the string and returns. 
+*/
 int elu_scanf(const char*format,...) _SCANF_FAMILY;
 
 
-int elu_putchar(int c);
-
-
+/*!
+    \brief configure whether ::elu_scanf echo the character received 
+    
+    \param k   echo or not
+*/
 void elu_scanf_set_echo(bool k);
+
+
+int elu_putchar(int c);
 
 
 #ifdef EL_INCLUDE_CONTEXT

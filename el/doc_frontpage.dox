@@ -6,8 +6,30 @@
 \n 
 \section sec_intro Introduction
 
-This is a library for developing the embedded system on the e-puck robot. 
-(TODO)
+This library provides a straight forward programming interface to the hardwares 
+on the e-puck, including proximity senors, leds, stepper motors, etc. 
+Unlike the standard e-puck lib (has several modules), this library used 
+all-in-one design (one header path, one .a file). 
+
+Hightlights: 
+
+- A user-friendly and fast (40x15 @ 18.4 fps maximum) interface for e-puck's camera.  
+
+- Multi-tasking through 'process' --- so several loop with time delays can run 
+ concurrently (see \ref sec_ex02).
+
+- Reshape the concept of hardware timers and interrupts on the microcontroller 
+using two object-oriented interfacing models: 'timer' and 'trigger'. 
+
+- A 'timer' can be used to produce delay, as well as creating periodic callbacks 
+ (similar to the agenda in the official library). 
+
+- A 'trigger' can automatically launch a 'process' once something happened, 
+ which let you do things only interrupts can do without dealing with hardware 
+ interrupts. (This is also known as "Event-Driven Interface").
+ 
+- The whole library follows "No user code in interrupts" rule, so no 
+multi-access problem needs to be worried. 
 
 
 \n 
@@ -114,7 +136,10 @@ position is below 4. The e-puck will also automatically reset it self when
 the "Write Flash" button in Tiny BootLoader is clicked and proceed to 
 programming. 
 
+
 \subsection sec_ex01 Example 1
+
+(located in "./examples/el_example_01.X")
 
 In this example, the e-puck flashes some of its LEDs. Sending a char of 'f' 
 through UART1 (the UART channel used by the Bluetooth module) will toggle 
@@ -122,64 +147,73 @@ the front led. In UART1, the e-puck will also report the number of seconds
 since start running. 
 
 This example includes the usage of following modules:
-- Process
-- LED
-- UART STDIO
+- \ref EL_PROCESS
+- \ref EL_LED
+- \ref ELU_STDIO
 
 
 \subsection sec_ex02 Example 2
+
+(located in "./examples/el_example_02.X")
 
 When the e-puck is shaken or detects an impact, it will flash all of its ring 
 LEDs. In UART communication, sending a 'g' makes the e-puck report the outputs 
 of the accelerometers. 
 
 This example includes the usage of following modules:
-- Process
-- Trigger
-- Accelerometer
-- LED
-- UART STDIO
+- \ref EL_PROCESS
+- \ref EL_TRIGGER
+- \ref EL_ACC
+- \ref EL_LED
+- \ref ELU_STDIO
 
 
 \subsection sec_ex03 Example 3
+
+(located in "./examples/el_example_03.X")
 
 The e-puck can be remotely controlled via Bluetooth. It is recommended to use 
 this program with the serial communciation utility of this library. 
 
 This example includes the usage of following modules:
-- Process
-- Trigger
-- Timer
-- Camera
-- LED
-- Stepper Motor
-- IR Proximity Sensors
-- UART STDIO
+- \ref EL_PROCESS
+- \ref EL_TRIGGER
+- \ref EL_TIMER
+- \ref EL_CAMERA
+- \ref EL_LED
+- \ref EL_STEPPER_MOTOR
+- \ref EL_IR_PROXIMITY
+- \ref ELU_STDIO
 
 
 \subsection sec_ex04 Example 4
+
+(located in "./examples/el_example_04.X")
 
 The e-puck follows any green object in front of it. Through UART1, 
 color of the object to be followed can be selected among red, green and blue. 
 
 This example includes the usage of following modules:
-- Process
-- Trigger
-- Camera
-- LED
-- Stepper Motor
-- IR Proximity Sensors
-- UART STDIO
+- \ref EL_PROCESS
+- \ref EL_TRIGGER
+- \ref EL_CAMERA
+- \ref EL_LED
+- \ref EL_STEPPER_MOTOR
+- \ref EL_IR_PROXIMITY
+- \ref ELU_STDIO
 
+An image processing technique used to tracking the object is also demostrated in 
+this example. 
 
 
 \n 
 \section sec_license License & Attributions
 
-The e-puck embedded system library is distributed under the MIT license. 
-
 The source files starting with "e_" are copied from the e-puck standard 
-library and attribute to whomever own the authorship. 
+library and attribute to whomever own the copyright of the e-puck standard 
+library. 
+
+The e-puck embedded system library is distributed under the MIT license. 
 
 Logo of the library (see top left of this page) is licensed under 
 a Creative Commons Attribution-NonCommercial 4.0 International License. 
