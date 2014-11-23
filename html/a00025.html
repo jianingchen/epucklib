@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.95</span>
+   &#160;<span id="projectnumber">0.99</span>
    </div>
-   <div id="projectbrief">This project is now a work in progress. The first completed version will be version 1.0.</div>
+   <div id="projectbrief">The documentation work of this project is now in progress.</div>
   </td>
  </tr>
  </tbody>
@@ -126,15 +126,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a08425935f3540a12afdb0b0da013144e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a08425935f3540a12afdb0b0da013144e">elu_println</a> (const char *format,...) _PRINTF_FAMILY</td></tr>
 <tr class="memdesc:a08425935f3540a12afdb0b0da013144e"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a string with data fields + a newline char to UART1  <a href="#a08425935f3540a12afdb0b0da013144e">More...</a><br /></td></tr>
 <tr class="separator:a08425935f3540a12afdb0b0da013144e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af54a4b5fb6763b5ae4c2f4b1d710fa62"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af54a4b5fb6763b5ae4c2f4b1d710fa62"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>elu_scanf</b> (const char *format,...) _SCANF_FAMILY</td></tr>
+<tr class="memitem:af54a4b5fb6763b5ae4c2f4b1d710fa62"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#af54a4b5fb6763b5ae4c2f4b1d710fa62">elu_scanf</a> (const char *format,...) _SCANF_FAMILY</td></tr>
+<tr class="memdesc:af54a4b5fb6763b5ae4c2f4b1d710fa62"><td class="mdescLeft">&#160;</td><td class="mdescRight">scanf to be used here  <a href="#af54a4b5fb6763b5ae4c2f4b1d710fa62">More...</a><br /></td></tr>
 <tr class="separator:af54a4b5fb6763b5ae4c2f4b1d710fa62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae78f8e6c9f5bf84b84c4fd480382de87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#ae78f8e6c9f5bf84b84c4fd480382de87">elu_scanf_set_echo</a> (bool k)</td></tr>
+<tr class="memdesc:ae78f8e6c9f5bf84b84c4fd480382de87"><td class="mdescLeft">&#160;</td><td class="mdescRight">configure whether <a class="el" href="a00025.html#af54a4b5fb6763b5ae4c2f4b1d710fa62" title="scanf to be used here ">elu_scanf</a> echo the character received  <a href="#ae78f8e6c9f5bf84b84c4fd480382de87">More...</a><br /></td></tr>
+<tr class="separator:ae78f8e6c9f5bf84b84c4fd480382de87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e1598ddc521f4743c989a308525207d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e1598ddc521f4743c989a308525207d"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>elu_putchar</b> (int c)</td></tr>
 <tr class="separator:a9e1598ddc521f4743c989a308525207d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae78f8e6c9f5bf84b84c4fd480382de87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae78f8e6c9f5bf84b84c4fd480382de87"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>elu_scanf_set_echo</b> (bool k)</td></tr>
-<tr class="separator:ae78f8e6c9f5bf84b84c4fd480382de87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
@@ -164,6 +164,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>elu_scanf_set_echo</b
 </div><div class="memdoc">
 
 <p>send a string with data fields to UART1 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>same rule as the format string of "printf" </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>length of the string with data formatted </dd></dl>
 
 </div>
@@ -193,7 +199,73 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>elu_scanf_set_echo</b
 </div><div class="memdoc">
 
 <p>send a string with data fields + a newline char to UART1 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>same rule as the format string of "printf" </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>length of the string with data formatted </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af54a4b5fb6763b5ae4c2f4b1d710fa62"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int elu_scanf </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>scanf to be used here </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>same rule as the format string of "scanf" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of data field successfuly scanned</dd></dl>
+<p>This function behaves similarly to the "scanf": it receives and stores characters. When a carriage return (the Enter key) occurs, this function analyzes the string and returns. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae78f8e6c9f5bf84b84c4fd480382de87"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void elu_scanf_set_echo </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>k</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>configure whether <a class="el" href="a00025.html#af54a4b5fb6763b5ae4c2f4b1d710fa62" title="scanf to be used here ">elu_scanf</a> echo the character received </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">k</td><td>echo or not </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -276,7 +348,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>elu_scanf_set_echo</b
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 11 2014 23:19:59 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

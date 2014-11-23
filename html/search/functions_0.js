@@ -21,10 +21,11 @@ var searchData=
   ['el_5fdisable_5fstepper_5fmotor',['el_disable_stepper_motor',['../a00020.html#a3e691245e5b17a1aef17469696b1e6d3',1,'el_stepper_motor.h']]],
   ['el_5fenable_5fir_5fproximity',['el_enable_ir_proximity',['../a00015.html#a0bc68f95cfccbe1b072a66d2997eaa74',1,'el_ir_proximity.h']]],
   ['el_5fenable_5fstepper_5fmotor',['el_enable_stepper_motor',['../a00020.html#a909852833e84d483d5f6b18a3e8757ad',1,'el_stepper_motor.h']]],
+  ['el_5fget_5fprocess_5fcurrent_5findex',['el_get_process_current_index',['../a00018.html#a2ee91247f1219b6e78e3802403e5e697',1,'el_process.h']]],
   ['el_5fget_5fselector_5fvalue',['el_get_selector_value',['../a00017.html#ab3823524468a2011a62d955d7277382f',1,'el_led.h']]],
   ['el_5fir_5fproximity_5fget',['el_ir_proximity_get',['../a00015.html#a282c79127fe99a71c2a4c92f671a7e56',1,'el_ir_proximity.h']]],
   ['el_5fir_5fproximity_5fget_5fcounter',['el_ir_proximity_get_counter',['../a00015.html#abf26870125fabdfd772c898267716adf',1,'el_ir_proximity.h']]],
-  ['el_5flaunch_5fprocess',['el_launch_process',['../a00018.html#a334bdb64d988375e48eaa9ea8beafc58',1,'el_process.h']]],
+  ['el_5flaunch_5fprocess',['el_launch_process',['../a00018.html#a15372f27d6a543de5e3e00e028bb07aa',1,'el_process.h']]],
   ['el_5fled_5fset',['el_led_set',['../a00017.html#a074c77228ff700a17bd3e42fb7cffeb7',1,'el_led.h']]],
   ['el_5fprocess_5fcooperate',['el_process_cooperate',['../a00018.html#a3580f38f3a753bd43cd1bcec81a53903',1,'el_process.h']]],
   ['el_5fprocess_5fwait',['el_process_wait',['../a00018.html#a9ea69eb32cff9ead1640ddbc880b41c3',1,'el_process.h']]],
@@ -59,6 +60,8 @@ var searchData=
   ['el_5ftrigger_5fset_5fprocess',['el_trigger_set_process',['../a00022.html#a4d4c08d0d4af965e7288feceb7ed50f6',1,'el_trigger.h']]],
   ['elu_5fprintf',['elu_printf',['../a00025.html#a060623e0d13ddfd2baba9d51fde68cd5',1,'elu_stdio.h']]],
   ['elu_5fprintln',['elu_println',['../a00025.html#a08425935f3540a12afdb0b0da013144e',1,'elu_stdio.h']]],
+  ['elu_5fscanf',['elu_scanf',['../a00025.html#af54a4b5fb6763b5ae4c2f4b1d710fa62',1,'elu_stdio.h']]],
+  ['elu_5fscanf_5fset_5fecho',['elu_scanf_set_echo',['../a00025.html#ae78f8e6c9f5bf84b84c4fd480382de87',1,'elu_stdio.h']]],
   ['elu_5fsnprintf',['elu_snprintf',['../a00025.html#a6c5344ecf2f2b40091f06d1440ab7ff9',1,'elu_stdio.h']]],
   ['elu_5fsscanf',['elu_sscanf',['../a00025.html#a5aa4f9b88807ca98c69f4038e1d89f34',1,'elu_stdio.h']]]
 ];

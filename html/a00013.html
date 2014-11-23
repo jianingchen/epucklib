@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.95</span>
+   &#160;<span id="projectnumber">0.99</span>
    </div>
-   <div id="projectbrief">This project is now a work in progress. The first completed version will be version 1.0.</div>
+   <div id="projectbrief">The documentation work of this project is now in progress.</div>
   </td>
  </tr>
  </tbody>
@@ -105,24 +105,27 @@ Macros</h2></td></tr>
 <tr class="memitem:a53c2e543e31eaac99fe7b6760be2385d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53c2e543e31eaac99fe7b6760be2385d"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_MASTERCLOCK_FREQ</b>&#160;&#160;&#160;(144000L)</td></tr>
 <tr class="separator:a53c2e543e31eaac99fe7b6760be2385d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7289faa60eb41557361a3d6426ceab5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7289faa60eb41557361a3d6426ceab5c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_MCT_ZERO_POINT</b>&#160;&#160;&#160;(65536UL)</td></tr>
+<tr class="separator:a7289faa60eb41557361a3d6426ceab5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:aa104a7df2b75fb88e8d4e9c0b76f1af4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa104a7df2b75fb88e8d4e9c0b76f1af4"></a>
 typedef signed short&#160;</td><td class="memItemRight" valign="bottom"><b>el_time</b></td></tr>
 <tr class="separator:aa104a7df2b75fb88e8d4e9c0b76f1af4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a095d6033dd663f3886e5f352e416ca74"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a095d6033dd663f3886e5f352e416ca74"></a>
-typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>el_mci</b></td></tr>
-<tr class="separator:a095d6033dd663f3886e5f352e416ca74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1373f3e90c6cea2b609e1bc86f63989"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1373f3e90c6cea2b609e1bc86f63989"></a>
+typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>el_mct</b></td></tr>
+<tr class="separator:ab1373f3e90c6cea2b609e1bc86f63989"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ace594f5de7cf28e055bcc866979cbb86"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace594f5de7cf28e055bcc866979cbb86"></a>
-el_mci&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_masterclock</b> ()</td></tr>
-<tr class="separator:ace594f5de7cf28e055bcc866979cbb86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58ea75b939e699dd4ced0230ce8e3c82"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58ea75b939e699dd4ced0230ce8e3c82"></a>
-el_time&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_time_diff</b> (el_mci k0, el_mci k1, el_mci *residue)</td></tr>
-<tr class="separator:a58ea75b939e699dd4ced0230ce8e3c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6665c82e95225df9c62c1b47451ddcc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6665c82e95225df9c62c1b47451ddcc"></a>
+el_mct&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_masterclock</b> ()</td></tr>
+<tr class="separator:ac6665c82e95225df9c62c1b47451ddcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b73c1c598ea125fcf91aa4fe1c6552"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9b73c1c598ea125fcf91aa4fe1c6552"></a>
+el_time&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_time_diff</b> (el_mct k0, el_mct k1, el_mct *residue)</td></tr>
+<tr class="separator:ae9b73c1c598ea125fcf91aa4fe1c6552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the header file of Masterclock.</p>
@@ -130,7 +133,7 @@ el_time&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_time_diff</
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 11 2014 23:19:59 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

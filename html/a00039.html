@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.95</span>
+   &#160;<span id="projectnumber">0.99</span>
    </div>
-   <div id="projectbrief">This project is now a work in progress. The first completed version will be version 1.0.</div>
+   <div id="projectbrief">The documentation work of this project is now in progress.</div>
   </td>
  </tr>
  </tbody>
@@ -94,11 +94,12 @@ Files</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h1><a class="anchor" id="Introduction"></a>
 Introduction</h1>
-<p>(TODO) </p>
+<p>This module let the user interface UART1 in a similar fashion as the stdio functions. For example, sending formated string using "printf" alike functions and recieving string using "scanf" alike functions.</p>
+<p>Compared to the relatively native interfacing functions in <a class="el" href="a00038.html">UART Serial Communication</a>, the functions provide more convience. However, it is only OK to use them in one process. In other word, one should avoid call these functions concurently in more than one process in the system. </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 11 2014 23:19:59 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

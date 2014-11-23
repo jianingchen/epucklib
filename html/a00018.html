@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.95</span>
+   &#160;<span id="projectnumber">0.99</span>
    </div>
-   <div id="projectbrief">This project is now a work in progress. The first completed version will be version 1.0.</div>
+   <div id="projectbrief">The documentation work of this project is now in progress.</div>
   </td>
  </tr>
  </tbody>
@@ -112,9 +112,9 @@ typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>el_process<
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a334bdb64d988375e48eaa9ea8beafc58"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a334bdb64d988375e48eaa9ea8beafc58">el_launch_process</a> (el_process func, void *arg)</td></tr>
-<tr class="memdesc:a334bdb64d988375e48eaa9ea8beafc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a function as a process.  <a href="#a334bdb64d988375e48eaa9ea8beafc58">More...</a><br /></td></tr>
-<tr class="separator:a334bdb64d988375e48eaa9ea8beafc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15372f27d6a543de5e3e00e028bb07aa"><td class="memItemLeft" align="right" valign="top">el_index&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a15372f27d6a543de5e3e00e028bb07aa">el_launch_process</a> (el_process func, void *arg)</td></tr>
+<tr class="memdesc:a15372f27d6a543de5e3e00e028bb07aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a function as a process.  <a href="#a15372f27d6a543de5e3e00e028bb07aa">More...</a><br /></td></tr>
+<tr class="separator:a15372f27d6a543de5e3e00e028bb07aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ea69eb32cff9ead1640ddbc880b41c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a9ea69eb32cff9ead1640ddbc880b41c3">el_process_wait</a> (el_time t_ms)</td></tr>
 <tr class="memdesc:a9ea69eb32cff9ead1640ddbc880b41c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a period of time.  <a href="#a9ea69eb32cff9ead1640ddbc880b41c3">More...</a><br /></td></tr>
 <tr class="separator:a9ea69eb32cff9ead1640ddbc880b41c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,16 +124,38 @@ Functions</h2></td></tr>
 <tr class="memitem:a3580f38f3a753bd43cd1bcec81a53903"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a3580f38f3a753bd43cd1bcec81a53903">el_process_cooperate</a> ()</td></tr>
 <tr class="memdesc:a3580f38f3a753bd43cd1bcec81a53903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Introduce an atomic wait so other processes can be executed.  <a href="#a3580f38f3a753bd43cd1bcec81a53903">More...</a><br /></td></tr>
 <tr class="separator:a3580f38f3a753bd43cd1bcec81a53903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ee91247f1219b6e78e3802403e5e697"><td class="memItemLeft" align="right" valign="top">el_index&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a2ee91247f1219b6e78e3802403e5e697">el_get_process_current_index</a> ()</td></tr>
+<tr class="memdesc:a2ee91247f1219b6e78e3802403e5e697"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get index of the process called this function.  <a href="#a2ee91247f1219b6e78e3802403e5e697">More...</a><br /></td></tr>
+<tr class="separator:a2ee91247f1219b6e78e3802403e5e697"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a334bdb64d988375e48eaa9ea8beafc58"></a>
+<a class="anchor" id="a2ee91247f1219b6e78e3802403e5e697"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int el_launch_process </td>
+          <td class="memname">el_index el_get_process_current_index </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get index of the process called this function. </p>
+<dl class="section return"><dt>Returns</dt><dd>index of the process</dd></dl>
+<p>When this function is not called within a process, it returns -1. </p>
+
+</div>
+</div>
+<a class="anchor" id="a15372f27d6a543de5e3e00e028bb07aa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_index el_launch_process </td>
           <td>(</td>
           <td class="paramtype">el_process&#160;</td>
           <td class="paramname"><em>func</em>, </td>
@@ -184,9 +206,9 @@ Functions</h2></td></tr>
 <p>Introduce an atomic wait so other processes can be executed. </p>
 <p>This function introduce an atomic delay, which give other processes a chance to execute. Once this process get a chance to execute again, it will continue execute. Therefore, unlike "el_process_wait", "el_process_cooperate" does not cause a notable time delay. It can be used in polling mechanism inside a process. For example, one can write: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;// wait for some condition</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;while(some_condition_is_not_true()){</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;do{</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    el_process_cooperate();</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;}</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;}while(some_condition_is_not_true());</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;...</div>
 </div><!-- fragment --><p>"el_process_cooperate" is also used within a single process that potentially cost large amount of computation and thus occupy the CPU for a long time. Calling "el_process_cooperate" in appropriate positions in a process of such types. For example, in a triple-nested loop (potentially cost a long time to execute), add a "el_process_cooperate();" after the middle loop: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;// some big computation program</div>
@@ -266,7 +288,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 11 2014 23:19:59 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
