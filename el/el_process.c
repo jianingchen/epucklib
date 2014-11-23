@@ -18,28 +18,80 @@ This file is released under the terms of the MIT license (see "el.h").
 
 #include "el_context.h"
 #include "el_process.h"
-#include "cmt.h"
+#include <setjmp.h>
 
-el_mci el_process_mck;
+
+
+#define EL_CMT_STATE_VACANT    0
+#define EL_CMT_STATE_LAUNCH    1
+#define EL_CMT_STATE_PAUSE     2
+#define EL_CMT_STATE_RUNNING   3
+
+typedef struct EL_CMTS{
+    int state;
+    el_mct wait_timer;
+    void* data_pointer;
+    el_process function;
+    jmp_buf function_context;
+} el_cmts;
+
+
+el_mct el_process_mck;
 bool el_is_in_process;
+jmp_buf el_cmt_main_buffer;
+el_uint16 el_cmt_number_of_process;
+el_cmts el_cmt_process_list[EL_PROCESS_DIM];
+el_cmts *el_cmt_current_process;
+el_index el_cmt_current_process_index;
+
+
+static void el_cmt_warp_current_process(const int stack_offset){
+    #ifdef _MSC_VER
+    char *pad = (char*)_alloca(stack_offset);// for vc compiler
+    #else
+    char pad[stack_offset];// use dynamic amount of stack
+    #endif
+
+    pad[stack_offset - 1] = 0;// prevent it from getting optimized by compiler
+
+    el_cmt_current_process->function(el_cmt_current_process->data_pointer);
+
+    el_cmt_current_process->state = EL_CMT_STATE_VACANT;
+    el_cmt_current_process->function = NULL;
+    el_cmt_current_process->data_pointer = NULL;
+
+    el_cmt_number_of_process--;
+    longjmp(el_cmt_main_buffer,1);
+}
+
 
 void el_init_process(){
-    cmt_ini cmt_setup;
+    int i;
+    el_cmts *p;
 
-    cmt_setup.MaxNumberOfProcess = EL_PROCESS_DIM;
-    cmt_setup.ProcessStackSzie = EL_PROCESS_STACK_SIZE;
-    cmt_setup.ProcessStackOffset = EL_PROCESS_STACK_OFFSET;
-    cmt_initialize(&cmt_setup);
-    
     el_is_in_process = 0;
-    
+
+    for(i=0;i<EL_PROCESS_DIM;i++){
+        p = el_cmt_process_list + i;
+        p->state = EL_CMT_STATE_VACANT;
+        p->wait_timer = EL_MCT_ZERO_POINT;
+        p->data_pointer = NULL;
+        p->function = NULL;
+    }
+    el_cmt_current_process_index = -1;
+    el_cmt_current_process = NULL;
+    el_cmt_number_of_process = 0;
+
     el_process_mck = el_get_masterclock();
 
 }
 
 void el_routine_process(){
-    el_mci current_clock;
+    el_mct current_clock;
     el_mct dk;
+    el_cmts *p;
+    int stack_offset;
+    int i;
 
     // calculate time difference
     current_clock = el_get_masterclock();
@@ -48,30 +100,100 @@ void el_routine_process(){
     
     // process the cooperative multi-task system
     el_is_in_process = true;
-    cmt_main_routine();
-    cmt_process_timers(dk);
+
+    for(i=0;i<EL_PROCESS_DIM;i++){
+
+        el_cmt_current_process_index = i;
+        p = el_cmt_process_list + i;
+
+        if(p->wait_timer > EL_MCT_ZERO_POINT){
+            continue;
+        }
+
+        if(p->state==EL_CMT_STATE_LAUNCH){
+
+            if(!setjmp(el_cmt_main_buffer)){
+
+                p->state = EL_CMT_STATE_RUNNING;
+                el_cmt_number_of_process++;
+
+                el_cmt_current_process = p;
+                stack_offset = EL_PROCESS_STACK_OFFSET + i*EL_PROCESS_STACK_SIZE;
+                el_cmt_warp_current_process(stack_offset);
+
+            }
+
+        }else
+        if(p->state==EL_CMT_STATE_RUNNING){
+
+            if(!setjmp(el_cmt_main_buffer)){
+                el_cmt_current_process = p;
+                longjmp(p->function_context,1);
+            }
+
+        }
+
+    }
+    
+    el_cmt_current_process_index = -1;
     el_is_in_process = false;
 
+    for(i=0;i<EL_PROCESS_DIM;i++){
+        if(el_cmt_process_list[i].wait_timer > EL_MCT_ZERO_POINT){
+            el_cmt_process_list[i].wait_timer -= dk;
+        }
+    }
+
+}
+
+void el_process_cooperate(){
+    if(el_is_in_process){
+        if(!setjmp(el_cmt_current_process->function_context)){
+            longjmp(el_cmt_main_buffer,1);
+        }
+    }
 }
 
 void el_process_wait(el_time time_ms){
     if(el_is_in_process){
-        cmt_wait(EL_TIME_TO_MCT(time_ms));
+        el_cmt_current_process->wait_timer += EL_TIME_TO_MCT(time_ms);
+        if(!setjmp(el_cmt_current_process->function_context)){
+            longjmp(el_cmt_main_buffer,1);
+        }
     }
 }
 
 void el_process_wait_fraction(unsigned int num,unsigned int den){
     if(el_is_in_process){
-        cmt_wait((el_mct)num*EL_MASTERCLOCK_FREQ/(el_mct)den);
+        el_cmt_current_process->wait_timer += (el_mct)num*EL_MASTERCLOCK_FREQ/(el_mct)den;
+        if(!setjmp(el_cmt_current_process->function_context)){
+            longjmp(el_cmt_main_buffer,1);
+        }
     }
 }
 
-void el_process_cooperate(){
-    if(el_is_in_process){
-        cmt_cooperate();
+el_index el_launch_process(el_process func,void*arg){
+    int i;
+    el_cmts *p;
+
+    if(func==NULL){
+        return -1;
     }
+
+    for(i=0;i<EL_PROCESS_DIM;i++){
+        p = el_cmt_process_list + i;
+        if(p->state==EL_CMT_STATE_VACANT){
+            p->state = EL_CMT_STATE_LAUNCH;
+            p->wait_timer = EL_MCT_ZERO_POINT;
+            p->data_pointer = arg;
+            p->function = func;
+            return i;
+        }
+    }
+
+    return -1;
 }
 
-int el_launch_process(el_process function,void*appended_data){
-    return cmt_launch_process_delay(function,appended_data,0);
+el_index el_get_process_current_index(){
+    return el_cmt_current_process_index;
 }

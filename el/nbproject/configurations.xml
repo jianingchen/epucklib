@@ -16,8 +16,6 @@
       <itemPath>el_context.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f4" displayName="el_concept" projectFiles="true">
-      <itemPath>cmt.h</itemPath>
-      <itemPath>cmt.c</itemPath>
       <itemPath>el_clock.h</itemPath>
       <itemPath>el_clock.c</itemPath>
       <itemPath>el_process.h</itemPath>

@@ -53,7 +53,7 @@ typedef void (*el_process)(void*);
     }
     \endcode
 */
-int el_launch_process(el_process func,void*arg);
+el_index el_launch_process(el_process func,void*arg);
 
 
 /*!
@@ -89,9 +89,9 @@ void el_process_wait_fraction(unsigned int num,unsigned int den);
     \code
     ...
     // wait for some condition
-    while(some_condition_is_not_true()){
+    do{
         el_process_cooperate();
-    }
+    }while(some_condition_is_not_true());
     ...
     \endcode
     
@@ -118,6 +118,16 @@ void el_process_wait_fraction(unsigned int num,unsigned int den);
 void el_process_cooperate();
 
 
+/*!
+    \brief Get index of the process called this function.
+    
+    \return index of the process
+
+    When this function is not called within a process, it returns -1.
+*/
+el_index el_get_process_current_index();
+
+
 /*
 --------------------------------------------------------------------------------
 */
@@ -125,12 +135,13 @@ void el_process_cooperate();
 
 #ifdef EL_INCLUDE_CONTEXT
 
-#define EL_PROCESS_STACK_OFFSET 160
+#define EL_PROCESS_STACK_OFFSET 192
 #define EL_PROCESS_STACK_SIZE   192
 #define EL_PROCESS_DIM          7
 
-extern el_mci el_process_mck;
+extern el_mct el_process_mck;
 extern bool el_is_in_process;
+extern el_index el_cmt_current_process_index;
 
 void el_init_process();
 void el_routine_process();
