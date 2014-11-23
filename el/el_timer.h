@@ -181,7 +181,7 @@ typedef struct{
     uint8_t remove:1;
 } el_timer;
 
-extern el_mci el_timer_mck;
+extern el_mct el_timer_mck;
 extern bool el_is_in_timer_callback;
 
 void el_init_timers();

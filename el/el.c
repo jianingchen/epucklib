@@ -66,12 +66,19 @@ void el_reset(){
 }
 
 void el_sleep(el_time time_ms){
-    el_mci k;
+    el_mct k;
     if(el_is_in_process||el_is_in_timer_callback||el_is_in_trigger_condition){
         return;
     }
     k = el_get_masterclock() + EL_TIME_TO_MCT(time_ms);
     while(el_get_masterclock() < k){
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
         NOP();
     }
 }

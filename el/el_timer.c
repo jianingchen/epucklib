@@ -19,7 +19,7 @@ This file is released under the terms of the MIT license (see "el.h").
 #include "el_context.h"
 #include "el_timer.h"
 
-el_mci el_timer_mck;
+el_mct el_timer_mck;
 bool el_is_in_timer_callback;
 el_uint8 el_timer_reg_i;
 el_timer*el_timer_reg[EL_TIMER_DIM];
@@ -45,19 +45,19 @@ static void el_timer_step(el_timer*p,el_mct dk){
     }
     
     // countdown
-    if(p->count_down > 0){
+    if(p->count_down > EL_MCT_ZERO_POINT){
         p->count_down -= dk;
     }
 
     // timer expired
-    if(p->count_down <= 0){
+    if(p->count_down <= EL_MCT_ZERO_POINT){
         
         p->rounds++;
         
         if(p->repeat){
             p->count_down += p->period;
         }else{
-            p->count_down = 0;
+            p->count_down = EL_MCT_ZERO_POINT;
             p->paused = true;
         }
         
@@ -78,7 +78,7 @@ el_handle el_timer_callback_get_handle(){
 }
 
 void el_routine_timers(){
-    el_mci current_clock;
+    el_mct current_clock;
     el_mct dk;
     el_timer *p;
     int i,d;
@@ -119,7 +119,7 @@ el_handle el_create_timer(){
     p = (el_timer*)malloc(sizeof(el_timer));
 
     p->period = 0;
-    p->count_down = 0;
+    p->count_down = EL_MCT_ZERO_POINT;
     p->rounds = 0;
     p->append_data = NULL;
     p->callback = NULL;
@@ -140,7 +140,7 @@ void el_delete_timer(el_handle h){
 
 void el_timer_start(el_handle h,el_time time_ms){
     el_timer *p = (el_timer*)EL_HANDLE_TO_POINTER(h);
-    el_mct k = EL_TIME_TO_MCT(time_ms);
+    el_mct k = EL_TIME_TO_MCT(time_ms) + EL_MCT_ZERO_POINT;
     p->period = k;
     p->count_down = k;
     p->rounds = 0;
@@ -150,7 +150,7 @@ void el_timer_start(el_handle h,el_time time_ms){
 
 void el_timer_start_fraction(el_handle h,int num,int den){
     el_timer *p = (el_timer*)EL_HANDLE_TO_POINTER(h);
-    el_mct k = (el_mct)num*EL_MASTERCLOCK_FREQ/(el_mct)den;
+    el_mct k = (el_mct)num*EL_MASTERCLOCK_FREQ/(el_mct)den + EL_MCT_ZERO_POINT;
     p->period = k;
     p->count_down = k;
     p->rounds = 0;
