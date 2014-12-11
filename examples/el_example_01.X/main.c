@@ -34,9 +34,9 @@ int main(){
      * attemps to write a new HEX, so you dont need to touch the reset
      * button.
      * To achieve this, TinyBootloader also needs to be configured:
-     * in "Options" tab, set "Codes to send first" to 6.
+     * in "Options" tab, set "Codes to send first" to 128.
      */
-    el_uart_use_reset_code(true,6);
+    el_uart_use_reset_code(true,128);
 
     /*
      * Put the robot in silence when the selector is in 0~3.

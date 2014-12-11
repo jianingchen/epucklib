@@ -37,7 +37,7 @@ int main(int argc,char*argv[]){
 
     el_initialization();
     el_calibrate_sensors();
-    el_uart_use_reset_code(true,6);
+    el_uart_use_reset_code(true,128);
     
     /*
      * Put the robot in silence when the selector is in 0~3. 
@@ -130,6 +130,7 @@ void Process_ConsoleLoop(void*arg){
             elu_println("' '\tstop");
             break;
 
+        case 'f':
         case '1':
             el_led_set(EL_LED_FRONT,EL_TOGGLE);
             break;

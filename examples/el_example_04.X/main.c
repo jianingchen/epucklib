@@ -34,7 +34,7 @@ int main(int argc,char*argv[]){
 
     el_initialization();
     el_calibrate_sensors();
-    el_uart_use_reset_code(true,6);
+    el_uart_use_reset_code(true,128);
     
     BootingProcedure01_SelectorBarrier();
     
