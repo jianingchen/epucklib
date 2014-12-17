@@ -43,7 +43,7 @@ static union{
 
 
 void el_init_ir_receiver(){
-    el_irrc_enabled = 0;
+    el_irrc_enabled = false;
     el_irrc_phase = 0;
     el_irrc_timer = 0;
     el_irrc_counter = 0;
@@ -53,29 +53,59 @@ void el_init_ir_receiver(){
 }
 
 void el_enable_ir_receiver(){
+    
     el_irrc_phase = 0;
     el_irrc_timer = 0;
     el_irrc_check = 2;
     el_irrc_address = 0;
     el_irrc_data = 0;
+
+    IEC0bits.INT0IE = 1;
+
     el_irrc_enabled = true;
 }
 
 void el_disable_ir_receiver(){
+
     el_irrc_enabled = false;
-}
 
-void el_ir_receiver_reset(){
+    IEC0bits.INT0IE = 0;
 
+    el_irrc_phase = 0;
+    el_irrc_timer = 0;
     el_irrc_check = 2;
     el_irrc_address = 0;
     el_irrc_data = 0;
-    el_irrc_phase = 0;
-    el_irrc_timer = 0;
+
+}
+
+void el_irrc_inhibit(int k){
+    if(el_irrc_enabled){
+        if(k){
+            IFS0bits.INT0IF = 0;
+            IEC0bits.INT0IE = 0;
+            el_irrc_phase = 0;
+            el_irrc_timer = 0;
+        }else{
+            IFS0bits.INT0IF = 0;
+            IEC0bits.INT0IE = 1;
+            el_irrc_phase = 0;
+            el_irrc_timer = 0;
+        }
+    }
+}
+
+void el_ir_receiver_reset(){
     
-    IFS0bits.INT0IF = 0;
-    IEC0bits.INT0IE = 1;
-    
+    if(el_irrc_enabled){
+        el_irrc_phase = 0;
+        el_irrc_timer = 0;
+        IFS0bits.INT0IF = 0;
+        IEC0bits.INT0IE = 1;
+    }
+    el_irrc_check = 2;
+    el_irrc_address = 0;
+    el_irrc_data = 0;
 }
 
 /**
@@ -86,7 +116,7 @@ based RC5 protocol. 64/36000 sec is the time interval between two data bits in t
  **/
 void el_routine_ir_receiver_14400hz(void){
     const el_mcd dk = EL_MASTERCLOCK_FREQ/14400;// should be 10 exactly
-    const el_mcd period = EL_MASTERCLOCK_FREQ*(64/36000);// should be 256 exactly.
+    const el_mcd period = 256;// EL_MASTERCLOCK_FREQ*(64/36000)
     int input;
     
     if(el_irrc_phase==0){
@@ -103,9 +133,7 @@ void el_routine_ir_receiver_14400hz(void){
         el_irrc_timer += period;
     }
     
-    if(el_irrc_phase){
-        input = !REMOTE;// TSOP36236 gives inverted state (level = 1, burst = 0)
-    }
+    input = !REMOTE;// TSOP36236 gives inverted state (level = 1, burst = 0)
     
     switch(el_irrc_phase){
     
@@ -129,73 +157,61 @@ void el_routine_ir_receiver_14400hz(void){
     case 3:// toggle bit
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 4:// address bit 4
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 5:// address bit 3
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 6:// address bit 2
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 7:// address bit 1
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 8:// address bit 0
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 9:// command bit 5
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 10:// command bit 4
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 11:// command bit 3
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 12:// command bit 2
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 13:// command bit 1
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 14:// command bit 0
         el_irrc_packet.FullBits = (el_irrc_packet.FullBits<<1)|input;
         el_irrc_phase++;
-        el_irrc_timer += period;
         break;
         
     case 15:// finishing
@@ -211,6 +227,8 @@ void el_routine_ir_receiver_14400hz(void){
         el_irrc_counter++;
         /// signal a trigger event
         el_trg_event_flag_ex_irrc = 1;
+        //el_led_set(3,0);
+        //el_led_set(0,-1);
         break;
         
     case 20:// abort
@@ -219,6 +237,8 @@ void el_routine_ir_receiver_14400hz(void){
         /// reset INT0
         IFS0bits.INT0IF = 0;
         IEC0bits.INT0IE = 1;
+        //el_led_set(3,0);
+        //el_led_set(5,-1);
         break;
         
     }

@@ -70,6 +70,7 @@ extern el_mcd el_irrc_timer;
 
 void el_init_ir_receiver();
 void el_routine_ir_receiver_14400hz();
+void el_irrc_inhibit(int k);
 
 #endif	/* EL_INCLUDE_CONTEXT */
 

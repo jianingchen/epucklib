@@ -61,6 +61,8 @@ void el_disable_accelerometer();
                     the output value(s).
 
     \return         number of values stored into *out.
+    
+    The refreshing rate of the accelerometer outputs is 120 Hz. 
 */
 int el_accelerometer_get(el_index i,el_accelerometer_output u,el_int16*out);
 

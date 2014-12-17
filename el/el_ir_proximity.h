@@ -171,6 +171,10 @@ void el_disable_ir_proximity(void);
     ...
     \endcode
     
+    At present, the refreshing rate of the proximity sensors are 30 Hz, 
+    regardless of the working mode. Thus, a trigger with the event 
+    ::EL_EVENT_IR_PROXIMITY_UPDATE will be triggered 30 times per second.
+    
 */
 int el_ir_proximity_get(el_index i,el_ir_proximity_output u,el_int16*out);
 

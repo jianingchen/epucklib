@@ -37,7 +37,7 @@ typedef bool (*el_condition)(void*);
 /*! 
     This enum is used in ::el_trigger_set_event to specify the event 
     of a trigger. Internal events are manually triggered using
-    ::el_trigger_issue_internal_event.
+    ::el_trigger_issue_internal_event. 
 */
 typedef enum {
     EL_EVENT_NONE = 0,          ///< no event
@@ -50,9 +50,9 @@ typedef enum {
     EL_EVENT_IR_RECEIVER_INCOME = 10,   ///< when the ir receiver receives data
     EL_EVENT_UART1_RECEIVED = 11,       ///< when UART1 receives data
     EL_EVENT_UART2_RECEIVED = 12,       ///< when UART2 receives data (not implemented yet)
-    EL_EVENT_ACCELEROMETER_UPDATE = 20, ///< when the accelerometer output is updated
-    EL_EVENT_IR_PROXIMITY_UPDATE = 21,  ///< when the ir proximity sensor outputs are updated
-    EL_EVENT_CAMERA_FRAME_UPDATE = 22,  ///< when a new image frame from the camera is ready 
+    EL_EVENT_ACCELEROMETER_UPDATE = 20, ///< when the accelerometer output is updated (120 Hz)
+    EL_EVENT_IR_PROXIMITY_UPDATE = 21,  ///< when the ir proximity sensor outputs are updated (30 Hz)
+    EL_EVENT_CAMERA_FRAME_UPDATE = 22,  ///< when a new image frame from the camera is ready (9~18 fps)
 } el_trigger_event_type;
 
 /*

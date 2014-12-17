@@ -34,10 +34,12 @@ void booting_procedure01_selector_barrier();
 void booting_procedure02_led_pattern();
 void booting_procedure03_say_hello();
 
-EL_PROCESS Process_DebugControl(void*data);
+EL_PROCESS Process_UART(void*data);
+EL_PROCESS Process_IRRC(void*data);
 EL_PROCESS Process_LED(void*data);
 EL_PROCESS Process_AccelerometerFeedback(el_handle this_trigger);
 EL_PROCESS Trigger_Accelerometer_Process(el_handle this_trigger);
+EL_PROCESS Trigger_InfraredReceiver(el_handle this_trigger);
 void Callback_CountCameraFPS(void*arg);
 
 //------------------------------------------------------------------------------
@@ -52,7 +54,7 @@ int main(int argc,char*argv[]){
 
     el_initialization();
     el_calibrate_sensors();
-    el_uart_use_reset_code(true,6);
+    el_uart_use_reset_code(true,128);
     
     booting_procedure01_selector_barrier();
 
@@ -88,17 +90,24 @@ int main(int argc,char*argv[]){
     el_timer_set_callback(T,Callback_CountCameraFPS,NULL);
     el_timer_start(T,1000);
 
-    el_launch_process(Process_DebugControl,NULL);
-    el_launch_process(Process_LED,NULL);
-
     trg = el_create_trigger();
     el_trigger_set_process(trg,Trigger_Accelerometer_Process);
     el_trigger_set_event(trg,EL_EVENT_ACCELEROMETER_UPDATE);
 
+    /*
+    trg = el_create_trigger();
+    el_trigger_set_process(trg,Trigger_InfraredReceiver);
+    el_trigger_set_event(trg,EL_EVENT_IR_RECEIVER_INCOME);
+    */
+    el_enable_ir_receiver();
     el_enable_ir_proximity();
     el_enable_camera();
     el_enable_accelerometer();
-
+    
+    el_launch_process(Process_UART,NULL);
+    el_launch_process(Process_IRRC,NULL);
+    el_launch_process(Process_LED,NULL);
+    
     el_main_loop();
     
     return 0;
@@ -106,9 +115,38 @@ int main(int argc,char*argv[]){
 
 //------------------------------------------------------------------------------
 
+
+EL_PROCESS Process_IRRC(void*data){
+    int k;
+    int check,address,command;
+
+    while(1){
+        
+        el_ir_receiver_reset();
+        k = el_ir_receiver_get_check();
+        do{
+            el_process_cooperate();
+            check = el_ir_receiver_get_check();
+        }while(check==k);//wait until "check" being changed
+
+        address = el_ir_receiver_get_address();
+        command = el_ir_receiver_get_data();
+        
+        elu_println("[IRRC]\nCHECK\tADDRESS\tCOMMAND");
+        elu_println("%d\t%d\t%d",check,address,command);
+
+        if(address==5){
+            el_led_set(4,EL_TOGGLE);
+        }
+
+    }
+
+}
+
+
 #define WAIT_FOR_UART1_CHAR do{el_process_cooperate();}while(el_uart_get_char_counter(EL_UART_1)==0);
 
-EL_PROCESS Process_DebugControl(void*data){
+EL_PROCESS Process_UART(void*data){
     el_camera_image *frame;
     char c;
     int i;
@@ -236,7 +274,7 @@ void Callback_CountCameraFPS(void*arg){
 
 EL_PROCESS Trigger_Accelerometer_Process(el_handle this_trigger){
     static int previous_xyz[3] = {0,0,0};
-    const long threshold_s = 300L*300L;
+    const long threshold_s = 330L*330L;
     long magnitude_s;// _s means squared;
     int xyz[3];
     int dx,dy,dz;
@@ -264,6 +302,13 @@ EL_PROCESS Trigger_Accelerometer_Process(el_handle this_trigger){
 
     el_trigger_enable(this_trigger);
 
+}
+
+EL_PROCESS Trigger_InfraredReceiver(el_handle this_trigger){
+
+    el_led_set(0,EL_TOGGLE);
+
+    el_trigger_enable(this_trigger);
 }
 
 //------------------------------------------------------------------------------

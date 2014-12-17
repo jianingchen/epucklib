@@ -18,6 +18,7 @@ This file is released under the terms of the MIT license (see "el.h").
 
 #include "el_context.h"
 #include "el_ir_proximity.h"
+#include "el_ir_receiver.h"
 #include "el_random.h"
 
 bool el_irps_enabled;
@@ -316,7 +317,18 @@ void el_routine_ir_proximity_noise(void){
 
 
 void el_routine_ir_proximity_2400hz(){
-    
+
+    if(el_irrc_phase){
+        return;
+    }
+
+    if(el_irps_working_phase==0){
+        el_irrc_inhibit(1);
+    }else
+    if(el_irps_working_phase==3){
+        el_irrc_inhibit(0);
+    }
+
     if(el_irps_working_phase<4){
         
         switch(el_irps_working_mode){
@@ -328,17 +340,17 @@ void el_routine_ir_proximity_2400hz(){
         case EL_IR_PROXIMITY_PULSE:
             el_routine_ir_proximity_pulse();
             break;
-            
+
         case EL_IR_PROXIMITY_EMIT:
             el_routine_ir_proximity_emit();
             break;
-            
+
         case EL_IR_PROXIMITY_NOISE:
             el_routine_ir_proximity_noise();
             break;
-            
+
         }
-        
+
     }
     
     el_irps_working_phase++;
