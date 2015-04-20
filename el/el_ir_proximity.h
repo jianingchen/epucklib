@@ -52,17 +52,17 @@ This file is released under the terms of the MIT license (see "el.h").
     section of \ref EL_IR_PROXIMITY. 
 */
 typedef enum {
-    EL_IR_PROXIMITY_PASSIVE = 0,///< use the Passive Mode
-    EL_IR_PROXIMITY_PULSE = 1,  ///< use the Pulse Mode (default mode)
-    EL_IR_PROXIMITY_EMIT = 2,   ///< use the Emit Mode
-    EL_IR_PROXIMITY_NOISE = 3,  ///< use the Noise Mode (not implemented yet)
+    EL_IR_PROXIMITY_PASSIVE = 0,        ///< use the Passive Mode
+    EL_IR_PROXIMITY_PULSE = 1,          ///< use the Pulse Mode (default mode)
+    EL_IR_PROXIMITY_EMIT = 2,           ///< use the Emit Mode
+    EL_IR_PROXIMITY_COMMUNICATION = 3,  ///< use the Communication Mode (not implemented yet)
 } el_ir_proximity_mode;
 
 
 /*!
     This data structure is used in ::el_config_ir_proximity.
     A static instance of this struct exists internally, it can be pointed to
-    through ::el_config_ir_proximity_list. 
+    through ::el_config_ir_proximity_options. 
 */
 typedef struct {
     el_ir_proximity_mode WorkingMode;
@@ -89,9 +89,9 @@ typedef enum {
     from all sensors need to be obtained. 
 */
 typedef struct {
-    el_int16 Ambient;
-    el_int16 Reflection;
-    el_int16 Noise;
+    el_int16 Ambient;       ///< This value can be used to detect nearby e-pucks in the Emit Mode.
+    el_int16 Reflection;    ///< In all modes, this value can be used to detect passive things in the evnironment (e.g. obstacles and walls).
+    el_int16 Message;       ///< (not implemented yet)
 } el_ir_proximity_data;
 
 /*
@@ -103,7 +103,7 @@ typedef struct {
 
     \return the pointer
 */
-el_ir_proximity_param* el_config_ir_proximity_list();
+el_ir_proximity_param* el_config_ir_proximity_options();
 
 
 /*!
@@ -116,7 +116,7 @@ el_ir_proximity_param* el_config_ir_proximity_list();
     \code
     el_ir_proximity_param *IRProximitySetting;
     ...
-    IRProximitySetting = el_config_ir_proximity_list();
+    IRProximitySetting = el_config_ir_proximity_options();
     IRProximitySetting->WorkingMode = EL_IR_PROXIMITY_PULSE;
     IRProximitySetting->EnvironmentalAmbient = 0;
     IRProximitySetting->SubtractEA = false;
@@ -194,7 +194,7 @@ el_uint32 el_ir_proximity_get_counter();
 */
 
 
-#ifdef EL_INCLUDE_CONTEXT
+#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 extern bool el_irps_enabled;
 extern uint8_t el_irps_working_mode;

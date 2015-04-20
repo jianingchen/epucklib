@@ -172,7 +172,7 @@ void el_timer_set_rounds(el_handle h,el_uint32 n);
 */
 
 
-#ifdef EL_INCLUDE_CONTEXT
+#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 #define EL_TIMER_DIM      10
 

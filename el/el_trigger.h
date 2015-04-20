@@ -185,7 +185,7 @@ el_uint32 el_trigger_get_counter(el_handle h);
 
     \param e    event type (must be internal events)
 
-    This will affect the triggers using "EL_EVENT_INTERNAL_<*>" as their events. 
+    This will affect those triggers using "EL_EVENT_INTERNAL_<*>" as their events. 
 */
 void el_trigger_issue_internal_event(el_enum e);
 
@@ -195,7 +195,7 @@ void el_trigger_issue_internal_event(el_enum e);
 */
 
 
-#ifdef EL_INCLUDE_CONTEXT
+#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 #include "el_clock.h"
 

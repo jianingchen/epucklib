@@ -216,7 +216,7 @@ void el_cam_init_register(void){
 
 }
 
-el_camera_param*el_config_camera_list(){
+el_camera_param*el_config_camera_options(){
     return &el_cam_parameters;
 }
 

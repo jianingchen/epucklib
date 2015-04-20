@@ -70,11 +70,12 @@ int main(int argc,char*argv[]){
     elu_println("%lu",k);
     free(p);
 
-    el_config_ir_proximity(el_config_ir_proximity_list());
-    el_config_stepper_motor(el_config_stepper_motor_list());
+    el_config_ir_proximity_options()->WorkingMode = EL_IR_PROXIMITY_PULSE;
+    el_config_ir_proximity(el_config_ir_proximity_options());
+    el_config_stepper_motor(el_config_stepper_motor_options());
 
     k = el_get_masterclock();
-    CameraSetting = el_config_camera_list();
+    CameraSetting = el_config_camera_options();
 #if 0
     CameraSetting->ExposureMode = EL_EXPOSURE_TIME;
     CameraSetting->ExposureTime = 10.0f;

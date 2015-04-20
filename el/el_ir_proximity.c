@@ -99,7 +99,7 @@ void el_init_ir_proximity(){
     el_irps_parameters.SubtractEA = false;
 }
 
-el_ir_proximity_param* el_config_ir_proximity_list(){
+el_ir_proximity_param* el_config_ir_proximity_options(){
     return &el_irps_parameters;
 }
 
@@ -253,63 +253,11 @@ void el_routine_ir_proximity_emit(void){
 
 
 void el_irps_noise_adc_phase_0(const unsigned int*result_8v){
-    /*
-    int d,h;
-    int i;
-    el_adc_callback_ir_proximity = NULL;
-    el_irps_dump_adc_values(el_irps_samples_Temp,result_8v);
-    for(i=0;i<8;i++){
-        // accumlate spike (rising edge) magnitude
-        d = h - el_irps_samples_Last[i];
-        el_irps_samples_Last[i] = h;
-        if(d>0){
-            el_irps_samples_Spikes[i] += d;
-        }
-    }
-    */
+    
 }
 
 void el_routine_ir_proximity_noise(void){
-    /*
-    el_uint32 d;
-    int i;
-    
-    switch(el_irps_working_phase){
-        
-    case 0:
-        el_irps_set_ir_leds(1);
-        el_start_adc_scan();
-        for(i=0;i<8;i++){
-            d = el_irps_samples_Spikes[i]/16;
-            el_irps_samples_Spikes[i] = 0;
-            el_irps_samples_Noise[i] = 3*el_irps_samples_Noise[i]/4 + d/4;
-        }
-        break;
-        
-    case 1:
-        el_irps_dump_adc_values(el_irps_samples_Temp,result_8v);
-        el_irps_set_ir_leds(0);
-        el_start_adc_scan();
-        for(i=0;i<8;i++){
-            d = el_irps_samples_Temp[i];
-            el_irps_samples_Mixed[i] = 3*el_irps_samples_Mixed[i]/4 + d/4;
-        }
-        break;
-        
-    case 2:
-        el_irps_dump_adc_values(el_irps_samples_Temp,result_8v);
-        for(i=0;i<8;i++){
-            d = el_irps_samples_Temp[i];
-            el_irps_samples_Ambient[i] = 3*el_irps_samples_Ambient[i]/4 + d/4;
-        }
-        el_irps_counter++;
-        el_trg_event_handler_irps();
-        break;
-        
-    default:
-        break;
-    }
-    */
+
 }
 
 
@@ -318,17 +266,26 @@ void el_routine_ir_proximity_noise(void){
 
 void el_routine_ir_proximity_2400hz(){
 
+    /*
+     * If the ir receiver is receiving a incoming message, ir proximtiy sensors
+     * should do nothing for the sake of infrared interference.
+     */
     if(el_irrc_phase){
         return;
     }
 
+    /*
+     * If the ir proximtiy sensors are in a sampling procedure, the ir receiver
+     * should do nothing for the sake of infrared interference.
+     */
     if(el_irps_working_phase==0){
         el_irrc_inhibit(1);
     }else
     if(el_irps_working_phase==3){
         el_irrc_inhibit(0);
     }
-
+    
+    // sampling procedure of the proximity sensors
     if(el_irps_working_phase<4){
         
         switch(el_irps_working_mode){
@@ -345,14 +302,16 @@ void el_routine_ir_proximity_2400hz(){
             el_routine_ir_proximity_emit();
             break;
 
-        case EL_IR_PROXIMITY_NOISE:
-            el_routine_ir_proximity_noise();
+        case EL_IR_PROXIMITY_COMMUNICATION:
+            // (not implemented yet)
             break;
 
         }
 
     }
     
+    // the rest of the phases just act as a time delay between two sampling procedures
+
     el_irps_working_phase++;
     if(el_irps_working_phase>=80){
         el_irps_working_phase = 0;

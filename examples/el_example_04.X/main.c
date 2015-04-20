@@ -30,7 +30,7 @@ void Process_ConsoleLoop(void*arg);
 el_ir_proximity_data ProximitySensor[8];
 
 
-int main(int argc,char*argv[]){
+int main(void){
 
     el_initialization();
     el_calibrate_sensors();
@@ -44,10 +44,10 @@ int main(int argc,char*argv[]){
      * frame rate will be varied depending on the lighting condition of the
      * environment. 
      */
-    el_config_camera_list()->ExposureMode = EL_AUTOMATIC;
-    el_config_camera_list()->AutoWhiteBalance = true;
-    el_config_camera_list()->AutoDigitalGain = true;
-    el_config_camera(el_config_camera_list());
+    el_config_camera_options()->ExposureMode = EL_AUTOMATIC;
+    el_config_camera_options()->AutoWhiteBalance = true;
+    el_config_camera_options()->AutoDigitalGain = true;
+    el_config_camera(el_config_camera_options());
     
     el_launch_process(Process_ConsoleLoop,NULL);
 
@@ -75,9 +75,9 @@ void Process_ConsoleLoop(void*arg){
     Trigger_CameraImageProcessing_Setup();
     Trigger_ObjectFollowing_Setup();
 
-    el_config_stepper_motor_list()->UseAcceleration = true;
-    el_config_stepper_motor_list()->AccelerationRate = 2000;
-    el_config_stepper_motor(el_config_stepper_motor_list());
+    el_config_stepper_motor_options()->UseAcceleration = true;
+    el_config_stepper_motor_options()->AccelerationRate = 2000;
+    el_config_stepper_motor(el_config_stepper_motor_options());
     
     el_enable_camera();
     el_enable_ir_proximity();

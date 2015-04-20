@@ -76,13 +76,11 @@ This group contains functions to initialize and host the library.
 #include "el_ir_proximity.h"
 #include "el_uart.h"
 
-#define NEVER_RETURN   void __attribute__ ((noreturn))
-
 void el_initialization();
 void el_calibrate_sensors();
 void el_sleep(el_time time_ms);
 void el_reset();
-
-NEVER_RETURN el_main_loop();
+void el_main_loop();
+void el_break_main_loop();
 
 #endif

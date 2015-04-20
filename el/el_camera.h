@@ -49,13 +49,13 @@ typedef enum {
 /*!
     This data structure is used in ::el_config_camera. 
     A static instance of this struct exists internally, it can be pointed to
-    through ::el_config_camera_list. 
+    through ::el_config_camera_options. 
 
     Detailed explanation of these parameters can be found in the datasheet of
     PO6030K.
 */
 typedef struct {
-    el_camera_exposure_mode ExposureMode;
+    el_camera_exposure_mode ExposureMode; ///< select one of the four modes (see ::el_camera_exposure_mode)
     el_bool AutoWhiteBalance;
     el_bool AutoDigitalGain;
     float ExposureTime;             ///< sensible range is [ 1.0, 20.0 ]
@@ -94,7 +94,7 @@ void el_disable_camera();
 
     \return the pointer
 */
-el_camera_param* el_config_camera_list();
+el_camera_param* el_config_camera_options();
 
 
 /*!
@@ -106,7 +106,7 @@ el_camera_param* el_config_camera_list();
     \code
     el_camera_param *CameraSetting;
     ...
-    CameraSetting = el_config_camera_list();
+    CameraSetting = el_config_camera_options();
     CameraSetting->ExposureMode = EL_AUTOMATIC;
     CameraSetting->AutoWhiteBalance = true;
     CameraSetting->AutoDigitalGain = true;
@@ -172,14 +172,28 @@ el_uint32 el_camera_get_frame_counter();
     \param Y        y coordinate of the pixel
     \param out3v    pointer to the array to store the RGB components. 
     
-    (0,0) is at bottom left. 
-    
+    (0,0) is the bottom left corner.
 */
 void el_camera_get_frame_pixel(int X,int Y,el_uint8*out3v);
 
 
+/*!
+    \brief get width (horizontal dimension) of the image in the frame buffer for reading.
+
+    \return     width of the frame to be locked for reading.
+
+    At present, this function always return 40.
+*/
 el_uint16 el_camera_get_frame_width();
 
+
+/*!
+    \brief get height (virtical dimension) of the image in the frame buffer for reading.
+
+    \return     height of the frame to be locked for reading.
+
+    At present, this function always return 15.
+*/
 el_uint16 el_camera_get_frame_height();
 
 
@@ -196,7 +210,7 @@ el_camera_image*el_camera_frame();
 */
 
 
-#ifdef EL_INCLUDE_CONTEXT
+#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 #define EL_CAM_I2C_ID   0xDC
 
@@ -217,6 +231,6 @@ void el_init_camera(void);
 void el_cam_init_register(void);
 void el_cam_swap_buffer(void);
 
-#endif	/* EL_INCLUDE_CONTEXT */
+#endif	/* EL_INCLUDE_LIB_INTERNAL_CONTEXT */
 
 #endif	/* EL_CAMERA_H */

@@ -37,7 +37,7 @@ typedef void (*el_process)(void*);
 /*!
     \brief Execute a function as a process. 
     
-    \param func     the pointer to the function to be executed
+    \param func     the pointer to the function to be executed (entry function)
     \param arg      an arguments passed to the function to be executed
     
     \return the index of the process (-1 if failed)
@@ -54,6 +54,25 @@ typedef void (*el_process)(void*);
     \endcode
 */
 el_index el_launch_process(el_process func,void*arg);
+
+
+/*!
+    \brief Kill the process (the abnormal way to end a process).
+
+    \param process_idx      the index of the process to be killed
+
+    This function can be used to forcefully stop a process while it is 
+    waiting (e.g. when it entered ::el_process_wait or ::el_process_cooperate). 
+    Unlike the relation between 'create' and 'delete', a launched process are 
+    not supposed to be killed. A process ends normally when its entry function 
+    returns (reach the end of the function). 
+    
+    Note: Killing a process causes all the local variables within to be lost. 
+    If a dynamically created object is referable only through such a local
+    variable, a memory leak is resulted (unable to 'free'/'delete' 
+    through the pointer/handle anymore). 
+*/
+void el_kill_process(el_index process_idx);
 
 
 /*!
@@ -85,21 +104,22 @@ void el_process_wait_fraction(unsigned int num,unsigned int den);
     it will continue execute. Therefore, unlike "el_process_wait", 
     "el_process_cooperate" does not cause a notable time delay. 
     It can be used in polling mechanism inside a process. 
-    For example, one can write: 
+    For example, the following scheme can be used to waiting for a condition 
+    to become true: 
     \code
     ...
-    // wait for some condition
+    // wait for a condition
     do{
         el_process_cooperate();
     }while(some_condition_is_not_true());
     ...
     \endcode
     
-    "el_process_cooperate" is also used within a single process that 
-    potentially cost large amount of computation and thus occupy the CPU for 
-    a long time. Calling "el_process_cooperate" in appropriate positions in 
-    a process of such types. For example, in a triple-nested loop (potentially 
-    cost a long time to execute), add a "el_process_cooperate();" after the 
+    There could be a section in a process that simply cost large amount of 
+    computation and thus make the process alone occupy the CPU for a long time. 
+    "el_process_cooperate" should be called in appropriate positions in a 
+    process of such types. For instance, in a triple-nested loop with a loop 
+    body that is also time-costly, add a "el_process_cooperate();" after the 
     middle loop: 
     \code
     ...
@@ -107,7 +127,7 @@ void el_process_wait_fraction(unsigned int num,unsigned int den);
     for(k=0;k<15;k++){
         for(j=0;j<40;j++){
             for(i=0;i<10;i++){
-                do_some_thing(i,j,k);
+                some_complicated_algorithm(i,j,k);
             }
         }
         el_process_cooperate();
@@ -133,7 +153,7 @@ el_index el_get_process_current_index();
 */
 
 
-#ifdef EL_INCLUDE_CONTEXT
+#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 #define EL_PROCESS_STACK_OFFSET 192
 #define EL_PROCESS_STACK_SIZE   192

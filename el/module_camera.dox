@@ -32,7 +32,9 @@ to be locked. The following mechanism is a typical loop to process a frame:
     ...
     el_uint8 RGB[3];
     int X,Y,W,H;
+    
     ...
+    
     el_camera_lock_frame();
     W = el_camera_get_frame_width();
     H = el_camera_get_frame_height();
@@ -41,7 +43,7 @@ to be locked. The following mechanism is a typical loop to process a frame:
             
             el_camera_get_frame_pixel( X, Y, RGB );
             
-            // image process algorithm
+            // image processing algorithm
             ...
         }
     }
@@ -49,10 +51,11 @@ to be locked. The following mechanism is a typical loop to process a frame:
     ...
 \endcode
 When the frame buffer is locked, no further buffer swapping will occur. 
-Therefore, to get a full frame rate of 18.432, the time cost of the image 
-processing code needs to be less than the update interval of the frames. 
+Therefore, the time cost of the image processing code ought to be less 
+than the update interval of the frames if each of the frames from the camera 
+need to be processed. 
 
-See Example 2 for a systematic usage of the camera module with some image 
+See \ref sec_ex02 for a systematic usage of the camera module with some image 
 processing techniques. 
 
 
@@ -65,12 +68,12 @@ as BMP files. A suitable camera configuration can be tuned based on the images.
 
 The actual frame rate achieved depends on the exposure mode used. When 
 automatic exposure control is used and the environment is not well illuminated, 
-the frame rate may drop to ~9. Fixed time exposure mode may be used to stablize 
+the frame rate may drop to ~9. Fixed time exposure mode can be used to stablize 
 the frame rate. For example: 
 \code
     el_camera_param *CameraSetting;
     ...
-    CameraSetting = el_config_camera_list();
+    CameraSetting = el_config_camera_options();
     CameraSetting->ExposureMode = EL_EXPOSURE_TIME;
     CameraSetting->ExposureTime = 10.0f;// 10.0 gives you about 14 fps
     el_config_camera( CameraSetting );

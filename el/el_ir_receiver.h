@@ -60,7 +60,7 @@ el_uint8 el_ir_receiver_get_data();
 */
 
 
-#ifdef EL_INCLUDE_CONTEXT
+#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 #include "el_clock.h"
 
@@ -72,7 +72,7 @@ void el_init_ir_receiver();
 void el_routine_ir_receiver_14400hz();
 void el_irrc_inhibit(int k);
 
-#endif	/* EL_INCLUDE_CONTEXT */
+#endif	/* EL_INCLUDE_LIB_INTERNAL_CONTEXT */
 
 
 #endif	/* EL_IR_RECEIVER_H */

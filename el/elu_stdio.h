@@ -20,7 +20,7 @@ This file is released under the terms of the MIT license (see "el.h").
 
 \defgroup ELU_STDIO UART STDIO
 
-\section Introduction
+\section uartstdio_sec_1 Introduction
 
 This module let the user interface UART1 in a similar fashion as the stdio 
 functions. For example, sending formated string using "printf" alike functions 
@@ -31,6 +31,13 @@ the functions provide more convience. However, it is only OK to use them in
 one process. In other word, one should avoid call these functions concurently 
 in more than one process in the system. 
 
+
+\section uartstdio_sec_2 Important Notice
+
+The "sprintf" and "sscanf" (and other formatted string functions) in the C 
+standard library are unlikely to work in a process here due to the stack size 
+they required. In this library, "elu_sscanf" and "elu_snprintf" are provided 
+to achieve same functionalities. 
 
 */
  
@@ -118,7 +125,7 @@ void elu_scanf_set_echo(bool k);
 int elu_putchar(int c);
 
 
-#ifdef EL_INCLUDE_CONTEXT
+#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 #define ELU_STDIO_BUFFER_SIZE   80
 extern char elu_stdio_buffer[ELU_STDIO_BUFFER_SIZE];

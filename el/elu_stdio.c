@@ -168,7 +168,7 @@ int elu_scanf(const char *format,...){
 
     }while(c!='\r');
 
-    length = el_uart_get_string(ELU_STDIO_UART,elu_stdio_buffer,ELU_STDIO_BUFFER_SIZE);
+    length = el_uart_get_string(ELU_STDIO_UART,elu_stdio_buffer,ELU_STDIO_BUFFER_SIZE,false);
 
     va_start(args,format);
     

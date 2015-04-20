@@ -22,6 +22,9 @@ This file is released under the terms of the MIT license (see "el.h").
 #include "el.h"
 #include "elu_stdio.h"
 
+#define MAX(a,b) (((a)>=(b))? (a):(b))
+#define MIN(a,b) (((a)<(b))? (a):(b))
+
 void el_print_camera_image(const el_camera_image*p,el_uint32 n);
 
 #endif

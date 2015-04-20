@@ -15,21 +15,24 @@ Hightlights:
 
 - A user-friendly and fast (40x15 @ 18.4 fps maximum) interface for e-puck's camera.  
 
-- Multi-tasking through 'process' --- so several loop with time delays can run 
- concurrently (see \ref sec_ex02).
+- Multi-tasking with 'Process' --- a mechanism based on cooperative multitasking 
+ that enables several functions with time delays run concurrently 
+ (see \ref sec_ex02). 
 
-- Reshape the concept of hardware timers and interrupts on the microcontroller 
-using two object-oriented interfacing models: 'timer' and 'trigger'. 
+- Reshape the concept of hardware timers and interrupts using two 
+ object-oriented interfacing models: 'Timer' and 'Trigger'. 
 
-- A 'timer' can be used to produce delay, as well as creating periodic callbacks 
- (similar to the agenda in the official library). 
+- A 'Timer' can be used to produce delay, as well as creating periodic callbacks 
+ (similar to the agenda in the e-puck standard library). 
 
-- A 'trigger' can automatically launch a 'process' once something happened, 
+- A 'Trigger' can automatically launch a 'Process' once some event occurs, 
  which let you do things only interrupts can do without dealing with hardware 
  interrupts. (This is also known as "Event-Driven Interface").
  
 - The whole library follows "No user code in interrupts" rule, so no 
-multi-access problem needs to be worried. 
+ multi-access problem needs to be worried. All user code, processes or 
+ timer callbacks, are handled within a 'mainloop' function of this lib that is 
+ typically placed in the main thread of the microcontroller. 
 
 
 \n 
@@ -70,7 +73,7 @@ The repository should contains the following items:
     + el_example_02.X --- This is \ref sec_ex02.
     + el_example_03.X --- This is \ref sec_ex03.
     + el_example_04.X --- This is \ref sec_ex04.
-    + el_example_hw.X --- This is the "Hello World" example.
+    + el_example_hw.X --- This is the "Hello World" example. 
 
 - other_materials --- some other related materials
 
@@ -79,6 +82,7 @@ The repository should contains the following items:
 \section sec_build Getting Started
 
 Download and install MPLAB X IDE and the XC16 Compiler. 
+Then, download this library. 
 
 
 \subsection sec_buildlib Build This Library
@@ -202,8 +206,8 @@ This example includes the usage of following modules:
 - \ref EL_IR_PROXIMITY
 - \ref ELU_STDIO
 
-An image processing technique used to tracking the object is also demostrated in 
-this example. 
+An image processing technique used to tracking the object is also demonstrated 
+in this example. 
 
 
 \n 

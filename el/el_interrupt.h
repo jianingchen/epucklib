@@ -19,7 +19,7 @@ This file is released under the terms of the MIT license (see "el.h").
 #ifndef EL_INTERRUPT_H
 #define EL_INTERRUPT_H
 
-#ifdef EL_INCLUDE_CONTEXT
+#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 // define interrupt priority
 #define EL_INTP_ADC     1

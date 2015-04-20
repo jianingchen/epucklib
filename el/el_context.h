@@ -33,6 +33,6 @@ This file is released under the terms of the MIT license (see "el.h").
 #define EL_HANDLE_TO_POINTER(h) ((void*)h)
 #define EL_POINTER_TO_HANDLE(p) ((el_handle)p)
 
-#define EL_INCLUDE_CONTEXT
+#define EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 #endif

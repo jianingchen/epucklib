@@ -20,6 +20,10 @@ This file is released under the terms of the MIT license (see "el.h").
 #include "el_interrupt.h"
 #include "el.h"
 
+volatile int el_mlb;
+
+//------------------------------------------------------------------------------
+
 void el_initialization(){
 
     e_init_port();
@@ -52,13 +56,19 @@ NEVER_RETURN el_main_loop(){
     
     el_process_mck = el_get_masterclock();
     el_timer_mck = el_get_masterclock();
+
+    el_mlb = 1;
     
-    while(1){
+    while(el_mlb){
         el_routine_timers();
         el_routine_triggers();
         el_routine_process();
     }
     
+}
+
+void el_break_main_loop(){
+    el_mlb = 0;
 }
 
 void el_reset(){

@@ -27,7 +27,7 @@ void Trigger_Accelerometer_Process(void*arg);
 el_handle Trigger_Accelerometer;
 
 
-int main(int argc,char*argv[]){
+int main(void){
 
     el_initialization();
 
@@ -54,15 +54,18 @@ int main(int argc,char*argv[]){
     elu_printf("EL_EXAMPLE_02\n");
 
     Trigger_Accelerometer = el_create_trigger();
-    el_trigger_set_process(Trigger_Accelerometer,Trigger_Accelerometer_Process);
     el_trigger_set_event(Trigger_Accelerometer,EL_EVENT_ACCELEROMETER_UPDATE);
+    el_trigger_set_process(Trigger_Accelerometer,Trigger_Accelerometer_Process);
     
     el_launch_process(Process_ConsoleLoop,NULL);
 
-    el_enable_accelerometer();// never forget to enable something
+    el_enable_accelerometer();// Tips: never forget to enable something
 
     el_main_loop();
-
+    
+    // Tips: everything 'create'ed by user's code must be 'delete'ed by user's code
+    el_delete_trigger(Trigger_Accelerometer);
+    
     return 0;
 }
 
@@ -116,9 +119,8 @@ void Trigger_Accelerometer_Process(el_handle this_trigger){
 
     el_accelerometer_get(EL_ACCELEROMETER_ONE,EL_ACCELERATION_ALL_3V,xyz);
 
-    // flash all ring LEDs if a shake or impact is detected
     if(previous_xyz[0]!=0){
-
+        
         dx = xyz[0] - previous_xyz[0];
         dy = xyz[1] - previous_xyz[1];
         dz = xyz[2] - previous_xyz[2];
@@ -129,10 +131,12 @@ void Trigger_Accelerometer_Process(el_handle this_trigger){
         
         /*
          * Tip:
-         * Keeping all values in square may save the computation cost for
-         * a square root in many circumstances. 
+         * If the mathmatical validity allows, keeping all values in square
+         * can save the computation cost of a square root. 
          */
         if(magnitude_s > threshold_s){
+
+            // flash all ring LEDs if a shake or impact is detected
 
             el_led_set(EL_LED_RING_ALL,EL_ON);
             el_process_wait(200);
@@ -140,7 +144,7 @@ void Trigger_Accelerometer_Process(el_handle this_trigger){
             el_led_set(EL_LED_RING_ALL,EL_OFF);
             el_process_wait(200);
 
-            // 400 ms past, need to refresh values
+            // 400 ms past, need to refresh values to be used as previous values in next round
             el_accelerometer_get(EL_ACCELEROMETER_ONE,EL_ACCELERATION_ALL_3V,xyz);
 
         }

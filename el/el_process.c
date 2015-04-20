@@ -30,7 +30,7 @@ This file is released under the terms of the MIT license (see "el.h").
 typedef struct EL_CMTS{
     int state;
     el_mct wait_timer;
-    void* data_pointer;
+    void* arg_pointer;
     el_process function;
     jmp_buf function_context;
 } el_cmts;
@@ -54,11 +54,11 @@ static void el_cmt_warp_current_process(const int stack_offset){
 
     pad[stack_offset - 1] = 0;// prevent it from getting optimized by compiler
 
-    el_cmt_current_process->function(el_cmt_current_process->data_pointer);
+    el_cmt_current_process->function(el_cmt_current_process->arg_pointer);
 
     el_cmt_current_process->state = EL_CMT_STATE_VACANT;
     el_cmt_current_process->function = NULL;
-    el_cmt_current_process->data_pointer = NULL;
+    el_cmt_current_process->arg_pointer = NULL;
 
     el_cmt_number_of_process--;
     longjmp(el_cmt_main_buffer,1);
@@ -75,7 +75,7 @@ void el_init_process(){
         p = el_cmt_process_list + i;
         p->state = EL_CMT_STATE_VACANT;
         p->wait_timer = EL_MCT_ZERO_POINT;
-        p->data_pointer = NULL;
+        p->arg_pointer = NULL;
         p->function = NULL;
     }
     el_cmt_current_process_index = -1;
@@ -185,13 +185,26 @@ el_index el_launch_process(el_process func,void*arg){
         if(p->state==EL_CMT_STATE_VACANT){
             p->state = EL_CMT_STATE_LAUNCH;
             p->wait_timer = EL_MCT_ZERO_POINT;
-            p->data_pointer = arg;
+            p->arg_pointer = arg;
             p->function = func;
             return i;
         }
     }
 
     return -1;
+}
+
+void el_kill_process(el_index i){
+    el_cmts *p;
+    
+    if(el_cmt_current_process_index != i){
+        p = el_cmt_process_list + i;
+        p->state = EL_CMT_STATE_LAUNCH;
+        p->wait_timer = EL_MCT_ZERO_POINT;
+        p->arg_pointer = NULL;
+        p->function = NULL;
+    }
+
 }
 
 el_index el_get_process_current_index(){

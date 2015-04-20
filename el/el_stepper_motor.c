@@ -143,7 +143,7 @@ void el_disable_stepper_motor(void){
     }
 }
 
-el_stepper_motor_param*el_config_stepper_motor_list(){
+el_stepper_motor_param*el_config_stepper_motor_options(){
     return &el_stpm_parameters;
 }
 

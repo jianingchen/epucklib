@@ -228,13 +228,13 @@ char el_uart_get_char(el_index channel){
     return c;
 }
 
-el_uint16 el_uart_get_string(el_index channel,char*buf,unsigned int l){
+el_uint16 el_uart_get_string(el_index channel,char*buf,el_uint16 buf_size,el_bool return_line){
     char c = 0xFF;
     int length;
 
     length = 0;
     
-    --l;
+    --buf_size;
 
     switch(channel){
 
@@ -248,8 +248,13 @@ el_uint16 el_uart_get_string(el_index channel,char*buf,unsigned int l){
             }
             buf[length] = c;
             length++;
-            if(length>=l){
+            if(length>=buf_size){
                 break;
+            }
+            if(return_line){
+                if(c=='\r'){
+                    break;
+                }
             }
         }
         buf[length] = '\0';

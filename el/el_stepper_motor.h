@@ -52,7 +52,7 @@ The maximum speed of these motors are 1000 steps per second.
 /*!
     This data structure is used in ::el_config_stepper_motor.
     A static instance of this struct exists internally, it can be pointed to
-    through ::el_config_stepper_motor_list. 
+    through ::el_config_stepper_motor_options. 
 */
 typedef struct {
     el_bool UseAcceleration;
@@ -68,7 +68,7 @@ typedef struct {
 
     \return the pointer
 */
-el_stepper_motor_param*el_config_stepper_motor_list();
+el_stepper_motor_param*el_config_stepper_motor_options();
 
 
 /*!
@@ -85,7 +85,7 @@ el_stepper_motor_param*el_config_stepper_motor_list();
     \code
     el_stepper_motor_param *StepperMotorSetting;
     ...
-    StepperMotorSetting = el_config_stepper_motor_list();
+    StepperMotorSetting = el_config_stepper_motor_options();
     StepperMotorSetting->UseAcceleration = true;
     StepperMotorSetting->AccelerationRate = 2000;
     el_config_stepper_motor( StepperMotorSetting );
@@ -154,6 +154,8 @@ void el_stepper_motor_set_steps(el_index i,el_int16 n);
     \param left    left motor speed
     \param right   right motor speed
     
+    This function does virtually the same thing as ::el_stepper_motor_set_speed
+    in just one line. 
 */
 void el_set_wheel_speed(int left,int right);
 
@@ -161,7 +163,7 @@ void el_set_wheel_speed(int left,int right);
 //==============================================================================
 
 
-#ifdef EL_INCLUDE_CONTEXT
+#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 #include "el_clock.h"
 

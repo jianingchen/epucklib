@@ -47,8 +47,18 @@ typedef enum{
     EL_ACCELERATION_ALL_3V,     ///< get the acceleration along all three axes
 } el_accelerometer_output;
 
+
+/*!
+    \brief enable the accelerometer
+
+*/
 void el_enable_accelerometer();
 
+
+/*!
+    \brief disable the accelerometer
+
+*/
 void el_disable_accelerometer();
 
 
@@ -58,7 +68,7 @@ void el_disable_accelerometer();
     \param i        index of the accelerometer (currently can only be 0)
     \param u        output type
     \param out      pointer to a variable or an array of variables to store 
-                    the output value(s).
+                    the output value(s). 
 
     \return         number of values stored into *out.
     
@@ -72,7 +82,7 @@ int el_accelerometer_get(el_index i,el_accelerometer_output u,el_int16*out);
 */
 
 
-#ifdef EL_INCLUDE_CONTEXT
+#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 
 extern bool el_acc_enabled;
 extern el_int8 el_acc_working_phase;
