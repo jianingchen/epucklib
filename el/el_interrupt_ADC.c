@@ -73,7 +73,7 @@ void el_init_interrupt_ADC(){
     ADCON1bits.SSRC = 0b111;// conversion triggered automaticly
     
     /*
-     * [datasheet page-135]:
+     * [dsPIC30F6014A Datasheet Page 135]:
      *
      * The ADC conversion requires 14 TAD. The source of
      * the ADC conversion clock is software selected, using a

@@ -51,11 +51,13 @@ This file is released under the terms of the MIT license (see "el.h").
     \param k        whether to use such a feature or not
     \param x        the value that triggers a hardware reset
     
-    The Tiny Bootloader will first send a specific value to the serial
-    communication shortly before a chip programming, which requires the chip 
-    to be reseted in a short time window. 
-    With this feature turned on, the chip can reset itself automatically once 
-    the value occurs. For detailed usage, see the examples come with this lib.
+    The Tiny Bootloader will first send a specific value to the UART bus shortly 
+    before a microcontroller programming. After that, the microcontroller needs 
+    to be reseted in a short time window. This reset code feature let the 
+    microcontroller reset itself automatically once the value occurs. The image 
+    below shows the setting in the TinyBootloader when the code is 128 (used 
+    in the examples of this lib). 
+    \image html images/doc_tinybld_setup.png
 */
 void el_uart_use_reset_code(el_bool k,el_int8 x);
 
@@ -157,7 +159,7 @@ char el_uart_peek_first_char(el_index ch);
 
 
 /*!
-    \brief Check the last byte in the receiving buffer, but does not remove it from the buffer.
+    \brief Check the last byte in the receiving buffer but do not remove it from the buffer.
 
     \param ch       serial channel index (at present, only 0 is effective)
 

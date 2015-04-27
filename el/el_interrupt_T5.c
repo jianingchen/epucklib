@@ -67,7 +67,7 @@ __asm__ volatile ("SWAP_BUFFERS:");
     __asm__ volatile ("pop      w0");
     __asm__ volatile ("retfie   ");
 __asm__ volatile ("DONT_SWAP:");
-    __asm__ volatile ("nop      ");
+    __asm__ volatile ("nop      ");// padding time
     __asm__ volatile ("nop      ");
     __asm__ volatile ("nop      ");
     __asm__ volatile ("nop      ");

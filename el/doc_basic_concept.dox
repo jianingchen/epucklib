@@ -6,7 +6,7 @@
 
 \section sec_new_var    New Variable Types
 
-\subsection ssec_el_handle 'el_handle' (handle of an internal object)
+\subsection ssec_el_handle 'el_handle' (reference of an internal object)
 
 This is the handle type to be used in this library for refering dynamically 
 created objects. A 'handle' is similar to a pointer to an object, which are 
@@ -14,6 +14,16 @@ generally used to refer to some object. However, a handle does not include any
 information about structure of the object. Thus, a handle can only be used to 
 refer to an object but not access the data inside the object. All operations 
 towards such type of object need to be achieved by its related functions. 
+
+
+\subsection ssec_el_time 'el_time' (a time duration in millisecond)
+
+Any function argument uses 'el_time' as its type means that the argument is 
+a time duration that given by a integer millisecond. 
+
+In this library, the other way to pass a time to a timing related function is 
+to give the fraction form. In that case, the unit is always second 
+(See ::el_process_wait_fraction for example). 
 
 
 \subsection ssec_el_index 'el_index' (component index)
@@ -30,16 +40,6 @@ meaning. For example, for the led module, -1 ("EL_LED_RING_ALL") means
 all leds on the ring of the e-puck. 
 
 
-\subsection ssec_el_time 'el_time' (a time duration in millisecond)
-
-Any function argument uses 'el_time' as its type means that the argument is 
-a time duration that given by a integer millisecond. 
-
-In this library, the other way to pass a time to a timing related function is 
-to give the fraction form. In that case, the unit is always second 
-(See ::el_process_wait_fraction for example). 
-
-
 \subsection ssec_el_flags 'el_flags' (binary option list)
 
 This is the type used to pass a group of binary option as one variable.
@@ -51,7 +51,7 @@ can only be YES or NO.
 
 Masterclock of the system is an incremental timer that keeps 
 increasing after the system is initialized. In each real time second, 
-Masterclock will be increased by 144000. Masterclock is frequenctly 
+Masterclock will be increased by 144000. Masterclock is mainly used 
 used to calculate the interval between two time points. 
 
 Any time stored in the system is interpreted as a integer times of the 
@@ -61,7 +61,7 @@ For instance, 1/60 sec and 1/1000 sec can both be stored as a integer
 without any loss as 2400 and 144 correspondingly. Whereas, the integer 
 interpretation of 1/70 sec (about 14.2857142 ms) will be rounded to 2057, 
 which causes the actual time stored in the system become 14.2847222 ms. 
-This applies to all timing related functions like ::el_timer_start 
+This applies to all timing related functions such as ::el_timer_start 
 or ::el_process_wait. 
 
 

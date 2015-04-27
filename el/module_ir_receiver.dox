@@ -1,0 +1,146 @@
+
+/*!
+
+\defgroup EL_IR_RECEIVER Infrared Receiver
+
+\section Introduction
+
+The e-puck has a ir receiver module --- TSOP36236. It is supposed to be used with 
+remote control based RC5 protocol, which are typically used in TV remote. 
+
+
+\section sec_irrc_usage Example Usage
+
+In the example, we want all robots to toggle their body LED when 
+we press a key on a TV remote. Two approaches to achieve this are given. 
+
+
+\subsection ssec_irrc_usage_1 Use Inside Process
+
+\code
+// assume that the following process is launched properly in somewhere
+void IrReceiver_Process(void*unused){
+    int check;
+    int address;
+    int key_value;
+    
+    while(1){
+        
+        // ir receiver requires a reset before a potential income
+        el_ir_receiver_reset();
+        
+        // wait for a new income ('check' becoming either 0 or 1)
+        do{
+            el_process_cooperate();
+            check = el_ir_receiver_get_check();
+        }while( (check != 0)&&(check != 1) );
+        
+        // verify the address value 
+        address = el_ir_receiver_get_address();
+        if( address != THE_ADDRESS_WE_WANT ){
+            continue;// skip the rest of code in the loop
+        }
+        
+        // make use of the data received
+        key_value = el_ir_receiver_get_data();
+        if( key_value == THE_VALUE_WE_WANT ){
+            el_led_set( EL_LED_BODY, EL_TOGGLE );
+        }
+        
+    }
+    
+}
+\endcode
+
+
+
+
+\subsection ssec_irrc_usage_2 Use As Trigger
+
+A disadvantage of \ref ssec_irrc_usage_1 is that it constantly occupies a process. 
+The maximum number of processes is 7, which may not be enough if all 
+components occupy a process of their own. Using a trigger to handle the 
+ir receiver is a better design choice.
+
+
+Related global variables and function prototypes:
+\code
+
+el_handle trg_broadcast_listener;
+
+void Trigger_BroadcastListener_Setup();
+void Trigger_BroadcastListener_Clear();
+bool Trigger_BroadcastListener_Condition(el_handle this_trigger);
+void Trigger_BroadcastListener_Process(el_handle this_trigger);
+
+\endcode
+
+
+Code to setup/clear the trigger:
+\code
+
+void Trigger_BroadcastListener_Setup(){
+    
+    trg_broadcast_listener = el_create_trigger();
+    
+    // specify the event of triggering
+    el_trigger_set_event( trg_broadcast_listener, EL_EVENT_IR_RECEIVER_INCOME );
+    
+    // this trigger is a typical case where a condition callback may be used
+    el_trigger_set_condition( trg_broadcast_listener, Trigger_BroadcastListener_Condition );
+    
+    // specify the process to launch when the event occurs
+    el_trigger_set_process( trg_broadcast_listener, Trigger_BroadcastListener_Process );
+}
+
+void Trigger_BroadcastListener_Clear(){
+    el_delete_trigger( trg_broadcast_listener );
+}
+
+\endcode
+
+Code of the trigger's condition callback and process:
+\code
+
+/* 
+ * Note: 
+ * In real world, the IR receiver will receive a lot of noise. So the event 
+ * EL_EVENT_IR_RECEIVER_INCOME will typically occur more frequently than true signals. 
+ * As a result, most of times, the packet received contains corrupted data. 
+ * To save the effort to launch a process in such a case, a condition callback 
+ * is used for this trigger to filter unwanted events. 
+ */
+bool Trigger_BroadcastListener_Condition(el_handle this_trigger){
+    if( el_ir_receiver_get_address() != THE_ADDRESS_WE_WANT ){
+        el_ir_receiver_reset();
+        return false;// do not launch the process
+    }
+    return true;// proceed to launch the process
+}
+
+/* 
+ * Note: 
+ * For a trigger-launched process, the argument given to the entry function
+ * is the handle of the trigger. 
+ */
+void Trigger_BroadcastListener_Process(el_handle this_trigger){
+    int key_value;
+    
+    key_value = el_ir_receiver_get_data();
+    
+    if( key_value == THE_VALUE_WE_WANT ){
+        el_led_set( EL_LED_BODY, EL_TOGGLE );
+    }
+    
+    el_trigger_enable( this_trigger );
+    el_ir_receiver_reset();// get ready for next incoming transmission
+}
+
+\endcode
+
+For the above trigger, it is also valid to place the program within the process
+inside the condition because the program does not require any timing 
+(e.g. ::el_process_wait). If that's the case, a process is no longer required. 
+
+
+*/

@@ -76,11 +76,73 @@ This group contains functions to initialize and host the library.
 #include "el_ir_proximity.h"
 #include "el_uart.h"
 
+/*!
+    \brief initialize the library
+    
+    This function initializes the library. It should only be executed once 
+    in the beginning of the program. 
+*/
 void el_initialization();
+
+
+/*!
+    \brief calibrate the proximity sensors and setup a random seed
+    
+    Currently, this function calibrate the proximity sensors on the robot as 
+    well as generate a random seed based on the noisy sensor readings. 
+    If one finds the random seed not diverse enough accross a number of robots, 
+    ::el_random_set_seed can be used to apply a random seed using any 
+    improved method. 
+    
+    Note: this function takes about 600 ms to finish. 
+*/
 void el_calibrate_sensors();
+
+
+/*!
+    \brief delay a period of time given in millisecond
+    
+    This delay function works only within the \c main function but not in any process. 
+    Within a process, time delay is achieved by ::el_process_wait. 
+*/
 void el_sleep(el_time time_ms);
-void el_reset();
+
+
+/*!
+    \brief the "engine" that drives the software components in this library
+    
+    This is the primary function that drives all of the software components 
+    in this library, including \ref EL_TRIGGER, \ref EL_TIMER and \ref EL_PROCESS. 
+    
+    The standard way to use this library is that: most of the user's code are 
+    written in one or more processes/triggers while the \c main function just 
+    enters this function and keeps running it for the life time. 
+    See the examples for the practical usage. 
+*/
 void el_main_loop();
+
+
+/*!
+    \brief signal el_main_loop to stop
+    
+    This function breaks the loop inside ::el_main_loop and let it returns. 
+    At the moment when this function is called, all of the software components 
+    are virtually freezed. This means: any process in waiting/cooperating will 
+    no longer be resumed and no further trigger/timer actions will happen. 
+    
+    It is recommanded that el_main_loop is only entered once in a program's 
+    life time. Thus, after el_main_loop returns, the program should just 
+    clear things up and proceed to reset, rather than re-entering el_main_loop 
+    at some time. 
+*/
 void el_break_main_loop();
+
+
+/*!
+    \brief reset the microcontroller
+    
+    This is equivalent to tap the reset button. 
+*/
+void el_reset();
 
 #endif

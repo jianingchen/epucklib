@@ -3,10 +3,62 @@
 
 \defgroup EL_TIMER Timer
 
-\section Introduction
+\section sec_tmr_intro Introduction
 
 Timer is the object associated with many features involving timing. 
-Example 3 in the repository demonstrates how to use timers. 
+
+
+
+\section sec_tmr_usage Example Usage
+
+\ref sec_ex03 in the repository demonstrates how to use timers to measure the fps 
+of the camera. Here, more examples of using timer are introduced. 
+
+Note:
+In the following examples, the code section is within a process. 
+
+\subsection ssec_tmr_usage_tl Communication with a Time Window
+
+\code
+...
+el_bool IsInDebugMode;
+el_handle T;
+char c;
+
+el_println("<send 'g' in 3 sec to enter debug mode>");
+
+T = el_create_timer();
+el_timer_set_perodic(T,false);
+el_timer_start(T,3000);
+
+IsInDebugMode = false;
+while( el_timer_get_rounds(T) == 0 ){
+    if( el_uart_get_char_counter(EL_UART1) > 0 ){
+        c = el_uart_get_char(EL_UART1);
+        if( c == 'g' ){
+            IsInDebugMode = true;
+            break;
+        }
+    }
+    el_process_cooperate();
+}
+
+el_delete_timer(T);
+T = NULL;
+
+if(IsInDebugMode){
+    el_println("proceed in debug mode");
+}else{
+    el_println("proceed in normal mode");
+}
+
+/*
+In run time, if nothing is sent in 3 sec, the program reaches here with 
+IsInDebugMode being false. Otherwise, IsInDebugMode would be true.  
+*/
+...
+\endcode
+
 
 */
  

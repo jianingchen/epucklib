@@ -18,19 +18,6 @@ This file is released under the terms of the MIT license (see "el.h").
 
 /*!
 
-\defgroup EL_IR_RECEIVER Infrared Receiver
-
-\section Introduction
-
-The e-puck has a ir receiver module --- TSOP36236. It is supposed to be used with 
-remote control based RC5 protocol, which are typically used in TV remote. 
-
-(TODO)
-
-*/
- 
-/*!
-
 \file
 \ingroup EL_IR_RECEIVER
 

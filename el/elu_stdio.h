@@ -37,7 +37,7 @@ in more than one process in the system.
 The "sprintf" and "sscanf" (and other formatted string functions) in the C 
 standard library are unlikely to work in a process here due to the stack size 
 they required. In this library, "elu_sscanf" and "elu_snprintf" are provided 
-to achieve same functionalities. 
+to achieve the same functionalities. 
 
 */
  
@@ -85,6 +85,7 @@ int elu_sscanf(const char*s,const char*format,...) _SSCANF_FAMILY;
     \brief send a string with data fields to UART1
 
     \param format   same rule as the format string of "printf"
+    
     \return length of the string with data formatted
 
 */
@@ -95,6 +96,7 @@ int elu_printf(const char*format,...) _PRINTF_FAMILY;
     \brief send a string with data fields + a newline char to UART1
 
     \param format   same rule as the format string of "printf"
+    
     \return length of the string with data formatted
 
 */
@@ -105,6 +107,7 @@ int elu_println(const char*format,...) _PRINTF_FAMILY;
     \brief scanf to be used here
     
     \param format   same rule as the format string of "scanf"
+    
     \return number of data field successfuly scanned
     
     This function behaves similarly to the "scanf": it receives and stores

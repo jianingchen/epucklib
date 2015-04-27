@@ -56,12 +56,10 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt(void){
         el_routine_ir_proximity_2400hz();
     }
     
-
-
-    // configure channels to be scanned
-
+    // configure ADC channels to be scanned
+    
     n = 0;
-
+    
     if(el_adc_callback_accelerometer){
         ADCSSLbits.CSSL5 = 1;   // axe x acc
         ADCSSLbits.CSSL6 = 1;   // axe y acc
@@ -80,17 +78,13 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt(void){
         ADCSSLbits.CSSL15 = 1;  // ir7
         n += 8;
     }
-
-
     
     // initiate adc scanning when there are requests
 
     if(n){
-
         IEC0bits.ADIE = 1;
         ADCON2bits.SMPI = n;// total number of channels to be scanned
         ADCON1bits.ADON = 1;
-        
     }
     
     /*

@@ -140,9 +140,9 @@ void el_delete_timer(el_handle h){
 
 void el_timer_start(el_handle h,el_time time_ms){
     el_timer *p = (el_timer*)EL_HANDLE_TO_POINTER(h);
-    el_mct k = EL_TIME_TO_MCT(time_ms) + EL_MCT_ZERO_POINT;
+    el_mct k = EL_TIME_TO_MCT(time_ms);
     p->period = k;
-    p->count_down = k;
+    p->count_down = k + EL_MCT_ZERO_POINT;
     p->rounds = 0;
     p->paused = false;
     p->remove = false;
@@ -150,9 +150,9 @@ void el_timer_start(el_handle h,el_time time_ms){
 
 void el_timer_start_fraction(el_handle h,int num,int den){
     el_timer *p = (el_timer*)EL_HANDLE_TO_POINTER(h);
-    el_mct k = (el_mct)num*EL_MASTERCLOCK_FREQ/(el_mct)den + EL_MCT_ZERO_POINT;
+    el_mct k = (el_mct)num*EL_MASTERCLOCK_FREQ/(el_mct)den;
     p->period = k;
-    p->count_down = k;
+    p->count_down = k + EL_MCT_ZERO_POINT;
     p->rounds = 0;
     p->paused = false;
     p->remove = false;

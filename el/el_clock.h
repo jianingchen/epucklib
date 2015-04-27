@@ -45,6 +45,10 @@ el_mct el_get_masterclock();
 el_time el_get_time_diff(el_mct k0,el_mct k1,el_mct*residue);
 
 
+/*
+--------------------------------------------------------------------------------
+*/
+
 
 #ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT
 

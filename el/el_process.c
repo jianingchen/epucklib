@@ -55,7 +55,7 @@ static void el_cmt_warp_current_process(const int stack_offset){
     pad[stack_offset - 1] = 0;// prevent it from getting optimized by compiler
 
     el_cmt_current_process->function(el_cmt_current_process->arg_pointer);
-
+    
     el_cmt_current_process->state = EL_CMT_STATE_VACANT;
     el_cmt_current_process->function = NULL;
     el_cmt_current_process->arg_pointer = NULL;
@@ -194,19 +194,23 @@ el_index el_launch_process(el_process func,void*arg){
     return -1;
 }
 
+void el_process_resume(el_index i){
+    el_cmts *p;
+    p = el_cmt_process_list + i;
+    p->wait_timer = EL_MCT_ZERO_POINT;
+}
+
 void el_kill_process(el_index i){
     el_cmts *p;
-    
     if(el_cmt_current_process_index != i){
         p = el_cmt_process_list + i;
-        p->state = EL_CMT_STATE_LAUNCH;
+        p->state = EL_CMT_STATE_VACANT;
         p->wait_timer = EL_MCT_ZERO_POINT;
         p->arg_pointer = NULL;
         p->function = NULL;
     }
-
 }
 
-el_index el_get_process_current_index(){
+el_index el_get_local_process_index(){
     return el_cmt_current_process_index;
 }

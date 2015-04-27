@@ -61,7 +61,7 @@ void el_delete_timer(el_handle h);
     \param h       handle of the timer
     \param b       is perodic or not
 */
-void el_timer_set_perodic(el_handle h,bool b);
+void el_timer_set_perodic(el_handle h,el_bool b);
 
 
 /*!
@@ -72,20 +72,20 @@ void el_timer_set_perodic(el_handle h,bool b);
     \param arg     the argument passed to the callback function when it is called
     
     When the timer's countdown is finished, the time's callback "func" will be 
-    called as "func(arg);". This callback need to be a routine function, which 
-    means no wait/delay inside or any code with high computational cost. 
+    called as "func(arg);". This callback need to be a function with no 
+    wait/delay inside or any code with high computational cost. 
     
     A perodic timer with a callback can achieve the similar functionalility of 
     the 'agenda' in the official e-puck library, which creates a perodic 
     routine in the system. 
     
     Compared to a loop with time wait in a process, using timer callback to 
-    run a perodic routine has no accumulated error. For example, a timer 
-    with 50 ms period can stably run its callback for 72000 times in 1 hour. 
-    If it is written as a loop in a process with a 50 ms delay, it will be 
-    slightly less than 36000 times due to the time cost of the body of the loop. 
+    run a perodic routine has no accumulated error. For example, a timer with 
+    50 ms period can accurately run its callback for 72000 times in one hour. 
+    If it is written inside a process as a loop with 50 ms wait, the looping 
+    times will be slightly less than 72000 due to the time cost of the loop body. 
     
-    Use NULL to not using any callback function. 
+    Use \c NULL for 'func' if no callback function are needed. 
     By default, the timer does not has a callback function. 
 */
 void el_timer_set_callback(el_handle h,el_timer_callback func,void*arg);
@@ -96,6 +96,36 @@ void el_timer_set_callback(el_handle h,el_timer_callback func,void*arg);
 
     \param h       handle of the timer
     \param t_ms    period in millisecond
+    
+    Start the countdown. Note, the actual countdown operation is applied 
+    in the ::el_main_loop while no process is running. Thus, if a process 
+    does not return or cooperate/wait during its execution, no timer 
+    countdown can be handled properly. For example, the following mechanism 
+    will lead to a infinite loop: 
+    \code
+    ...
+    my_timer = el_create_timer();
+    el_timer_start( my_timer, 1000 );
+    while( el_timer_get_rounds( my_timer ) == 0 ){
+    }
+    el_led_set( 0, EL_ON );// this line will never be reached
+    el_delete_timer( my_timer );
+    ...
+    \endcode
+    
+    Instead, a process cooperation need to be used:
+    \code
+    ...
+    my_timer = el_create_timer();
+    el_timer_start( my_timer, 1000 );
+    while( el_timer_get_rounds( my_timer ) == 0 ){
+        el_process_cooperate();// this gives the timer system a chance to handle all timers
+    }
+    el_led_set( 0, EL_ON );
+    el_delete_timer( my_timer );
+    ...
+    \endcode
+    
 */
 void el_timer_start(el_handle h,el_time t_ms);
 
@@ -148,6 +178,7 @@ el_handle el_timer_callback_get_handle();
     \return number of times that the countdown has been finished
     
     This function returns the number of times that the countdown has been finished. 
+    When the timer is started, its round counter will be set to 0. 
     Each time the timer's countdown finishes, its 'rounds' will +1. 
     Thus, for a on-going timer that is perodic (set via "el_timer_set_perodic"), 
     its rounds will keep increasing. 

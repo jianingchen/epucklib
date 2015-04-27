@@ -31,24 +31,26 @@ This file is released under the terms of the MIT license (see "el.h").
 #include "el_common.h"
 #include "el_clock.h"
 
+#define EL_PROCESS_MAX_NUM        7
+
 typedef void (*el_process)(void*);
 #define EL_PROCESS void
 
 /*!
-    \brief Execute a function as a process. 
+    \brief execute a function in a process
     
     \param func     the pointer to the function to be executed (entry function)
     \param arg      an arguments passed to the function to be executed
     
     \return the index of the process (-1 if failed)
 
-    This function can execute a function (entry function) as a process 
-    with the given argument (as "func(arg);"). Maxmum number of process is 7. 
+    This function can execute a function (entry function) in a process
+    with the given argument (as "func(arg);"). Maxmum number of processes is 7.
     
-    The entry function must be a function that takes a void pointer as the 
-    parameter and returns void. For example:
+    The entry function must be a function that takes a void pointer or a 
+    \c el_handle as the argument and returns void. For example:
     \code
-    void my_process(void*that_arg){
+    void my_process(void*arg){
         ...
     }
     \endcode
@@ -57,26 +59,7 @@ el_index el_launch_process(el_process func,void*arg);
 
 
 /*!
-    \brief Kill the process (the abnormal way to end a process).
-
-    \param process_idx      the index of the process to be killed
-
-    This function can be used to forcefully stop a process while it is 
-    waiting (e.g. when it entered ::el_process_wait or ::el_process_cooperate). 
-    Unlike the relation between 'create' and 'delete', a launched process are 
-    not supposed to be killed. A process ends normally when its entry function 
-    returns (reach the end of the function). 
-    
-    Note: Killing a process causes all the local variables within to be lost. 
-    If a dynamically created object is referable only through such a local
-    variable, a memory leak is resulted (unable to 'free'/'delete' 
-    through the pointer/handle anymore). 
-*/
-void el_kill_process(el_index process_idx);
-
-
-/*!
-    \brief Wait for a period of time.
+    \brief wait for a period of time
     
     \param t_ms time in millisecond
 
@@ -86,7 +69,7 @@ void el_process_wait(el_time t_ms);
 
 
 /*!
-    \brief Wait for a period of time specified as a fraction.
+    \brief wait for a period of time specified as a fraction
     
     \param num numerator of the time in seconds.
     \param den denominator of the time in seconds.
@@ -139,13 +122,43 @@ void el_process_cooperate();
 
 
 /*!
-    \brief Get index of the process called this function.
+    \brief finish the waiting period of a process immediately
+
+    \param process_idx      the index of the process
+
+    This function can make a process in ::el_process_wait finish the waiting
+    period immediately. 
+*/
+void el_process_resume(el_index process_idx);
+
+
+/*!
+    \brief kill the process (the abnormal way to end a process)
+
+    \param process_idx      the index of the process to be killed
+
+    This function can be used to forcefully stop a process while it is
+    waiting (e.g. when it entered ::el_process_wait or ::el_process_cooperate).
+    Unlike the relation between 'create' and 'delete', a launched process are
+    not supposed to be killed. A process ends normally when its entry function
+    returns (reach the end of the function).
+
+    Note: Killing a process causes all the local variables within to be lost.
+    If a dynamically created object is referable only through such a local
+    variable, a memory leak is resulted (unable to 'free'/'delete'
+    through the pointer/handle anymore).
+*/
+void el_kill_process(el_index process_idx);
+
+
+/*!
+    \brief get index of the process where this function is called
     
     \return index of the process
 
     When this function is not called within a process, it returns -1.
 */
-el_index el_get_process_current_index();
+el_index el_get_local_process_index();
 
 
 /*
@@ -157,7 +170,7 @@ el_index el_get_process_current_index();
 
 #define EL_PROCESS_STACK_OFFSET 192
 #define EL_PROCESS_STACK_SIZE   192
-#define EL_PROCESS_DIM          7
+#define EL_PROCESS_DIM          EL_PROCESS_MAX_NUM
 
 extern el_mct el_process_mck;
 extern bool el_is_in_process;
