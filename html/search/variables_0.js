@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bluegain',['BlueGain',['../a00004.html#ae6e70df6cba97baad2489830dd1debf9',1,'el_camera_param']]]
+  ['ambient',['Ambient',['../a00005.html#ab774f842e7b10cec3596e0c108fed947',1,'el_ir_proximity_data']]]
 ];

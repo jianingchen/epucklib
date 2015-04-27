@@ -91,11 +91,11 @@ Introduction</h1>
 <p>Hightlights:</p>
 <ul>
 <li>A user-friendly and fast (40x15 @ 18.4 fps maximum) interface for e-puck's camera.</li>
-<li>Multi-tasking through 'process' &mdash; so several loop with time delays can run concurrently (see <a class="el" href="index.html#sec_ex02">Example 2</a>).</li>
-<li>Reshape the concept of hardware timers and interrupts on the microcontroller using two object-oriented interfacing models: 'timer' and 'trigger'.</li>
-<li>A 'timer' can be used to produce delay, as well as creating periodic callbacks (similar to the agenda in the official library).</li>
-<li>A 'trigger' can automatically launch a 'process' once something happened, which let you do things only interrupts can do without dealing with hardware interrupts. (This is also known as "Event-Driven Interface").</li>
-<li>The whole library follows "No user code in interrupts" rule, so no multi-access problem needs to be worried.</li>
+<li>Multi-tasking with 'Process' &mdash; a mechanism based on cooperative multitasking that enables several functions with time delays run concurrently (see <a class="el" href="index.html#sec_ex02">Example 2</a>).</li>
+<li>Reshape the concept of hardware timers and interrupts using two object-oriented interfacing models: 'Timer' and 'Trigger'.</li>
+<li>A 'Timer' can be used to produce delay, as well as creating periodic callbacks (similar to the agenda in the e-puck standard library).</li>
+<li>A 'Trigger' can automatically launch a 'Process' once some event occurs, which let you do things only interrupts can do without dealing with hardware interrupts. (This is also known as "Event-Driven Interface").</li>
+<li>The whole library follows "No user code in interrupts" rule, so no multi-access problem needs to be worried. All user code, processes or timer callbacks, are handled within a 'mainloop' function of this lib that is typically placed in the main thread of the microcontroller.</li>
 </ul>
 <p><br />
  </p>
@@ -146,7 +146,7 @@ Repository Contents</h1>
  </p>
 <h1><a class="anchor" id="sec_build"></a>
 Getting Started</h1>
-<p>Download and install MPLAB X IDE and the XC16 Compiler.</p>
+<p>Download and install MPLAB X IDE and the XC16 Compiler. Then, download this library.</p>
 <h2><a class="anchor" id="sec_buildlib"></a>
 Build This Library</h2>
 <ol type="1">
@@ -182,49 +182,49 @@ Example 1</h2>
 <p>(located in "./examples/el_example_01.X")</p>
 <p>In this example, the e-puck flashes some of its LEDs. Sending a char of 'f' through UART1 (the UART channel used by the Bluetooth module) will toggle the front led. In UART1, the e-puck will also report the number of seconds since start running.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00043.html">Process</a></li>
-<li><a class="el" href="a00035.html">LED and Selector</a></li>
-<li><a class="el" href="a00039.html">UART STDIO</a></li>
+<li><a class="el" href="a00045.html">Process</a></li>
+<li><a class="el" href="a00036.html">LED and Selector</a></li>
+<li><a class="el" href="a00040.html">UART STDIO</a></li>
 </ul>
 <h2><a class="anchor" id="sec_ex02"></a>
 Example 2</h2>
 <p>(located in "./examples/el_example_02.X")</p>
 <p>When the e-puck is shaken or detects an impact, it will flash all of its ring LEDs. In UART communication, sending a 'g' makes the e-puck report the outputs of the accelerometers.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00043.html">Process</a></li>
-<li><a class="el" href="a00045.html">Trigger</a></li>
-<li><a class="el" href="a00040.html">Accelerometer</a></li>
-<li><a class="el" href="a00035.html">LED and Selector</a></li>
-<li><a class="el" href="a00039.html">UART STDIO</a></li>
+<li><a class="el" href="a00045.html">Process</a></li>
+<li><a class="el" href="a00047.html">Trigger</a></li>
+<li><a class="el" href="a00041.html">Accelerometer</a></li>
+<li><a class="el" href="a00036.html">LED and Selector</a></li>
+<li><a class="el" href="a00040.html">UART STDIO</a></li>
 </ul>
 <h2><a class="anchor" id="sec_ex03"></a>
 Example 3</h2>
 <p>(located in "./examples/el_example_03.X")</p>
 <p>The e-puck can be remotely controlled via Bluetooth. It is recommended to use this program with the serial communciation utility of this library.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00043.html">Process</a></li>
-<li><a class="el" href="a00045.html">Trigger</a></li>
-<li><a class="el" href="a00044.html">Timer</a></li>
-<li><a class="el" href="a00041.html">Camera</a></li>
-<li><a class="el" href="a00035.html">LED and Selector</a></li>
-<li><a class="el" href="a00037.html">Stepper Motor</a></li>
-<li><a class="el" href="a00042.html">Infrared Proximity Sensors</a></li>
-<li><a class="el" href="a00039.html">UART STDIO</a></li>
+<li><a class="el" href="a00045.html">Process</a></li>
+<li><a class="el" href="a00047.html">Trigger</a></li>
+<li><a class="el" href="a00046.html">Timer</a></li>
+<li><a class="el" href="a00042.html">Camera</a></li>
+<li><a class="el" href="a00036.html">LED and Selector</a></li>
+<li><a class="el" href="a00038.html">Stepper Motor</a></li>
+<li><a class="el" href="a00043.html">Infrared Proximity Sensors</a></li>
+<li><a class="el" href="a00040.html">UART STDIO</a></li>
 </ul>
 <h2><a class="anchor" id="sec_ex04"></a>
 Example 4</h2>
 <p>(located in "./examples/el_example_04.X")</p>
 <p>The e-puck follows any green object in front of it. Through UART1, color of the object to be followed can be selected among red, green and blue.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00043.html">Process</a></li>
-<li><a class="el" href="a00045.html">Trigger</a></li>
-<li><a class="el" href="a00041.html">Camera</a></li>
-<li><a class="el" href="a00035.html">LED and Selector</a></li>
-<li><a class="el" href="a00037.html">Stepper Motor</a></li>
-<li><a class="el" href="a00042.html">Infrared Proximity Sensors</a></li>
-<li><a class="el" href="a00039.html">UART STDIO</a></li>
+<li><a class="el" href="a00045.html">Process</a></li>
+<li><a class="el" href="a00047.html">Trigger</a></li>
+<li><a class="el" href="a00042.html">Camera</a></li>
+<li><a class="el" href="a00036.html">LED and Selector</a></li>
+<li><a class="el" href="a00038.html">Stepper Motor</a></li>
+<li><a class="el" href="a00043.html">Infrared Proximity Sensors</a></li>
+<li><a class="el" href="a00040.html">UART STDIO</a></li>
 </ul>
-<p>An image processing technique used to tracking the object is also demostrated in this example.</p>
+<p>An image processing technique used to tracking the object is also demonstrated in this example.</p>
 <p><br />
  </p>
 <h1><a class="anchor" id="sec_license"></a>
@@ -236,7 +236,7 @@ License &amp; Attributions</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

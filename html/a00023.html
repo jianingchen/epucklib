@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_uart.h File Reference</title>
+<title>embedded system library for e-puck: el_trigger.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,70 +86,431 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_uart.h File Reference<div class="ingroups"><a class="el" href="a00038.html">UART Serial Communication</a></div></div>  </div>
+<div class="title">el_trigger.h File Reference<div class="ingroups"><a class="el" href="a00047.html">Trigger</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00014_source.html">el_common.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00015_source.html">el_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00019_source.html">el_process.h</a>&quot;</code><br />
 </div>
 <p><a href="a00023_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a8b388ce95f3ada5734cd12a453c00382"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b388ce95f3ada5734cd12a453c00382"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_UART_1</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a8b388ce95f3ada5734cd12a453c00382"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3215dffca9c5087fa359a546ac31e886"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3215dffca9c5087fa359a546ac31e886"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_UART_2</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a3215dffca9c5087fa359a546ac31e886"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af53afbe7f91b0ce8c20d94e896cfeb88"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af53afbe7f91b0ce8c20d94e896cfeb88"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_UART_BLUETOOTH</b>&#160;&#160;&#160;EL_UART_1</td></tr>
-<tr class="separator:af53afbe7f91b0ce8c20d94e896cfeb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ab24dda3a7323473db42f176bd163d9bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab24dda3a7323473db42f176bd163d9bf"></a>
+typedef bool(*&#160;</td><td class="memItemRight" valign="bottom"><b>el_condition</b> )(void *)</td></tr>
+<tr class="separator:ab24dda3a7323473db42f176bd163d9bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a8b37a76e9a384d41426690a4cb74a044"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044">el_trigger_event_type</a> { <br />
+&#160;&#160;<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044acf92dcb36b0edeadeca7519a19c62b90">EL_EVENT_NONE</a> = 0, 
+<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044a56b9ce348594b1b452ff65011dd75f63">EL_EVENT_INTERNAL_A</a> = 1, 
+<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044af0ac8b3a6b39850e37cb29e2408ecf3d">EL_EVENT_INTERNAL_B</a> = 2, 
+<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044aa7c72a61a65ad5cbb453697616d67306">EL_EVENT_INTERNAL_C</a> = 3, 
+<br />
+&#160;&#160;<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044ab6fbce6eb6051f289276749971059ce2">EL_EVENT_INTERNAL_D</a> = 4, 
+<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044a049d6093508fdad8c593f3ad46916be0">EL_EVENT_INTERNAL_E</a> = 5, 
+<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044af5810124b432073c4c8d3956100022dd">EL_EVENT_INTERNAL_F</a> = 6, 
+<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044aefffca9a468c39af73979a6108810a66">EL_EVENT_IR_RECEIVER_INCOME</a> = 10, 
+<br />
+&#160;&#160;<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044a7d4adc8783154972fa9bbb8d67e1be5d">EL_EVENT_UART1_RECEIVED</a> = 11, 
+<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044a98b67a6095fa1aa4e05e79312c86f16d">EL_EVENT_UART2_RECEIVED</a> = 12, 
+<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044aa40d04a02542cf4070dab20cf92b3085">EL_EVENT_ACCELEROMETER_UPDATE</a> = 20, 
+<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044a0726cee4355067c6ec484245ed5e8bdf">EL_EVENT_IR_PROXIMITY_UPDATE</a> = 21, 
+<br />
+&#160;&#160;<a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044a40a0621bbde35c65729003228527207b">EL_EVENT_CAMERA_FRAME_UPDATE</a> = 22
+<br />
+ }</td></tr>
+<tr class="separator:a8b37a76e9a384d41426690a4cb74a044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8b54e781019296810380dfb1046d117d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b54e781019296810380dfb1046d117d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_use_reset_code</b> (el_bool k, char w)</td></tr>
-<tr class="separator:a8b54e781019296810380dfb1046d117d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8f957eb440b5e3cf6b8b7fe632ac9ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8f957eb440b5e3cf6b8b7fe632ac9ae"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_send_char</b> (el_index ch, char c)</td></tr>
-<tr class="separator:af8f957eb440b5e3cf6b8b7fe632ac9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18208aab32f8d190ef6add9192906308"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a18208aab32f8d190ef6add9192906308"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_send_string</b> (el_index ch, const char *str)</td></tr>
-<tr class="separator:a18208aab32f8d190ef6add9192906308"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b0d06285477b4530bfc707ffebb33fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b0d06285477b4530bfc707ffebb33fe"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_is_sending</b> (el_index ch)</td></tr>
-<tr class="separator:a3b0d06285477b4530bfc707ffebb33fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af83b9a6db44103475070c9450284762e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af83b9a6db44103475070c9450284762e"></a>
-el_uint16&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_get_char_counter</b> (el_index ch)</td></tr>
-<tr class="separator:af83b9a6db44103475070c9450284762e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d9362d0dcecad303a0dff071820570d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d9362d0dcecad303a0dff071820570d"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_get_char</b> (el_index ch)</td></tr>
-<tr class="separator:a4d9362d0dcecad303a0dff071820570d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83cc3369d9f0d3ecad9bde07cbd7edbf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83cc3369d9f0d3ecad9bde07cbd7edbf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_flush_char</b> (el_index ch)</td></tr>
-<tr class="separator:a83cc3369d9f0d3ecad9bde07cbd7edbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5324e398abca790bce07e912c91857b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5324e398abca790bce07e912c91857b9"></a>
-el_uint16&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_get_string</b> (el_index ch, char *buf, unsigned int size)</td></tr>
-<tr class="separator:a5324e398abca790bce07e912c91857b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51f31da50856644699cffe1c8aa20844"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51f31da50856644699cffe1c8aa20844"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_peek_first_char</b> (el_index ch)</td></tr>
-<tr class="separator:a51f31da50856644699cffe1c8aa20844"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4105c9f5a33489fc61dbf479e9302869"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4105c9f5a33489fc61dbf479e9302869"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_peek_last_char</b> (el_index ch)</td></tr>
-<tr class="separator:a4105c9f5a33489fc61dbf479e9302869"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9470bebab5572e8a98101f17fc1f526b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9470bebab5572e8a98101f17fc1f526b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_uart_erase_last_char</b> (el_index ch)</td></tr>
-<tr class="separator:a9470bebab5572e8a98101f17fc1f526b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ac98c499857cb3c18cd4093d5724264"><td class="memItemLeft" align="right" valign="top">el_handle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a8ac98c499857cb3c18cd4093d5724264">el_create_trigger</a> ()</td></tr>
+<tr class="memdesc:a8ac98c499857cb3c18cd4093d5724264"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a trigger in the system  <a href="#a8ac98c499857cb3c18cd4093d5724264">More...</a><br /></td></tr>
+<tr class="separator:a8ac98c499857cb3c18cd4093d5724264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7941dead60d00b66ba64a8a7c952b1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#ad7941dead60d00b66ba64a8a7c952b1f">el_delete_trigger</a> (el_handle trigger)</td></tr>
+<tr class="memdesc:ad7941dead60d00b66ba64a8a7c952b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete the trigger  <a href="#ad7941dead60d00b66ba64a8a7c952b1f">More...</a><br /></td></tr>
+<tr class="separator:ad7941dead60d00b66ba64a8a7c952b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8ee35672fb010ce11467750f6bfc63b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#ae8ee35672fb010ce11467750f6bfc63b">el_trigger_enable</a> (el_handle h)</td></tr>
+<tr class="memdesc:ae8ee35672fb010ce11467750f6bfc63b"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable a trigger  <a href="#ae8ee35672fb010ce11467750f6bfc63b">More...</a><br /></td></tr>
+<tr class="separator:ae8ee35672fb010ce11467750f6bfc63b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71a05b6dbe49cc1c878a93cfa7e60d85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a71a05b6dbe49cc1c878a93cfa7e60d85">el_trigger_disable</a> (el_handle h)</td></tr>
+<tr class="memdesc:a71a05b6dbe49cc1c878a93cfa7e60d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable a trigger  <a href="#a71a05b6dbe49cc1c878a93cfa7e60d85">More...</a><br /></td></tr>
+<tr class="separator:a71a05b6dbe49cc1c878a93cfa7e60d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cf6b576e2597e5b942253e4b8cb0119"><td class="memItemLeft" align="right" valign="top">el_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a6cf6b576e2597e5b942253e4b8cb0119">el_trigger_is_enabled</a> (el_handle h)</td></tr>
+<tr class="memdesc:a6cf6b576e2597e5b942253e4b8cb0119"><td class="mdescLeft">&#160;</td><td class="mdescRight">check whether a trigger  <a href="#a6cf6b576e2597e5b942253e4b8cb0119">More...</a><br /></td></tr>
+<tr class="separator:a6cf6b576e2597e5b942253e4b8cb0119"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a988d439b2dd5ee47173299dcc2666f16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a988d439b2dd5ee47173299dcc2666f16">el_trigger_set_event</a> (el_handle h, <a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044">el_trigger_event_type</a> e)</td></tr>
+<tr class="memdesc:a988d439b2dd5ee47173299dcc2666f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the event of the trigger  <a href="#a988d439b2dd5ee47173299dcc2666f16">More...</a><br /></td></tr>
+<tr class="separator:a988d439b2dd5ee47173299dcc2666f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40e49c09f2deb3a73b9c2c42d784c04a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a40e49c09f2deb3a73b9c2c42d784c04a">el_trigger_set_condition</a> (el_handle h, el_condition f)</td></tr>
+<tr class="memdesc:a40e49c09f2deb3a73b9c2c42d784c04a"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the condition callback function of the trigger  <a href="#a40e49c09f2deb3a73b9c2c42d784c04a">More...</a><br /></td></tr>
+<tr class="separator:a40e49c09f2deb3a73b9c2c42d784c04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4c08d0d4af965e7288feceb7ed50f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a4d4c08d0d4af965e7288feceb7ed50f6">el_trigger_set_process</a> (el_handle h, el_process func)</td></tr>
+<tr class="memdesc:a4d4c08d0d4af965e7288feceb7ed50f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the process entry function of the trigger  <a href="#a4d4c08d0d4af965e7288feceb7ed50f6">More...</a><br /></td></tr>
+<tr class="separator:a4d4c08d0d4af965e7288feceb7ed50f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cc3b6a46910afe5a404c19ff18aa212"><td class="memItemLeft" align="right" valign="top">el_uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#a5cc3b6a46910afe5a404c19ff18aa212">el_trigger_get_counter</a> (el_handle h)</td></tr>
+<tr class="memdesc:a5cc3b6a46910afe5a404c19ff18aa212"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the number of times the trigger passed its condition  <a href="#a5cc3b6a46910afe5a404c19ff18aa212">More...</a><br /></td></tr>
+<tr class="separator:a5cc3b6a46910afe5a404c19ff18aa212"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af595b837a4b0c95a623884e9db86487d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html#af595b837a4b0c95a623884e9db86487d">el_trigger_issue_internal_event</a> (el_enum e)</td></tr>
+<tr class="memdesc:af595b837a4b0c95a623884e9db86487d"><td class="mdescLeft">&#160;</td><td class="mdescRight">issue an internal event  <a href="#af595b837a4b0c95a623884e9db86487d">More...</a><br /></td></tr>
+<tr class="separator:af595b837a4b0c95a623884e9db86487d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044">el_trigger_event_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This enum is used in <a class="el" href="a00023.html#a988d439b2dd5ee47173299dcc2666f16" title="set the event of the trigger ">el_trigger_set_event</a> to specify the event of a trigger. Internal events are manually triggered using <a class="el" href="a00023.html#af595b837a4b0c95a623884e9db86487d" title="issue an internal event ">el_trigger_issue_internal_event</a>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044acf92dcb36b0edeadeca7519a19c62b90"></a>EL_EVENT_NONE&#160;</td><td class="fielddoc">
+<p>no event </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a56b9ce348594b1b452ff65011dd75f63"></a>EL_EVENT_INTERNAL_A&#160;</td><td class="fielddoc">
+<p>internal event A </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044af0ac8b3a6b39850e37cb29e2408ecf3d"></a>EL_EVENT_INTERNAL_B&#160;</td><td class="fielddoc">
+<p>internal event B </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044aa7c72a61a65ad5cbb453697616d67306"></a>EL_EVENT_INTERNAL_C&#160;</td><td class="fielddoc">
+<p>internal event C </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044ab6fbce6eb6051f289276749971059ce2"></a>EL_EVENT_INTERNAL_D&#160;</td><td class="fielddoc">
+<p>internal event D </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a049d6093508fdad8c593f3ad46916be0"></a>EL_EVENT_INTERNAL_E&#160;</td><td class="fielddoc">
+<p>internal event E </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044af5810124b432073c4c8d3956100022dd"></a>EL_EVENT_INTERNAL_F&#160;</td><td class="fielddoc">
+<p>internal event F </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044aefffca9a468c39af73979a6108810a66"></a>EL_EVENT_IR_RECEIVER_INCOME&#160;</td><td class="fielddoc">
+<p>when the ir receiver receives data </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a7d4adc8783154972fa9bbb8d67e1be5d"></a>EL_EVENT_UART1_RECEIVED&#160;</td><td class="fielddoc">
+<p>when UART1 receives data </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a98b67a6095fa1aa4e05e79312c86f16d"></a>EL_EVENT_UART2_RECEIVED&#160;</td><td class="fielddoc">
+<p>when UART2 receives data (not implemented yet) </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044aa40d04a02542cf4070dab20cf92b3085"></a>EL_EVENT_ACCELEROMETER_UPDATE&#160;</td><td class="fielddoc">
+<p>when the accelerometer output is updated (120 Hz) </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a0726cee4355067c6ec484245ed5e8bdf"></a>EL_EVENT_IR_PROXIMITY_UPDATE&#160;</td><td class="fielddoc">
+<p>when the ir proximity sensor outputs are updated (30 Hz) </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a8b37a76e9a384d41426690a4cb74a044a40a0621bbde35c65729003228527207b"></a>EL_EVENT_CAMERA_FRAME_UPDATE&#160;</td><td class="fielddoc">
+<p>when a new image frame from the camera is ready (9~18 fps) </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a8ac98c499857cb3c18cd4093d5724264"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_handle el_create_trigger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>create a trigger in the system </p>
+<dl class="section return"><dt>Returns</dt><dd>handle of the trigger</dd></dl>
+<p>This function create a trigger in the system. It returns a handle to the trigger created. This handle is used to refer the trigger in the related functions. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad7941dead60d00b66ba64a8a7c952b1f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_delete_trigger </td>
+          <td>(</td>
+          <td class="paramtype">el_handle&#160;</td>
+          <td class="paramname"><em>trigger</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>delete the trigger </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>of the trigger </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae8ee35672fb010ce11467750f6bfc63b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_trigger_enable </td>
+          <td>(</td>
+          <td class="paramtype">el_handle&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>enable a trigger </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>handle of the trigger</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Only when a trigger is enabled, its event will be effective. A trigger is enabled by default after its creation. </p>
+
+</div>
+</div>
+<a class="anchor" id="a71a05b6dbe49cc1c878a93cfa7e60d85"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_trigger_disable </td>
+          <td>(</td>
+          <td class="paramtype">el_handle&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>disable a trigger </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>handle of the trigger</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>When a trigger is disabled, its event will be ignored. A trigger is automatically disabled when its process is launched. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6cf6b576e2597e5b942253e4b8cb0119"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_bool el_trigger_is_enabled </td>
+          <td>(</td>
+          <td class="paramtype">el_handle&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check whether a trigger </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>handle of the trigger</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the enabling status </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a988d439b2dd5ee47173299dcc2666f16"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_trigger_set_event </td>
+          <td>(</td>
+          <td class="paramtype">el_handle&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044">el_trigger_event_type</a>&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set the event of the trigger </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>handle of the trigger </td></tr>
+    <tr><td class="paramname">e</td><td>type of the event within the category</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function defines the event of the trigger. </p>
+
+</div>
+</div>
+<a class="anchor" id="a40e49c09f2deb3a73b9c2c42d784c04a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_trigger_set_condition </td>
+          <td>(</td>
+          <td class="paramtype">el_handle&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">el_condition&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set the condition callback function of the trigger </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>handle of the trigger </td></tr>
+    <tr><td class="paramname">f</td><td>pointer to the callback function</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>When the event of the trigger occurs, the trigger's condition callback will be called. If this callback function returns true, the trigger passes the condition. Otherwise, the trigger does not pass the condition.</p>
+<p>If a trigger does not have a condition callback (by default), the trigger will automatically pass it's condition. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4d4c08d0d4af965e7288feceb7ed50f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_trigger_set_process </td>
+          <td>(</td>
+          <td class="paramtype">el_handle&#160;</td>
+          <td class="paramname"><em>h</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">el_process&#160;</td>
+          <td class="paramname"><em>func</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set the process entry function of the trigger </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>handle of the trigger </td></tr>
+    <tr><td class="paramname">func</td><td>pointer to the process function</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>When the trigger passes its condition and it has a registered process, the process will be launched while the trigger will be disabled automatically.</p>
+<p>The parameter of the process function of a trigger will be assigned with the handle of the trigger. The following code can be used to make the hanlde more explicit: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;void TriggerA_Process(void*arg){</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    el_handle this_trigger = arg;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    // the program to be executed</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    ...</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    // re-enable the trigger if the trigger is supposed to be perodic. </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    el_trigger_enable(this_trigger);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
+</div><!-- fragment --><p>To learn more about the usage of a process, see <a class="el" href="a00045.html">Process</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5cc3b6a46910afe5a404c19ff18aa212"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_uint32 el_trigger_get_counter </td>
+          <td>(</td>
+          <td class="paramtype">el_handle&#160;</td>
+          <td class="paramname"><em>h</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the number of times the trigger passed its condition </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">h</td><td>handle of the trigger </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>counter of the trigger</dd></dl>
+<p>For each time the trigger passes its condition, its counter will +1. </p>
+
+</div>
+</div>
+<a class="anchor" id="af595b837a4b0c95a623884e9db86487d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_trigger_issue_internal_event </td>
+          <td>(</td>
+          <td class="paramtype">el_enum&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>issue an internal event </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>event type (must be internal events)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This will affect those triggers using "EL_EVENT_INTERNAL_&lt;*&gt;" as their events. </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

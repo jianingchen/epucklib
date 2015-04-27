@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['accelerometer',['Accelerometer',['../a00040.html',1,'']]]
+  ['ambient',['Ambient',['../a00005.html#ab774f842e7b10cec3596e0c108fed947',1,'el_ir_proximity_data']]],
+  ['accelerometer',['Accelerometer',['../a00041.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['digitalgain',['DigitalGain',['../a00004.html#ac5c0c62073643d72f3ca970198447bff',1,'el_camera_param']]]
+  ['bluegain',['BlueGain',['../a00004.html#ae6e70df6cba97baad2489830dd1debf9',1,'el_camera_param']]]
 ];

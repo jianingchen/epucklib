@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: Infrared Proximity Sensors</title>
+<title>embedded system library for e-puck: Camera</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,23 +82,74 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#files">Files</a>  </div>
   <div class="headertitle">
-<div class="title">Infrared Proximity Sensors</div>  </div>
+<div class="title">Camera</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:a00015"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html">el_ir_proximity.h</a></td></tr>
+<tr class="memitem:a00013"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html">el_camera.h</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<h1><a class="anchor" id="Introduction"></a>
+<h1><a class="anchor" id="sec1"></a>
 Introduction</h1>
-<p>(TODO) </p>
+<p>In this library, the resolution of the image captured by the camera is fixed to 40x15 with a maximum frame rate of 18.432. This resolution is a result of subsampling, which means field of view (FOV) of the image is not lost. The horizontal FOV of the camera is about 56 deg while the vertical FOV is about 42 deg. Both FOV are almost fully covered in the captured image.</p>
+<p>The camera module in this library uses dual-buffer-swapping mechanism. At any moment, data acquired from the camera are written to frame buffer A (the front buffer) while any reading functions read data from frame buffer B (the back buffer). Once a frame is fully written, pointers to the two buffers will be swapped. This mechanism allows a frame of image to be processed concurrently with the acquisition of next frame.</p>
+<h1><a class="anchor" id="sec2"></a>
+Usage</h1>
+<p>To run something when a frame of image is ready, create a trigger with EL_EVENT_CAMERA_FRAME_UPDATE event.</p>
+<p>Before reading data in the frame buffer, it (the back buffer) needs to be locked. The following mechanism is a typical loop to process a frame: </p><div class="fragment"><div class="line">...</div>
+<div class="line">el_uint8 RGB[3];</div>
+<div class="line"><span class="keywordtype">int</span> X,Y,W,H;</div>
+<div class="line"></div>
+<div class="line">...</div>
+<div class="line"></div>
+<div class="line">el_camera_lock_frame();</div>
+<div class="line">W = <a class="code" href="a00013.html#abe3367f2172a48c1dcd28d974e64388e">el_camera_get_frame_width</a>();</div>
+<div class="line">H = <a class="code" href="a00013.html#a0f7eb3a2e184575e94274c7d4cb75436">el_camera_get_frame_height</a>();</div>
+<div class="line"><span class="keywordflow">for</span>(X=0;X&lt;W;X++){</div>
+<div class="line">    <span class="keywordflow">for</span>(Y=0;Y&lt;H;Y++){</div>
+<div class="line">        </div>
+<div class="line">        <a class="code" href="a00013.html#a0e31a461b852a03f3d422f98ca77428a">el_camera_get_frame_pixel</a>( X, Y, RGB );</div>
+<div class="line">        </div>
+<div class="line">        <span class="comment">// image processing algorithm</span></div>
+<div class="line">        ...</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"><a class="code" href="a00013.html#ae32672c397e15c30cbe8b7b5b5f874ce">el_camera_unlock_frame</a>();</div>
+<div class="line">...</div>
+</div><!-- fragment --><p> When the frame buffer is locked, no further buffer swapping will occur. Therefore, the time cost of the image processing code ought to be less than the update interval of the frames if each of the frames from the camera need to be processed.</p>
+<p>See <a class="el" href="index.html#sec_ex02">Example 2</a> for a systematic usage of the camera module with some image processing techniques.</p>
+<h1><a class="anchor" id="sec3"></a>
+Configuration</h1>
+<p>In Example 3, the robot can transmit camera images via UART1. While using the serial communication utility of this lib, the incoming images will be saved as BMP files. A suitable camera configuration can be tuned based on the images.</p>
+<p>The actual frame rate achieved depends on the exposure mode used. When automatic exposure control is used and the environment is not well illuminated, the frame rate may drop to ~9. Fixed time exposure mode can be used to stablize the frame rate. For example: </p><div class="fragment"><div class="line"><a class="code" href="a00004.html">el_camera_param</a> *CameraSetting;</div>
+<div class="line">...</div>
+<div class="line">CameraSetting = <a class="code" href="a00013.html#a1f9488cb5f643ed8491c97acebb58078">el_config_camera_options</a>();</div>
+<div class="line">CameraSetting-&gt;<a class="code" href="a00004.html#a5c2725b38e0e6dda7fa8619ff17e8242">ExposureMode</a> = <a class="code" href="a00013.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea">EL_EXPOSURE_TIME</a>;</div>
+<div class="line">CameraSetting-&gt;<a class="code" href="a00004.html#a96a5f876f12e2278dd5f0fca979e368f">ExposureTime</a> = 10.0f;<span class="comment">// 10.0 gives you about 14 fps</span></div>
+<div class="line"><a class="code" href="a00013.html#a8f837179c0c63d636c19abc693e9957f">el_config_camera</a>( CameraSetting );</div>
+<div class="line">...</div>
+</div><!-- fragment --><p> In <code>EL_EXPOSURE_TIME</code> mode, approximately, the framerate will become lower than 18.4 when the <code>ExposureTime</code> is set to be bigger than 7.5.</p>
+<p>For reference, the setting used in our lab in Sheffield Robotics is: </p><div class="fragment"><div class="line"><a class="code" href="a00004.html">el_camera_param</a> *camera_setting;</div>
+<div class="line">...</div>
+<div class="line">camera_setting = <a class="code" href="a00013.html#a1f9488cb5f643ed8491c97acebb58078">el_config_camera_options</a>();</div>
+<div class="line">camera_setting-&gt;<a class="code" href="a00004.html#a5c2725b38e0e6dda7fa8619ff17e8242">ExposureMode</a> = <a class="code" href="a00013.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea">EL_EXPOSURE_TIME</a>;</div>
+<div class="line">camera_setting-&gt;AutoDigitalGain = <span class="keyword">false</span>;</div>
+<div class="line">camera_setting-&gt;AutoWhiteBalance = <span class="keyword">false</span>;</div>
+<div class="line">camera_setting-&gt;<a class="code" href="a00004.html#a96a5f876f12e2278dd5f0fca979e368f">ExposureTime</a> = 8.0f;<span class="comment">// gives about 18.0 fps</span></div>
+<div class="line">camera_setting-&gt;<a class="code" href="a00004.html#ac5c0c62073643d72f3ca970198447bff">DigitalGain</a> = 1.375f;</div>
+<div class="line">camera_setting-&gt;<a class="code" href="a00004.html#a7757231840033cf3410b97ed93d3481a">RedGain</a> = 1.125f;</div>
+<div class="line">camera_setting-&gt;<a class="code" href="a00004.html#aa682d2e1a12d4005c02ebe61797441d5">GreenGain</a> = 1.0f;</div>
+<div class="line">camera_setting-&gt;<a class="code" href="a00004.html#ae6e70df6cba97baad2489830dd1debf9">BlueGain</a> = 1.375f;</div>
+<div class="line"><a class="code" href="a00013.html#a8f837179c0c63d636c19abc693e9957f">el_config_camera</a>(camera_setting);</div>
+<div class="line">...</div>
+</div><!-- fragment --><p>More detailed information about tuning the camera should be found in the datasheet of PO6030K. </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

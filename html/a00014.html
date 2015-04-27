@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_common.h File Reference</title>
+<title>embedded system library for e-puck: el_clock.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -87,83 +87,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_common.h File Reference<div class="ingroups"><a class="el" href="a00033.html">Basic Concepts</a></div></div>  </div>
+<div class="title">el_clock.h File Reference<div class="ingroups"><a class="el" href="a00034.html">Basic Concepts</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &lt;stdint.h&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00015_source.html">el_common.h</a>&quot;</code><br />
 </div>
 <p><a href="a00014_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:aa93f0eb578d23995850d61f7d61c55c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa93f0eb578d23995850d61f7d61c55c1"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FALSE</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:aa93f0eb578d23995850d61f7d61c55c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8cecfc5c5c054d2875c03e77b7be15d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8cecfc5c5c054d2875c03e77b7be15d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>TRUE</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:aa8cecfc5c5c054d2875c03e77b7be15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65e9886d74aaee76545e83dd09011727"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65e9886d74aaee76545e83dd09011727"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>false</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a65e9886d74aaee76545e83dd09011727"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41f9c5fb8b08eb5dc3edce4dcb37fee7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41f9c5fb8b08eb5dc3edce4dcb37fee7"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>true</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a41f9c5fb8b08eb5dc3edce4dcb37fee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9324af3841c9f8dc1cd392e6864540e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9324af3841c9f8dc1cd392e6864540e4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>BIT</b>(b)&#160;&#160;&#160;(1&lt;&lt;(b))</td></tr>
-<tr class="separator:a9324af3841c9f8dc1cd392e6864540e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d4f6ff7d4a85e6feeb8ab3a0279eb22"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d4f6ff7d4a85e6feeb8ab3a0279eb22"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>el_nop</b>()&#160;&#160;&#160;{__asm__ volatile (&quot;nop&quot;);}</td></tr>
-<tr class="separator:a3d4f6ff7d4a85e6feeb8ab3a0279eb22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c58304416179f1578f7a218e433a87d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c58304416179f1578f7a218e433a87d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_TIME_FREQ</b>&#160;&#160;&#160;1000</td></tr>
+<tr class="separator:a9c58304416179f1578f7a218e433a87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53c2e543e31eaac99fe7b6760be2385d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53c2e543e31eaac99fe7b6760be2385d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_MASTERCLOCK_FREQ</b>&#160;&#160;&#160;(144000L)</td></tr>
+<tr class="separator:a53c2e543e31eaac99fe7b6760be2385d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a97a80ca1602ebf2303258971a2c938e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97a80ca1602ebf2303258971a2c938e2"></a>
-typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>bool</b></td></tr>
-<tr class="separator:a97a80ca1602ebf2303258971a2c938e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afad89b347394a5cc337f7c4b1095b112"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afad89b347394a5cc337f7c4b1095b112"></a>
-typedef char&#160;</td><td class="memItemRight" valign="bottom"><b>el_int8</b></td></tr>
-<tr class="separator:afad89b347394a5cc337f7c4b1095b112"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af01feb64f243d9d05468b3b6f2003bd9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af01feb64f243d9d05468b3b6f2003bd9"></a>
-typedef int&#160;</td><td class="memItemRight" valign="bottom"><b>el_int16</b></td></tr>
-<tr class="separator:af01feb64f243d9d05468b3b6f2003bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af92a33d81e7e47ee5097594cc4f579dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af92a33d81e7e47ee5097594cc4f579dd"></a>
-typedef long&#160;</td><td class="memItemRight" valign="bottom"><b>el_int32</b></td></tr>
-<tr class="separator:af92a33d81e7e47ee5097594cc4f579dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ba125711b024d42dadefaa94fcbad53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ba125711b024d42dadefaa94fcbad53"></a>
-typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>el_uint8</b></td></tr>
-<tr class="separator:a2ba125711b024d42dadefaa94fcbad53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41b57241c3ba1107f62a9283081451d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41b57241c3ba1107f62a9283081451d4"></a>
-typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>el_uint16</b></td></tr>
-<tr class="separator:a41b57241c3ba1107f62a9283081451d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7117a4a41e1376d187feabcdbf396117"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7117a4a41e1376d187feabcdbf396117"></a>
-typedef unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>el_uint32</b></td></tr>
-<tr class="separator:a7117a4a41e1376d187feabcdbf396117"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d22899d5a9adc72ceb7b0afa9c6106f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d22899d5a9adc72ceb7b0afa9c6106f"></a>
-typedef void *&#160;</td><td class="memItemRight" valign="bottom"><b>el_handle</b></td></tr>
-<tr class="separator:a0d22899d5a9adc72ceb7b0afa9c6106f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e7822a56a15153414e126b150347d24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e7822a56a15153414e126b150347d24"></a>
-typedef int&#160;</td><td class="memItemRight" valign="bottom"><b>el_index</b></td></tr>
-<tr class="separator:a7e7822a56a15153414e126b150347d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1264dc5790adebc370bc68c156f6e3d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1264dc5790adebc370bc68c156f6e3d4"></a>
-typedef bool&#160;</td><td class="memItemRight" valign="bottom"><b>el_bool</b></td></tr>
-<tr class="separator:a1264dc5790adebc370bc68c156f6e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0ab88d2f84e8ef3e9c1323b0519c3d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0ab88d2f84e8ef3e9c1323b0519c3d2"></a>
-typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>el_flags</b></td></tr>
-<tr class="separator:ab0ab88d2f84e8ef3e9c1323b0519c3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a359e52fe32e17d5a96129b914d57c9e3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a359e52fe32e17d5a96129b914d57c9e3"></a>
-typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>el_enum</b></td></tr>
-<tr class="separator:a359e52fe32e17d5a96129b914d57c9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa104a7df2b75fb88e8d4e9c0b76f1af4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa104a7df2b75fb88e8d4e9c0b76f1af4"></a>
+typedef signed short&#160;</td><td class="memItemRight" valign="bottom"><b>el_time</b></td></tr>
+<tr class="separator:aa104a7df2b75fb88e8d4e9c0b76f1af4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1373f3e90c6cea2b609e1bc86f63989"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1373f3e90c6cea2b609e1bc86f63989"></a>
+typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>el_mct</b></td></tr>
+<tr class="separator:ab1373f3e90c6cea2b609e1bc86f63989"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ac6665c82e95225df9c62c1b47451ddcc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6665c82e95225df9c62c1b47451ddcc"></a>
+el_mct&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_masterclock</b> ()</td></tr>
+<tr class="separator:ac6665c82e95225df9c62c1b47451ddcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b73c1c598ea125fcf91aa4fe1c6552"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9b73c1c598ea125fcf91aa4fe1c6552"></a>
+el_time&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_time_diff</b> (el_mct k0, el_mct k1, el_mct *residue)</td></tr>
+<tr class="separator:ae9b73c1c598ea125fcf91aa4fe1c6552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This header file defines 'el_enum', 'el_flags' and 'el_handle'.</p>
+<div class="textblock"><p>This is the header file of Masterclock.</p>
 <dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

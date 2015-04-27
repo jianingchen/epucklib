@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['subtractea',['SubtractEA',['../a00006.html#a34bf2d27a0309955441efa19e1471729',1,'el_ir_proximity_param']]]
+  ['message',['Message',['../a00005.html#ada4fc9175832cbd95fc96ded25918865',1,'el_ir_proximity_data']]]
 ];

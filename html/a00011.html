@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_accelerometer.h File Reference</title>
+<title>embedded system library for e-puck: el.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,127 +86,171 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_accelerometer.h File Reference<div class="ingroups"><a class="el" href="a00040.html">Accelerometer</a></div></div>  </div>
+<div class="title">el.h File Reference<div class="ingroups"><a class="el" href="a00035.html">Initialization Functions</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00014_source.html">el_common.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00013_source.html">el_clock.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00022_source.html">el_trigger.h</a>&quot;</code><br />
+
+<p>This is the main header file of this library.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="a00015_source.html">el_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00014_source.html">el_clock.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00020_source.html">el_random.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00019_source.html">el_process.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00022_source.html">el_timer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00023_source.html">el_trigger.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00018_source.html">el_led.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00021_source.html">el_stepper_motor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00013_source.html">el_camera.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00017_source.html">el_ir_receiver.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00012_source.html">el_accelerometer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00016_source.html">el_ir_proximity.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00024_source.html">el_uart.h</a>&quot;</code><br />
 </div>
 <p><a href="a00011_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:af92f3f18bce6b3bfcf6d24e8d55a070a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af92f3f18bce6b3bfcf6d24e8d55a070a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_ACCELEROMETER_OUTPUT_MAX</b>&#160;&#160;&#160;4095U</td></tr>
-<tr class="separator:af92f3f18bce6b3bfcf6d24e8d55a070a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98372d7448aaf0e70fe55111d32e0108"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98372d7448aaf0e70fe55111d32e0108"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_ACCELEROMETER_ONE</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a98372d7448aaf0e70fe55111d32e0108"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a79ac462a3dd61a66fdb663c4a6a040c0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a79ac462a3dd61a66fdb663c4a6a040c0">el_accelerometer_output</a> { <a class="el" href="a00011.html#a79ac462a3dd61a66fdb663c4a6a040c0a8e2e9eef8ce070c6b28ffa9b092c5622">EL_ACCELERATION_X</a>, 
-<a class="el" href="a00011.html#a79ac462a3dd61a66fdb663c4a6a040c0a3187da4938b065fcd06ab9370e2eb094">EL_ACCELERATION_Y</a>, 
-<a class="el" href="a00011.html#a79ac462a3dd61a66fdb663c4a6a040c0ac3479f89ec4543b2c39c893202a27d93">EL_ACCELERATION_Z</a>, 
-<a class="el" href="a00011.html#a79ac462a3dd61a66fdb663c4a6a040c0aa6a907e1b2552b087d1c9f01adcc505c">EL_ACCELERATION_ALL_3V</a>
- }</td></tr>
-<tr class="separator:a79ac462a3dd61a66fdb663c4a6a040c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7963cb81ac05b437e589e8de9df8a098"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7963cb81ac05b437e589e8de9df8a098"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_enable_accelerometer</b> ()</td></tr>
-<tr class="separator:a7963cb81ac05b437e589e8de9df8a098"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5955a48a1aac9e661455cf1750f6340d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5955a48a1aac9e661455cf1750f6340d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_disable_accelerometer</b> ()</td></tr>
-<tr class="separator:a5955a48a1aac9e661455cf1750f6340d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaba183df7db1bccade0be425af1e6348"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#aaba183df7db1bccade0be425af1e6348">el_accelerometer_get</a> (el_index i, <a class="el" href="a00011.html#a79ac462a3dd61a66fdb663c4a6a040c0">el_accelerometer_output</a> u, el_int16 *out)</td></tr>
-<tr class="memdesc:aaba183df7db1bccade0be425af1e6348"><td class="mdescLeft">&#160;</td><td class="mdescRight">get output value(s) from a accelerometer  <a href="#aaba183df7db1bccade0be425af1e6348">More...</a><br /></td></tr>
-<tr class="separator:aaba183df7db1bccade0be425af1e6348"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fd9026983f10bcfcad74f5750ef61b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a3fd9026983f10bcfcad74f5750ef61b1">el_initialization</a> ()</td></tr>
+<tr class="memdesc:a3fd9026983f10bcfcad74f5750ef61b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize the library  <a href="#a3fd9026983f10bcfcad74f5750ef61b1">More...</a><br /></td></tr>
+<tr class="separator:a3fd9026983f10bcfcad74f5750ef61b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf37d7d5bf2b021667304571e570a622"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#adf37d7d5bf2b021667304571e570a622">el_calibrate_sensors</a> ()</td></tr>
+<tr class="memdesc:adf37d7d5bf2b021667304571e570a622"><td class="mdescLeft">&#160;</td><td class="mdescRight">calibrate the proximity sensors and setup a random seed  <a href="#adf37d7d5bf2b021667304571e570a622">More...</a><br /></td></tr>
+<tr class="separator:adf37d7d5bf2b021667304571e570a622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8634b0cf7b932ff46c97fe6947f643dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a8634b0cf7b932ff46c97fe6947f643dc">el_sleep</a> (el_time time_ms)</td></tr>
+<tr class="memdesc:a8634b0cf7b932ff46c97fe6947f643dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">delay a period of time given in millisecond  <a href="#a8634b0cf7b932ff46c97fe6947f643dc">More...</a><br /></td></tr>
+<tr class="separator:a8634b0cf7b932ff46c97fe6947f643dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a3454994212dac73a0d27754c258f95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a3a3454994212dac73a0d27754c258f95">el_main_loop</a> ()</td></tr>
+<tr class="memdesc:a3a3454994212dac73a0d27754c258f95"><td class="mdescLeft">&#160;</td><td class="mdescRight">the "engine" that drives the software components in this library  <a href="#a3a3454994212dac73a0d27754c258f95">More...</a><br /></td></tr>
+<tr class="separator:a3a3454994212dac73a0d27754c258f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d51860e02addcd57a18dabeb9776a34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a7d51860e02addcd57a18dabeb9776a34">el_break_main_loop</a> ()</td></tr>
+<tr class="memdesc:a7d51860e02addcd57a18dabeb9776a34"><td class="mdescLeft">&#160;</td><td class="mdescRight">signal el_main_loop to stop  <a href="#a7d51860e02addcd57a18dabeb9776a34">More...</a><br /></td></tr>
+<tr class="separator:a7d51860e02addcd57a18dabeb9776a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eccfa802ddb7a7147be407f5d1a25aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html#a3eccfa802ddb7a7147be407f5d1a25aa">el_reset</a> ()</td></tr>
+<tr class="memdesc:a3eccfa802ddb7a7147be407f5d1a25aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the microcontroller  <a href="#a3eccfa802ddb7a7147be407f5d1a25aa">More...</a><br /></td></tr>
+<tr class="separator:a3eccfa802ddb7a7147be407f5d1a25aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="a79ac462a3dd61a66fdb663c4a6a040c0"></a>
+<div class="textblock"><p>This is the main header file of this library. </p>
+<dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a3fd9026983f10bcfcad74f5750ef61b1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00011.html#a79ac462a3dd61a66fdb663c4a6a040c0">el_accelerometer_output</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>This enum is used in <a class="el" href="a00011.html#aaba183df7db1bccade0be425af1e6348" title="get output value(s) from a accelerometer ">el_accelerometer_get</a> to select the output type to get. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a79ac462a3dd61a66fdb663c4a6a040c0a8e2e9eef8ce070c6b28ffa9b092c5622"></a>EL_ACCELERATION_X&#160;</td><td class="fielddoc">
-<p>get the acceleration along x-axis </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a79ac462a3dd61a66fdb663c4a6a040c0a3187da4938b065fcd06ab9370e2eb094"></a>EL_ACCELERATION_Y&#160;</td><td class="fielddoc">
-<p>get the acceleration along y-axis </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a79ac462a3dd61a66fdb663c4a6a040c0ac3479f89ec4543b2c39c893202a27d93"></a>EL_ACCELERATION_Z&#160;</td><td class="fielddoc">
-<p>get the acceleration along z-axis </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a79ac462a3dd61a66fdb663c4a6a040c0aa6a907e1b2552b087d1c9f01adcc505c"></a>EL_ACCELERATION_ALL_3V&#160;</td><td class="fielddoc">
-<p>get the acceleration along all three axes </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aaba183df7db1bccade0be425af1e6348"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int el_accelerometer_get </td>
+          <td class="memname">void el_initialization </td>
           <td>(</td>
-          <td class="paramtype">el_index&#160;</td>
-          <td class="paramname"><em>i</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00011.html#a79ac462a3dd61a66fdb663c4a6a040c0">el_accelerometer_output</a>&#160;</td>
-          <td class="paramname"><em>u</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">el_int16 *&#160;</td>
-          <td class="paramname"><em>out</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>get output value(s) from a accelerometer </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">i</td><td>index of the accelerometer (currently can only be 0) </td></tr>
-    <tr><td class="paramname">u</td><td>output type </td></tr>
-    <tr><td class="paramname">out</td><td>pointer to a variable or an array of variables to store the output value(s).</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>number of values stored into *out. </dd></dl>
+<p>initialize the library </p>
+<p>This function initializes the library. It should only be executed once in the beginning of the program. </p>
+
+</div>
+</div>
+<a class="anchor" id="adf37d7d5bf2b021667304571e570a622"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_calibrate_sensors </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>calibrate the proximity sensors and setup a random seed </p>
+<p>Currently, this function calibrate the proximity sensors on the robot as well as generate a random seed based on the noisy sensor readings. If one finds the random seed not diverse enough accross a number of robots, <a class="el" href="a00020.html#ac444097bd87f81e8ce08b436811bf0d1" title="set seed of the random generator module ">el_random_set_seed</a> can be used to apply a random seed using any improved method.</p>
+<p>Note: this function takes about 600 ms to finish. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8634b0cf7b932ff46c97fe6947f643dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_sleep </td>
+          <td>(</td>
+          <td class="paramtype">el_time&#160;</td>
+          <td class="paramname"><em>time_ms</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>delay a period of time given in millisecond </p>
+<p>This delay function works only within the <code>main</code> function but not in any process. Within a process, time delay is achieved by <a class="el" href="a00019.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3a3454994212dac73a0d27754c258f95"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_main_loop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>the "engine" that drives the software components in this library </p>
+<p>This is the primary function that drives all of the software components in this library, including <a class="el" href="a00047.html">Trigger</a>, <a class="el" href="a00046.html">Timer</a> and <a class="el" href="a00045.html">Process</a>.</p>
+<p>The standard way to use this library is that: most of the user's code are written in one or more processes/triggers while the <code>main</code> function just enters this function and keeps running it for the life time. See the examples for the practical usage. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7d51860e02addcd57a18dabeb9776a34"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_break_main_loop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>signal el_main_loop to stop </p>
+<p>This function breaks the loop inside <a class="el" href="a00011.html#a3a3454994212dac73a0d27754c258f95" title="the &quot;engine&quot; that drives the software components in this library ">el_main_loop</a> and let it returns. At the moment when this function is called, all of the software components are virtually freezed. This means: any process in waiting/cooperating will no longer be resumed and no further trigger/timer actions will happen.</p>
+<p>It is recommanded that el_main_loop is only entered once in a program's life time. Thus, after el_main_loop returns, the program should just clear things up and proceed to reset, rather than re-entering el_main_loop at some time. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3eccfa802ddb7a7147be407f5d1a25aa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>reset the microcontroller </p>
+<p>This is equivalent to tap the reset button. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

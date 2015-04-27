@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: Trigger</title>
+<title>embedded system library for e-puck: Process</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,26 +82,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#files">Files</a>  </div>
   <div class="headertitle">
-<div class="title">Trigger</div>  </div>
+<div class="title">Process</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:a00022"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html">el_trigger.h</a></td></tr>
+<tr class="memitem:a00019"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html">el_process.h</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h1><a class="anchor" id="Introduction"></a>
 Introduction</h1>
-<p>A trigger can launch a process when a specified event occurs in the system. For example, a process can be launched automatically when the proximity sensors has a set of samples ready for use.</p>
+<p>A Process runs concurrently with other process.</p>
 <h1><a class="anchor" id="Usage"></a>
 Usage</h1>
-<p>Call the function "el_create_trigger" to create a trigger in the system. Use the handle returned by this function to refer to the created trigger in the related function. </p>
+<p>This library has multi-tasking capability &mdash; upto 7 functions with time delays can run concurrently when each of these functions is executed within a 'process'.</p>
+<p>Use <a class="el" href="a00019.html#a15372f27d6a543de5e3e00e028bb07aa" title="execute a function in a process ">el_launch_process</a> to start a process. In a process, use <a class="el" href="a00019.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a> to wait for a certain amount of time. Within this wait period, other processes are being executed. More detailed usage can be found in <a class="el" href="index.html#sec_examples">Examples</a> and the usage section of other modules (e.g. <a class="el" href="a00047.html">Trigger</a> and <a class="el" href="a00044.html">Infrared Receiver</a>).</p>
+<p>This approach of multitasking is usually called "Cooperative Multitasking". It is useful when several timing based programs need to run concurrently. </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

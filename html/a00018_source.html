@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_process.h Source File</title>
+<title>embedded system library for e-puck: el_led.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">el_process.h</div>  </div>
+<div class="title">el_led.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00018.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -107,64 +107,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifndef EL_PROCESS_H</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define EL_PROCESS_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00014.html">el_common.h</a>&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00013.html">el_clock.h</a>&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">typedef</span> void (*el_process)(<span class="keywordtype">void</span>*);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define EL_PROCESS void</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;el_index <a class="code" href="a00018.html#a15372f27d6a543de5e3e00e028bb07aa">el_launch_process</a>(el_process func,<span class="keywordtype">void</span>*arg);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00018.html#a9ea69eb32cff9ead1640ddbc880b41c3">el_process_wait</a>(el_time t_ms);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00018.html#aecf18603e5149c41de087ec25e262018">el_process_wait_fraction</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num,<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> den);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#ifndef EL_LED_H</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define EL_LED_H</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00015.html">el_common.h</a>&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define EL_LED_RING_ALL -1</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define EL_LED_RING_0   0</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define EL_LED_RING_1   1</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define EL_LED_RING_2   2</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define EL_LED_RING_3   3</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define EL_LED_RING_4   4</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define EL_LED_RING_5   5</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define EL_LED_RING_6   6</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define EL_LED_RING_7   7</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define EL_LED_BODY     9</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define EL_LED_FRONT    10</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">   56</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span>{</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">   57</a></span>&#160;    <a class="code" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">EL_OFF</a> = 0,     </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">   58</a></span>&#160;    <a class="code" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">EL_ON</a> = 1,      </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">   59</a></span>&#160;    <a class="code" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">EL_TOGGLE</a> = -1, </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;} <a class="code" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00018.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led_set</a>(el_index w,<a class="code" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a> s);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00018.html#ab3823524468a2011a62d955d7277382f">el_get_selector_value</a>();</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00018.html#a3580f38f3a753bd43cd1bcec81a53903">el_process_cooperate</a>();</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;el_index <a class="code" href="a00018.html#a2ee91247f1219b6e78e3802403e5e697">el_get_process_current_index</a>();</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">--------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#ifdef EL_INCLUDE_CONTEXT</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#define EL_PROCESS_STACK_OFFSET 192</span></div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#define EL_PROCESS_STACK_SIZE   192</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">#define EL_PROCESS_DIM          7</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">extern</span> el_mct el_process_mck;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> el_is_in_process;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keyword">extern</span> el_index el_cmt_current_process_index;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keywordtype">void</span> el_init_process();</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keywordtype">void</span> el_routine_process();</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a00014_html"><div class="ttname"><a href="a00014.html">el_common.h</a></div></div>
-<div class="ttc" id="a00018_html_aecf18603e5149c41de087ec25e262018"><div class="ttname"><a href="a00018.html#aecf18603e5149c41de087ec25e262018">el_process_wait_fraction</a></div><div class="ttdeci">void el_process_wait_fraction(unsigned int num, unsigned int den)</div><div class="ttdoc">Wait for a period of time specified as a fraction. </div></div>
-<div class="ttc" id="a00013_html"><div class="ttname"><a href="a00013.html">el_clock.h</a></div></div>
-<div class="ttc" id="a00018_html_a9ea69eb32cff9ead1640ddbc880b41c3"><div class="ttname"><a href="a00018.html#a9ea69eb32cff9ead1640ddbc880b41c3">el_process_wait</a></div><div class="ttdeci">void el_process_wait(el_time t_ms)</div><div class="ttdoc">Wait for a period of time. </div></div>
-<div class="ttc" id="a00018_html_a15372f27d6a543de5e3e00e028bb07aa"><div class="ttname"><a href="a00018.html#a15372f27d6a543de5e3e00e028bb07aa">el_launch_process</a></div><div class="ttdeci">el_index el_launch_process(el_process func, void *arg)</div><div class="ttdoc">Execute a function as a process. </div></div>
-<div class="ttc" id="a00018_html_a3580f38f3a753bd43cd1bcec81a53903"><div class="ttname"><a href="a00018.html#a3580f38f3a753bd43cd1bcec81a53903">el_process_cooperate</a></div><div class="ttdeci">void el_process_cooperate()</div><div class="ttdoc">Introduce an atomic wait so other processes can be executed. </div></div>
-<div class="ttc" id="a00018_html_a2ee91247f1219b6e78e3802403e5e697"><div class="ttname"><a href="a00018.html#a2ee91247f1219b6e78e3802403e5e697">el_get_process_current_index</a></div><div class="ttdeci">el_index el_get_process_current_index()</div><div class="ttdoc">Get index of the process called this function. </div></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a00015_html"><div class="ttname"><a href="a00015.html">el_common.h</a></div></div>
+<div class="ttc" id="a00018_html_ab3823524468a2011a62d955d7277382f"><div class="ttname"><a href="a00018.html#ab3823524468a2011a62d955d7277382f">el_get_selector_value</a></div><div class="ttdeci">int el_get_selector_value()</div><div class="ttdoc">get the selector postition </div></div>
+<div class="ttc" id="a00018_html_adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd"><div class="ttname"><a href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">EL_OFF</a></div><div class="ttdoc">turn off the LED </div><div class="ttdef"><b>Definition:</b> el_led.h:57</div></div>
+<div class="ttc" id="a00018_html_adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1"><div class="ttname"><a href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">EL_ON</a></div><div class="ttdoc">turn on the LED </div><div class="ttdef"><b>Definition:</b> el_led.h:58</div></div>
+<div class="ttc" id="a00018_html_adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223"><div class="ttname"><a href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">EL_TOGGLE</a></div><div class="ttdoc">toggle the on/off status of the LED </div><div class="ttdef"><b>Definition:</b> el_led.h:59</div></div>
+<div class="ttc" id="a00018_html_adee7c768c6e5283520fe8b6c7a75e09a"><div class="ttname"><a href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a></div><div class="ttdeci">el_led_action</div><div class="ttdoc">used in el_led_set. </div><div class="ttdef"><b>Definition:</b> el_led.h:56</div></div>
+<div class="ttc" id="a00018_html_a074c77228ff700a17bd3e42fb7cffeb7"><div class="ttname"><a href="a00018.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led_set</a></div><div class="ttdeci">void el_led_set(el_index w, el_led_action s)</div><div class="ttdoc">set the status of a LED </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 23 2014 18:42:11 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 27 2015 19:02:55 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
