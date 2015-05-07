@@ -48,11 +48,12 @@ The maximum speed of these motors are 1000 steps per second.
 #define EL_STEPPER_MOTOR_LEFT               0
 #define EL_STEPPER_MOTOR_RIGHT              1
 
+#define EL_EPUCK_FULL_REVOLUTION_STEPS      2512
 
 /*!
     This data structure is used in ::el_config_stepper_motor.
     A static instance of this struct exists internally, it can be pointed to
-    through ::el_config_stepper_motor_options. 
+    through ::el_stepper_motor_options. 
 */
 typedef struct {
     el_bool UseAcceleration;
@@ -62,41 +63,6 @@ typedef struct {
 /*
 --------------------------------------------------------------------------------
 */
-
-/*!
-    \brief get the pointer to a static instance of \ref el_stepper_motor_param
-
-    \return the pointer
-*/
-el_stepper_motor_param*el_config_stepper_motor_options();
-
-
-/*!
-    \brief apply the parameters to the stepper motors
-
-    \param p    pointer to the data structure containing all parameters
-
-    Currently, the parameters are mainly related to the artificial acceleration
-    of the stepper motors, which are typically used to make the motion of
-    the robot more smooth.
-
-    For example, the following code enables a linear artificial acceleration
-    with a rate of 2000:
-    \code
-    el_stepper_motor_param *StepperMotorSetting;
-    ...
-    StepperMotorSetting = el_config_stepper_motor_options();
-    StepperMotorSetting->UseAcceleration = true;
-    StepperMotorSetting->AccelerationRate = 2000;
-    el_config_stepper_motor( StepperMotorSetting );
-    ...
-    \endcode
-    A linear acceleration rate of 2000 means the stepping rate of the motors 
-    can reach 1000 from 0 in 0.5 sec. By default, the artificial acceleration
-    is enabled and the acceleration rate is 3000. 
-*/
-void el_config_stepper_motor(const el_stepper_motor_param*p);
-
 
 /*! 
     \brief enable the stepper motor module
@@ -110,9 +76,51 @@ void el_enable_stepper_motor(void);
 void el_disable_stepper_motor(void);
 
 
-/*
---------------------------------------------------------------------------------
+/*!
+    \brief get the pointer to a static instance of \ref el_stepper_motor_param
+
+    \return the pointer
 */
+el_stepper_motor_param*el_stepper_motor_options();
+
+
+/*!
+    \brief reset the settings stored in ::el_stepper_motor_options to default
+
+*/
+void el_stepper_motor_options_reset();
+
+
+/*!
+    \brief apply the settings stored in ::el_stepper_motor_options directly
+
+    This function is equivalent to "el_config_stepper_motor( el_stepper_motor_options() )".
+*/
+void el_stepper_motor_options_apply();
+
+
+
+/*!
+    \brief apply the settings in the given structure
+
+    \param p    pointer to the data structure containing all parameters
+
+    Currently, the parameters are mainly related to the artificial acceleration
+    of the stepper motors, which are typically used to make the motion of
+    the robot more smooth.
+
+    For example, the following code enables a linear artificial acceleration
+    with a rate of 2000:
+    \code
+    el_stepper_motor_options()->UseAcceleration = true;
+    el_stepper_motor_options()->AccelerationRate = 2000;
+    el_config_stepper_motor( el_stepper_motor_options() );
+    \endcode
+    A linear acceleration rate of 2000 means the stepping rate of the motors 
+    can reach 1000 from 0 in 0.5 sec. By default, the artificial acceleration
+    is enabled and the acceleration rate is 3000. 
+*/
+void el_config_stepper_motor(const el_stepper_motor_param*p);
 
 
 /*! 

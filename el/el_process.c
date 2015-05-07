@@ -37,12 +37,14 @@ typedef struct EL_CMTS{
 
 
 el_mct el_process_mck;
-bool el_is_in_process;
+el_bool el_is_in_process;
+el_bool el_is_in_process_call;
 jmp_buf el_cmt_main_buffer;
 el_uint16 el_cmt_number_of_process;
 el_cmts el_cmt_process_list[EL_PROCESS_DIM];
 el_cmts *el_cmt_current_process;
 el_index el_cmt_current_process_index;
+el_uint16 el_process_overwatch;
 
 
 static void el_cmt_warp_current_process(const int stack_offset){
@@ -70,6 +72,8 @@ void el_init_process(){
     el_cmts *p;
 
     el_is_in_process = 0;
+    el_is_in_process_call = 0;
+    el_process_overwatch = 0;
 
     for(i=0;i<EL_PROCESS_DIM;i++){
         p = el_cmt_process_list + i;
@@ -97,6 +101,8 @@ void el_routine_process(){
     current_clock = el_get_masterclock();
     dk = current_clock - el_process_mck;
     el_process_mck = current_clock;
+
+    el_process_overwatch = 0;
     
     // process the cooperative multi-task system
     el_is_in_process = true;
@@ -111,26 +117,26 @@ void el_routine_process(){
         }
 
         if(p->state==EL_CMT_STATE_LAUNCH){
-
+            el_is_in_process_call = true;
             if(!setjmp(el_cmt_main_buffer)){
-
                 p->state = EL_CMT_STATE_RUNNING;
                 el_cmt_number_of_process++;
-
                 el_cmt_current_process = p;
+                el_process_overwatch = 0;
                 stack_offset = EL_PROCESS_STACK_OFFSET + i*EL_PROCESS_STACK_SIZE;
                 el_cmt_warp_current_process(stack_offset);
 
             }
-
+            el_is_in_process_call = false;
         }else
         if(p->state==EL_CMT_STATE_RUNNING){
-
+            el_is_in_process_call = true;
             if(!setjmp(el_cmt_main_buffer)){
                 el_cmt_current_process = p;
+                el_process_overwatch = 0;
                 longjmp(p->function_context,1);
             }
-
+            el_is_in_process_call = false;
         }
 
     }
@@ -190,7 +196,8 @@ el_index el_launch_process(el_process func,void*arg){
             return i;
         }
     }
-
+    
+    el_error_signal = 2;
     return -1;
 }
 

@@ -57,6 +57,17 @@ typedef int16_t el_mcd;
 
 #define EL_MCT_ZERO_POINT   (65536UL)
 
+#define EL_SYS_ERROR_MALLOC_NULL            1
+#define EL_SYS_ERROR_PROCESS_TIME_OUT       2
+#define EL_SYS_ERROR_PROCESS_LAUNCH_FAIL    3
+#define EL_SYS_ERROR_TIMER_TIME_OUT         4
+#define EL_SYS_ERROR_TIMER_CREATE_FAIL      5
+#define EL_SYS_ERROR_TRIGGER_TIME_OUT       6
+#define EL_SYS_ERROR_TRIGGER_CREATE_FAIL    7
+
+
+extern int el_error_signal;
+
 void el_init_masterclock();
 void el_routine_masterclock_14400hz();
 void el_nop_delay(int x);

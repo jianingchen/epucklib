@@ -173,8 +173,10 @@ el_index el_get_local_process_index();
 #define EL_PROCESS_DIM          EL_PROCESS_MAX_NUM
 
 extern el_mct el_process_mck;
-extern bool el_is_in_process;
+extern el_bool el_is_in_process;
+extern el_bool el_is_in_process_call;
 extern el_index el_cmt_current_process_index;
+extern el_uint16 el_process_overwatch;
 
 void el_init_process();
 void el_routine_process();

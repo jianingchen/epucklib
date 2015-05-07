@@ -49,7 +49,7 @@ typedef enum {
 /*!
     This data structure is used in ::el_config_camera. 
     A static instance of this struct exists internally, it can be pointed to
-    through ::el_config_camera_options. 
+    through ::el_camera_options. 
 
     Detailed explanation of these parameters can be found in the datasheet of
     PO6030K.
@@ -84,8 +84,18 @@ typedef struct {
 --------------------------------------------------------------------------------
 */
 
+
+/*! 
+    \brief enable the camera
+
+*/
 void el_enable_camera();
 
+
+/*! 
+    \brief disable the camera
+
+*/
 void el_disable_camera();
 
 
@@ -94,36 +104,49 @@ void el_disable_camera();
 
     \return the pointer
 */
-el_camera_param* el_config_camera_options();
+el_camera_param* el_camera_options();
 
 
 /*!
-    \brief apply the parameters to the camera
+    \brief reset the settings stored in ::el_camera_options to default
+
+*/
+void el_camera_options_reset();
+
+
+/*!
+    \brief apply the settings stored in ::el_camera_options directly
+
+    This function is equivalent to "el_config_camera( el_camera_options() )".
+*/
+void el_camera_options_apply();
+
+
+/*!
+    \brief apply the settings in the given structure
 
     \param p        pointer to the data structure
 
     The default parameters of the camera is equivalent to the following code:
     \code
-    el_camera_param *CameraSetting;
-    ...
-    CameraSetting = el_config_camera_options();
-    CameraSetting->ExposureMode = EL_AUTOMATIC;
-    CameraSetting->AutoWhiteBalance = true;
-    CameraSetting->AutoDigitalGain = true;
-    CameraSetting->ExposureTime = 1.0f;
-    CameraSetting->RedGain = 1.0f;
-    CameraSetting->GreenGain = 1.0f;
-    CameraSetting->BlueGain = 1.0f;
-    CameraSetting->ExternalIntergationTime = 1.0f;
-    CameraSetting->ExternalLinearGain = 1.0f;
-    CameraSetting->IntegrationTime = 1.0f;
-    CameraSetting->GlobalGain = 1.0f;
-    CameraSetting->DigitalGain = 1.0f;
-    el_config_camera( CameraSetting );
+    el_camera_options()->ExposureMode = EL_AUTOMATIC;
+    el_camera_options()->AutoWhiteBalance = true;
+    el_camera_options()->AutoDigitalGain = true;
+    el_camera_options()->ExposureTime = 1.0f;
+    el_camera_options()->RedGain = 1.0f;
+    el_camera_options()->GreenGain = 1.0f;
+    el_camera_options()->BlueGain = 1.0f;
+    el_camera_options()->ExternalIntergationTime = 1.0f;
+    el_camera_options()->ExternalLinearGain = 1.0f;
+    el_camera_options()->IntegrationTime = 1.0f;
+    el_camera_options()->GlobalGain = 1.0f;
+    el_camera_options()->DigitalGain = 1.0f;
+    el_config_camera( el_camera_options() );
     \endcode
     
-    The time cost to execute this function is not neglectable (around 7.1 ms), 
-    so it should not be executed frequently in a process. 
+    Unlike the \c config functions for other modules, the time cost to execute 
+    this function is not neglectable (around 7.1 ms), so it should not be 
+    executed frequently in a process. 
 */
 void el_config_camera(const el_camera_param*p);
 

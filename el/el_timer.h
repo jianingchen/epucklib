@@ -219,7 +219,8 @@ typedef struct{
 } el_timer;
 
 extern el_mct el_timer_mck;
-extern bool el_is_in_timer_callback;
+extern el_bool el_is_in_timer_callback;
+extern el_uint16 el_timer_overwatch;
 
 void el_init_timers();
 void el_routine_timers();

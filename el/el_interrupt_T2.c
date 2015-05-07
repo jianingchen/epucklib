@@ -17,9 +17,14 @@ This file is released under the terms of the MIT license (see "el.h").
 */
 
 #include "el_context.h"
+#include "el_interrupt.h"
 #include "el_stepper_motor.h"
 #include "el_accelerometer.h"
 #include "el_ir_proximity.h"
+#include "el_timer.h"
+#include "el_uart.h"
+
+char el_error_string_buffer[16] = "<<ERROR-00>>";
 
 void el_init_interrupt_T2(){
     
@@ -91,5 +96,45 @@ void __attribute__((interrupt, auto_psv)) _T2Interrupt(void){
     For what happens when the scanning is finished,
     see function "_ADCInterrupt" in "el_interrupt_ADC.c".
     */
+
+    // time-out checking
+
+    if(el_is_in_process_call){
+        ++el_process_overwatch;
+        if(el_process_overwatch>=240){
+            el_error_signal = EL_SYS_ERROR_PROCESS_TIME_OUT;
+            el_process_overwatch = 0;
+        }
+    }
+
+    if(el_is_in_trigger_condition){
+        ++el_trigger_overwatch;
+        if(el_trigger_overwatch>=240){
+            el_error_signal = EL_SYS_ERROR_TRIGGER_TIME_OUT;
+            el_trigger_overwatch = 0;
+        }
+    }
+    
+    if(el_is_in_timer_callback){
+        ++el_timer_overwatch;
+        if(el_timer_overwatch>=240){
+            el_error_signal = EL_SYS_ERROR_TIMER_TIME_OUT;
+            el_timer_overwatch = 0;
+        }
+    }
+    
+    // error feedback
+    if(el_error_signal){
+        el_error_string_buffer[8] = '0' + el_error_signal/10;
+        el_error_string_buffer[9] = '0' + el_error_signal%10;
+        IPC2bits.U1TXIP = 7;// UART1 trasmitting interrupt priority
+        el_uart_send_string(EL_UART_1,el_error_string_buffer);
+        while(el_uart_is_sending(EL_UART_1)){
+            el_nop();
+        }
+        IPC2bits.U1TXIP = EL_INTP_U1TX;
+        el_nop_delay(2000);
+        el_error_signal = 0;
+    }
 
 }

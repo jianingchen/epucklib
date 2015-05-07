@@ -19,7 +19,8 @@ This file is released under the terms of the MIT license (see "el.h").
 #include "el_context.h"
 #include "el_trigger.h"
 
-bool el_is_in_trigger_condition;
+el_bool el_is_in_trigger_condition;
+el_uint16 el_trigger_overwatch;
 el_uint8 el_trigger_reg_i;
 el_trigger*el_trigger_reg[EL_TRIGGER_DIM];
 
@@ -35,6 +36,7 @@ void el_init_triggers(){
     int i;
 
     el_is_in_trigger_condition = false;
+    el_trigger_overwatch = 0;
 
     el_trigger_reg_i = 0;
     for(i=0;i<EL_TRIGGER_DIM;i++){
@@ -60,6 +62,7 @@ static void el_trg_proceed(el_trigger *trg){
 
         if(trg->condition){
             el_is_in_trigger_condition = true;
+            el_trigger_overwatch = 0;
             K = trg->condition(trg);
             el_is_in_trigger_condition = false;
         }else{
@@ -80,17 +83,20 @@ static void el_trg_proceed(el_trigger *trg){
 
 void el_routine_triggers(){
     el_trigger *p;
-    int i,d;
+    int i,j,d;
 
     d = el_trigger_reg_i;
+    el_trigger_overwatch = 0;
 
     /** deal with different events **/
 
-    for(i=0;i<6;i++){
-        if(el_trg_event_flag_in[i]){
-            el_trg_event_flag_in[i] = 0;
+    // for all internal events
+    for(j=0;j<6;j++){
+        if(el_trg_event_flag_in[j]){
+            el_trg_event_flag_in[j] = 0;
+            // for all triggers
             for(i=0;i<d;i++){
-                if(el_trigger_reg[i]->event_type==(EL_EVENT_INTERNAL_A + i)){
+                if(el_trigger_reg[i]->event_type==(EL_EVENT_INTERNAL_A + j)){
                     el_trg_proceed(el_trigger_reg[i]);
                 }
             }
@@ -171,10 +177,15 @@ el_handle el_create_trigger(){
     el_trigger *p;
 
     if(el_trigger_reg_i>=EL_TRIGGER_DIM){
+        el_error_signal = EL_SYS_ERROR_TRIGGER_CREATE_FAIL;
         return NULL;
     }
 
     p = (el_trigger*)malloc(sizeof(el_trigger));
+    if(p==NULL){
+        el_error_signal = EL_SYS_ERROR_MALLOC_NULL;
+        return NULL;
+    }
 
     p->counter = 0;
     p->event_type = 0;

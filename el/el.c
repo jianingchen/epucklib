@@ -50,14 +50,16 @@ void el_initialization(){
     el_init_interrupt_T5();
     el_init_interrupt_UART();
 
+    el_mlb = 0;
 }
 
-NEVER_RETURN el_main_loop(){
+void el_main_loop(){
     
     el_process_mck = el_get_masterclock();
     el_timer_mck = el_get_masterclock();
 
     el_mlb = 1;
+    el_process_overwatch = 0;
     
     while(el_mlb){
         el_routine_timers();
@@ -96,13 +98,7 @@ void el_sleep(el_time time_ms){
 void el_calibrate_sensors(){
     int i,n;
     int x,w;
-
-
-    el_led_set(EL_LED_RING_1,EL_ON);
-    el_led_set(EL_LED_RING_3,EL_ON);
-    el_led_set(EL_LED_RING_5,EL_ON);
-    el_led_set(EL_LED_RING_7,EL_ON);
-
+    
     /** infrared proximity sensors **/
     
     el_irps_is_calibrated = false;
@@ -153,11 +149,6 @@ void el_calibrate_sensors(){
     
     el_disable_ir_proximity();
 
-    el_led_set(EL_LED_RING_1,EL_OFF);
-    el_led_set(EL_LED_RING_3,EL_OFF);
-    el_led_set(EL_LED_RING_5,EL_OFF);
-    el_led_set(EL_LED_RING_7,EL_OFF);
-    
     el_irps_is_calibrated = true;
     
 }

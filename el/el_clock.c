@@ -20,9 +20,11 @@ This file is released under the terms of the MIT license (see "el.h").
 #include "el_clock.h"
 
 volatile el_mct el_masterclock;
+int el_error_signal;
 
 void el_init_masterclock(){
     el_masterclock = 0;
+    el_error_signal = 0;
 }
 
 void el_routine_masterclock_14400hz(){

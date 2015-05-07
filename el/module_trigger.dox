@@ -70,31 +70,31 @@ void Trigger_ControStep_Process(el_handle this_trigger){
     el_int16 prox_value[8];
     el_int16 mean;
     
-    // grab the readings into an array
+    // grab the reflection readings into an array
     el_ir_proximity_get( EL_IR_PROXIMITY_SENSOR_ALL, EL_IR_REFLECTION, prox_value );
     
     // assume that our algorithm needs the average of the two front sensors
     mean = (prox_value[0] + prox_value[7])/2;
     
     // the following code let the robot keep a distance to anything in front
-    if( mean >= 1200 ){
-        
+    if( mean >= 900 ){
+
         el_set_wheel_speed( -500, -500 );// move backwards
-        
+
     }else
-    if( mean >= 400 ){// with an implict condition: mean < 1200
-        
+    if( mean >= 300 ){// with an implict condition: mean < 900
+
         el_set_wheel_speed( 0, 0 );// don't move (distance is OK)
-        
+
     }else
-    if( mean >= 130 ){// with an implict condition: mean < 400
-        
+    if( mean >= 60 ){// with an implict condition: mean < 300
+
         el_set_wheel_speed( 500, 500 );// move forwards
-        
-    }else{// with an implict condition: mean < 130
-        
+
+    }else{// with an implict condition: mean < 60
+
         el_set_wheel_speed( 0, 0 );// no motion (nothing in front)
-        
+
     }
     
     /* 

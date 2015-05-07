@@ -93,14 +93,22 @@ void el_init_ir_proximity(){
         el_irps_samples_NeutralReflection[i] = 5;
         el_irps_samples_NeutralNoise[i] = 15;
     }
-    
+
+    el_ir_proximity_options_reset();
+}
+
+el_ir_proximity_param* el_ir_proximity_options(){
+    return &el_irps_parameters;
+}
+
+void el_ir_proximity_options_reset(){
     el_irps_parameters.WorkingMode = EL_IR_PROXIMITY_PULSE;
     el_irps_parameters.EnvironmentalAmbient = 0;
     el_irps_parameters.SubtractEA = false;
 }
 
-el_ir_proximity_param* el_config_ir_proximity_options(){
-    return &el_irps_parameters;
+void el_ir_proximity_options_apply(){
+    el_config_ir_proximity(&el_irps_parameters);
 }
 
 void el_config_ir_proximity(const el_ir_proximity_param*p){

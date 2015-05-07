@@ -108,18 +108,7 @@ void el_init_camera(){
         }
     }
 
-    el_cam_parameters.ExposureMode = EL_AUTOMATIC;
-    el_cam_parameters.AutoWhiteBalance = true;
-    el_cam_parameters.AutoDigitalGain = true;
-    el_cam_parameters.ExposureTime = 1.0f;
-    el_cam_parameters.RedGain = 1.0f;
-    el_cam_parameters.GreenGain = 1.0f;
-    el_cam_parameters.BlueGain = 1.0f;
-    el_cam_parameters.ExternalIntergationTime = 1.0f;
-    el_cam_parameters.ExternalLinearGain = 1.0f;
-    el_cam_parameters.IntegrationTime = 1.0f;
-    el_cam_parameters.GlobalGain = 1.0f;
-    el_cam_parameters.DigitalGain = 1.0f;
+    el_camera_options_reset();
 
     // reset the camera module
     el_cam_init_register();
@@ -216,8 +205,27 @@ void el_cam_init_register(void){
 
 }
 
-el_camera_param*el_config_camera_options(){
+el_camera_param*el_camera_options(){
     return &el_cam_parameters;
+}
+
+void el_camera_options_reset(){
+    el_cam_parameters.ExposureMode = EL_AUTOMATIC;
+    el_cam_parameters.AutoWhiteBalance = true;
+    el_cam_parameters.AutoDigitalGain = true;
+    el_cam_parameters.ExposureTime = 1.0f;
+    el_cam_parameters.RedGain = 1.0f;
+    el_cam_parameters.GreenGain = 1.0f;
+    el_cam_parameters.BlueGain = 1.0f;
+    el_cam_parameters.ExternalIntergationTime = 1.0f;
+    el_cam_parameters.ExternalLinearGain = 1.0f;
+    el_cam_parameters.IntegrationTime = 1.0f;
+    el_cam_parameters.GlobalGain = 1.0f;
+    el_cam_parameters.DigitalGain = 1.0f;
+}
+
+void el_camera_options_apply(){
+    el_config_camera(&el_cam_parameters);
 }
 
 void el_config_camera(const el_camera_param*p){

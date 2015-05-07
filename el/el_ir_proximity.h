@@ -62,7 +62,7 @@ typedef enum {
 /*!
     This data structure is used in ::el_config_ir_proximity.
     A static instance of this struct exists internally, it can be pointed to
-    through ::el_config_ir_proximity_options. 
+    through ::el_ir_proximity_options. 
 */
 typedef struct {
     el_ir_proximity_mode WorkingMode;
@@ -98,33 +98,6 @@ typedef struct {
 --------------------------------------------------------------------------------
 */
 
-/*!
-    \brief get the pointer to a static instance of \ref el_ir_proximity_param
-
-    \return the pointer
-*/
-el_ir_proximity_param* el_config_ir_proximity_options();
-
-
-/*!
-    \brief apply the parameters to ir proximity sensors
-
-    \param p        pointer to the data structure
-
-    The default setting of the ir proximity sensors can be represented by
-    following code:
-    \code
-    el_ir_proximity_param *IRProximitySetting;
-    ...
-    IRProximitySetting = el_config_ir_proximity_options();
-    IRProximitySetting->WorkingMode = EL_IR_PROXIMITY_PULSE;
-    IRProximitySetting->EnvironmentalAmbient = 0;
-    IRProximitySetting->SubtractEA = false;
-    el_config_ir_proximity( IRProximitySetting );
-    \endcode
-*/
-void el_config_ir_proximity(const el_ir_proximity_param*p);
-
 
 /*! 
     \brief enable the proximity sensors module
@@ -138,6 +111,46 @@ void el_enable_ir_proximity(void);
 
 */
 void el_disable_ir_proximity(void);
+
+
+/*!
+    \brief get the pointer to a static instance of \ref el_ir_proximity_param
+
+    \return the pointer
+*/
+el_ir_proximity_param* el_ir_proximity_options();
+
+
+/*!
+    \brief reset the settings stored in ::el_ir_proximity_options to default
+
+*/
+void el_ir_proximity_options_reset();
+
+
+/*!
+    \brief apply the settings stored in ::el_ir_proximity_options directly
+
+    This function is equivalent to "el_config_ir_proximity( el_ir_proximity_options() )".
+*/
+void el_ir_proximity_options_apply();
+
+
+/*!
+    \brief apply the settings in the given structure
+
+    \param p        pointer to the data structure
+
+    The default setting of the ir proximity sensors can be represented by
+    following code:
+    \code
+    el_ir_proximity_options()->WorkingMode = EL_IR_PROXIMITY_PULSE;
+    el_ir_proximity_options()->EnvironmentalAmbient = 0;
+    el_ir_proximity_options()->SubtractEA = false;
+    el_config_ir_proximity( el_ir_proximity_options() );
+    \endcode
+*/
+void el_config_ir_proximity(const el_ir_proximity_param*p);
 
 
 /*!

@@ -15,7 +15,13 @@ In the example, we want all robots to toggle their body LED when
 we press a key on a TV remote. Two approaches to achieve this are given. 
 
 
-\subsection ssec_irrc_usage_1 Use Inside Process
+\subsection ssec_irrc_usage_1 Display the Data Received
+
+The ir receiver module should be able to receive all remote based on 
+RC5 protocol which is a protocol used by TV remote. For example, Philip and 
+Toshiba are known to use the protocol. However, on still need to study what 
+exactly the data received are. In this example, any valid transmission is 
+received and the data obtained are displayed via serial communication. 
 
 \code
 // assume that the following process is launched properly in somewhere
@@ -23,42 +29,40 @@ void IrReceiver_Process(void*unused){
     int check;
     int address;
     int key_value;
-    
+
     while(1){
-        
+
         // ir receiver requires a reset before a potential income
         el_ir_receiver_reset();
-        
+
         // wait for a new income ('check' becoming either 0 or 1)
         do{
             el_process_cooperate();
             check = el_ir_receiver_get_check();
         }while( (check != 0)&&(check != 1) );
-        
-        // verify the address value 
+
+        // grab the data
         address = el_ir_receiver_get_address();
-        if( address != THE_ADDRESS_WE_WANT ){
-            continue;// skip the rest of code in the loop
-        }
-        
-        // make use of the data received
         key_value = el_ir_receiver_get_data();
-        if( key_value == THE_VALUE_WE_WANT ){
-            el_led_set( EL_LED_BODY, EL_TOGGLE );
-        }
-        
+
+        // display the received data
+        elu_println("[IRRC]");
+        elu_println("%d\t%d\t%d",check,address,key_value);
+
     }
-    
 }
 \endcode
 
+Note: the part to enable the ir receiver (::el_enable_ir_receiver)
+and launching the process is not shown in the code section above.
 
 
 
 \subsection ssec_irrc_usage_2 Use As Trigger
 
-A disadvantage of \ref ssec_irrc_usage_1 is that it constantly occupies a process. 
-The maximum number of processes is 7, which may not be enough if all 
+In \ref ssec_irrc_usage_1, the ir receiver is used in an infinite loop within 
+a process. A disadvantage of doing so is that it constantly occupies a process. 
+The maximum number of processes is limited, which may run out if all 
 components occupy a process of their own. Using a trigger to handle the 
 ir receiver is a better design choice.
 
@@ -66,12 +70,15 @@ ir receiver is a better design choice.
 Related global variables and function prototypes:
 \code
 
-el_handle trg_broadcast_listener;
+#define THE_ADDRESS_WE_WANT 5
+#define THE_VALUE_WE_WANT   1
 
-void Trigger_BroadcastListener_Setup();
-void Trigger_BroadcastListener_Clear();
-bool Trigger_BroadcastListener_Condition(el_handle this_trigger);
-void Trigger_BroadcastListener_Process(el_handle this_trigger);
+el_handle trg_remote_control;
+
+void Trigger_RemoteControl_Setup();
+void Trigger_RemoteControl_Clear();
+bool Trigger_RemoteControl_Condition(el_handle this_trigger);
+void Trigger_RemoteControl_Process(el_handle this_trigger);
 
 \endcode
 
@@ -79,22 +86,22 @@ void Trigger_BroadcastListener_Process(el_handle this_trigger);
 Code to setup/clear the trigger:
 \code
 
-void Trigger_BroadcastListener_Setup(){
+void Trigger_RemoteControl_Setup(){
     
-    trg_broadcast_listener = el_create_trigger();
+    trg_remote_control = el_create_trigger();
     
     // specify the event of triggering
-    el_trigger_set_event( trg_broadcast_listener, EL_EVENT_IR_RECEIVER_INCOME );
+    el_trigger_set_event( trg_remote_control, EL_EVENT_IR_RECEIVER_INCOME );
     
     // this trigger is a typical case where a condition callback may be used
-    el_trigger_set_condition( trg_broadcast_listener, Trigger_BroadcastListener_Condition );
+    el_trigger_set_condition( trg_remote_control, Trigger_RemoteControl_Condition );
     
     // specify the process to launch when the event occurs
-    el_trigger_set_process( trg_broadcast_listener, Trigger_BroadcastListener_Process );
+    el_trigger_set_process( trg_remote_control, Trigger_RemoteControl_Process );
 }
 
-void Trigger_BroadcastListener_Clear(){
-    el_delete_trigger( trg_broadcast_listener );
+void Trigger_RemoteControl_Clear(){
+    el_delete_trigger( trg_remote_control );
 }
 
 \endcode
@@ -110,7 +117,7 @@ Code of the trigger's condition callback and process:
  * To save the effort to launch a process in such a case, a condition callback 
  * is used for this trigger to filter unwanted events. 
  */
-bool Trigger_BroadcastListener_Condition(el_handle this_trigger){
+bool Trigger_RemoteControl_Condition(el_handle this_trigger){
     if( el_ir_receiver_get_address() != THE_ADDRESS_WE_WANT ){
         el_ir_receiver_reset();
         return false;// do not launch the process
@@ -123,7 +130,7 @@ bool Trigger_BroadcastListener_Condition(el_handle this_trigger){
  * For a trigger-launched process, the argument given to the entry function
  * is the handle of the trigger. 
  */
-void Trigger_BroadcastListener_Process(el_handle this_trigger){
+void Trigger_RemoteControl_Process(el_handle this_trigger){
     int key_value;
     
     key_value = el_ir_receiver_get_data();
@@ -142,5 +149,35 @@ For the above trigger, it is also valid to place the program within the process
 inside the condition because the program does not require any timing 
 (e.g. ::el_process_wait). If that's the case, a process is no longer required. 
 
+
+\subsection ssec_irrc_appendix Appendix
+
+The address and key values from the universal remote (emulating a Philip VCR 
+remote) used in Sheffield Robotics:
+\code
+#define IR_REMOTE_ADDRESS       5
+#define IR_REMOTE_KEY_PLAY      53
+#define IR_REMOTE_KEY_STOP      54
+#define IR_REMOTE_KEY_PAUSE     41
+#define IR_REMOTE_KEY_REW       37
+#define IR_REMOTE_KEY_FF        38
+#define IR_REMOTE_KEY_REC       55
+#define IR_REMOTE_KEY_POWER     12
+#define IR_REMOTE_KEY_MUTE      13
+#define IR_REMOTE_KEY_PRESET    14
+#define IR_REMOTE_KEY_PLUS      16
+#define IR_REMOTE_KEY_MINUS     17
+#define IR_REMOTE_KEY_INFO      18
+#define IR_REMOTE_KEY_NUM_0     0
+#define IR_REMOTE_KEY_NUM_1     1
+#define IR_REMOTE_KEY_NUM_2     2
+#define IR_REMOTE_KEY_NUM_3     3
+#define IR_REMOTE_KEY_NUM_4     4
+#define IR_REMOTE_KEY_NUM_5     5
+#define IR_REMOTE_KEY_NUM_6     6
+#define IR_REMOTE_KEY_NUM_7     7
+#define IR_REMOTE_KEY_NUM_8     8
+#define IR_REMOTE_KEY_NUM_9     9
+\endcode
 
 */

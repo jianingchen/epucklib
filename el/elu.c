@@ -21,13 +21,14 @@ This file is released under the terms of the MIT license (see "el.h").
 #include "elu.h"
 #include "elu_stdio.h"
 
-void el_print_camera_image(const el_camera_image*frame,el_uint32 n){
+void elu_print_camera_image(const el_camera_image*frame,el_uint32 n){
     int X,Y,i;
     char *p;
 
     while(el_uart_is_sending(EL_UART_1)){
         el_process_cooperate();
     }
+    
     el_uart_send_string(EL_UART_1,"<p>\n");
 
     p = elu_stdio_buffer;

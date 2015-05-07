@@ -20,10 +20,11 @@ This file is released under the terms of the MIT license (see "el.h").
 #include "el_timer.h"
 
 el_mct el_timer_mck;
-bool el_is_in_timer_callback;
+el_bool el_is_in_timer_callback;
 el_uint8 el_timer_reg_i;
 el_timer*el_timer_reg[EL_TIMER_DIM];
 el_timer*el_calling_timer;
+el_uint16 el_timer_overwatch;
 
 void el_init_timers(){
     int i;
@@ -36,6 +37,7 @@ void el_init_timers(){
     el_is_in_timer_callback = false;
     el_timer_mck = el_get_masterclock();
 
+    el_timer_overwatch = 0;
 }
 
 static void el_timer_step(el_timer*p,el_mct dk){
@@ -64,13 +66,14 @@ static void el_timer_step(el_timer*p,el_mct dk){
         if(p->callback){
             el_is_in_timer_callback = true;
             el_calling_timer = p;
+            el_timer_overwatch = 0;
             p->callback(p->append_data);
             el_calling_timer = NULL;
             el_is_in_timer_callback = false;
         }
         
     }
-
+    
 }
 
 el_handle el_timer_callback_get_handle(){
@@ -87,6 +90,8 @@ void el_routine_timers(){
     current_clock = el_get_masterclock();
     dk = current_clock - el_timer_mck;
     el_timer_mck = current_clock;
+    
+    el_timer_overwatch = 0;
     
     /** deal with all timers **/
     d = el_timer_reg_i;// note: el_timer_reg_i may be modified in timer callback
@@ -113,10 +118,15 @@ el_handle el_create_timer(){
     el_timer *p;
     
     if(el_timer_reg_i>=EL_TIMER_DIM){
+        el_error_signal = EL_SYS_ERROR_TIMER_CREATE_FAIL;
         return NULL;
     }
     
     p = (el_timer*)malloc(sizeof(el_timer));
+    if(p==NULL){
+        el_error_signal = EL_SYS_ERROR_MALLOC_NULL;
+        return NULL;
+    }
 
     p->period = 0;
     p->count_down = EL_MCT_ZERO_POINT;

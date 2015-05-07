@@ -213,7 +213,8 @@ typedef struct{
     bool allow_recursive:1;
 } el_trigger;
 
-extern bool el_is_in_trigger_condition;
+extern el_bool el_is_in_trigger_condition;
+extern el_uint16 el_trigger_overwatch;
 extern volatile el_uint8 el_trg_event_flag_in[6];
 extern volatile el_uint8 el_trg_event_flag_ex_uart1;
 extern volatile el_uint8 el_trg_event_flag_ex_uart2;

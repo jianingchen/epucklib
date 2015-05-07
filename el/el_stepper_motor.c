@@ -124,7 +124,7 @@ void el_init_stepper_motor(){
     el_stpm_accel_cs = 0;
     el_stpm_accel_enabled = true;
     el_stpm_accel_linear_term = 3000/EL_STPM_SPEED_CONTROL_FREQ;
-    
+
     el_stpm_parameters.UseAcceleration = true;
     el_stpm_parameters.AccelerationRate = 3000;
 }
@@ -143,8 +143,17 @@ void el_disable_stepper_motor(void){
     }
 }
 
-el_stepper_motor_param*el_config_stepper_motor_options(){
+el_stepper_motor_param*el_stepper_motor_options(){
     return &el_stpm_parameters;
+}
+
+void el_stepper_motor_options_reset(){
+    el_stpm_parameters.UseAcceleration = true;
+    el_stpm_parameters.AccelerationRate = 3000;
+}
+
+void el_stepper_motor_options_apply(){
+    el_config_stepper_motor(&el_stpm_parameters);
 }
 
 void el_config_stepper_motor(const el_stepper_motor_param*p){

@@ -125,7 +125,7 @@ The generated HEX file will be in the "dist" folder under the project's folder.
 
 If the e-puck has Tiny Bootloader's bootloader, the HEX file can be programmed 
 onto the microcontroller using the Tiny Bootloader application via Bluetooth. 
-Otherwise, used a wired programmer (e.g. ICD3 or PICkit3) to program 
+Otherwise, use a wired programmer (e.g. ICD3 or PICkit3) to program 
 the microcontroller through the ISP port on the e-puck. 
 
 To get more details about putting the HEX file into the e-puck, check 
@@ -169,6 +169,7 @@ This example includes the usage of following modules:
 - \ref EL_TRIGGER
 - \ref EL_ACC
 - \ref EL_LED
+- \ref EL_IR_RECEIVER
 - \ref ELU_STDIO
 
 
