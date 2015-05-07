@@ -44,10 +44,10 @@ int main(void){
      * frame rate will be varied depending on the lighting condition of the
      * environment. 
      */
-    el_config_camera_options()->ExposureMode = EL_AUTOMATIC;
-    el_config_camera_options()->AutoWhiteBalance = true;
-    el_config_camera_options()->AutoDigitalGain = true;
-    el_config_camera(el_config_camera_options());
+    el_camera_options()->ExposureMode = EL_AUTOMATIC;
+    el_camera_options()->AutoWhiteBalance = true;
+    el_camera_options()->AutoDigitalGain = true;
+    el_camera_options_apply();
     
     el_launch_process(Process_ConsoleLoop,NULL);
 
@@ -75,9 +75,9 @@ void Process_ConsoleLoop(void*arg){
     Trigger_CameraImageProcessing_Setup();
     Trigger_ObjectFollowing_Setup();
 
-    el_config_stepper_motor_options()->UseAcceleration = true;
-    el_config_stepper_motor_options()->AccelerationRate = 2000;
-    el_config_stepper_motor(el_config_stepper_motor_options());
+    el_stepper_motor_options()->UseAcceleration = true;
+    el_stepper_motor_options()->AccelerationRate = 2000;
+    el_config_stepper_motor(el_stepper_motor_options());
     
     el_enable_camera();
     el_enable_ir_proximity();

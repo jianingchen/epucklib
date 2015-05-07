@@ -21,6 +21,7 @@ This file is released under the terms of the MIT license (see "el.h").
 
 void BootingProcedure01_SelectorBarrier();
 void Process_ConsoleLoop(void*arg);
+void Process_IrReceiverLoop(void*arg);
 void Trigger_Accelerometer_Process(void*arg);
 
 
@@ -58,7 +59,9 @@ int main(void){
     el_trigger_set_process(Trigger_Accelerometer,Trigger_Accelerometer_Process);
     
     el_launch_process(Process_ConsoleLoop,NULL);
+    el_launch_process(Process_IrReceiverLoop,NULL);
 
+    el_enable_ir_receiver();
     el_enable_accelerometer();// Tips: never forget to enable something
 
     el_main_loop();
@@ -105,6 +108,34 @@ void Process_ConsoleLoop(void*arg){
             break;
 
         }
+
+    }
+
+}
+
+void Process_IrReceiverLoop(void*arg){
+    int check;
+    int address;
+    int key_value;
+
+    while(1){
+
+        // ir receiver requires a reset before a potential income
+        el_ir_receiver_reset();
+
+        // wait for a new income ('check' becoming either 0 or 1)
+        do{
+            el_process_cooperate();
+            check = el_ir_receiver_get_check();
+        }while( (check != 0)&&(check != 1) );
+
+        // grab the data
+        address = el_ir_receiver_get_address();
+        key_value = el_ir_receiver_get_data();
+
+        // display the received data
+        elu_println("[IRRC]");
+        elu_println("%d\t%d\t%d",check,address,key_value);
 
     }
 
