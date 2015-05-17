@@ -85,6 +85,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Basic Concepts</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Introducing some commonly used new variable types in this library.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
@@ -94,6 +97,7 @@ Files</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>Introducing some commonly used new variable types in this library. </p>
 <h1><a class="anchor" id="sec_new_var"></a>
 New Variable Types</h1>
 <h2><a class="anchor" id="ssec_el_handle"></a>
@@ -107,17 +111,14 @@ New Variable Types</h1>
 'el_index' (component index)</h2>
 <p>A variable of this type is typically used to refer to a hardware component. Regardless of the physical arrangement in the circuit, the indices of the components in the same module is made to be in serial and always start from 0, for example, 0 for left stepper motor and 1 for right stepper motor. Typically, macros are defined to assign a readable tag to the indices, for example, "EL_LED_RING_2" and "EL_LED_RING_3".</p>
 <p>'el_index' is a signed type in which a negative value typically has specific meaning. For example, for the led module, -1 ("EL_LED_RING_ALL") means all leds on the ring of the e-puck.</p>
-<h2><a class="anchor" id="ssec_el_flags"></a>
-'el_flags' (binary option list)</h2>
-<p>This is the type used to pass a group of binary option as one variable. This is often used to provide a multiple choice when each of the choice can only be YES or NO.</p>
 <h1><a class="anchor" id="sec_el_mci"></a>
 Masterclock and Timing</h1>
-<p>Masterclock of the system is an incremental timer that keeps increasing after the system is initialized. In each real time second, Masterclock will be increased by 144000. Masterclock is mainly used used to calculate the interval between two time points.</p>
+<p>Masterclock of the system is an incremental timer that keeps increasing after the system is initialized. In each real time second, Masterclock will be increased by 144000. Masterclock is mainly used to calculate the interval between two time points.</p>
 <p>Any time stored in the system is interpreted as a integer times of the materclock unit (1/144000 sec). Therefore, masterclock determines the percesion of time stored in the system. For instance, 1/60 sec and 1/1000 sec can both be stored as a integer without any loss as 2400 and 144 correspondingly. Whereas, the integer interpretation of 1/70 sec (about 14.2857142 ms) will be rounded to 2057, which causes the actual time stored in the system become 14.2847222 ms. This applies to all timing related functions such as <a class="el" href="a00023.html#a62305e9d4d0ea903eb9672e171002d38" title="specify the countdown time and start the timer ">el_timer_start</a> or <a class="el" href="a00020.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a>. </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 21:57:45 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 22:23:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

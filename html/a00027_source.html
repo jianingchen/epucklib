@@ -107,48 +107,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#ifndef ELU_STDIO_H</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define ELU_STDIO_H</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00016.html">el_common.h</a>&quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00025.html">el_uart.h</a>&quot;</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define _SNPRINTF_FAMILY   __attribute__ ((format(printf,3,4)))</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define _SSCANF_FAMILY   __attribute__ ((format(scanf,2,3)))</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define _PRINTF_FAMILY   __attribute__ ((format(printf,1,2)))</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define _SCANF_FAMILY   __attribute__ ((format(scanf,1,2)))</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00027.html#a6c5344ecf2f2b40091f06d1440ab7ff9">elu_snprintf</a>(<span class="keywordtype">char</span>*s,<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> n,<span class="keyword">const</span> <span class="keywordtype">char</span>*format,...) _SNPRINTF_FAMILY;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00027.html#a5aa4f9b88807ca98c69f4038e1d89f34">elu_sscanf</a>(const <span class="keywordtype">char</span>*s,const <span class="keywordtype">char</span>*format,...) _SSCANF_FAMILY;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00027.html#a060623e0d13ddfd2baba9d51fde68cd5">elu_printf</a>(const <span class="keywordtype">char</span>*format,...) _PRINTF_FAMILY;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00027.html#a08425935f3540a12afdb0b0da013144e">elu_println</a>(const <span class="keywordtype">char</span>*format,...) _PRINTF_FAMILY;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00027.html#af54a4b5fb6763b5ae4c2f4b1d710fa62">elu_scanf</a>(const <span class="keywordtype">char</span>*format,...) _SCANF_FAMILY;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00027.html#ae78f8e6c9f5bf84b84c4fd480382de87">elu_scanf_set_echo</a>(<span class="keywordtype">bool</span> k);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keywordtype">int</span> elu_putchar(<span class="keywordtype">int</span> c);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#ifndef ELU_STDIO_H</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define ELU_STDIO_H</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00016.html">el_common.h</a>&quot;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00025.html">el_uart.h</a>&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define _SNPRINTF_FAMILY   __attribute__ ((format(printf,3,4)))</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define _SSCANF_FAMILY   __attribute__ ((format(scanf,2,3)))</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define _PRINTF_FAMILY   __attribute__ ((format(printf,1,2)))</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define _SCANF_FAMILY   __attribute__ ((format(scanf,1,2)))</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00027.html#a6c5344ecf2f2b40091f06d1440ab7ff9">elu_snprintf</a>(<span class="keywordtype">char</span>*s,<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> n,<span class="keyword">const</span> <span class="keywordtype">char</span>*format,...) _SNPRINTF_FAMILY;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00027.html#a5aa4f9b88807ca98c69f4038e1d89f34">elu_sscanf</a>(const <span class="keywordtype">char</span>*s,const <span class="keywordtype">char</span>*format,...) _SSCANF_FAMILY;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00027.html#a060623e0d13ddfd2baba9d51fde68cd5">elu_printf</a>(const <span class="keywordtype">char</span>*format,...) _PRINTF_FAMILY;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00027.html#a08425935f3540a12afdb0b0da013144e">elu_println</a>(const <span class="keywordtype">char</span>*format,...) _PRINTF_FAMILY;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00027.html#af54a4b5fb6763b5ae4c2f4b1d710fa62">elu_scanf</a>(const <span class="keywordtype">char</span>*format,...) _SCANF_FAMILY;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00027.html#ae78f8e6c9f5bf84b84c4fd480382de87">elu_scanf_set_echo</a>(<span class="keywordtype">bool</span> k);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">int</span> elu_putchar(<span class="keywordtype">int</span> c);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#define ELU_STDIO_BUFFER_SIZE   80</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> elu_stdio_buffer[ELU_STDIO_BUFFER_SIZE];</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#define ELU_STDIO_BUFFER_SIZE   80</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> elu_stdio_buffer[ELU_STDIO_BUFFER_SIZE];</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* ELU_STDIO_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* ELU_STDIO_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="a00027_html_af54a4b5fb6763b5ae4c2f4b1d710fa62"><div class="ttname"><a href="a00027.html#af54a4b5fb6763b5ae4c2f4b1d710fa62">elu_scanf</a></div><div class="ttdeci">int elu_scanf(const char *format,...) _SCANF_FAMILY</div><div class="ttdoc">scanf to be used here </div></div>
 <div class="ttc" id="a00027_html_a08425935f3540a12afdb0b0da013144e"><div class="ttname"><a href="a00027.html#a08425935f3540a12afdb0b0da013144e">elu_println</a></div><div class="ttdeci">int elu_println(const char *format,...) _PRINTF_FAMILY</div><div class="ttdoc">send a string with data fields + a newline char to UART1 </div></div>
 <div class="ttc" id="a00025_html"><div class="ttname"><a href="a00025.html">el_uart.h</a></div></div>
@@ -160,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 21:57:44 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 22:23:55 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
