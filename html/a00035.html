@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: Initialization Functions</title>
+<title>embedded system library for e-puck: Basic Concepts</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -82,24 +82,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#files">Files</a>  </div>
   <div class="headertitle">
-<div class="title">Initialization Functions</div>  </div>
+<div class="title">Basic Concepts</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:a00011"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.html">el.h</a></td></tr>
-<tr class="memdesc:a00011"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the main header file of this library. <br /></td></tr>
+<tr class="memitem:a00015"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00015.html">el_clock.h</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00016"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00016.html">el_common.h</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<h1><a class="anchor" id="Introduction"></a>
-Introduction</h1>
-<p>This group contains functions to initialize and host the library. </p>
+<h1><a class="anchor" id="sec_new_var"></a>
+New Variable Types</h1>
+<h2><a class="anchor" id="ssec_el_handle"></a>
+'el_handle' (reference of an internal object)</h2>
+<p>This is the handle type to be used in this library for refering dynamically created objects. A 'handle' is similar to a pointer to an object, which are generally used to refer to some object. However, a handle does not include any information about structure of the object. Thus, a handle can only be used to refer to an object but not access the data inside the object. All operations towards such type of object need to be achieved by its related functions.</p>
+<h2><a class="anchor" id="ssec_el_time"></a>
+'el_time' (a time duration in millisecond)</h2>
+<p>Any function argument uses 'el_time' as its type means that the argument is a time duration that given by a integer millisecond.</p>
+<p>In this library, the other way to pass a time to a timing related function is to give the fraction form. In that case, the unit is always second (See <a class="el" href="a00020.html#aecf18603e5149c41de087ec25e262018" title="wait for a period of time specified as a fraction ">el_process_wait_fraction</a> for example).</p>
+<h2><a class="anchor" id="ssec_el_index"></a>
+'el_index' (component index)</h2>
+<p>A variable of this type is typically used to refer to a hardware component. Regardless of the physical arrangement in the circuit, the indices of the components in the same module is made to be in serial and always start from 0, for example, 0 for left stepper motor and 1 for right stepper motor. Typically, macros are defined to assign a readable tag to the indices, for example, "EL_LED_RING_2" and "EL_LED_RING_3".</p>
+<p>'el_index' is a signed type in which a negative value typically has specific meaning. For example, for the led module, -1 ("EL_LED_RING_ALL") means all leds on the ring of the e-puck.</p>
+<h2><a class="anchor" id="ssec_el_flags"></a>
+'el_flags' (binary option list)</h2>
+<p>This is the type used to pass a group of binary option as one variable. This is often used to provide a multiple choice when each of the choice can only be YES or NO.</p>
+<h1><a class="anchor" id="sec_el_mci"></a>
+Masterclock and Timing</h1>
+<p>Masterclock of the system is an incremental timer that keeps increasing after the system is initialized. In each real time second, Masterclock will be increased by 144000. Masterclock is mainly used used to calculate the interval between two time points.</p>
+<p>Any time stored in the system is interpreted as a integer times of the materclock unit (1/144000 sec). Therefore, masterclock determines the percesion of time stored in the system. For instance, 1/60 sec and 1/1000 sec can both be stored as a integer without any loss as 2400 and 144 correspondingly. Whereas, the integer interpretation of 1/70 sec (about 14.2857142 ms) will be rounded to 2057, which causes the actual time stored in the system become 14.2847222 ms. This applies to all timing related functions such as <a class="el" href="a00023.html#a62305e9d4d0ea903eb9672e171002d38" title="specify the countdown time and start the timer ">el_timer_start</a> or <a class="el" href="a00020.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a>. </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:45 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

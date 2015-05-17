@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_clock.h Source File</title>
+<title>embedded system library for e-puck: el_camera.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -86,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">el_clock.h</div>  </div>
+<div class="title">el_camera.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00014.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -107,50 +107,159 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef EL_CLOCK</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define EL_CLOCK</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00015.html">el_common.h</a>&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// general purpose time type, unit = 1/1000 second</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">signed</span> <span class="keywordtype">short</span> el_time;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define EL_TIME_FREQ   1000</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// master clock time types, unit = 1/144000 second</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">typedef</span> uint32_t el_mct;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define EL_MASTERCLOCK_FREQ   (144000L)</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;el_mct el_get_masterclock();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;el_time el_get_time_diff(el_mct k0,el_mct k1,el_mct*residue);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifndef EL_CAMERA_H</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define EL_CAMERA_H</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00016.html">el_common.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00015.html">el_clock.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define EL_CAMERA_FRAME_DIM_X   40</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define EL_CAMERA_FRAME_DIM_Y   15</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9">   41</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a75f351626ba04c17bbf9e389b880b7de">   42</a></span>&#160;    <a class="code" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a75f351626ba04c17bbf9e389b880b7de">EL_AUTOMATIC</a> = 0,       </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea">   43</a></span>&#160;    <a class="code" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea">EL_EXPOSURE_TIME</a> = 1,   </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a6015f8ad11a49088a5a993aab7ff2a08">   44</a></span>&#160;    <a class="code" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a6015f8ad11a49088a5a993aab7ff2a08">EL_EIT_AND_ELG</a> = 2,     </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9ad55b9ddeb4cfbc450513d8d1da9f366a">   45</a></span>&#160;    <a class="code" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9ad55b9ddeb4cfbc450513d8d1da9f366a">EL_IT_AND_GG</a> = 3,       </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9">el_camera_exposure_mode</a>;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">--------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">typedef</span> int16_t el_mcd;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define EL_TIME_TO_MCT(t) ((el_mct)(EL_MASTERCLOCK_FREQ/EL_TIME_FREQ)*(t))</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define EL_MCT_ZERO_POINT   (65536UL)</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">void</span> el_init_masterclock();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> el_routine_masterclock_14400hz();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> el_nop_delay(<span class="keywordtype">int</span> x);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a00015_html"><div class="ttname"><a href="a00015.html">el_common.h</a></div></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00004.html">   57</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="a00004.html#a5c2725b38e0e6dda7fa8619ff17e8242">   58</a></span>&#160;    <a class="code" href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9">el_camera_exposure_mode</a> <a class="code" href="a00004.html#a5c2725b38e0e6dda7fa8619ff17e8242">ExposureMode</a>; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    el_bool AutoWhiteBalance;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    el_bool AutoDigitalGain;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="a00004.html#a96a5f876f12e2278dd5f0fca979e368f">   61</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="a00004.html#a96a5f876f12e2278dd5f0fca979e368f">ExposureTime</a>;             </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="a00004.html#ade963299cc7b68e939d341855cbcd3c1">   62</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="a00004.html#ade963299cc7b68e939d341855cbcd3c1">ExternalIntergationTime</a>;  </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="a00004.html#a1201d921ec6ac6263c62d0c08d30228f">   63</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="a00004.html#a1201d921ec6ac6263c62d0c08d30228f">ExternalLinearGain</a>;       </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="a00004.html#a6806e1a071df7be85c2909064ce2ce6e">   64</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="a00004.html#a6806e1a071df7be85c2909064ce2ce6e">IntegrationTime</a>;          </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="a00004.html#a0f2f78905db58a1485f4700da3b785ee">   65</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="a00004.html#a0f2f78905db58a1485f4700da3b785ee">GlobalGain</a>;               </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="a00004.html#ac5c0c62073643d72f3ca970198447bff">   66</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="a00004.html#ac5c0c62073643d72f3ca970198447bff">DigitalGain</a>;              </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="a00004.html#a7757231840033cf3410b97ed93d3481a">   67</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="a00004.html#a7757231840033cf3410b97ed93d3481a">RedGain</a>;                  </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="a00004.html#aa682d2e1a12d4005c02ebe61797441d5">   68</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="a00004.html#aa682d2e1a12d4005c02ebe61797441d5">GreenGain</a>;                </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="a00004.html#ae6e70df6cba97baad2489830dd1debf9">   69</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="a00004.html#ae6e70df6cba97baad2489830dd1debf9">BlueGain</a>;                 </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;} <a class="code" href="a00004.html">el_camera_param</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="a00003.html">   77</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    el_uint16 Width;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    el_uint16 Height;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    el_uint16 Data[EL_CAMERA_FRAME_DIM_Y][EL_CAMERA_FRAME_DIM_X];</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;} <a class="code" href="a00003.html">el_camera_image</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00014.html#a71f0aa4aa40a1d79d430bcdd180542b1">el_enable_camera</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00014.html#a8431c47016be16fbef7511c697c65069">el_disable_camera</a>();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<a class="code" href="a00004.html">el_camera_param</a>* <a class="code" href="a00014.html#a0c16455023d3980e9ebd50ad39a35bc1">el_camera_options</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00014.html#abd8ee3bbbd0f42137beee889b5ff00c8">el_camera_options_apply</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00014.html#a83754444b81307ae4877d886fbc52abe">el_camera_options_reset</a>();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00014.html#a8f837179c0c63d636c19abc693e9957f">el_config_camera</a>(<span class="keyword">const</span> <a class="code" href="a00004.html">el_camera_param</a>*p);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00014.html#a224a4d5a3b19984a0c9181fe667ed08b">el_camera_lock_frame</a>();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00014.html#ae32672c397e15c30cbe8b7b5b5f874ce">el_camera_unlock_frame</a>();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00014.html#a92f695141c5005e558a9d84f86ce6837">el_camera_is_frame_locked</a>();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;el_uint32 <a class="code" href="a00014.html#af6ae396b98b3a934045ee14772c69758">el_camera_get_frame_counter</a>();</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00014.html#a0e31a461b852a03f3d422f98ca77428a">el_camera_get_frame_pixel</a>(<span class="keywordtype">int</span> X,<span class="keywordtype">int</span> Y,el_uint8*out3v);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;el_uint16 <a class="code" href="a00014.html#abe3367f2172a48c1dcd28d974e64388e">el_camera_get_frame_width</a>();</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;el_uint16 <a class="code" href="a00014.html#a0f7eb3a2e184575e94274c7d4cb75436">el_camera_get_frame_height</a>();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<a class="code" href="a00003.html">el_camera_image</a>*<a class="code" href="a00014.html#aa133fa3b697fa5c6401c7555049954e8">el_camera_frame</a>();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">#define EL_CAM_I2C_ID   0xDC</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="keyword">extern</span> el_uint16 el_cam_device_id;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="keyword">extern</span> el_uint16 el_cam_revision_n;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keyword">extern</span> el_uint8 el_cam_auto_function;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">bool</span> el_cam_enabled;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> el_uint16 el_cam_lock_buffer;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> el_uint32 el_cam_frame_counter;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00003.html">el_camera_image</a> *el_cam_r_frame;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keyword">extern</span> <a class="code" href="a00003.html">el_camera_image</a> *el_cam_w_frame;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keyword">extern</span> el_uint16 *el_cam_line_pointer;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keyword">extern</span> el_uint16 *el_cam_pixel_pointer;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keyword">extern</span> el_uint16 el_cam_x;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="keyword">extern</span> el_uint16 el_cam_y;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="keywordtype">void</span> el_init_camera(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="keywordtype">void</span> el_cam_init_register(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="keywordtype">void</span> el_cam_swap_buffer(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* EL_INCLUDE_LIB_INTERNAL_CONTEXT */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* EL_CAMERA_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00014_html_a83754444b81307ae4877d886fbc52abe"><div class="ttname"><a href="a00014.html#a83754444b81307ae4877d886fbc52abe">el_camera_options_reset</a></div><div class="ttdeci">void el_camera_options_reset()</div><div class="ttdoc">reset the settings stored in el_camera_options to default </div></div>
+<div class="ttc" id="a00015_html"><div class="ttname"><a href="a00015.html">el_clock.h</a></div></div>
+<div class="ttc" id="a00003_html"><div class="ttname"><a href="a00003.html">el_camera_image</a></div><div class="ttdef"><b>Definition:</b> el_camera.h:77</div></div>
+<div class="ttc" id="a00004_html_a5c2725b38e0e6dda7fa8619ff17e8242"><div class="ttname"><a href="a00004.html#a5c2725b38e0e6dda7fa8619ff17e8242">el_camera_param::ExposureMode</a></div><div class="ttdeci">el_camera_exposure_mode ExposureMode</div><div class="ttdoc">select one of the four modes (see el_camera_exposure_mode) </div><div class="ttdef"><b>Definition:</b> el_camera.h:58</div></div>
+<div class="ttc" id="a00004_html_ade963299cc7b68e939d341855cbcd3c1"><div class="ttname"><a href="a00004.html#ade963299cc7b68e939d341855cbcd3c1">el_camera_param::ExternalIntergationTime</a></div><div class="ttdeci">float ExternalIntergationTime</div><div class="ttdoc">valid range is ( 0.0, 512.0 ) </div><div class="ttdef"><b>Definition:</b> el_camera.h:62</div></div>
+<div class="ttc" id="a00014_html_a0e31a461b852a03f3d422f98ca77428a"><div class="ttname"><a href="a00014.html#a0e31a461b852a03f3d422f98ca77428a">el_camera_get_frame_pixel</a></div><div class="ttdeci">void el_camera_get_frame_pixel(int X, int Y, el_uint8 *out3v)</div><div class="ttdoc">get the color of a pixel in current frame buffer. </div></div>
+<div class="ttc" id="a00004_html_ac5c0c62073643d72f3ca970198447bff"><div class="ttname"><a href="a00004.html#ac5c0c62073643d72f3ca970198447bff">el_camera_param::DigitalGain</a></div><div class="ttdeci">float DigitalGain</div><div class="ttdoc">valid range is [ 0.015, 3.98 ] </div><div class="ttdef"><b>Definition:</b> el_camera.h:66</div></div>
+<div class="ttc" id="a00014_html_a224a4d5a3b19984a0c9181fe667ed08b"><div class="ttname"><a href="a00014.html#a224a4d5a3b19984a0c9181fe667ed08b">el_camera_lock_frame</a></div><div class="ttdeci">void el_camera_lock_frame()</div><div class="ttdoc">lock the frame buffers </div></div>
+<div class="ttc" id="a00014_html_abe3367f2172a48c1dcd28d974e64388e"><div class="ttname"><a href="a00014.html#abe3367f2172a48c1dcd28d974e64388e">el_camera_get_frame_width</a></div><div class="ttdeci">el_uint16 el_camera_get_frame_width()</div><div class="ttdoc">get width (horizontal dimension) of the image in the frame buffer for reading. </div></div>
+<div class="ttc" id="a00014_html_aa133fa3b697fa5c6401c7555049954e8"><div class="ttname"><a href="a00014.html#aa133fa3b697fa5c6401c7555049954e8">el_camera_frame</a></div><div class="ttdeci">el_camera_image * el_camera_frame()</div><div class="ttdoc">get the pointer to a static instance of el_camera_image for reading </div></div>
+<div class="ttc" id="a00014_html_a8f837179c0c63d636c19abc693e9957f"><div class="ttname"><a href="a00014.html#a8f837179c0c63d636c19abc693e9957f">el_config_camera</a></div><div class="ttdeci">void el_config_camera(const el_camera_param *p)</div><div class="ttdoc">apply the settings in the given structure </div></div>
+<div class="ttc" id="a00014_html_ae3dd3a05038328cf4dd7b6fc78f41fd9"><div class="ttname"><a href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9">el_camera_exposure_mode</a></div><div class="ttdeci">el_camera_exposure_mode</div><div class="ttdef"><b>Definition:</b> el_camera.h:41</div></div>
+<div class="ttc" id="a00014_html_a8431c47016be16fbef7511c697c65069"><div class="ttname"><a href="a00014.html#a8431c47016be16fbef7511c697c65069">el_disable_camera</a></div><div class="ttdeci">void el_disable_camera()</div><div class="ttdoc">disable the camera </div></div>
+<div class="ttc" id="a00014_html_a0c16455023d3980e9ebd50ad39a35bc1"><div class="ttname"><a href="a00014.html#a0c16455023d3980e9ebd50ad39a35bc1">el_camera_options</a></div><div class="ttdeci">el_camera_param * el_camera_options()</div><div class="ttdoc">get the pointer to a static instance of el_camera_param </div></div>
+<div class="ttc" id="a00004_html_aa682d2e1a12d4005c02ebe61797441d5"><div class="ttname"><a href="a00004.html#aa682d2e1a12d4005c02ebe61797441d5">el_camera_param::GreenGain</a></div><div class="ttdeci">float GreenGain</div><div class="ttdoc">valid range is [ 0.015, 3.98 ] </div><div class="ttdef"><b>Definition:</b> el_camera.h:68</div></div>
+<div class="ttc" id="a00014_html_abd8ee3bbbd0f42137beee889b5ff00c8"><div class="ttname"><a href="a00014.html#abd8ee3bbbd0f42137beee889b5ff00c8">el_camera_options_apply</a></div><div class="ttdeci">void el_camera_options_apply()</div><div class="ttdoc">apply the settings stored in el_camera_options directly </div></div>
+<div class="ttc" id="a00014_html_ae32672c397e15c30cbe8b7b5b5f874ce"><div class="ttname"><a href="a00014.html#ae32672c397e15c30cbe8b7b5b5f874ce">el_camera_unlock_frame</a></div><div class="ttdeci">void el_camera_unlock_frame()</div><div class="ttdoc">unlock the frame buffers </div></div>
+<div class="ttc" id="a00014_html_ae3dd3a05038328cf4dd7b6fc78f41fd9ad55b9ddeb4cfbc450513d8d1da9f366a"><div class="ttname"><a href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9ad55b9ddeb4cfbc450513d8d1da9f366a">EL_IT_AND_GG</a></div><div class="ttdoc">use IntegrationTime and GlobalGain </div><div class="ttdef"><b>Definition:</b> el_camera.h:45</div></div>
+<div class="ttc" id="a00014_html_ae3dd3a05038328cf4dd7b6fc78f41fd9a75f351626ba04c17bbf9e389b880b7de"><div class="ttname"><a href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a75f351626ba04c17bbf9e389b880b7de">EL_AUTOMATIC</a></div><div class="ttdoc">automatically adjusted by the camera </div><div class="ttdef"><b>Definition:</b> el_camera.h:42</div></div>
+<div class="ttc" id="a00014_html_ae3dd3a05038328cf4dd7b6fc78f41fd9a6015f8ad11a49088a5a993aab7ff2a08"><div class="ttname"><a href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a6015f8ad11a49088a5a993aab7ff2a08">EL_EIT_AND_ELG</a></div><div class="ttdoc">use ExternalIntergationTime and ExternalLinearGain </div><div class="ttdef"><b>Definition:</b> el_camera.h:44</div></div>
+<div class="ttc" id="a00004_html_a96a5f876f12e2278dd5f0fca979e368f"><div class="ttname"><a href="a00004.html#a96a5f876f12e2278dd5f0fca979e368f">el_camera_param::ExposureTime</a></div><div class="ttdeci">float ExposureTime</div><div class="ttdoc">sensible range is [ 1.0, 20.0 ] </div><div class="ttdef"><b>Definition:</b> el_camera.h:61</div></div>
+<div class="ttc" id="a00004_html_a6806e1a071df7be85c2909064ce2ce6e"><div class="ttname"><a href="a00004.html#a6806e1a071df7be85c2909064ce2ce6e">el_camera_param::IntegrationTime</a></div><div class="ttdeci">float IntegrationTime</div><div class="ttdoc">valid range is ( 0.0, 512.0 ) </div><div class="ttdef"><b>Definition:</b> el_camera.h:64</div></div>
+<div class="ttc" id="a00014_html_a71f0aa4aa40a1d79d430bcdd180542b1"><div class="ttname"><a href="a00014.html#a71f0aa4aa40a1d79d430bcdd180542b1">el_enable_camera</a></div><div class="ttdeci">void el_enable_camera()</div><div class="ttdoc">enable the camera </div></div>
+<div class="ttc" id="a00004_html_ae6e70df6cba97baad2489830dd1debf9"><div class="ttname"><a href="a00004.html#ae6e70df6cba97baad2489830dd1debf9">el_camera_param::BlueGain</a></div><div class="ttdeci">float BlueGain</div><div class="ttdoc">valid range is [ 0.015, 3.98 ] </div><div class="ttdef"><b>Definition:</b> el_camera.h:69</div></div>
+<div class="ttc" id="a00004_html_a7757231840033cf3410b97ed93d3481a"><div class="ttname"><a href="a00004.html#a7757231840033cf3410b97ed93d3481a">el_camera_param::RedGain</a></div><div class="ttdeci">float RedGain</div><div class="ttdoc">valid range is [ 0.015, 3.98 ] </div><div class="ttdef"><b>Definition:</b> el_camera.h:67</div></div>
+<div class="ttc" id="a00004_html_a0f2f78905db58a1485f4700da3b785ee"><div class="ttname"><a href="a00004.html#a0f2f78905db58a1485f4700da3b785ee">el_camera_param::GlobalGain</a></div><div class="ttdeci">float GlobalGain</div><div class="ttdoc">valid range is [ 1.0, 32.0 ] </div><div class="ttdef"><b>Definition:</b> el_camera.h:65</div></div>
+<div class="ttc" id="a00014_html_ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea"><div class="ttname"><a href="a00014.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea">EL_EXPOSURE_TIME</a></div><div class="ttdoc">use ExposureTime </div><div class="ttdef"><b>Definition:</b> el_camera.h:43</div></div>
+<div class="ttc" id="a00016_html"><div class="ttname"><a href="a00016.html">el_common.h</a></div></div>
+<div class="ttc" id="a00014_html_a92f695141c5005e558a9d84f86ce6837"><div class="ttname"><a href="a00014.html#a92f695141c5005e558a9d84f86ce6837">el_camera_is_frame_locked</a></div><div class="ttdeci">bool el_camera_is_frame_locked()</div><div class="ttdoc">check whether the frame buffers is locked </div></div>
+<div class="ttc" id="a00004_html_a1201d921ec6ac6263c62d0c08d30228f"><div class="ttname"><a href="a00004.html#a1201d921ec6ac6263c62d0c08d30228f">el_camera_param::ExternalLinearGain</a></div><div class="ttdeci">float ExternalLinearGain</div><div class="ttdoc">valid range is ( 0.0, 256.0 ) </div><div class="ttdef"><b>Definition:</b> el_camera.h:63</div></div>
+<div class="ttc" id="a00004_html"><div class="ttname"><a href="a00004.html">el_camera_param</a></div><div class="ttdef"><b>Definition:</b> el_camera.h:57</div></div>
+<div class="ttc" id="a00014_html_af6ae396b98b3a934045ee14772c69758"><div class="ttname"><a href="a00014.html#af6ae396b98b3a934045ee14772c69758">el_camera_get_frame_counter</a></div><div class="ttdeci">el_uint32 el_camera_get_frame_counter()</div><div class="ttdoc">get total number of frames captured since initialization </div></div>
+<div class="ttc" id="a00014_html_a0f7eb3a2e184575e94274c7d4cb75436"><div class="ttname"><a href="a00014.html#a0f7eb3a2e184575e94274c7d4cb75436">el_camera_get_frame_height</a></div><div class="ttdeci">el_uint16 el_camera_get_frame_height()</div><div class="ttdoc">get height (virtical dimension) of the image in the frame buffer for reading. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:55 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:44 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

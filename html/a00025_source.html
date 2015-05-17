@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: elu.h Source File</title>
+<title>embedded system library for e-puck: el_uart.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -86,10 +86,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">elu.h</div>  </div>
+<div class="title">el_uart.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="a00025.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">embedded system library for e-puck</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"></span></div>
@@ -107,25 +107,96 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef ELU_H</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define ELU_H</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00011.html">el.h</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00026.html">elu_stdio.h</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define MAX(a,b) (((a)&gt;=(b))? (a):(b))</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define MIN(a,b) (((a)&lt;(b))? (a):(b))</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> el_print_camera_image(<span class="keyword">const</span> <a class="code" href="a00003.html">el_camera_image</a>*p,el_uint32 n);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a00003_html"><div class="ttname"><a href="a00003.html">el_camera_image</a></div><div class="ttdef"><b>Definition:</b> el_camera.h:77</div></div>
-<div class="ttc" id="a00026_html"><div class="ttname"><a href="a00026.html">elu_stdio.h</a></div></div>
-<div class="ttc" id="a00011_html"><div class="ttname"><a href="a00011.html">el.h</a></div><div class="ttdoc">This is the main header file of this library. </div></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifndef EL_UART_H</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define EL_UART_H</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00016.html">el_common.h</a>&quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define EL_UART_1       0</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define EL_UART_2       1</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define EL_UART_BLUETOOTH   EL_UART_1</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00025.html#af5ac74afdbd2d40cf24f71f8d53e08af">el_uart_use_reset_code</a>(el_bool k,el_int8 x);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00025.html#af8f957eb440b5e3cf6b8b7fe632ac9ae">el_uart_send_char</a>(el_index ch,<span class="keywordtype">char</span> c);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00025.html#a18208aab32f8d190ef6add9192906308">el_uart_send_string</a>(el_index ch,<span class="keyword">const</span> <span class="keywordtype">char</span>*str);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00025.html#a3b0d06285477b4530bfc707ffebb33fe">el_uart_is_sending</a>(el_index ch);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;el_uint16 <a class="code" href="a00025.html#af83b9a6db44103475070c9450284762e">el_uart_get_char_counter</a>(el_index ch);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">char</span> <a class="code" href="a00025.html#a4d9362d0dcecad303a0dff071820570d">el_uart_get_char</a>(el_index ch);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00025.html#a83cc3369d9f0d3ecad9bde07cbd7edbf">el_uart_flush_char</a>(el_index ch);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;el_uint16 <a class="code" href="a00025.html#a6eec3360f3ae9d5fce78b19689cf8fdf">el_uart_get_string</a>(el_index ch,<span class="keywordtype">char</span>*buf,el_uint16 buf_size,el_bool return_line);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keywordtype">char</span> <a class="code" href="a00025.html#a51f31da50856644699cffe1c8aa20844">el_uart_peek_first_char</a>(el_index ch);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keywordtype">char</span> <a class="code" href="a00025.html#a4105c9f5a33489fc61dbf479e9302869">el_uart_peek_last_char</a>(el_index ch);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00025.html#a9470bebab5572e8a98101f17fc1f526b">el_uart_erase_last_char</a>(el_index ch);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">#define EL_UART_NEWLINE_CRLF</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#define EL_UART_BAUDRATE    115200</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">#define EL_UART_TX_BUF_DIM  80</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#define EL_UART_RX_BUF_DIM  64</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> el_bool el_uart_reset_code_enable;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="keyword">extern</span> el_uint8 el_uart_reset_code;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keyword">extern</span> el_uint16 el_uart1_tx_counter;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span>*el_uart1_tx_pointer;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> el_uart1_tx_buffer[EL_UART_TX_BUF_DIM];</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> el_uint8 el_uart1_rx_buf_i;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keyword">extern</span> <span class="keyword">volatile</span> el_uint8 el_uart1_rx_buf_o;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> el_uart1_rx_buffer[EL_UART_RX_BUF_DIM];</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="keywordtype">void</span> el_init_uart();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keywordtype">void</span> el_uart1_tx_clear();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keywordtype">void</span> el_uart1_tx_issue();</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="keywordtype">void</span> el_uart2_tx_clear();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="keywordtype">void</span> el_uart2_tx_issue();</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* EL_UART_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00025_html_a4105c9f5a33489fc61dbf479e9302869"><div class="ttname"><a href="a00025.html#a4105c9f5a33489fc61dbf479e9302869">el_uart_peek_last_char</a></div><div class="ttdeci">char el_uart_peek_last_char(el_index ch)</div><div class="ttdoc">Check the last byte in the receiving buffer but do not remove it from the buffer. ...</div></div>
+<div class="ttc" id="a00025_html_a83cc3369d9f0d3ecad9bde07cbd7edbf"><div class="ttname"><a href="a00025.html#a83cc3369d9f0d3ecad9bde07cbd7edbf">el_uart_flush_char</a></div><div class="ttdeci">void el_uart_flush_char(el_index ch)</div><div class="ttdoc">Totally clear up the receiving buffer of a serial channel. </div></div>
+<div class="ttc" id="a00025_html_a4d9362d0dcecad303a0dff071820570d"><div class="ttname"><a href="a00025.html#a4d9362d0dcecad303a0dff071820570d">el_uart_get_char</a></div><div class="ttdeci">char el_uart_get_char(el_index ch)</div><div class="ttdoc">Take out one byte from the receiving buffer in order of first-in-first-out. </div></div>
+<div class="ttc" id="a00025_html_af8f957eb440b5e3cf6b8b7fe632ac9ae"><div class="ttname"><a href="a00025.html#af8f957eb440b5e3cf6b8b7fe632ac9ae">el_uart_send_char</a></div><div class="ttdeci">void el_uart_send_char(el_index ch, char c)</div><div class="ttdoc">Send one byte of data to the serial channel. </div></div>
+<div class="ttc" id="a00025_html_a9470bebab5572e8a98101f17fc1f526b"><div class="ttname"><a href="a00025.html#a9470bebab5572e8a98101f17fc1f526b">el_uart_erase_last_char</a></div><div class="ttdeci">void el_uart_erase_last_char(el_index ch)</div><div class="ttdoc">Remove the last byte received in the receiving buffer. </div></div>
+<div class="ttc" id="a00025_html_a18208aab32f8d190ef6add9192906308"><div class="ttname"><a href="a00025.html#a18208aab32f8d190ef6add9192906308">el_uart_send_string</a></div><div class="ttdeci">void el_uart_send_string(el_index ch, const char *str)</div><div class="ttdoc">Send a string (an array of char terminated by a null) to the serial channel. </div></div>
+<div class="ttc" id="a00025_html_a3b0d06285477b4530bfc707ffebb33fe"><div class="ttname"><a href="a00025.html#a3b0d06285477b4530bfc707ffebb33fe">el_uart_is_sending</a></div><div class="ttdeci">bool el_uart_is_sending(el_index ch)</div><div class="ttdoc">Check whether the transmission issued in the last sending function is finished. </div></div>
+<div class="ttc" id="a00025_html_af83b9a6db44103475070c9450284762e"><div class="ttname"><a href="a00025.html#af83b9a6db44103475070c9450284762e">el_uart_get_char_counter</a></div><div class="ttdeci">el_uint16 el_uart_get_char_counter(el_index ch)</div><div class="ttdoc">Check how many bytes are received and buffered in the channel. </div></div>
+<div class="ttc" id="a00025_html_a6eec3360f3ae9d5fce78b19689cf8fdf"><div class="ttname"><a href="a00025.html#a6eec3360f3ae9d5fce78b19689cf8fdf">el_uart_get_string</a></div><div class="ttdeci">el_uint16 el_uart_get_string(el_index ch, char *buf, el_uint16 buf_size, el_bool return_line)</div><div class="ttdoc">Get a string ended with a null (0 or &#39;\0&#39;) or a carriage-return (&#39;\r&#39;, (the "Enter" key)...</div></div>
+<div class="ttc" id="a00025_html_af5ac74afdbd2d40cf24f71f8d53e08af"><div class="ttname"><a href="a00025.html#af5ac74afdbd2d40cf24f71f8d53e08af">el_uart_use_reset_code</a></div><div class="ttdeci">void el_uart_use_reset_code(el_bool k, el_int8 x)</div><div class="ttdoc">Setup a value that: upon receving that value, reset the chip. </div></div>
+<div class="ttc" id="a00016_html"><div class="ttname"><a href="a00016.html">el_common.h</a></div></div>
+<div class="ttc" id="a00025_html_a51f31da50856644699cffe1c8aa20844"><div class="ttname"><a href="a00025.html#a51f31da50856644699cffe1c8aa20844">el_uart_peek_first_char</a></div><div class="ttdeci">char el_uart_peek_first_char(el_index ch)</div><div class="ttdoc">Check the first byte in the receiving buffer, but does not remove it from the buffer. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:55 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:44 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

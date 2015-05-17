@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_camera.h File Reference</title>
+<title>embedded system library for e-puck: el_accelerometer.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -86,250 +86,103 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_camera.h File Reference<div class="ingroups"><a class="el" href="a00042.html">Camera</a></div></div>  </div>
+<div class="title">el_accelerometer.h File Reference<div class="ingroups"><a class="el" href="a00043.html">Accelerometer</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00015_source.html">el_common.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00014_source.html">el_clock.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00016_source.html">el_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00015_source.html">el_clock.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00024_source.html">el_trigger.h</a>&quot;</code><br />
 </div>
 <p><a href="a00013_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00004.html">el_camera_param</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00003.html">el_camera_image</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ae4516458a5258aa2381c748431914ad8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4516458a5258aa2381c748431914ad8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_CAMERA_FRAME_DIM_X</b>&#160;&#160;&#160;40</td></tr>
-<tr class="separator:ae4516458a5258aa2381c748431914ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadd509e8a127f6d4afff0ac93f95989a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aadd509e8a127f6d4afff0ac93f95989a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_CAMERA_FRAME_DIM_Y</b>&#160;&#160;&#160;15</td></tr>
-<tr class="separator:aadd509e8a127f6d4afff0ac93f95989a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92f3f18bce6b3bfcf6d24e8d55a070a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af92f3f18bce6b3bfcf6d24e8d55a070a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_ACCELEROMETER_OUTPUT_MAX</b>&#160;&#160;&#160;4095U</td></tr>
+<tr class="separator:af92f3f18bce6b3bfcf6d24e8d55a070a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98372d7448aaf0e70fe55111d32e0108"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98372d7448aaf0e70fe55111d32e0108"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_ACCELEROMETER_ONE</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a98372d7448aaf0e70fe55111d32e0108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ae3dd3a05038328cf4dd7b6fc78f41fd9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#ae3dd3a05038328cf4dd7b6fc78f41fd9">el_camera_exposure_mode</a> { <a class="el" href="a00013.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a75f351626ba04c17bbf9e389b880b7de">EL_AUTOMATIC</a> = 0, 
-<a class="el" href="a00013.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea">EL_EXPOSURE_TIME</a> = 1, 
-<a class="el" href="a00013.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a6015f8ad11a49088a5a993aab7ff2a08">EL_EIT_AND_ELG</a> = 2, 
-<a class="el" href="a00013.html#ae3dd3a05038328cf4dd7b6fc78f41fd9ad55b9ddeb4cfbc450513d8d1da9f366a">EL_IT_AND_GG</a> = 3
+<tr class="memitem:a79ac462a3dd61a66fdb663c4a6a040c0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#a79ac462a3dd61a66fdb663c4a6a040c0">el_accelerometer_output</a> { <a class="el" href="a00013.html#a79ac462a3dd61a66fdb663c4a6a040c0a8e2e9eef8ce070c6b28ffa9b092c5622">EL_ACCELERATION_X</a>, 
+<a class="el" href="a00013.html#a79ac462a3dd61a66fdb663c4a6a040c0a3187da4938b065fcd06ab9370e2eb094">EL_ACCELERATION_Y</a>, 
+<a class="el" href="a00013.html#a79ac462a3dd61a66fdb663c4a6a040c0ac3479f89ec4543b2c39c893202a27d93">EL_ACCELERATION_Z</a>, 
+<a class="el" href="a00013.html#a79ac462a3dd61a66fdb663c4a6a040c0aa6a907e1b2552b087d1c9f01adcc505c">EL_ACCELERATION_ALL_3V</a>
  }</td></tr>
-<tr class="separator:ae3dd3a05038328cf4dd7b6fc78f41fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a79ac462a3dd61a66fdb663c4a6a040c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a71f0aa4aa40a1d79d430bcdd180542b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71f0aa4aa40a1d79d430bcdd180542b1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_enable_camera</b> ()</td></tr>
-<tr class="separator:a71f0aa4aa40a1d79d430bcdd180542b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8431c47016be16fbef7511c697c65069"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8431c47016be16fbef7511c697c65069"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>el_disable_camera</b> ()</td></tr>
-<tr class="separator:a8431c47016be16fbef7511c697c65069"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f9488cb5f643ed8491c97acebb58078"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00004.html">el_camera_param</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#a1f9488cb5f643ed8491c97acebb58078">el_config_camera_options</a> ()</td></tr>
-<tr class="memdesc:a1f9488cb5f643ed8491c97acebb58078"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the pointer to a static instance of <a class="el" href="a00004.html">el_camera_param</a>  <a href="#a1f9488cb5f643ed8491c97acebb58078">More...</a><br /></td></tr>
-<tr class="separator:a1f9488cb5f643ed8491c97acebb58078"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f837179c0c63d636c19abc693e9957f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#a8f837179c0c63d636c19abc693e9957f">el_config_camera</a> (const <a class="el" href="a00004.html">el_camera_param</a> *p)</td></tr>
-<tr class="memdesc:a8f837179c0c63d636c19abc693e9957f"><td class="mdescLeft">&#160;</td><td class="mdescRight">apply the parameters to the camera  <a href="#a8f837179c0c63d636c19abc693e9957f">More...</a><br /></td></tr>
-<tr class="separator:a8f837179c0c63d636c19abc693e9957f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a224a4d5a3b19984a0c9181fe667ed08b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#a224a4d5a3b19984a0c9181fe667ed08b">el_camera_lock_frame</a> ()</td></tr>
-<tr class="memdesc:a224a4d5a3b19984a0c9181fe667ed08b"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock the frame buffers  <a href="#a224a4d5a3b19984a0c9181fe667ed08b">More...</a><br /></td></tr>
-<tr class="separator:a224a4d5a3b19984a0c9181fe667ed08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae32672c397e15c30cbe8b7b5b5f874ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae32672c397e15c30cbe8b7b5b5f874ce"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#ae32672c397e15c30cbe8b7b5b5f874ce">el_camera_unlock_frame</a> ()</td></tr>
-<tr class="memdesc:ae32672c397e15c30cbe8b7b5b5f874ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">unlock the frame buffers <br /></td></tr>
-<tr class="separator:ae32672c397e15c30cbe8b7b5b5f874ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92f695141c5005e558a9d84f86ce6837"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#a92f695141c5005e558a9d84f86ce6837">el_camera_is_frame_locked</a> ()</td></tr>
-<tr class="memdesc:a92f695141c5005e558a9d84f86ce6837"><td class="mdescLeft">&#160;</td><td class="mdescRight">check whether the frame buffers is locked  <a href="#a92f695141c5005e558a9d84f86ce6837">More...</a><br /></td></tr>
-<tr class="separator:a92f695141c5005e558a9d84f86ce6837"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6ae396b98b3a934045ee14772c69758"><td class="memItemLeft" align="right" valign="top">el_uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#af6ae396b98b3a934045ee14772c69758">el_camera_get_frame_counter</a> ()</td></tr>
-<tr class="memdesc:af6ae396b98b3a934045ee14772c69758"><td class="mdescLeft">&#160;</td><td class="mdescRight">get total number of frames captured since initialization  <a href="#af6ae396b98b3a934045ee14772c69758">More...</a><br /></td></tr>
-<tr class="separator:af6ae396b98b3a934045ee14772c69758"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e31a461b852a03f3d422f98ca77428a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#a0e31a461b852a03f3d422f98ca77428a">el_camera_get_frame_pixel</a> (int X, int Y, el_uint8 *out3v)</td></tr>
-<tr class="memdesc:a0e31a461b852a03f3d422f98ca77428a"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the color of a pixel in current frame buffer.  <a href="#a0e31a461b852a03f3d422f98ca77428a">More...</a><br /></td></tr>
-<tr class="separator:a0e31a461b852a03f3d422f98ca77428a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe3367f2172a48c1dcd28d974e64388e"><td class="memItemLeft" align="right" valign="top">el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#abe3367f2172a48c1dcd28d974e64388e">el_camera_get_frame_width</a> ()</td></tr>
-<tr class="memdesc:abe3367f2172a48c1dcd28d974e64388e"><td class="mdescLeft">&#160;</td><td class="mdescRight">get width (horizontal dimension) of the image in the frame buffer for reading.  <a href="#abe3367f2172a48c1dcd28d974e64388e">More...</a><br /></td></tr>
-<tr class="separator:abe3367f2172a48c1dcd28d974e64388e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f7eb3a2e184575e94274c7d4cb75436"><td class="memItemLeft" align="right" valign="top">el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#a0f7eb3a2e184575e94274c7d4cb75436">el_camera_get_frame_height</a> ()</td></tr>
-<tr class="memdesc:a0f7eb3a2e184575e94274c7d4cb75436"><td class="mdescLeft">&#160;</td><td class="mdescRight">get height (virtical dimension) of the image in the frame buffer for reading.  <a href="#a0f7eb3a2e184575e94274c7d4cb75436">More...</a><br /></td></tr>
-<tr class="separator:a0f7eb3a2e184575e94274c7d4cb75436"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa133fa3b697fa5c6401c7555049954e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00003.html">el_camera_image</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#aa133fa3b697fa5c6401c7555049954e8">el_camera_frame</a> ()</td></tr>
-<tr class="memdesc:aa133fa3b697fa5c6401c7555049954e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the pointer to a static instance of <a class="el" href="a00003.html">el_camera_image</a> for reading  <a href="#aa133fa3b697fa5c6401c7555049954e8">More...</a><br /></td></tr>
-<tr class="separator:aa133fa3b697fa5c6401c7555049954e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7963cb81ac05b437e589e8de9df8a098"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7963cb81ac05b437e589e8de9df8a098"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#a7963cb81ac05b437e589e8de9df8a098">el_enable_accelerometer</a> ()</td></tr>
+<tr class="memdesc:a7963cb81ac05b437e589e8de9df8a098"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable the accelerometer <br /></td></tr>
+<tr class="separator:a7963cb81ac05b437e589e8de9df8a098"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5955a48a1aac9e661455cf1750f6340d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5955a48a1aac9e661455cf1750f6340d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#a5955a48a1aac9e661455cf1750f6340d">el_disable_accelerometer</a> ()</td></tr>
+<tr class="memdesc:a5955a48a1aac9e661455cf1750f6340d"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable the accelerometer <br /></td></tr>
+<tr class="separator:a5955a48a1aac9e661455cf1750f6340d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaba183df7db1bccade0be425af1e6348"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00013.html#aaba183df7db1bccade0be425af1e6348">el_accelerometer_get</a> (el_index i, <a class="el" href="a00013.html#a79ac462a3dd61a66fdb663c4a6a040c0">el_accelerometer_output</a> u, el_int16 *out)</td></tr>
+<tr class="memdesc:aaba183df7db1bccade0be425af1e6348"><td class="mdescLeft">&#160;</td><td class="mdescRight">get output value(s) from a accelerometer  <a href="#aaba183df7db1bccade0be425af1e6348">More...</a><br /></td></tr>
+<tr class="separator:aaba183df7db1bccade0be425af1e6348"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="ae3dd3a05038328cf4dd7b6fc78f41fd9"></a>
+<a class="anchor" id="a79ac462a3dd61a66fdb663c4a6a040c0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00013.html#ae3dd3a05038328cf4dd7b6fc78f41fd9">el_camera_exposure_mode</a></td>
+          <td class="memname">enum <a class="el" href="a00013.html#a79ac462a3dd61a66fdb663c4a6a040c0">el_accelerometer_output</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This enum is used in <a class="el" href="a00004.html">el_camera_param</a> to specify the exposure mode of the camera. </p>
+<p>This enum is used in <a class="el" href="a00013.html#aaba183df7db1bccade0be425af1e6348" title="get output value(s) from a accelerometer ">el_accelerometer_get</a> to select the output type to get. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ae3dd3a05038328cf4dd7b6fc78f41fd9a75f351626ba04c17bbf9e389b880b7de"></a>EL_AUTOMATIC&#160;</td><td class="fielddoc">
-<p>automatically adjusted by the camera </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a79ac462a3dd61a66fdb663c4a6a040c0a8e2e9eef8ce070c6b28ffa9b092c5622"></a>EL_ACCELERATION_X&#160;</td><td class="fielddoc">
+<p>get the acceleration along x-axis </p>
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea"></a>EL_EXPOSURE_TIME&#160;</td><td class="fielddoc">
-<p>use ExposureTime </p>
+<tr><td class="fieldname"><a class="anchor" id="a79ac462a3dd61a66fdb663c4a6a040c0a3187da4938b065fcd06ab9370e2eb094"></a>EL_ACCELERATION_Y&#160;</td><td class="fielddoc">
+<p>get the acceleration along y-axis </p>
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="ae3dd3a05038328cf4dd7b6fc78f41fd9a6015f8ad11a49088a5a993aab7ff2a08"></a>EL_EIT_AND_ELG&#160;</td><td class="fielddoc">
-<p>use ExternalIntergationTime and ExternalLinearGain </p>
+<tr><td class="fieldname"><a class="anchor" id="a79ac462a3dd61a66fdb663c4a6a040c0ac3479f89ec4543b2c39c893202a27d93"></a>EL_ACCELERATION_Z&#160;</td><td class="fielddoc">
+<p>get the acceleration along z-axis </p>
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="ae3dd3a05038328cf4dd7b6fc78f41fd9ad55b9ddeb4cfbc450513d8d1da9f366a"></a>EL_IT_AND_GG&#160;</td><td class="fielddoc">
-<p>use IntegrationTime and GlobalGain </p>
+<tr><td class="fieldname"><a class="anchor" id="a79ac462a3dd61a66fdb663c4a6a040c0aa6a907e1b2552b087d1c9f01adcc505c"></a>EL_ACCELERATION_ALL_3V&#160;</td><td class="fielddoc">
+<p>get the acceleration along all three axes </p>
 </td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a1f9488cb5f643ed8491c97acebb58078"></a>
+<a class="anchor" id="aaba183df7db1bccade0be425af1e6348"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00004.html">el_camera_param</a>* el_config_camera_options </td>
+          <td class="memname">int el_accelerometer_get </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get the pointer to a static instance of <a class="el" href="a00004.html">el_camera_param</a> </p>
-<dl class="section return"><dt>Returns</dt><dd>the pointer </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a8f837179c0c63d636c19abc693e9957f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_config_camera </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00004.html">el_camera_param</a> *&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>apply the parameters to the camera </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p</td><td>pointer to the data structure</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>The default parameters of the camera is equivalent to the following code: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;el_camera_param *CameraSetting;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;...</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;CameraSetting = el_config_camera_options();</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;CameraSetting-&gt;ExposureMode = EL_AUTOMATIC;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;CameraSetting-&gt;AutoWhiteBalance = true;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;CameraSetting-&gt;AutoDigitalGain = true;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;CameraSetting-&gt;ExposureTime = 1.0f;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;CameraSetting-&gt;RedGain = 1.0f;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;CameraSetting-&gt;GreenGain = 1.0f;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;CameraSetting-&gt;BlueGain = 1.0f;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;CameraSetting-&gt;ExternalIntergationTime = 1.0f;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;CameraSetting-&gt;ExternalLinearGain = 1.0f;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;CameraSetting-&gt;IntegrationTime = 1.0f;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;CameraSetting-&gt;GlobalGain = 1.0f;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;CameraSetting-&gt;DigitalGain = 1.0f;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;el_config_camera( CameraSetting );</div>
-</div><!-- fragment --><p>The time cost to execute this function is not neglectable (around 7.1 ms), so it should not be executed frequently in a process. </p>
-
-</div>
-</div>
-<a class="anchor" id="a224a4d5a3b19984a0c9181fe667ed08b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_camera_lock_frame </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>lock the frame buffers </p>
-<p>When the frame buffer is locked, no buffer swapping will occur. This guarantees the image inside the frame buffer to be one frame of image. Otherwise, the image may be changed halfway through a image processing algorithm. </p>
-
-</div>
-</div>
-<a class="anchor" id="a92f695141c5005e558a9d84f86ce6837"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool el_camera_is_frame_locked </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>check whether the frame buffers is locked </p>
-<dl class="section return"><dt>Returns</dt><dd>locked or not </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="af6ae396b98b3a934045ee14772c69758"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_uint32 el_camera_get_frame_counter </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get total number of frames captured since initialization </p>
-<dl class="section return"><dt>Returns</dt><dd>total number of frames</dd></dl>
-<p>When the frame buffers are locked, the frame counter will not be increased. </p>
-
-</div>
-</div>
-<a class="anchor" id="a0e31a461b852a03f3d422f98ca77428a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_camera_get_frame_pixel </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>X</em>, </td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>Y</em>, </td>
+          <td class="paramtype"><a class="el" href="a00013.html#a79ac462a3dd61a66fdb663c4a6a040c0">el_accelerometer_output</a>&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">el_uint8 *&#160;</td>
-          <td class="paramname"><em>out3v</em>&#160;</td>
+          <td class="paramtype">el_int16 *&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -339,79 +192,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
       </table>
 </div><div class="memdoc">
 
-<p>get the color of a pixel in current frame buffer. </p>
+<p>get output value(s) from a accelerometer </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">X</td><td>x coordinate of the pixel </td></tr>
-    <tr><td class="paramname">Y</td><td>y coordinate of the pixel </td></tr>
-    <tr><td class="paramname">out3v</td><td>pointer to the array to store the RGB components.</td></tr>
+    <tr><td class="paramname">i</td><td>index of the accelerometer (currently can only be 0) </td></tr>
+    <tr><td class="paramname">u</td><td>output type </td></tr>
+    <tr><td class="paramname">out</td><td>pointer to a variable or an array of variables to store the output value(s).</td></tr>
   </table>
   </dd>
 </dl>
-<p>(0,0) is the bottom left corner. </p>
-
-</div>
-</div>
-<a class="anchor" id="abe3367f2172a48c1dcd28d974e64388e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_uint16 el_camera_get_frame_width </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get width (horizontal dimension) of the image in the frame buffer for reading. </p>
-<dl class="section return"><dt>Returns</dt><dd>width of the frame to be locked for reading.</dd></dl>
-<p>At present, this function always return 40. </p>
-
-</div>
-</div>
-<a class="anchor" id="a0f7eb3a2e184575e94274c7d4cb75436"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_uint16 el_camera_get_frame_height </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get height (virtical dimension) of the image in the frame buffer for reading. </p>
-<dl class="section return"><dt>Returns</dt><dd>height of the frame to be locked for reading.</dd></dl>
-<p>At present, this function always return 15. </p>
-
-</div>
-</div>
-<a class="anchor" id="aa133fa3b697fa5c6401c7555049954e8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00003.html">el_camera_image</a>* el_camera_frame </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get the pointer to a static instance of <a class="el" href="a00003.html">el_camera_image</a> for reading </p>
-<dl class="section return"><dt>Returns</dt><dd>the pointer </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>number of values stored into *out.</dd></dl>
+<p>The refreshing rate of the accelerometer outputs is 120 Hz. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:44 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

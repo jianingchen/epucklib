@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_timer.h File Reference</title>
+<title>embedded system library for e-puck: el_stepper_motor.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -86,338 +86,84 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_timer.h File Reference<div class="ingroups"><a class="el" href="a00046.html">Timer</a></div></div>  </div>
+<div class="title">el_stepper_motor.h File Reference<div class="ingroups"><a class="el" href="a00040.html">Stepper Motor</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00015_source.html">el_common.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00014_source.html">el_clock.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00016_source.html">el_common.h</a>&quot;</code><br />
 </div>
 <p><a href="a00022_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a04b50e4cd765b00d5b5d6cf612ce6ab5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04b50e4cd765b00d5b5d6cf612ce6ab5"></a>
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>el_timer_callback</b> )(void *)</td></tr>
-<tr class="separator:a04b50e4cd765b00d5b5d6cf612ce6ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html">el_stepper_motor_param</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a60f9e6d36dccaf599e3b3acbd14be044"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60f9e6d36dccaf599e3b3acbd14be044"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_STEPPER_MOTOR_RATE_MAX</b>&#160;&#160;&#160;1000</td></tr>
+<tr class="separator:a60f9e6d36dccaf599e3b3acbd14be044"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40fefea00bab4106092964bf3ae50ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af40fefea00bab4106092964bf3ae50ce"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_STEPPER_MOTOR_RATE_MIN</b>&#160;&#160;&#160;50</td></tr>
+<tr class="separator:af40fefea00bab4106092964bf3ae50ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbe8618c74f560bbf9dfe8aab434017a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbe8618c74f560bbf9dfe8aab434017a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_STEPPER_MOTOR_LEFT</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:adbe8618c74f560bbf9dfe8aab434017a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83bfb04283492475e8b629184d34c2ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83bfb04283492475e8b629184d34c2ef"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_STEPPER_MOTOR_RIGHT</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a83bfb04283492475e8b629184d34c2ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25fd22bcfe2352e697c799d0c6545070"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25fd22bcfe2352e697c799d0c6545070"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_EPUCK_FULL_REVOLUTION_STEPS</b>&#160;&#160;&#160;2512</td></tr>
+<tr class="separator:a25fd22bcfe2352e697c799d0c6545070"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a32ee166a22bc99325af1bf8eba97e728"><td class="memItemLeft" align="right" valign="top">el_handle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a32ee166a22bc99325af1bf8eba97e728">el_create_timer</a> (void)</td></tr>
-<tr class="memdesc:a32ee166a22bc99325af1bf8eba97e728"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a timer in the system  <a href="#a32ee166a22bc99325af1bf8eba97e728">More...</a><br /></td></tr>
-<tr class="separator:a32ee166a22bc99325af1bf8eba97e728"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b93eb04bc2b765b88ef545584b09f09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a0b93eb04bc2b765b88ef545584b09f09">el_delete_timer</a> (el_handle h)</td></tr>
-<tr class="memdesc:a0b93eb04bc2b765b88ef545584b09f09"><td class="mdescLeft">&#160;</td><td class="mdescRight">delete the timer  <a href="#a0b93eb04bc2b765b88ef545584b09f09">More...</a><br /></td></tr>
-<tr class="separator:a0b93eb04bc2b765b88ef545584b09f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad30accc29783c1c9d16d8f75f417d77d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#ad30accc29783c1c9d16d8f75f417d77d">el_timer_set_perodic</a> (el_handle h, el_bool b)</td></tr>
-<tr class="memdesc:ad30accc29783c1c9d16d8f75f417d77d"><td class="mdescLeft">&#160;</td><td class="mdescRight">set whether the timer repeat the countdown process once a countdown is finished  <a href="#ad30accc29783c1c9d16d8f75f417d77d">More...</a><br /></td></tr>
-<tr class="separator:ad30accc29783c1c9d16d8f75f417d77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfc45c94d901d73a62badce5bfe33a66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#acfc45c94d901d73a62badce5bfe33a66">el_timer_set_callback</a> (el_handle h, el_timer_callback func, void *arg)</td></tr>
-<tr class="memdesc:acfc45c94d901d73a62badce5bfe33a66"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the callback of a timer  <a href="#acfc45c94d901d73a62badce5bfe33a66">More...</a><br /></td></tr>
-<tr class="separator:acfc45c94d901d73a62badce5bfe33a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62305e9d4d0ea903eb9672e171002d38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a62305e9d4d0ea903eb9672e171002d38">el_timer_start</a> (el_handle h, el_time t_ms)</td></tr>
-<tr class="memdesc:a62305e9d4d0ea903eb9672e171002d38"><td class="mdescLeft">&#160;</td><td class="mdescRight">specify the countdown time and start the timer  <a href="#a62305e9d4d0ea903eb9672e171002d38">More...</a><br /></td></tr>
-<tr class="separator:a62305e9d4d0ea903eb9672e171002d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5b8368651839005befe9775fbb4b0a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#aa5b8368651839005befe9775fbb4b0a0">el_timer_start_fraction</a> (el_handle h, int num, int den)</td></tr>
-<tr class="memdesc:aa5b8368651839005befe9775fbb4b0a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">specify the countdown time using a fraction and start the timer  <a href="#aa5b8368651839005befe9775fbb4b0a0">More...</a><br /></td></tr>
-<tr class="separator:aa5b8368651839005befe9775fbb4b0a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36c9529d469f770bb220e08be5f93337"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a36c9529d469f770bb220e08be5f93337">el_timer_pause</a> (el_handle h)</td></tr>
-<tr class="memdesc:a36c9529d469f770bb220e08be5f93337"><td class="mdescLeft">&#160;</td><td class="mdescRight">pause the countdown of the timer  <a href="#a36c9529d469f770bb220e08be5f93337">More...</a><br /></td></tr>
-<tr class="separator:a36c9529d469f770bb220e08be5f93337"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4705fb6ecdf3a8e0f601be13ea8d212"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#af4705fb6ecdf3a8e0f601be13ea8d212">el_timer_resume</a> (el_handle h)</td></tr>
-<tr class="memdesc:af4705fb6ecdf3a8e0f601be13ea8d212"><td class="mdescLeft">&#160;</td><td class="mdescRight">resume the countdown of the timer  <a href="#af4705fb6ecdf3a8e0f601be13ea8d212">More...</a><br /></td></tr>
-<tr class="separator:af4705fb6ecdf3a8e0f601be13ea8d212"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56f7a965a8b0cb8c5accc9c4ddee2a8f"><td class="memItemLeft" align="right" valign="top">el_handle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a56f7a965a8b0cb8c5accc9c4ddee2a8f">el_timer_callback_get_handle</a> ()</td></tr>
-<tr class="memdesc:a56f7a965a8b0cb8c5accc9c4ddee2a8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the handle of the timer in a timer callback  <a href="#a56f7a965a8b0cb8c5accc9c4ddee2a8f">More...</a><br /></td></tr>
-<tr class="separator:a56f7a965a8b0cb8c5accc9c4ddee2a8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8aa9281fce844f48a98cf2608281d898"><td class="memItemLeft" align="right" valign="top">el_uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a8aa9281fce844f48a98cf2608281d898">el_timer_get_rounds</a> (el_handle h)</td></tr>
-<tr class="memdesc:a8aa9281fce844f48a98cf2608281d898"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the rounds of the timer  <a href="#a8aa9281fce844f48a98cf2608281d898">More...</a><br /></td></tr>
-<tr class="separator:a8aa9281fce844f48a98cf2608281d898"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4f486e1589e2cc62aacb0e9c64a5dd2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#af4f486e1589e2cc62aacb0e9c64a5dd2">el_timer_set_rounds</a> (el_handle h, el_uint32 n)</td></tr>
-<tr class="memdesc:af4f486e1589e2cc62aacb0e9c64a5dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the rounds of the timer  <a href="#af4f486e1589e2cc62aacb0e9c64a5dd2">More...</a><br /></td></tr>
-<tr class="separator:af4f486e1589e2cc62aacb0e9c64a5dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a909852833e84d483d5f6b18a3e8757ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a909852833e84d483d5f6b18a3e8757ad"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a909852833e84d483d5f6b18a3e8757ad">el_enable_stepper_motor</a> (void)</td></tr>
+<tr class="memdesc:a909852833e84d483d5f6b18a3e8757ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable the stepper motor module <br /></td></tr>
+<tr class="separator:a909852833e84d483d5f6b18a3e8757ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e691245e5b17a1aef17469696b1e6d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e691245e5b17a1aef17469696b1e6d3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a3e691245e5b17a1aef17469696b1e6d3">el_disable_stepper_motor</a> (void)</td></tr>
+<tr class="memdesc:a3e691245e5b17a1aef17469696b1e6d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable the stepper motor module <br /></td></tr>
+<tr class="separator:a3e691245e5b17a1aef17469696b1e6d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacdf94e1a3dc67b0c3f3fa974b2d7d4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00007.html">el_stepper_motor_param</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#aacdf94e1a3dc67b0c3f3fa974b2d7d4b">el_stepper_motor_options</a> ()</td></tr>
+<tr class="memdesc:aacdf94e1a3dc67b0c3f3fa974b2d7d4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the pointer to a static instance of <a class="el" href="a00007.html">el_stepper_motor_param</a>  <a href="#aacdf94e1a3dc67b0c3f3fa974b2d7d4b">More...</a><br /></td></tr>
+<tr class="separator:aacdf94e1a3dc67b0c3f3fa974b2d7d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accf9e72ee8f25f5e6b41fc5e0f6670b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#accf9e72ee8f25f5e6b41fc5e0f6670b4">el_stepper_motor_options_apply</a> ()</td></tr>
+<tr class="memdesc:accf9e72ee8f25f5e6b41fc5e0f6670b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">apply the settings stored in <a class="el" href="a00022.html#aacdf94e1a3dc67b0c3f3fa974b2d7d4b" title="get the pointer to a static instance of el_stepper_motor_param ">el_stepper_motor_options</a> directly  <a href="#accf9e72ee8f25f5e6b41fc5e0f6670b4">More...</a><br /></td></tr>
+<tr class="separator:accf9e72ee8f25f5e6b41fc5e0f6670b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63f42f10abe862f48d4b47e54e737661"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a63f42f10abe862f48d4b47e54e737661">el_stepper_motor_options_reset</a> ()</td></tr>
+<tr class="memdesc:a63f42f10abe862f48d4b47e54e737661"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the settings stored in <a class="el" href="a00022.html#aacdf94e1a3dc67b0c3f3fa974b2d7d4b" title="get the pointer to a static instance of el_stepper_motor_param ">el_stepper_motor_options</a> to default  <a href="#a63f42f10abe862f48d4b47e54e737661">More...</a><br /></td></tr>
+<tr class="separator:a63f42f10abe862f48d4b47e54e737661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba08c18b0c17d7d7ab38671cc9c9ea97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#aba08c18b0c17d7d7ab38671cc9c9ea97">el_config_stepper_motor</a> (const <a class="el" href="a00007.html">el_stepper_motor_param</a> *p)</td></tr>
+<tr class="memdesc:aba08c18b0c17d7d7ab38671cc9c9ea97"><td class="mdescLeft">&#160;</td><td class="mdescRight">apply the settings in the given structure  <a href="#aba08c18b0c17d7d7ab38671cc9c9ea97">More...</a><br /></td></tr>
+<tr class="separator:aba08c18b0c17d7d7ab38671cc9c9ea97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc185a86917fa56a61fe1a847c385a19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#afc185a86917fa56a61fe1a847c385a19">el_stepper_motor_set_speed</a> (el_index i, int u)</td></tr>
+<tr class="memdesc:afc185a86917fa56a61fe1a847c385a19"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the stepping rate and direction of a motor  <a href="#afc185a86917fa56a61fe1a847c385a19">More...</a><br /></td></tr>
+<tr class="separator:afc185a86917fa56a61fe1a847c385a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10f902a71c23716842e463388fa302ff"><td class="memItemLeft" align="right" valign="top">el_int16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#a10f902a71c23716842e463388fa302ff">el_stepper_motor_get_steps</a> (el_index i)</td></tr>
+<tr class="memdesc:a10f902a71c23716842e463388fa302ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the step counter of a motor  <a href="#a10f902a71c23716842e463388fa302ff">More...</a><br /></td></tr>
+<tr class="separator:a10f902a71c23716842e463388fa302ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa024ba366f358e5a0e957dd6ef1ea44c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#aa024ba366f358e5a0e957dd6ef1ea44c">el_stepper_motor_set_steps</a> (el_index i, el_int16 n)</td></tr>
+<tr class="memdesc:aa024ba366f358e5a0e957dd6ef1ea44c"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the step counter of a motor  <a href="#aa024ba366f358e5a0e957dd6ef1ea44c">More...</a><br /></td></tr>
+<tr class="separator:aa024ba366f358e5a0e957dd6ef1ea44c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac598d24601f69e215db8a5e364fa1f0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00022.html#ac598d24601f69e215db8a5e364fa1f0d">el_set_wheel_speed</a> (int left, int right)</td></tr>
+<tr class="memdesc:ac598d24601f69e215db8a5e364fa1f0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">change the rotation speed for both of the motors on the e-puck  <a href="#ac598d24601f69e215db8a5e364fa1f0d">More...</a><br /></td></tr>
+<tr class="separator:ac598d24601f69e215db8a5e364fa1f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a32ee166a22bc99325af1bf8eba97e728"></a>
+<a class="anchor" id="aacdf94e1a3dc67b0c3f3fa974b2d7d4b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">el_handle el_create_timer </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>create a timer in the system </p>
-<dl class="section return"><dt>Returns</dt><dd>handle of the timer</dd></dl>
-<p>This function create a timer in the system. It returns a handle to the timer created. This handle is used to refer the timer in the related functions.</p>
-<p>This function returns NULL if the creation is failed. </p>
-
-</div>
-</div>
-<a class="anchor" id="a0b93eb04bc2b765b88ef545584b09f09"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_delete_timer </td>
-          <td>(</td>
-          <td class="paramtype">el_handle&#160;</td>
-          <td class="paramname"><em>h</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>delete the timer </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>handle of the timer </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ad30accc29783c1c9d16d8f75f417d77d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_timer_set_perodic </td>
-          <td>(</td>
-          <td class="paramtype">el_handle&#160;</td>
-          <td class="paramname"><em>h</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">el_bool&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>set whether the timer repeat the countdown process once a countdown is finished </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>handle of the timer </td></tr>
-    <tr><td class="paramname">b</td><td>is perodic or not </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="acfc45c94d901d73a62badce5bfe33a66"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_timer_set_callback </td>
-          <td>(</td>
-          <td class="paramtype">el_handle&#160;</td>
-          <td class="paramname"><em>h</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">el_timer_callback&#160;</td>
-          <td class="paramname"><em>func</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>arg</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>set the callback of a timer </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>handle of the timer </td></tr>
-    <tr><td class="paramname">func</td><td>pointer to the function to be called when the timer expired </td></tr>
-    <tr><td class="paramname">arg</td><td>the argument passed to the callback function when it is called</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>When the timer's countdown is finished, the time's callback "func" will be called as "func(arg);". This callback need to be a function with no wait/delay inside or any code with high computational cost.</p>
-<p>A perodic timer with a callback can achieve the similar functionalility of the 'agenda' in the official e-puck library, which creates a perodic routine in the system.</p>
-<p>Compared to a loop with time wait in a process, using timer callback to run a perodic routine has no accumulated error. For example, a timer with 50 ms period can accurately run its callback for 72000 times in one hour. If it is written inside a process as a loop with 50 ms wait, the looping times will be slightly less than 72000 due to the time cost of the loop body.</p>
-<p>Use <code>NULL</code> for 'func' if no callback function are needed. By default, the timer does not has a callback function. </p>
-
-</div>
-</div>
-<a class="anchor" id="a62305e9d4d0ea903eb9672e171002d38"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_timer_start </td>
-          <td>(</td>
-          <td class="paramtype">el_handle&#160;</td>
-          <td class="paramname"><em>h</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">el_time&#160;</td>
-          <td class="paramname"><em>t_ms</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>specify the countdown time and start the timer </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>handle of the timer </td></tr>
-    <tr><td class="paramname">t_ms</td><td>period in millisecond</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Start the countdown. Note, the actual countdown operation is applied in the <a class="el" href="a00011.html#a3a3454994212dac73a0d27754c258f95" title="the &quot;engine&quot; that drives the software components in this library ">el_main_loop</a> while no process is running. Thus, if a process does not return or cooperate/wait during its execution, no timer countdown can be handled properly. For example, the following mechanism will lead to a infinite loop: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;my_timer = el_create_timer();</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;el_timer_start( my_timer, 1000 );</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;while( el_timer_get_rounds( my_timer ) == 0 ){</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;}</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;el_led_set( 0, EL_ON );// this line will never be reached</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;el_delete_timer( my_timer );</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;...</div>
-</div><!-- fragment --><p>Instead, a process cooperation need to be used: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;my_timer = el_create_timer();</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;el_timer_start( my_timer, 1000 );</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;while( el_timer_get_rounds( my_timer ) == 0 ){</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    el_process_cooperate();// this gives the timer system a chance to handle all timers</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;}</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;el_led_set( 0, EL_ON );</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;el_delete_timer( my_timer );</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;...</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="aa5b8368651839005befe9775fbb4b0a0"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_timer_start_fraction </td>
-          <td>(</td>
-          <td class="paramtype">el_handle&#160;</td>
-          <td class="paramname"><em>h</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>num</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>den</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>specify the countdown time using a fraction and start the timer </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>handle of the timer </td></tr>
-    <tr><td class="paramname">num</td><td>numerator of the period in second </td></tr>
-    <tr><td class="paramname">den</td><td>denominator of the period in second</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>The countdown time of the timer is (num/den) sec. </p>
-
-</div>
-</div>
-<a class="anchor" id="a36c9529d469f770bb220e08be5f93337"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_timer_pause </td>
-          <td>(</td>
-          <td class="paramtype">el_handle&#160;</td>
-          <td class="paramname"><em>h</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>pause the countdown of the timer </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>handle of the timer </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="af4705fb6ecdf3a8e0f601be13ea8d212"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_timer_resume </td>
-          <td>(</td>
-          <td class="paramtype">el_handle&#160;</td>
-          <td class="paramname"><em>h</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>resume the countdown of the timer </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>handle of the timer</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This only applies to a started timer. </p>
-
-</div>
-</div>
-<a class="anchor" id="a56f7a965a8b0cb8c5accc9c4ddee2a8f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_handle el_timer_callback_get_handle </td>
+          <td class="memname"><a class="el" href="a00007.html">el_stepper_motor_param</a>* el_stepper_motor_options </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -425,52 +171,151 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>get the handle of the timer in a timer callback </p>
-<dl class="section return"><dt>Returns</dt><dd>handle of the timer</dd></dl>
-<p>This function must be used within a timer callback. </p>
+<p>get the pointer to a static instance of <a class="el" href="a00007.html">el_stepper_motor_param</a> </p>
+<dl class="section return"><dt>Returns</dt><dd>the pointer </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a8aa9281fce844f48a98cf2608281d898"></a>
+<a class="anchor" id="accf9e72ee8f25f5e6b41fc5e0f6670b4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">el_uint32 el_timer_get_rounds </td>
+          <td class="memname">void el_stepper_motor_options_apply </td>
           <td>(</td>
-          <td class="paramtype">el_handle&#160;</td>
-          <td class="paramname"><em>h</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>get the rounds of the timer </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">h</td><td>handle of the timer</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>number of times that the countdown has been finished</dd></dl>
-<p>This function returns the number of times that the countdown has been finished. When the timer is started, its round counter will be set to 0. Each time the timer's countdown finishes, its 'rounds' will +1. Thus, for a on-going timer that is perodic (set via "el_timer_set_perodic"), its rounds will keep increasing. </p>
+<p>apply the settings stored in <a class="el" href="a00022.html#aacdf94e1a3dc67b0c3f3fa974b2d7d4b" title="get the pointer to a static instance of el_stepper_motor_param ">el_stepper_motor_options</a> directly </p>
+<p>This function is equivalent to "el_config_stepper_motor( el_stepper_motor_options() )". </p>
 
 </div>
 </div>
-<a class="anchor" id="af4f486e1589e2cc62aacb0e9c64a5dd2"></a>
+<a class="anchor" id="a63f42f10abe862f48d4b47e54e737661"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void el_timer_set_rounds </td>
+          <td class="memname">void el_stepper_motor_options_reset </td>
           <td>(</td>
-          <td class="paramtype">el_handle&#160;</td>
-          <td class="paramname"><em>h</em>, </td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>reset the settings stored in <a class="el" href="a00022.html#aacdf94e1a3dc67b0c3f3fa974b2d7d4b" title="get the pointer to a static instance of el_stepper_motor_param ">el_stepper_motor_options</a> to default </p>
+<p>This function can be used in combination with <a class="el" href="a00022.html#accf9e72ee8f25f5e6b41fc5e0f6670b4" title="apply the settings stored in el_stepper_motor_options directly ">el_stepper_motor_options_apply</a> when the default configuration need to be used. </p>
+
+</div>
+</div>
+<a class="anchor" id="aba08c18b0c17d7d7ab38671cc9c9ea97"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_config_stepper_motor </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00007.html">el_stepper_motor_param</a> *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>apply the settings in the given structure </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>pointer to the data structure containing all parameters</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Currently, the parameters are mainly related to the artificial acceleration of the stepper motors, which are typically used to make the motion of the robot more smooth.</p>
+<p>For example, the following code enables a linear artificial acceleration with a rate of 2000: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;el_stepper_motor_options()-&gt;UseAcceleration = true;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;el_stepper_motor_options()-&gt;AccelerationRate = 2000;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;el_config_stepper_motor( el_stepper_motor_options() );</div>
+</div><!-- fragment --><p> A linear acceleration rate of 2000 means the stepping rate of the motors can reach 1000 from 0 in 0.5 sec. By default, the artificial acceleration is enabled and the acceleration rate is 3000. </p>
+
+</div>
+</div>
+<a class="anchor" id="afc185a86917fa56a61fe1a847c385a19"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_stepper_motor_set_speed </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">el_uint32&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>u</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>set the stepping rate and direction of a motor </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>index of the motor </td></tr>
+    <tr><td class="paramname">u</td><td>stepping rate of the motor</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The valid range of the stepping speed is in [-1000,-50] and [50,1000]. This function does handle the range issue internally. </p>
+
+</div>
+</div>
+<a class="anchor" id="a10f902a71c23716842e463388fa302ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_int16 el_stepper_motor_get_steps </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the step counter of a motor </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>index of the motor</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of steps </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa024ba366f358e5a0e957dd6ef1ea44c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_stepper_motor_set_steps </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">el_int16&#160;</td>
           <td class="paramname"><em>n</em>&#160;</td>
         </tr>
         <tr>
@@ -481,22 +326,57 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>set the rounds of the timer </p>
+<p>set the step counter of a motor </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">h</td><td>handle of the timer </td></tr>
-    <tr><td class="paramname">n</td><td>rounds to be used</td></tr>
+    <tr><td class="paramname">i</td><td>index of the motor </td></tr>
+    <tr><td class="paramname">u</td><td>number of steps </td></tr>
   </table>
   </dd>
 </dl>
-<p>This function is used to manually modify the rounds of a timer. It is mainly used to reset the rounds of a timer to 0. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac598d24601f69e215db8a5e364fa1f0d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_set_wheel_speed </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>right</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>change the rotation speed for both of the motors on the e-puck </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left</td><td>left motor speed </td></tr>
+    <tr><td class="paramname">right</td><td>right motor speed</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function does virtually the same thing as <a class="el" href="a00022.html#afc185a86917fa56a61fe1a847c385a19" title="set the stepping rate and direction of a motor ">el_stepper_motor_set_speed</a> in just one line. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:45 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

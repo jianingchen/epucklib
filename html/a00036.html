@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: LED and Selector</title>
+<title>embedded system library for e-puck: Error Number</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -79,26 +79,68 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#files">Files</a>  </div>
   <div class="headertitle">
-<div class="title">LED and Selector</div>  </div>
+<div class="title">Error Number</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:a00018"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html">el_led.h</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<h1><a class="anchor" id="Introduction"></a>
+<h1><a class="anchor" id="sec_error_code_intro"></a>
 Introduction</h1>
-<p>(TODO) </p>
+<p>If some detectable problem occurs when the system is running, it is possible that an error number will be sent through UART1 (Bluetooth) with an overrided priority. This page provides the details about these error number.</p>
+<h2><a class="anchor" id="ssec_error_code_1"></a>
+&lt;&lt;ERROR-01&gt;&gt; Memory Allocation Failed</h2>
+<p>A <code>malloc</code> within this library has returned NULL. This is typically caused by a fully occupied heap. Currently, this library need to allocate extra memory when a trigger or a timer is being created.</p>
+<ul>
+<li>Reduce the amount of dynamically allocated memory.</li>
+<li>Check for memory leaking (e.g. 'malloc'ed but not 'free'ed).</li>
+<li>Try increasing the heap size in the project configuration in MPLABX (e.g. from 512 to 768).</li>
+</ul>
+<h2><a class="anchor" id="ssec_error_code_2"></a>
+&lt;&lt;ERROR-02&gt;&gt; Process Timeout</h2>
+<p>The program entered a process for too long (&gt;50 ms). This is typically caused by a polling loop without placing any <a class="el" href="a00020.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a> or <a class="el" href="a00020.html#a3580f38f3a753bd43cd1bcec81a53903" title="Introduce an atomic wait so other processes can be executed. ">el_process_cooperate</a> inside.</p>
+<ul>
+<li>Polling loops (a 'while' loop waiting for some condition) typically need one <a class="el" href="a00020.html#a3580f38f3a753bd43cd1bcec81a53903" title="Introduce an atomic wait so other processes can be executed. ">el_process_cooperate</a> inside its loop body.</li>
+<li>Find other problematic loops inside those functions used in a process.</li>
+<li>Placing <a class="el" href="a00020.html#a3580f38f3a753bd43cd1bcec81a53903" title="Introduce an atomic wait so other processes can be executed. ">el_process_cooperate</a> in appropriate place of any large loops (nested 'for' loops are most susceptible).</li>
+</ul>
+<h2><a class="anchor" id="ssec_error_code_3"></a>
+&lt;&lt;ERROR-03&gt;&gt; Process Launching Failed</h2>
+<p>This error is usually caused by launching a new process when the number of running proceses is at maximum. Note: a process finished running when its entry function returns.</p>
+<ul>
+<li>The system can handle 7 processes at most. Do not cross that line.</li>
+<li>Use triggers instead of infinite 'while' loop to do something repeatedly.</li>
+</ul>
+<h2><a class="anchor" id="ssec_error_code_4"></a>
+&lt;&lt;ERROR-04&gt;&gt; Timer Callback Function Timeout</h2>
+<p>The program entered a timer's callback function for too long (&gt;50 ms).</p>
+<ul>
+<li>Check for problematic loops.</li>
+<li>Try reducing the amount of work done inside the callback function of a timer.</li>
+</ul>
+<h2><a class="anchor" id="ssec_error_code_5"></a>
+&lt;&lt;ERROR-05&gt;&gt; Timer Creating Failed</h2>
+<p>A <a class="el" href="a00023.html#a32ee166a22bc99325af1bf8eba97e728" title="create a timer in the system ">el_create_timer</a> returned NULL.</p>
+<ul>
+<li>Check whether each of the created timers is deleted.</li>
+<li>The system can handle 10 timers at most. Do not cross that line.</li>
+</ul>
+<h2><a class="anchor" id="ssec_error_code_6"></a>
+&lt;&lt;ERROR-06&gt;&gt; Trigger Condition Function Timeout</h2>
+<p>The program entered a trigger's condition callback function for too long (&gt;50 ms).</p>
+<ul>
+<li>Check for problematic loops.</li>
+<li>Try reducing the amount of work done inside the condition callback of a trigger.</li>
+</ul>
+<h2><a class="anchor" id="ssec_error_code_7"></a>
+&lt;&lt;ERROR-07&gt;&gt; Trigger Creating Failed</h2>
+<p>A <a class="el" href="a00024.html#a8ac98c499857cb3c18cd4093d5724264" title="create a trigger in the system ">el_create_trigger</a> returned NULL.</p>
+<ul>
+<li>Check whether each of the created triggers is deleted.</li>
+<li>The system can handle 12 triggers at most. Do not cross that line. </li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:45 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

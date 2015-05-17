@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -170,7 +170,7 @@ Build A Project</h2>
 <p>The generated HEX file will be in the "dist" folder under the project's folder.</p>
 <h2><a class="anchor" id="sec_prog_hex"></a>
 Program The Microcontroller</h2>
-<p>If the e-puck has Tiny Bootloader's bootloader, the HEX file can be programmed onto the microcontroller using the Tiny Bootloader application via Bluetooth. Otherwise, used a wired programmer (e.g. ICD3 or PICkit3) to program the microcontroller through the ISP port on the e-puck.</p>
+<p>If the e-puck has Tiny Bootloader's bootloader, the HEX file can be programmed onto the microcontroller using the Tiny Bootloader application via Bluetooth. Otherwise, use a wired programmer (e.g. ICD3 or PICkit3) to program the microcontroller through the ISP port on the e-puck.</p>
 <p>To get more details about putting the HEX file into the e-puck, check the homepage of Tiny Bootloader or the official site of e-puck robot.</p>
 <p><br />
  </p>
@@ -182,47 +182,48 @@ Example 1</h2>
 <p>(located in "./examples/el_example_01.X")</p>
 <p>In this example, the e-puck flashes some of its LEDs. Sending a char of 'f' through UART1 (the UART channel used by the Bluetooth module) will toggle the front led. In UART1, the e-puck will also report the number of seconds since start running.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00045.html">Process</a></li>
-<li><a class="el" href="a00036.html">LED and Selector</a></li>
-<li><a class="el" href="a00040.html">UART STDIO</a></li>
+<li><a class="el" href="a00047.html">Process</a></li>
+<li><a class="el" href="a00038.html">LED and Selector</a></li>
+<li><a class="el" href="a00042.html">UART STDIO</a></li>
 </ul>
 <h2><a class="anchor" id="sec_ex02"></a>
 Example 2</h2>
 <p>(located in "./examples/el_example_02.X")</p>
 <p>When the e-puck is shaken or detects an impact, it will flash all of its ring LEDs. In UART communication, sending a 'g' makes the e-puck report the outputs of the accelerometers.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00045.html">Process</a></li>
-<li><a class="el" href="a00047.html">Trigger</a></li>
-<li><a class="el" href="a00041.html">Accelerometer</a></li>
-<li><a class="el" href="a00036.html">LED and Selector</a></li>
-<li><a class="el" href="a00040.html">UART STDIO</a></li>
+<li><a class="el" href="a00047.html">Process</a></li>
+<li><a class="el" href="a00049.html">Trigger</a></li>
+<li><a class="el" href="a00043.html">Accelerometer</a></li>
+<li><a class="el" href="a00038.html">LED and Selector</a></li>
+<li><a class="el" href="a00046.html">Infrared Receiver</a></li>
+<li><a class="el" href="a00042.html">UART STDIO</a></li>
 </ul>
 <h2><a class="anchor" id="sec_ex03"></a>
 Example 3</h2>
 <p>(located in "./examples/el_example_03.X")</p>
 <p>The e-puck can be remotely controlled via Bluetooth. It is recommended to use this program with the serial communciation utility of this library.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00045.html">Process</a></li>
-<li><a class="el" href="a00047.html">Trigger</a></li>
-<li><a class="el" href="a00046.html">Timer</a></li>
-<li><a class="el" href="a00042.html">Camera</a></li>
-<li><a class="el" href="a00036.html">LED and Selector</a></li>
-<li><a class="el" href="a00038.html">Stepper Motor</a></li>
-<li><a class="el" href="a00043.html">Infrared Proximity Sensors</a></li>
-<li><a class="el" href="a00040.html">UART STDIO</a></li>
+<li><a class="el" href="a00047.html">Process</a></li>
+<li><a class="el" href="a00049.html">Trigger</a></li>
+<li><a class="el" href="a00048.html">Timer</a></li>
+<li><a class="el" href="a00044.html">Camera</a></li>
+<li><a class="el" href="a00038.html">LED and Selector</a></li>
+<li><a class="el" href="a00040.html">Stepper Motor</a></li>
+<li><a class="el" href="a00045.html">Infrared Proximity Sensors</a></li>
+<li><a class="el" href="a00042.html">UART STDIO</a></li>
 </ul>
 <h2><a class="anchor" id="sec_ex04"></a>
 Example 4</h2>
 <p>(located in "./examples/el_example_04.X")</p>
 <p>The e-puck follows any green object in front of it. Through UART1, color of the object to be followed can be selected among red, green and blue.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00045.html">Process</a></li>
-<li><a class="el" href="a00047.html">Trigger</a></li>
-<li><a class="el" href="a00042.html">Camera</a></li>
-<li><a class="el" href="a00036.html">LED and Selector</a></li>
-<li><a class="el" href="a00038.html">Stepper Motor</a></li>
-<li><a class="el" href="a00043.html">Infrared Proximity Sensors</a></li>
-<li><a class="el" href="a00040.html">UART STDIO</a></li>
+<li><a class="el" href="a00047.html">Process</a></li>
+<li><a class="el" href="a00049.html">Trigger</a></li>
+<li><a class="el" href="a00044.html">Camera</a></li>
+<li><a class="el" href="a00038.html">LED and Selector</a></li>
+<li><a class="el" href="a00040.html">Stepper Motor</a></li>
+<li><a class="el" href="a00045.html">Infrared Proximity Sensors</a></li>
+<li><a class="el" href="a00042.html">UART STDIO</a></li>
 </ul>
 <p>An image processing technique used to tracking the object is also demonstrated in this example.</p>
 <p><br />
@@ -232,11 +233,11 @@ License &amp; Attributions</h1>
 <p>The source files starting with "e_" are copied from the e-puck standard library and attribute to whomever own the copyright of the e-puck standard library.</p>
 <p>The e-puck embedded system library is distributed under the MIT license.</p>
 <p>Logo of the library (see top left of this page) is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</p>
-<p>This library has been developed as a part of the PhD of Jianing Chen in Natural Robotics Lab, The University of Sheffield. </p>
+<p>This library has been developed as a part of the PhD of Jianing Chen in Sheffield Robotics, The University of Sheffield. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:45 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

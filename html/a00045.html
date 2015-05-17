@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: Process</title>
+<title>embedded system library for e-puck: Infrared Proximity Sensors</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -82,28 +82,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#files">Files</a>  </div>
   <div class="headertitle">
-<div class="title">Process</div>  </div>
+<div class="title">Infrared Proximity Sensors</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:a00019"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html">el_process.h</a></td></tr>
+<tr class="memitem:a00017"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html">el_ir_proximity.h</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<h1><a class="anchor" id="Introduction"></a>
+<h1><a class="anchor" id="sec_prox_intro"></a>
 Introduction</h1>
-<p>A Process runs concurrently with other process.</p>
-<h1><a class="anchor" id="Usage"></a>
-Usage</h1>
-<p>This library has multi-tasking capability &mdash; upto 7 functions with time delays can run concurrently when each of these functions is executed within a 'process'.</p>
-<p>Use <a class="el" href="a00019.html#a15372f27d6a543de5e3e00e028bb07aa" title="execute a function in a process ">el_launch_process</a> to start a process. In a process, use <a class="el" href="a00019.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a> to wait for a certain amount of time. Within this wait period, other processes are being executed. More detailed usage can be found in <a class="el" href="index.html#sec_examples">Examples</a> and the usage section of other modules (e.g. <a class="el" href="a00047.html">Trigger</a> and <a class="el" href="a00044.html">Infrared Receiver</a>).</p>
-<p>This approach of multitasking is usually called "Cooperative Multitasking". It is useful when several timing based programs need to run concurrently. </p>
+<p>IR proximity sensors are typically used to measure the approximate distance to an object that is in proximity to the sensors. A typical IR proximity sensor contains one IR LED and one IR optical transistor, which are both pointed to the same direction. The IR LED emit a cone of infrared light towards a direction. If there is an entity that can reflect infrared light, the reflect infrared light will be sensed by the IR optical transistor. The voltage accross the transistor are related to the infrared light intensity going in to the transistor.</p>
+<p>For e-pucks, the maximum range of the eight IR proximity sensors is around 7.5 cm. These sensors give analog output and are sampled by the 12-bit ADC in the microcontroller, which means the raw readings of the sensors are ranged from <code>0</code> to <code>4095</code>. The higher the reading, the closer is the object in front of a sensor. Note, as the principle of the IR proximity sensors relys on reflection, the reflection property of objects' surface can affect the relation between the raw readings and distance. For example, objects painted in black can hardly be detected wheras objects with bright surface can produce reliable readings.</p>
+<h1><a class="anchor" id="sec_prox_modes"></a>
+Working Modes</h1>
+<p>This library provides three working modes for the IR proximity sensors.</p>
+<h2><a class="anchor" id="ssec_prox_mode0"></a>
+The Passive Mode</h2>
+<p>(<a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2eaa26383b47022906a527084703fff729a" title="use the Passive Mode ">EL_IR_PROXIMITY_PASSIVE</a>)</p>
+<p>The IR LEDs of the sensors do not emit. The ADC simply samples the transistors. As a result, the readings are the ambient infrared intensity in the environment. This mode can be used when a strong infrared light source in the environment need to be detected. For example, a incandescent light bulb or sun light from a window. In this mode, the only meaningful output type to get using <a class="el" href="a00017.html#a282c79127fe99a71c2a4c92f671a7e56" title="get output value(s) from a accelerometer ">el_ir_proximity_get</a> is <a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14" title="get the ambient output ">EL_IR_AMBIENT</a> (see <a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a>).</p>
+<h2><a class="anchor" id="ssec_prox_mode1"></a>
+The Pulse Mode</h2>
+<p>(<a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea6e61f4edccd695b26cf205c95896ea7d" title="use the Pulse Mode (default mode) ">EL_IR_PROXIMITY_PULSE</a>)</p>
+<p>This is a common working scheme of IR proximity sensors.</p>
+<p>In each sampling procedure (produce one set of valid readings that can be obtained using <a class="el" href="a00017.html#a282c79127fe99a71c2a4c92f671a7e56" title="get output value(s) from a accelerometer ">el_ir_proximity_get</a> ), the ADC samples the transistors once before the IR LEDs are turned on. These samples are the ambient infrared light intensity (<code><b>A</b>)</code>. Then the IR LEDs are switched on. Shortly after (about 600 ns), the ADC samples the transistors for the second time and then the IR LEDs are turned off. These samples are the mixed infrared light intensity (<code><b>M</b>)</code>.</p>
+<p>The readings of type <a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7" title="get the reflection output ">EL_IR_REFLECTION</a> are calculated by <code><b>R</b> =</code> <code><b>M</b> -</code> <code><b>A</b>,</code> which is the proximity to any objects in front of the sensors.</p>
+<p>In this mode, <a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14" title="get the ambient output ">EL_IR_AMBIENT</a> can still be obtained and the results are simply <code><b>A</b>.</code> </p>
+<h2><a class="anchor" id="ssec_prox_mode2"></a>
+The Emit Mode</h2>
+<p>(<a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea769fb955698ff949a598763f2f8fd368" title="use the Emit Mode ">EL_IR_PROXIMITY_EMIT</a>)</p>
+<p>Because the original e-puck is not a good infrared reflector, this working scheme has been designed to improved the e-puck to e-puck detection by making e-pucks actively emitting infrared light. This may be used when a swarm of e-pucks need to work together.</p>
+<p>In this mode, the IR LEDs are initally turn on. In each sampling procedure, the ADC samples the transistors once. These samples are the mixed infrared light intensity (<code>M</code>). Then the IR LEDs are switched off. Shortly after (about 600 ns), the ADC samples the transistors for the second time and then the IR LEDs are turned on again. These samples are the ambient infrared light intensity (<code>A</code>).</p>
+<p>The <a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7" title="get the reflection output ">EL_IR_REFLECTION</a> readings are calculated by <code>R</code> = <code>M</code> - <code>A</code>, which again is the proximity to any objects that can relfect infrared light efficiently.</p>
+<p>In contrast to the Pulse mode, the <a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14" title="get the ambient output ">EL_IR_AMBIENT</a> readings in this mode can be used to determine the proximity to nearby e-pucks that also have their proximity sensors working in the Emit mode. Note, this is based on a assumption that there is no other significant infrared source in the environment, such as incandescent light bulb or day light from a window.</p>
+<h1><a class="anchor" id="sec_prox_example"></a>
+Example</h1>
+<p>An example of using these sensors to maintain a distance to any object in front of the e-puck can be found in <a class="el" href="a00049.html#ssec_trg_usage_fcl">Feedback Control Loop</a>. </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:45 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

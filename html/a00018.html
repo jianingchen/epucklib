@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_led.h File Reference</title>
+<title>embedded system library for e-puck: el_ir_receiver.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -86,141 +86,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_led.h File Reference<div class="ingroups"><a class="el" href="a00036.html">LED and Selector</a></div></div>  </div>
+<div class="title">el_ir_receiver.h File Reference<div class="ingroups"><a class="el" href="a00046.html">Infrared Receiver</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00015_source.html">el_common.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00016_source.html">el_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00015_source.html">el_clock.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00024_source.html">el_trigger.h</a>&quot;</code><br />
 </div>
 <p><a href="a00018_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:af5fc34db3839e58dd5edf86ff2ddec66"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5fc34db3839e58dd5edf86ff2ddec66"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_ALL</b>&#160;&#160;&#160;-1</td></tr>
-<tr class="separator:af5fc34db3839e58dd5edf86ff2ddec66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0139f9404431aca4db6364c37c7876f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0139f9404431aca4db6364c37c7876f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_0</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:ab0139f9404431aca4db6364c37c7876f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47926e5a395b54ec03e13c3d2666eeb3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47926e5a395b54ec03e13c3d2666eeb3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_1</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a47926e5a395b54ec03e13c3d2666eeb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae447dbb5bb2eceb0b7ef27617505fb60"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae447dbb5bb2eceb0b7ef27617505fb60"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_2</b>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:ae447dbb5bb2eceb0b7ef27617505fb60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b923423e735da47a3a73643923e7f78"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b923423e735da47a3a73643923e7f78"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_3</b>&#160;&#160;&#160;3</td></tr>
-<tr class="separator:a7b923423e735da47a3a73643923e7f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaaf1c19b066ae8fec91773e576a7930"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afaaf1c19b066ae8fec91773e576a7930"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_4</b>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:afaaf1c19b066ae8fec91773e576a7930"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57f3a8e40d4330ce67fa2217aa542542"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57f3a8e40d4330ce67fa2217aa542542"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_5</b>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:a57f3a8e40d4330ce67fa2217aa542542"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abab175c9db09331c668048c5ba46ade5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abab175c9db09331c668048c5ba46ade5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_6</b>&#160;&#160;&#160;6</td></tr>
-<tr class="separator:abab175c9db09331c668048c5ba46ade5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f720d2a9a1ac294bf0437fdb1f7c92f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f720d2a9a1ac294bf0437fdb1f7c92f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_7</b>&#160;&#160;&#160;7</td></tr>
-<tr class="separator:a9f720d2a9a1ac294bf0437fdb1f7c92f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accec65c3e3b118fe48e0df9bb03d1511"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accec65c3e3b118fe48e0df9bb03d1511"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_BODY</b>&#160;&#160;&#160;9</td></tr>
-<tr class="separator:accec65c3e3b118fe48e0df9bb03d1511"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa06768910dac144c1fa6459fcca37d64"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa06768910dac144c1fa6459fcca37d64"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_FRONT</b>&#160;&#160;&#160;10</td></tr>
-<tr class="separator:aa06768910dac144c1fa6459fcca37d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:adee7c768c6e5283520fe8b6c7a75e09a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a> { <a class="el" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">EL_OFF</a> = 0, 
-<a class="el" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">EL_ON</a> = 1, 
-<a class="el" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">EL_TOGGLE</a> = -1
- }</td></tr>
-<tr class="memdesc:adee7c768c6e5283520fe8b6c7a75e09a"><td class="mdescLeft">&#160;</td><td class="mdescRight">used in <a class="el" href="a00018.html#a074c77228ff700a17bd3e42fb7cffeb7" title="set the status of a LED ">el_led_set</a>.  <a href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">More...</a><br /></td></tr>
-<tr class="separator:adee7c768c6e5283520fe8b6c7a75e09a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a074c77228ff700a17bd3e42fb7cffeb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led_set</a> (el_index w, <a class="el" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a> s)</td></tr>
-<tr class="memdesc:a074c77228ff700a17bd3e42fb7cffeb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the status of a LED  <a href="#a074c77228ff700a17bd3e42fb7cffeb7">More...</a><br /></td></tr>
-<tr class="separator:a074c77228ff700a17bd3e42fb7cffeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3823524468a2011a62d955d7277382f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#ab3823524468a2011a62d955d7277382f">el_get_selector_value</a> ()</td></tr>
-<tr class="memdesc:ab3823524468a2011a62d955d7277382f"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the selector postition  <a href="#ab3823524468a2011a62d955d7277382f">More...</a><br /></td></tr>
-<tr class="separator:ab3823524468a2011a62d955d7277382f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab35f59ce139b2944c49987e3725c9cd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab35f59ce139b2944c49987e3725c9cd3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#ab35f59ce139b2944c49987e3725c9cd3">el_enable_ir_receiver</a> ()</td></tr>
+<tr class="memdesc:ab35f59ce139b2944c49987e3725c9cd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable the ir receiver <br /></td></tr>
+<tr class="separator:ab35f59ce139b2944c49987e3725c9cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a533e2318c63e4d95b5815942a646b12d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a533e2318c63e4d95b5815942a646b12d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a533e2318c63e4d95b5815942a646b12d">el_disable_ir_receiver</a> ()</td></tr>
+<tr class="memdesc:a533e2318c63e4d95b5815942a646b12d"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable the ir receiver <br /></td></tr>
+<tr class="separator:a533e2318c63e4d95b5815942a646b12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0e7ec78afde599d7d90c73e3c258d03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a> ()</td></tr>
+<tr class="memdesc:af0e7ec78afde599d7d90c73e3c258d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the ir receiver to prepare for any incoming message  <a href="#af0e7ec78afde599d7d90c73e3c258d03">More...</a><br /></td></tr>
+<tr class="separator:af0e7ec78afde599d7d90c73e3c258d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fae36b0456f98360cd73fa9663a2b55"><td class="memItemLeft" align="right" valign="top">el_uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a4fae36b0456f98360cd73fa9663a2b55">el_ir_receiver_get_check</a> ()</td></tr>
+<tr class="memdesc:a4fae36b0456f98360cd73fa9663a2b55"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the check bit in the message while 2 means no message  <a href="#a4fae36b0456f98360cd73fa9663a2b55">More...</a><br /></td></tr>
+<tr class="separator:a4fae36b0456f98360cd73fa9663a2b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3899efc52618671a46dc34e8523ddcb2"><td class="memItemLeft" align="right" valign="top">el_uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a3899efc52618671a46dc34e8523ddcb2">el_ir_receiver_get_address</a> ()</td></tr>
+<tr class="memdesc:a3899efc52618671a46dc34e8523ddcb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the address field in the message  <a href="#a3899efc52618671a46dc34e8523ddcb2">More...</a><br /></td></tr>
+<tr class="separator:a3899efc52618671a46dc34e8523ddcb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5a561e70828e63b6f0ffa01ab89e298"><td class="memItemLeft" align="right" valign="top">el_uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#aa5a561e70828e63b6f0ffa01ab89e298">el_ir_receiver_get_data</a> ()</td></tr>
+<tr class="memdesc:aa5a561e70828e63b6f0ffa01ab89e298"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the data field in the message  <a href="#aa5a561e70828e63b6f0ffa01ab89e298">More...</a><br /></td></tr>
+<tr class="separator:aa5a561e70828e63b6f0ffa01ab89e298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba65b498f8a340b859968b6b82ce7bec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba65b498f8a340b859968b6b82ce7bec"></a>
+el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#aba65b498f8a340b859968b6b82ce7bec">el_ir_receiver_get_counter</a> ()</td></tr>
+<tr class="memdesc:aba65b498f8a340b859968b6b82ce7bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the number of messages received since initialization <br /></td></tr>
+<tr class="separator:aba65b498f8a340b859968b6b82ce7bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="adee7c768c6e5283520fe8b6c7a75e09a"></a>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="af0e7ec78afde599d7d90c73e3c258d03"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>used in <a class="el" href="a00018.html#a074c77228ff700a17bd3e42fb7cffeb7" title="set the status of a LED ">el_led_set</a>. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd"></a>EL_OFF&#160;</td><td class="fielddoc">
-<p>turn off the LED </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1"></a>EL_ON&#160;</td><td class="fielddoc">
-<p>turn on the LED </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223"></a>EL_TOGGLE&#160;</td><td class="fielddoc">
-<p>toggle the on/off status of the LED </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a074c77228ff700a17bd3e42fb7cffeb7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_led_set </td>
-          <td>(</td>
-          <td class="paramtype">el_index&#160;</td>
-          <td class="paramname"><em>w</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a>&#160;</td>
-          <td class="paramname"><em>s</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>set the status of a LED </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">i</td><td>index of the LED </td></tr>
-    <tr><td class="paramname">s</td><td>status </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ab3823524468a2011a62d955d7277382f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int el_get_selector_value </td>
+          <td class="memname">void el_ir_receiver_reset </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -228,15 +140,74 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>get the selector postition </p>
-<dl class="section return"><dt>Returns</dt><dd>the selector position ranged in [0,15] </dd></dl>
+<p>reset the ir receiver to prepare for any incoming message </p>
+<p>Once a message is received, the ir receiver must be reset before it can receive any further messages. The general usage is that: always reset the ir receiver before a receiving needed. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4fae36b0456f98360cd73fa9663a2b55"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_uint8 el_ir_receiver_get_check </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the check bit in the message while 2 means no message </p>
+<dl class="section return"><dt>Returns</dt><dd>0, 1 and 2</dd></dl>
+<p>For a common TV remote, the 'check' bit in the message is often used to determine whether the message is issued from a new button click or a re-transmission of a same click (holding a button). For example, if the user hold a button on the remote, the receiver will receive a series of same data with same 'check' bit (0,0,0 ... or 1,1,1 ...). Whereas, it the user is click the button repeatedly, the received messages will contain same data but their 'check' bit will be altered (0,1,0,1,0 ...).</p>
+<p>The function will return 2 if there is no message. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3899efc52618671a46dc34e8523ddcb2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_uint8 el_ir_receiver_get_address </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the address field in the message </p>
+<dl class="section return"><dt>Returns</dt><dd>the address, a 5-bit integer</dd></dl>
+<p>The message should also contain a address field, which is a 5-bit integer. One can use this to receive the message from a specific remote only. For example, use a TV remote with a unique address number so it won't turn on other appliances in the room where the robots are used. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa5a561e70828e63b6f0ffa01ab89e298"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_uint8 el_ir_receiver_get_data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the data field in the message </p>
+<dl class="section return"><dt>Returns</dt><dd>the data, a 6-bit integer</dd></dl>
+<p>The payload of a incoming message is the 'data'. It is be a 6-bit integer. When the message is transmitted from a TV remote, the 'data' is usually the code of the key that is pressed.</p>
+<p>In <a class="el" href="a00046.html#ssec_irrc_usage_1">Display the Data Received</a>, an example is given to display all contents in a incoming message. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:45 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: Trigger</title>
+<title>embedded system library for e-puck: Process</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -82,94 +82,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#files">Files</a>  </div>
   <div class="headertitle">
-<div class="title">Trigger</div>  </div>
+<div class="title">Process</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:a00023"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.html">el_trigger.h</a></td></tr>
+<tr class="memitem:a00020"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html">el_process.h</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<h1><a class="anchor" id="sec_trg_intro"></a>
+<h1><a class="anchor" id="Introduction"></a>
 Introduction</h1>
-<p>A trigger can launch a process when a specified event occurs in the system. For example, a process can be launched automatically when the proximity sensors has a set of samples ready for use.</p>
-<h1><a class="anchor" id="sec_trg_usage"></a>
-Example Usage</h1>
-<h2><a class="anchor" id="ssec_trg_usage_fcl"></a>
-Feedback Control Loop</h2>
-<p><a class="el" href="index.html#sec_ex04">Example 4</a> used the trigger mechanism to realize a control algorithm that uses camera image as input and hence executes every time when the camera is refreshed.</p>
-<p>Here is an example of control loop that depends on the proximity sensor readings. The example assumes that the stepper motor and the infrared proximity sensors are configured and enabled properly beforehand.</p>
-<p>Related global variables and function prototypes: </p><div class="fragment"><div class="line">el_handle trg_control_step;</div>
-<div class="line"></div>
-<div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Setup();</div>
-<div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Clear();</div>
-<div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Process(el_handle this_trigger);</div>
-</div><!-- fragment --><p>Code to setup/clear the trigger: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Setup(){</div>
-<div class="line">    </div>
-<div class="line">    trg_control_step = <a class="code" href="a00023.html#a8ac98c499857cb3c18cd4093d5724264">el_create_trigger</a>();</div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// specify the event of triggering</span></div>
-<div class="line">    <a class="code" href="a00023.html#a988d439b2dd5ee47173299dcc2666f16">el_trigger_set_event</a>( trg_control_step, <a class="code" href="a00023.html#a8b37a76e9a384d41426690a4cb74a044a0726cee4355067c6ec484245ed5e8bdf">EL_EVENT_IR_PROXIMITY_UPDATE</a> );</div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// a condition callback is not essential for all triggers</span></div>
-<div class="line">    <a class="code" href="a00023.html#a40e49c09f2deb3a73b9c2c42d784c04a">el_trigger_set_condition</a>( trg_control_step, NULL );</div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// specify the process to launch when the event occurs</span></div>
-<div class="line">    <a class="code" href="a00023.html#a4d4c08d0d4af965e7288feceb7ed50f6">el_trigger_set_process</a>( trg_control_step, Trigger_ControStep_Process );</div>
-<div class="line">}</div>
-<div class="line"></div>
-<div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Clear(){</div>
-<div class="line">    <a class="code" href="a00023.html#ad7941dead60d00b66ba64a8a7c952b1f">el_delete_trigger</a>( trg_control_step );</div>
-<div class="line">}</div>
-</div><!-- fragment --><p>Code of the trigger's process: </p><div class="fragment"><div class="line"><span class="comment">/* </span></div>
-<div class="line"><span class="comment"> * Note: </span></div>
-<div class="line"><span class="comment"> * For a trigger-launched process, the argument given to the entry function</span></div>
-<div class="line"><span class="comment"> * is the handle of the trigger. </span></div>
-<div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Process(el_handle this_trigger){</div>
-<div class="line">    el_int16 prox_value[8];</div>
-<div class="line">    el_int16 mean;</div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// grab the readings into an array</span></div>
-<div class="line">    <a class="code" href="a00016.html#a282c79127fe99a71c2a4c92f671a7e56">el_ir_proximity_get</a>( EL_IR_PROXIMITY_SENSOR_ALL, <a class="code" href="a00016.html#a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7">EL_IR_REFLECTION</a>, prox_value );</div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// assume that our algorithm needs the average of the two front sensors</span></div>
-<div class="line">    mean = (prox_value[0] + prox_value[7])/2;</div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// the following code let the robot keep a distance to anything in front</span></div>
-<div class="line">    <span class="keywordflow">if</span>( mean &gt;= 1200 ){</div>
-<div class="line">        </div>
-<div class="line">        <a class="code" href="a00021.html#ac598d24601f69e215db8a5e364fa1f0d">el_set_wheel_speed</a>( -500, -500 );<span class="comment">// move backwards</span></div>
-<div class="line">        </div>
-<div class="line">    }<span class="keywordflow">else</span></div>
-<div class="line">    <span class="keywordflow">if</span>( mean &gt;= 400 ){<span class="comment">// with an implict condition: mean &lt; 1200</span></div>
-<div class="line">        </div>
-<div class="line">        <a class="code" href="a00021.html#ac598d24601f69e215db8a5e364fa1f0d">el_set_wheel_speed</a>( 0, 0 );<span class="comment">// don&#39;t move (distance is OK)</span></div>
-<div class="line">        </div>
-<div class="line">    }<span class="keywordflow">else</span></div>
-<div class="line">    <span class="keywordflow">if</span>( mean &gt;= 130 ){<span class="comment">// with an implict condition: mean &lt; 400</span></div>
-<div class="line">        </div>
-<div class="line">        <a class="code" href="a00021.html#ac598d24601f69e215db8a5e364fa1f0d">el_set_wheel_speed</a>( 500, 500 );<span class="comment">// move forwards</span></div>
-<div class="line">        </div>
-<div class="line">    }<span class="keywordflow">else</span>{<span class="comment">// with an implict condition: mean &lt; 130</span></div>
-<div class="line">        </div>
-<div class="line">        <a class="code" href="a00021.html#ac598d24601f69e215db8a5e364fa1f0d">el_set_wheel_speed</a>( 0, 0 );<span class="comment">// no motion (nothing in front)</span></div>
-<div class="line">        </div>
-<div class="line">    }</div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">/* </span></div>
-<div class="line"><span class="comment">     * After a trigger&#39;s process is launched, the trigger will be disabled. </span></div>
-<div class="line"><span class="comment">     * So re-enable the trigger after the process is done is necessary </span></div>
-<div class="line"><span class="comment">     */</span></div>
-<div class="line">    <a class="code" href="a00023.html#ae8ee35672fb010ce11467750f6bfc63b">el_trigger_enable</a>( this_trigger );</div>
-<div class="line">    </div>
-<div class="line">}</div>
-</div><!-- fragment --> </div><!-- contents -->
+<p>A Process runs concurrently with other process.</p>
+<h1><a class="anchor" id="Usage"></a>
+Usage</h1>
+<p>This library has multi-tasking capability &mdash; upto 7 functions with time delays can run concurrently when each of these functions is executed within a 'process'.</p>
+<p>Use <a class="el" href="a00020.html#a15372f27d6a543de5e3e00e028bb07aa" title="execute a function in a process ">el_launch_process</a> to start a process. In a process, use <a class="el" href="a00020.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a> to wait for a certain amount of time. Within this wait period, other processes are being executed. More detailed usage can be found in <a class="el" href="index.html#sec_examples">Examples</a> and the usage section of other modules (e.g. <a class="el" href="a00049.html">Trigger</a> and <a class="el" href="a00046.html">Infrared Receiver</a>).</p>
+<p>This approach of multitasking is usually called "Cooperative Multitasking". It is useful when several timing based programs need to run concurrently. </p>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:45 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

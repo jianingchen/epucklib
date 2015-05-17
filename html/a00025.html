@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: elu_stdio.h File Reference</title>
+<title>embedded system library for e-puck: el_uart.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -89,71 +89,79 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">elu_stdio.h File Reference<div class="ingroups"><a class="el" href="a00039.html">UART STDIO</a></div></div>  </div>
+<div class="title">el_uart.h File Reference<div class="ingroups"><a class="el" href="a00041.html">UART Serial Communication</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00014_source.html">el_common.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00023_source.html">el_uart.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00016_source.html">el_common.h</a>&quot;</code><br />
 </div>
 <p><a href="a00025_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a0bc423feb8ec6f3430f2f8ca57126ba6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0bc423feb8ec6f3430f2f8ca57126ba6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>_SNPRINTF_FAMILY</b>&#160;&#160;&#160;__attribute__ ((format(printf,3,4)))</td></tr>
-<tr class="separator:a0bc423feb8ec6f3430f2f8ca57126ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24dcce04b5b4ffcab31a313e9ab287ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24dcce04b5b4ffcab31a313e9ab287ed"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>_SSCANF_FAMILY</b>&#160;&#160;&#160;__attribute__ ((format(scanf,2,3)))</td></tr>
-<tr class="separator:a24dcce04b5b4ffcab31a313e9ab287ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae72066d2af34f271aed3bc8005fd9120"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae72066d2af34f271aed3bc8005fd9120"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>_PRINTF_FAMILY</b>&#160;&#160;&#160;__attribute__ ((format(printf,1,2)))</td></tr>
-<tr class="separator:ae72066d2af34f271aed3bc8005fd9120"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b70bebf1985316c6faef6cd48074381"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b70bebf1985316c6faef6cd48074381"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>_SCANF_FAMILY</b>&#160;&#160;&#160;__attribute__ ((format(scanf,1,2)))</td></tr>
-<tr class="separator:a8b70bebf1985316c6faef6cd48074381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b388ce95f3ada5734cd12a453c00382"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b388ce95f3ada5734cd12a453c00382"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_UART_1</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a8b388ce95f3ada5734cd12a453c00382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3215dffca9c5087fa359a546ac31e886"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3215dffca9c5087fa359a546ac31e886"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_UART_2</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a3215dffca9c5087fa359a546ac31e886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af53afbe7f91b0ce8c20d94e896cfeb88"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af53afbe7f91b0ce8c20d94e896cfeb88"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_UART_BLUETOOTH</b>&#160;&#160;&#160;EL_UART_1</td></tr>
+<tr class="separator:af53afbe7f91b0ce8c20d94e896cfeb88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a6c5344ecf2f2b40091f06d1440ab7ff9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a6c5344ecf2f2b40091f06d1440ab7ff9">elu_snprintf</a> (char *s, unsigned int n, const char *format,...) _SNPRINTF_FAMILY</td></tr>
-<tr class="memdesc:a6c5344ecf2f2b40091f06d1440ab7ff9"><td class="mdescLeft">&#160;</td><td class="mdescRight">snprintf to be used here  <a href="#a6c5344ecf2f2b40091f06d1440ab7ff9">More...</a><br /></td></tr>
-<tr class="separator:a6c5344ecf2f2b40091f06d1440ab7ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5aa4f9b88807ca98c69f4038e1d89f34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a5aa4f9b88807ca98c69f4038e1d89f34">elu_sscanf</a> (const char *s, const char *format,...) _SSCANF_FAMILY</td></tr>
-<tr class="memdesc:a5aa4f9b88807ca98c69f4038e1d89f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">sscanf to be used here  <a href="#a5aa4f9b88807ca98c69f4038e1d89f34">More...</a><br /></td></tr>
-<tr class="separator:a5aa4f9b88807ca98c69f4038e1d89f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a060623e0d13ddfd2baba9d51fde68cd5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a060623e0d13ddfd2baba9d51fde68cd5">elu_printf</a> (const char *format,...) _PRINTF_FAMILY</td></tr>
-<tr class="memdesc:a060623e0d13ddfd2baba9d51fde68cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a string with data fields to UART1  <a href="#a060623e0d13ddfd2baba9d51fde68cd5">More...</a><br /></td></tr>
-<tr class="separator:a060623e0d13ddfd2baba9d51fde68cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08425935f3540a12afdb0b0da013144e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a08425935f3540a12afdb0b0da013144e">elu_println</a> (const char *format,...) _PRINTF_FAMILY</td></tr>
-<tr class="memdesc:a08425935f3540a12afdb0b0da013144e"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a string with data fields + a newline char to UART1  <a href="#a08425935f3540a12afdb0b0da013144e">More...</a><br /></td></tr>
-<tr class="separator:a08425935f3540a12afdb0b0da013144e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af54a4b5fb6763b5ae4c2f4b1d710fa62"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#af54a4b5fb6763b5ae4c2f4b1d710fa62">elu_scanf</a> (const char *format,...) _SCANF_FAMILY</td></tr>
-<tr class="memdesc:af54a4b5fb6763b5ae4c2f4b1d710fa62"><td class="mdescLeft">&#160;</td><td class="mdescRight">scanf to be used here  <a href="#af54a4b5fb6763b5ae4c2f4b1d710fa62">More...</a><br /></td></tr>
-<tr class="separator:af54a4b5fb6763b5ae4c2f4b1d710fa62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae78f8e6c9f5bf84b84c4fd480382de87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#ae78f8e6c9f5bf84b84c4fd480382de87">elu_scanf_set_echo</a> (bool k)</td></tr>
-<tr class="memdesc:ae78f8e6c9f5bf84b84c4fd480382de87"><td class="mdescLeft">&#160;</td><td class="mdescRight">configure whether <a class="el" href="a00025.html#af54a4b5fb6763b5ae4c2f4b1d710fa62" title="scanf to be used here ">elu_scanf</a> echo the character received  <a href="#ae78f8e6c9f5bf84b84c4fd480382de87">More...</a><br /></td></tr>
-<tr class="separator:ae78f8e6c9f5bf84b84c4fd480382de87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e1598ddc521f4743c989a308525207d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e1598ddc521f4743c989a308525207d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>elu_putchar</b> (int c)</td></tr>
-<tr class="separator:a9e1598ddc521f4743c989a308525207d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5ac74afdbd2d40cf24f71f8d53e08af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#af5ac74afdbd2d40cf24f71f8d53e08af">el_uart_use_reset_code</a> (el_bool k, el_int8 x)</td></tr>
+<tr class="memdesc:af5ac74afdbd2d40cf24f71f8d53e08af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup a value that: upon receving that value, reset the chip.  <a href="#af5ac74afdbd2d40cf24f71f8d53e08af">More...</a><br /></td></tr>
+<tr class="separator:af5ac74afdbd2d40cf24f71f8d53e08af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8f957eb440b5e3cf6b8b7fe632ac9ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#af8f957eb440b5e3cf6b8b7fe632ac9ae">el_uart_send_char</a> (el_index ch, char c)</td></tr>
+<tr class="memdesc:af8f957eb440b5e3cf6b8b7fe632ac9ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send one byte of data to the serial channel.  <a href="#af8f957eb440b5e3cf6b8b7fe632ac9ae">More...</a><br /></td></tr>
+<tr class="separator:af8f957eb440b5e3cf6b8b7fe632ac9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18208aab32f8d190ef6add9192906308"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a18208aab32f8d190ef6add9192906308">el_uart_send_string</a> (el_index ch, const char *str)</td></tr>
+<tr class="memdesc:a18208aab32f8d190ef6add9192906308"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a string (an array of char terminated by a null) to the serial channel.  <a href="#a18208aab32f8d190ef6add9192906308">More...</a><br /></td></tr>
+<tr class="separator:a18208aab32f8d190ef6add9192906308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b0d06285477b4530bfc707ffebb33fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a3b0d06285477b4530bfc707ffebb33fe">el_uart_is_sending</a> (el_index ch)</td></tr>
+<tr class="memdesc:a3b0d06285477b4530bfc707ffebb33fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the transmission issued in the last sending function is finished.  <a href="#a3b0d06285477b4530bfc707ffebb33fe">More...</a><br /></td></tr>
+<tr class="separator:a3b0d06285477b4530bfc707ffebb33fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af83b9a6db44103475070c9450284762e"><td class="memItemLeft" align="right" valign="top">el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#af83b9a6db44103475070c9450284762e">el_uart_get_char_counter</a> (el_index ch)</td></tr>
+<tr class="memdesc:af83b9a6db44103475070c9450284762e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check how many bytes are received and buffered in the channel.  <a href="#af83b9a6db44103475070c9450284762e">More...</a><br /></td></tr>
+<tr class="separator:af83b9a6db44103475070c9450284762e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9362d0dcecad303a0dff071820570d"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a4d9362d0dcecad303a0dff071820570d">el_uart_get_char</a> (el_index ch)</td></tr>
+<tr class="memdesc:a4d9362d0dcecad303a0dff071820570d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take out one byte from the receiving buffer in order of first-in-first-out.  <a href="#a4d9362d0dcecad303a0dff071820570d">More...</a><br /></td></tr>
+<tr class="separator:a4d9362d0dcecad303a0dff071820570d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83cc3369d9f0d3ecad9bde07cbd7edbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a83cc3369d9f0d3ecad9bde07cbd7edbf">el_uart_flush_char</a> (el_index ch)</td></tr>
+<tr class="memdesc:a83cc3369d9f0d3ecad9bde07cbd7edbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Totally clear up the receiving buffer of a serial channel.  <a href="#a83cc3369d9f0d3ecad9bde07cbd7edbf">More...</a><br /></td></tr>
+<tr class="separator:a83cc3369d9f0d3ecad9bde07cbd7edbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eec3360f3ae9d5fce78b19689cf8fdf"><td class="memItemLeft" align="right" valign="top">el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a6eec3360f3ae9d5fce78b19689cf8fdf">el_uart_get_string</a> (el_index ch, char *buf, el_uint16 buf_size, el_bool return_line)</td></tr>
+<tr class="memdesc:a6eec3360f3ae9d5fce78b19689cf8fdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a string ended with a null (0 or '\0') or a carriage-return ('\r', (the "Enter" key).  <a href="#a6eec3360f3ae9d5fce78b19689cf8fdf">More...</a><br /></td></tr>
+<tr class="separator:a6eec3360f3ae9d5fce78b19689cf8fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51f31da50856644699cffe1c8aa20844"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a51f31da50856644699cffe1c8aa20844">el_uart_peek_first_char</a> (el_index ch)</td></tr>
+<tr class="memdesc:a51f31da50856644699cffe1c8aa20844"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the first byte in the receiving buffer, but does not remove it from the buffer.  <a href="#a51f31da50856644699cffe1c8aa20844">More...</a><br /></td></tr>
+<tr class="separator:a51f31da50856644699cffe1c8aa20844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4105c9f5a33489fc61dbf479e9302869"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a4105c9f5a33489fc61dbf479e9302869">el_uart_peek_last_char</a> (el_index ch)</td></tr>
+<tr class="memdesc:a4105c9f5a33489fc61dbf479e9302869"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the last byte in the receiving buffer but do not remove it from the buffer.  <a href="#a4105c9f5a33489fc61dbf479e9302869">More...</a><br /></td></tr>
+<tr class="separator:a4105c9f5a33489fc61dbf479e9302869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9470bebab5572e8a98101f17fc1f526b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00025.html#a9470bebab5572e8a98101f17fc1f526b">el_uart_erase_last_char</a> (el_index ch)</td></tr>
+<tr class="memdesc:a9470bebab5572e8a98101f17fc1f526b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the last byte received in the receiving buffer.  <a href="#a9470bebab5572e8a98101f17fc1f526b">More...</a><br /></td></tr>
+<tr class="separator:a9470bebab5572e8a98101f17fc1f526b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a060623e0d13ddfd2baba9d51fde68cd5"></a>
+<a class="anchor" id="af5ac74afdbd2d40cf24f71f8d53e08af"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int elu_printf </td>
+          <td class="memname">void el_uart_use_reset_code </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
+          <td class="paramtype">el_bool&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
+          <td class="paramtype">el_int8&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -163,32 +171,35 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>elu_putchar</b> (int c
       </table>
 </div><div class="memdoc">
 
-<p>send a string with data fields to UART1 </p>
+<p>Setup a value that: upon receving that value, reset the chip. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">format</td><td>same rule as the format string of "printf" </td></tr>
+    <tr><td class="paramname">k</td><td>whether to use such a feature or not </td></tr>
+    <tr><td class="paramname">x</td><td>the value that triggers a hardware reset</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>length of the string with data formatted </dd></dl>
-
+<p>The Tiny Bootloader will first send a specific value to the UART bus shortly before a microcontroller programming. After that, the microcontroller needs to be reseted in a short time window. This reset code feature let the microcontroller reset itself automatically once the value occurs. The image below shows the setting in the TinyBootloader when the code is 128 (used in the examples of this lib). </p><div class="image">
+<img src="doc_tinybld_setup.png" alt="doc_tinybld_setup.png"/>
+</div>
+ 
 </div>
 </div>
-<a class="anchor" id="a08425935f3540a12afdb0b0da013144e"></a>
+<a class="anchor" id="af8f957eb440b5e3cf6b8b7fe632ac9ae"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int elu_println </td>
+          <td class="memname">void el_uart_send_char </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>ch</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -198,32 +209,33 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>elu_putchar</b> (int c
       </table>
 </div><div class="memdoc">
 
-<p>send a string with data fields + a newline char to UART1 </p>
+<p>Send one byte of data to the serial channel. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">format</td><td>same rule as the format string of "printf" </td></tr>
+    <tr><td class="paramname">ch</td><td>serial channel index (at present, only 0 is effective) </td></tr>
+    <tr><td class="paramname">x</td><td>the value to be sent</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>length of the string with data formatted </dd></dl>
+<p>Note: the return of this function does not necessarily mean the transmission is finished. To determine whether the transmission is still undergoing, use <a class="el" href="a00025.html#a3b0d06285477b4530bfc707ffebb33fe" title="Check whether the transmission issued in the last sending function is finished. ">el_uart_is_sending</a>. </p>
 
 </div>
 </div>
-<a class="anchor" id="af54a4b5fb6763b5ae4c2f4b1d710fa62"></a>
+<a class="anchor" id="a18208aab32f8d190ef6add9192906308"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int elu_scanf </td>
+          <td class="memname">void el_uart_send_string </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>ch</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -233,69 +245,144 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>elu_putchar</b> (int c
       </table>
 </div><div class="memdoc">
 
-<p>scanf to be used here </p>
+<p>Send a string (an array of char terminated by a null) to the serial channel. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">format</td><td>same rule as the format string of "scanf" </td></tr>
+    <tr><td class="paramname">ch</td><td>serial channel index (at present, only 0 is effective) </td></tr>
+    <tr><td class="paramname">str</td><td>pointer to the string to be sent</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>number of data field successfuly scanned</dd></dl>
-<p>This function behaves similarly to the "scanf": it receives and stores characters. When a carriage return (the Enter key) occurs, this function analyzes the string and returns. </p>
+<p>Note: the return of this function does not necessarily mean the transmission is finished. To determine whether the transmission is still undergoing, use <a class="el" href="a00025.html#a3b0d06285477b4530bfc707ffebb33fe" title="Check whether the transmission issued in the last sending function is finished. ">el_uart_is_sending</a>. </p>
 
 </div>
 </div>
-<a class="anchor" id="ae78f8e6c9f5bf84b84c4fd480382de87"></a>
+<a class="anchor" id="a3b0d06285477b4530bfc707ffebb33fe"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void elu_scanf_set_echo </td>
+          <td class="memname">bool el_uart_is_sending </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>k</em></td><td>)</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>configure whether <a class="el" href="a00025.html#af54a4b5fb6763b5ae4c2f4b1d710fa62" title="scanf to be used here ">elu_scanf</a> echo the character received </p>
+<p>Check whether the transmission issued in the last sending function is finished. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">k</td><td>echo or not </td></tr>
+    <tr><td class="paramname">ch</td><td>serial channel index (at present, only 0 is effective)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Boolean value of "is still sending or not" </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af83b9a6db44103475070c9450284762e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_uint16 el_uart_get_char_counter </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check how many bytes are received and buffered in the channel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>serial channel index (at present, only 0 is effective)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of bytes received and buffered </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4d9362d0dcecad303a0dff071820570d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char el_uart_get_char </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Take out one byte from the receiving buffer in order of first-in-first-out. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>serial channel index (at present, only 0 is effective)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the byte </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a83cc3369d9f0d3ecad9bde07cbd7edbf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_uart_flush_char </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Totally clear up the receiving buffer of a serial channel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>serial channel index (at present, only 0 is effective) </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a6c5344ecf2f2b40091f06d1440ab7ff9"></a>
+<a class="anchor" id="a6eec3360f3ae9d5fce78b19689cf8fdf"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int elu_snprintf </td>
+          <td class="memname">el_uint16 el_uart_get_string </td>
           <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>ch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
+          <td class="paramname"><em>buf</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
+          <td class="paramtype">el_uint16&#160;</td>
+          <td class="paramname"><em>buf_size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
+          <td class="paramtype">el_bool&#160;</td>
+          <td class="paramname"><em>return_line</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -305,50 +392,99 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>elu_putchar</b> (int c
       </table>
 </div><div class="memdoc">
 
-<p>snprintf to be used here </p>
-<dl class="section return"><dt>Returns</dt><dd>length of the string </dd></dl>
+<p>Get a string ended with a null (0 or '\0') or a carriage-return ('\r', (the "Enter" key). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>serial channel index (at present, only 0 is effective) </td></tr>
+    <tr><td class="paramname">buf</td><td>pointer of a buffer to store the received string </td></tr>
+    <tr><td class="paramname">buf_size</td><td>size of the given buffer, which gives a limit to the length of the string received </td></tr>
+    <tr><td class="paramname">return_line</td><td>finish the string once (1) a carriage-return, (0) a null is received.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>length of the string</dd></dl>
+<p>The null char received at last is not notable as a string in C is always terminated by a null. In case of ending with a carriage-return, the carriage-return itself will be placed in the string and followed by a null that terminates the string as usual. </p>
 
 </div>
 </div>
-<a class="anchor" id="a5aa4f9b88807ca98c69f4038e1d89f34"></a>
+<a class="anchor" id="a51f31da50856644699cffe1c8aa20844"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int elu_sscanf </td>
+          <td class="memname">char el_uart_peek_first_char </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>sscanf to be used here </p>
-<dl class="section return"><dt>Returns</dt><dd>number of data field successfuly scanned </dd></dl>
+<p>Check the first byte in the receiving buffer, but does not remove it from the buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>serial channel index (at present, only 0 is effective)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>value of the first byte </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4105c9f5a33489fc61dbf479e9302869"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char el_uart_peek_last_char </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check the last byte in the receiving buffer but do not remove it from the buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>serial channel index (at present, only 0 is effective)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>value of the last byte </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9470bebab5572e8a98101f17fc1f526b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_uart_erase_last_char </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove the last byte received in the receiving buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>serial channel index (at present, only 0 is effective) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 20 2015 17:16:23 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:45 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

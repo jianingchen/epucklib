@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_led.h Source File</title>
+<title>embedded system library for e-puck: el_ir_receiver.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -86,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">el_led.h</div>  </div>
+<div class="title">el_ir_receiver.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00018.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -107,46 +107,70 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#ifndef EL_LED_H</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define EL_LED_H</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifndef EL_IR_RECEIVER_H</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define EL_IR_RECEIVER_H</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00016.html">el_common.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00015.html">el_clock.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00024.html">el_trigger.h</a>&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00018.html#ab35f59ce139b2944c49987e3725c9cd3">el_enable_ir_receiver</a>();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00015.html">el_common.h</a>&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define EL_LED_RING_ALL -1</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define EL_LED_RING_0   0</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define EL_LED_RING_1   1</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define EL_LED_RING_2   2</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define EL_LED_RING_3   3</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define EL_LED_RING_4   4</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define EL_LED_RING_5   5</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define EL_LED_RING_6   6</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define EL_LED_RING_7   7</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define EL_LED_BODY     9</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define EL_LED_FRONT    10</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">   56</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span>{</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">   57</a></span>&#160;    <a class="code" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">EL_OFF</a> = 0,     </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">   58</a></span>&#160;    <a class="code" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">EL_ON</a> = 1,      </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">   59</a></span>&#160;    <a class="code" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">EL_TOGGLE</a> = -1, </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;} <a class="code" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00018.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led_set</a>(el_index w,<a class="code" href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a> s);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00018.html#ab3823524468a2011a62d955d7277382f">el_get_selector_value</a>();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a00015_html"><div class="ttname"><a href="a00015.html">el_common.h</a></div></div>
-<div class="ttc" id="a00018_html_ab3823524468a2011a62d955d7277382f"><div class="ttname"><a href="a00018.html#ab3823524468a2011a62d955d7277382f">el_get_selector_value</a></div><div class="ttdeci">int el_get_selector_value()</div><div class="ttdoc">get the selector postition </div></div>
-<div class="ttc" id="a00018_html_adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd"><div class="ttname"><a href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">EL_OFF</a></div><div class="ttdoc">turn off the LED </div><div class="ttdef"><b>Definition:</b> el_led.h:57</div></div>
-<div class="ttc" id="a00018_html_adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1"><div class="ttname"><a href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">EL_ON</a></div><div class="ttdoc">turn on the LED </div><div class="ttdef"><b>Definition:</b> el_led.h:58</div></div>
-<div class="ttc" id="a00018_html_adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223"><div class="ttname"><a href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">EL_TOGGLE</a></div><div class="ttdoc">toggle the on/off status of the LED </div><div class="ttdef"><b>Definition:</b> el_led.h:59</div></div>
-<div class="ttc" id="a00018_html_adee7c768c6e5283520fe8b6c7a75e09a"><div class="ttname"><a href="a00018.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a></div><div class="ttdeci">el_led_action</div><div class="ttdoc">used in el_led_set. </div><div class="ttdef"><b>Definition:</b> el_led.h:56</div></div>
-<div class="ttc" id="a00018_html_a074c77228ff700a17bd3e42fb7cffeb7"><div class="ttname"><a href="a00018.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led_set</a></div><div class="ttdeci">void el_led_set(el_index w, el_led_action s)</div><div class="ttdoc">set the status of a LED </div></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00018.html#a533e2318c63e4d95b5815942a646b12d">el_disable_ir_receiver</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00018.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;el_uint8 <a class="code" href="a00018.html#a4fae36b0456f98360cd73fa9663a2b55">el_ir_receiver_get_check</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;el_uint8 <a class="code" href="a00018.html#a3899efc52618671a46dc34e8523ddcb2">el_ir_receiver_get_address</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;el_uint8 <a class="code" href="a00018.html#aa5a561e70828e63b6f0ffa01ab89e298">el_ir_receiver_get_data</a>();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;el_uint16 <a class="code" href="a00018.html#aba65b498f8a340b859968b6b82ce7bec">el_ir_receiver_get_counter</a>();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00015.html">el_clock.h</a>&quot;</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">extern</span> el_bool el_irrc_enabled;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">extern</span> el_uint8 el_irrc_phase;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">extern</span> el_mcd el_irrc_timer;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> el_init_ir_receiver();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span> el_routine_ir_receiver_14400hz();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keywordtype">void</span> el_irrc_inhibit(<span class="keywordtype">int</span> k);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* EL_INCLUDE_LIB_INTERNAL_CONTEXT */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* EL_IR_RECEIVER_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00024_html"><div class="ttname"><a href="a00024.html">el_trigger.h</a></div></div>
+<div class="ttc" id="a00015_html"><div class="ttname"><a href="a00015.html">el_clock.h</a></div></div>
+<div class="ttc" id="a00018_html_a4fae36b0456f98360cd73fa9663a2b55"><div class="ttname"><a href="a00018.html#a4fae36b0456f98360cd73fa9663a2b55">el_ir_receiver_get_check</a></div><div class="ttdeci">el_uint8 el_ir_receiver_get_check()</div><div class="ttdoc">get the check bit in the message while 2 means no message </div></div>
+<div class="ttc" id="a00018_html_af0e7ec78afde599d7d90c73e3c258d03"><div class="ttname"><a href="a00018.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a></div><div class="ttdeci">void el_ir_receiver_reset()</div><div class="ttdoc">reset the ir receiver to prepare for any incoming message </div></div>
+<div class="ttc" id="a00018_html_ab35f59ce139b2944c49987e3725c9cd3"><div class="ttname"><a href="a00018.html#ab35f59ce139b2944c49987e3725c9cd3">el_enable_ir_receiver</a></div><div class="ttdeci">void el_enable_ir_receiver()</div><div class="ttdoc">enable the ir receiver </div></div>
+<div class="ttc" id="a00018_html_aa5a561e70828e63b6f0ffa01ab89e298"><div class="ttname"><a href="a00018.html#aa5a561e70828e63b6f0ffa01ab89e298">el_ir_receiver_get_data</a></div><div class="ttdeci">el_uint8 el_ir_receiver_get_data()</div><div class="ttdoc">get the data field in the message </div></div>
+<div class="ttc" id="a00018_html_a533e2318c63e4d95b5815942a646b12d"><div class="ttname"><a href="a00018.html#a533e2318c63e4d95b5815942a646b12d">el_disable_ir_receiver</a></div><div class="ttdeci">void el_disable_ir_receiver()</div><div class="ttdoc">disable the ir receiver </div></div>
+<div class="ttc" id="a00018_html_aba65b498f8a340b859968b6b82ce7bec"><div class="ttname"><a href="a00018.html#aba65b498f8a340b859968b6b82ce7bec">el_ir_receiver_get_counter</a></div><div class="ttdeci">el_uint16 el_ir_receiver_get_counter()</div><div class="ttdoc">get the number of messages received since initialization </div></div>
+<div class="ttc" id="a00018_html_a3899efc52618671a46dc34e8523ddcb2"><div class="ttname"><a href="a00018.html#a3899efc52618671a46dc34e8523ddcb2">el_ir_receiver_get_address</a></div><div class="ttdeci">el_uint8 el_ir_receiver_get_address()</div><div class="ttdoc">get the address field in the message </div></div>
+<div class="ttc" id="a00016_html"><div class="ttname"><a href="a00016.html">el_common.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:55 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:44 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_random.h File Reference</title>
+<title>embedded system library for e-puck: el_process.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">0.99</span>
+   &#160;<span id="projectnumber">1.0alpha</span>
    </div>
-   <div id="projectbrief">The documentation work of this project is now in progress.</div>
+   <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
  </tr>
  </tbody>
@@ -86,140 +86,75 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_random.h File Reference<div class="ingroups"><a class="el" href="a00037.html">Random Generator</a></div></div>  </div>
+<div class="title">el_process.h File Reference<div class="ingroups"><a class="el" href="a00047.html">Process</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00015_source.html">el_common.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00016_source.html">el_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00015_source.html">el_clock.h</a>&quot;</code><br />
 </div>
 <p><a href="a00020_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a826dee916fab71936a6233a797af7d12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a826dee916fab71936a6233a797af7d12"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_PROCESS_MAX_NUM</b>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a826dee916fab71936a6233a797af7d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeba3d2aa0339b6ab5820296b077b6ee3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeba3d2aa0339b6ab5820296b077b6ee3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_PROCESS</b>&#160;&#160;&#160;void</td></tr>
+<tr class="separator:aeba3d2aa0339b6ab5820296b077b6ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a8ff89205918a31852ac2a39c2c742b73"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ff89205918a31852ac2a39c2c742b73"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>el_process</b> )(void *)</td></tr>
+<tr class="separator:a8ff89205918a31852ac2a39c2c742b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac444097bd87f81e8ce08b436811bf0d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ac444097bd87f81e8ce08b436811bf0d1">el_random_set_seed</a> (int seed)</td></tr>
-<tr class="memdesc:ac444097bd87f81e8ce08b436811bf0d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">set seed of the random generator module  <a href="#ac444097bd87f81e8ce08b436811bf0d1">More...</a><br /></td></tr>
-<tr class="separator:ac444097bd87f81e8ce08b436811bf0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a987f051a1e8591d5ccb9a85c2ce9c7e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a987f051a1e8591d5ccb9a85c2ce9c7e1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a987f051a1e8591d5ccb9a85c2ce9c7e1">el_random_reset_seed</a> (void)</td></tr>
-<tr class="memdesc:a987f051a1e8591d5ccb9a85c2ce9c7e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the random seed to default value <br /></td></tr>
-<tr class="separator:a987f051a1e8591d5ccb9a85c2ce9c7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace80ec1d84ebecba4808d0e5b0dad3a3"><td class="memItemLeft" align="right" valign="top">el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ace80ec1d84ebecba4808d0e5b0dad3a3">el_random_get_seed</a> (void)</td></tr>
-<tr class="memdesc:ace80ec1d84ebecba4808d0e5b0dad3a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">get seed of the current random sequence  <a href="#ace80ec1d84ebecba4808d0e5b0dad3a3">More...</a><br /></td></tr>
-<tr class="separator:ace80ec1d84ebecba4808d0e5b0dad3a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3654ea5e3a61ea09daa94c41467a4ffa"><td class="memItemLeft" align="right" valign="top">el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a3654ea5e3a61ea09daa94c41467a4ffa">el_random_uint16</a> (void)</td></tr>
-<tr class="memdesc:a3654ea5e3a61ea09daa94c41467a4ffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">returning a random unsigned short int in [0,65535]  <a href="#a3654ea5e3a61ea09daa94c41467a4ffa">More...</a><br /></td></tr>
-<tr class="separator:a3654ea5e3a61ea09daa94c41467a4ffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c171512231cd23a543a3797fa96f501"><td class="memItemLeft" align="right" valign="top">el_uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a2c171512231cd23a543a3797fa96f501">el_random_uint32</a> (void)</td></tr>
-<tr class="memdesc:a2c171512231cd23a543a3797fa96f501"><td class="mdescLeft">&#160;</td><td class="mdescRight">returning a random unsigned long int in [0,2^32 - 1]  <a href="#a2c171512231cd23a543a3797fa96f501">More...</a><br /></td></tr>
-<tr class="separator:a2c171512231cd23a543a3797fa96f501"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c6af4373b35535dbb736a5000f15774"><td class="memItemLeft" align="right" valign="top">el_int16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a4c6af4373b35535dbb736a5000f15774">el_random_int</a> (el_int16 min, el_int16 max)</td></tr>
-<tr class="memdesc:a4c6af4373b35535dbb736a5000f15774"><td class="mdescLeft">&#160;</td><td class="mdescRight">returning a random int in [min,max]  <a href="#a4c6af4373b35535dbb736a5000f15774">More...</a><br /></td></tr>
-<tr class="separator:a4c6af4373b35535dbb736a5000f15774"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a484d81d2df007f11eee83789b24364e9"><td class="memItemLeft" align="right" valign="top">el_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a484d81d2df007f11eee83789b24364e9">el_random_rate</a> (el_uint16 num, el_uint16 den)</td></tr>
-<tr class="memdesc:a484d81d2df007f11eee83789b24364e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">returning true at a probablity of (num/den)  <a href="#a484d81d2df007f11eee83789b24364e9">More...</a><br /></td></tr>
-<tr class="separator:a484d81d2df007f11eee83789b24364e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15372f27d6a543de5e3e00e028bb07aa"><td class="memItemLeft" align="right" valign="top">el_index&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a15372f27d6a543de5e3e00e028bb07aa">el_launch_process</a> (el_process func, void *arg)</td></tr>
+<tr class="memdesc:a15372f27d6a543de5e3e00e028bb07aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">execute a function in a process  <a href="#a15372f27d6a543de5e3e00e028bb07aa">More...</a><br /></td></tr>
+<tr class="separator:a15372f27d6a543de5e3e00e028bb07aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ea69eb32cff9ead1640ddbc880b41c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a9ea69eb32cff9ead1640ddbc880b41c3">el_process_wait</a> (el_time t_ms)</td></tr>
+<tr class="memdesc:a9ea69eb32cff9ead1640ddbc880b41c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">wait for a period of time  <a href="#a9ea69eb32cff9ead1640ddbc880b41c3">More...</a><br /></td></tr>
+<tr class="separator:a9ea69eb32cff9ead1640ddbc880b41c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf18603e5149c41de087ec25e262018"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#aecf18603e5149c41de087ec25e262018">el_process_wait_fraction</a> (unsigned int num, unsigned int den)</td></tr>
+<tr class="memdesc:aecf18603e5149c41de087ec25e262018"><td class="mdescLeft">&#160;</td><td class="mdescRight">wait for a period of time specified as a fraction  <a href="#aecf18603e5149c41de087ec25e262018">More...</a><br /></td></tr>
+<tr class="separator:aecf18603e5149c41de087ec25e262018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3580f38f3a753bd43cd1bcec81a53903"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a3580f38f3a753bd43cd1bcec81a53903">el_process_cooperate</a> ()</td></tr>
+<tr class="memdesc:a3580f38f3a753bd43cd1bcec81a53903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Introduce an atomic wait so other processes can be executed.  <a href="#a3580f38f3a753bd43cd1bcec81a53903">More...</a><br /></td></tr>
+<tr class="separator:a3580f38f3a753bd43cd1bcec81a53903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb697ee0cd104c20d8d51da7bf2104ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#adb697ee0cd104c20d8d51da7bf2104ba">el_process_resume</a> (el_index process_idx)</td></tr>
+<tr class="memdesc:adb697ee0cd104c20d8d51da7bf2104ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">finish the waiting period of a process immediately  <a href="#adb697ee0cd104c20d8d51da7bf2104ba">More...</a><br /></td></tr>
+<tr class="separator:adb697ee0cd104c20d8d51da7bf2104ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae21ac89ff6b3bc144ba0e055ac36639f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ae21ac89ff6b3bc144ba0e055ac36639f">el_kill_process</a> (el_index process_idx)</td></tr>
+<tr class="memdesc:ae21ac89ff6b3bc144ba0e055ac36639f"><td class="mdescLeft">&#160;</td><td class="mdescRight">kill the process (the abnormal way to end a process)  <a href="#ae21ac89ff6b3bc144ba0e055ac36639f">More...</a><br /></td></tr>
+<tr class="separator:ae21ac89ff6b3bc144ba0e055ac36639f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2c758eedf0e39ab8a424d3ecc402b35"><td class="memItemLeft" align="right" valign="top">el_index&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ad2c758eedf0e39ab8a424d3ecc402b35">el_get_local_process_index</a> ()</td></tr>
+<tr class="memdesc:ad2c758eedf0e39ab8a424d3ecc402b35"><td class="mdescLeft">&#160;</td><td class="mdescRight">get index of the process where this function is called  <a href="#ad2c758eedf0e39ab8a424d3ecc402b35">More...</a><br /></td></tr>
+<tr class="separator:ad2c758eedf0e39ab8a424d3ecc402b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ac444097bd87f81e8ce08b436811bf0d1"></a>
+<a class="anchor" id="a15372f27d6a543de5e3e00e028bb07aa"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void el_random_set_seed </td>
+          <td class="memname">el_index el_launch_process </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>seed</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>set seed of the random generator module </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">seed</td><td>the random seed</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>In a Pseudo random generator like this, the random seed defines the sequence of values generated. Nth values of the random generators using the same seed are same. </p>
-
-</div>
-</div>
-<a class="anchor" id="ace80ec1d84ebecba4808d0e5b0dad3a3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_uint16 el_random_get_seed </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get seed of the current random sequence </p>
-<dl class="section return"><dt>Returns</dt><dd>the random seed </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a3654ea5e3a61ea09daa94c41467a4ffa"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_uint16 el_random_uint16 </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>returning a random unsigned short int in [0,65535] </p>
-<dl class="section return"><dt>Returns</dt><dd>the unsigned short int </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a2c171512231cd23a543a3797fa96f501"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_uint32 el_random_uint32 </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>returning a random unsigned long int in [0,2^32 - 1] </p>
-<dl class="section return"><dt>Returns</dt><dd>the unsigned long int </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a4c6af4373b35535dbb736a5000f15774"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_int16 el_random_int </td>
-          <td>(</td>
-          <td class="paramtype">el_int16&#160;</td>
-          <td class="paramname"><em>min</em>, </td>
+          <td class="paramtype">el_process&#160;</td>
+          <td class="paramname"><em>func</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">el_int16&#160;</td>
-          <td class="paramname"><em>max</em>&#160;</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -229,25 +164,61 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
       </table>
 </div><div class="memdoc">
 
-<p>returning a random int in [min,max] </p>
-<dl class="section return"><dt>Returns</dt><dd>the int </dd></dl>
-
+<p>execute a function in a process </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>the pointer to the function to be executed (entry function) </td></tr>
+    <tr><td class="paramname">arg</td><td>an arguments passed to the function to be executed</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the index of the process (-1 if failed)</dd></dl>
+<p>This function can execute a function (entry function) in a process with the given argument (as "func(arg);"). Maxmum number of processes is 7.</p>
+<p>The entry function must be a function that takes a void pointer or a <code>el_handle</code> as the argument and returns void. For example: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;void my_process(void*arg){</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    ...</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;}</div>
+</div><!-- fragment --> 
 </div>
 </div>
-<a class="anchor" id="a484d81d2df007f11eee83789b24364e9"></a>
+<a class="anchor" id="a9ea69eb32cff9ead1640ddbc880b41c3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">el_bool el_random_rate </td>
+          <td class="memname">void el_process_wait </td>
           <td>(</td>
-          <td class="paramtype">el_uint16&#160;</td>
+          <td class="paramtype">el_time&#160;</td>
+          <td class="paramname"><em>t_ms</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>wait for a period of time </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t_ms</td><td>time in millisecond</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function induces a time delay. It can only be used in a process. </p>
+
+</div>
+</div>
+<a class="anchor" id="aecf18603e5149c41de087ec25e262018"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_process_wait_fraction </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>num</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">el_uint16&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>den</em>&#160;</td>
         </tr>
         <tr>
@@ -258,33 +229,126 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
       </table>
 </div><div class="memdoc">
 
-<p>returning true at a probablity of (num/den) </p>
+<p>wait for a period of time specified as a fraction </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">num</td><td>numerator of the probablity </td></tr>
-    <tr><td class="paramname">den</td><td>denominator of the probablity</td></tr>
+    <tr><td class="paramname">num</td><td>numerator of the time in seconds. </td></tr>
+    <tr><td class="paramname">den</td><td>denominator of the time in seconds.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a Boolean result</dd></dl>
-<p>This function has a (num/den) chance of returning true. It can be used in probablity based branch. For example: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;if(el_random_rate(1,5)){</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    // do A (20 percent of chance)</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;}else{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    // do B (80 percent of chance)</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    </div>
+<p>This function induces a time delay of (num/den) seconds in a process. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3580f38f3a753bd43cd1bcec81a53903"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_process_cooperate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Introduce an atomic wait so other processes can be executed. </p>
+<p>This function introduce an atomic delay, which give other processes a chance to execute. Once this process get a chance to execute again, it will continue execute. Therefore, unlike "el_process_wait", "el_process_cooperate" does not cause a notable time delay. It can be used in polling mechanism inside a process. For example, the following scheme can be used to waiting for a condition to become true: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;// wait for a condition</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;do{</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    el_process_cooperate();</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;}while(some_condition_is_not_true());</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;...</div>
+</div><!-- fragment --><p>There could be a section in a process that simply cost large amount of computation and thus make the process alone occupy the CPU for a long time. "el_process_cooperate" should be called in appropriate positions in a process of such types. For instance, in a triple-nested loop with a loop body that is also time-costly, add a "el_process_cooperate();" after the middle loop: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;// some big computation program</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;for(k=0;k&lt;15;k++){</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    for(j=0;j&lt;40;j++){</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;        for(i=0;i&lt;10;i++){</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;            some_complicated_algorithm(i,j,k);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        }</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    }</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    el_process_cooperate();</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;...</div>
 </div><!-- fragment --> 
 </div>
 </div>
+<a class="anchor" id="adb697ee0cd104c20d8d51da7bf2104ba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_process_resume </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>process_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>finish the waiting period of a process immediately </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">process_idx</td><td>the index of the process</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function can make a process in <a class="el" href="a00020.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a> finish the waiting period immediately. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae21ac89ff6b3bc144ba0e055ac36639f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_kill_process </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>process_idx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>kill the process (the abnormal way to end a process) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">process_idx</td><td>the index of the process to be killed</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function can be used to forcefully stop a process while it is waiting (e.g. when it entered <a class="el" href="a00020.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a> or <a class="el" href="a00020.html#a3580f38f3a753bd43cd1bcec81a53903" title="Introduce an atomic wait so other processes can be executed. ">el_process_cooperate</a>). Unlike the relation between 'create' and 'delete', a launched process are not supposed to be killed. A process ends normally when its entry function returns (reach the end of the function).</p>
+<p>Note: Killing a process causes all the local variables within to be lost. If a dynamically created object is referable only through such a local variable, a memory leak is resulted (unable to 'free'/'delete' through the pointer/handle anymore). </p>
+
+</div>
+</div>
+<a class="anchor" id="ad2c758eedf0e39ab8a424d3ecc402b35"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_index el_get_local_process_index </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get index of the process where this function is called </p>
+<dl class="section return"><dt>Returns</dt><dd>index of the process</dd></dl>
+<p>When this function is not called within a process, it returns -1. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 27 2015 19:02:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 17 2015 21:57:45 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
