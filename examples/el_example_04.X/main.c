@@ -19,8 +19,7 @@ This file is released under the terms of the MIT license (see "el.h").
 #include <el.h>
 #include <elu.h>
 
-#include "ServiceTrigger_CameraImageProcessing.h"
-#include "TaskTrigger_ObjectFollowing.h"
+#include "Task_ObjectFollowing.h"
 
 void BootingProcedure01_SelectorBarrier();
 void TimerCallback_MeasureCameraFPS(void*arg);
@@ -37,17 +36,6 @@ int main(void){
     el_uart_use_reset_code(true,128);
     
     BootingProcedure01_SelectorBarrier();
-    
-    /*
-     * The values below are same as the default configurations; they are placed
-     * here just for demonstration. Note, when the automatic mode is used, the
-     * frame rate will be varied depending on the lighting condition of the
-     * environment. 
-     */
-    el_camera_options()->ExposureMode = EL_AUTOMATIC;
-    el_camera_options()->AutoWhiteBalance = true;
-    el_camera_options()->AutoDigitalGain = true;
-    el_camera_options_apply();
     
     el_launch_process(Process_ConsoleLoop,NULL);
 
@@ -71,21 +59,11 @@ void Process_ConsoleLoop(void*arg){
 
     elu_printf("EL_EXAMPLE_04\n");
 
-    // setup the triggers
-    Trigger_CameraImageProcessing_Setup();
-    Trigger_ObjectFollowing_Setup();
-
-    el_stepper_motor_options()->UseAcceleration = true;
-    el_stepper_motor_options()->AccelerationRate = 2000;
-    el_config_stepper_motor(el_stepper_motor_options());
-    
-    el_enable_camera();
-    el_enable_ir_proximity();
-    el_enable_stepper_motor();
+    // setup the task
+    Task_ObjectFollowing_Setup();
     
     el_process_wait(500);// wait for 500 ms
 
-    el_led_set(EL_LED_BODY,EL_ON);
     el_uart_flush_char(EL_UART_1);
 
     while(1){
@@ -119,28 +97,30 @@ void Process_ConsoleLoop(void*arg){
 
         case 'p':// report image processing result
             elu_println("<IMG>");
-            elu_println("MASS:\t%d\t%d\t%d",IMG_RedMass,IMG_GreenMass,IMG_BlueMass);
-            elu_println("BIAS:\t%d\t%d\t%d",IMG_RedBias,IMG_GreenBias,IMG_BlueBias);
+            elu_println("MASS:\t%d\t%d\t%d",vision_mass_red,vision_mass_green,vision_mass_blue);
+            elu_println("BIAS:\t%d\t%d\t%d",vision_bias_red,vision_bias_green,vision_bias_blue);
             elu_putchar('\n');
             break;
 
         case '1':
-            TT_ObjectColor = TT_OBJECT_COLOR_RED;
+            Task_ObjectColor = TASK_OBJECT_RED;
             elu_println("FOLLOW RED");
             break;
 
         case '2':
-            TT_ObjectColor = TT_OBJECT_COLOR_GREEN;
+            Task_ObjectColor = TASK_OBJECT_GREEN;
             elu_println("FOLLOW GREEN");
             break;
 
         case '3':
-            TT_ObjectColor = TT_OBJECT_COLOR_BLUE;
+            Task_ObjectColor = TASK_OBJECT_BLUE;
             elu_println("FOLLOW BLUE");
             break;
 
         }
 
     }
+
+    Task_ObjectFollowing_Clear();
 
 }
