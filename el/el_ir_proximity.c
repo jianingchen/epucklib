@@ -34,11 +34,13 @@ el_uint16 el_irps_environment_ambient;
 el_uint16 el_irps_samples_Ambient[8];//Noise + Ambient
 el_uint16 el_irps_samples_Mixed[8];//Noise + Ambient + Emitter Reflection
 el_uint16 el_irps_samples_Temp[8];
+/*
 el_uint16 el_irps_samples_Last[8];
 el_uint32 el_irps_samples_Spikes[8];
 el_uint16 el_irps_samples_Noise[8];
-el_uint16 el_irps_samples_NeutralReflection[8];// need calibration
 el_uint16 el_irps_samples_NeutralNoise[8];
+*/
+el_uint16 el_irps_samples_NeutralReflection[8];// need calibration
 
 el_ir_proximity_param el_irps_parameters;
 
@@ -87,11 +89,13 @@ void el_init_ir_proximity(){
         el_irps_samples_Ambient[i] = 0;
         el_irps_samples_Mixed[i] = 0;
         el_irps_samples_Temp[i] = 0;
+        /*
         el_irps_samples_Last[i] = 0;
         el_irps_samples_Noise[i] = 0;
         el_irps_samples_Spikes[i] = 0;
-        el_irps_samples_NeutralReflection[i] = 5;
         el_irps_samples_NeutralNoise[i] = 15;
+        */
+        el_irps_samples_NeutralReflection[i] = 5;
     }
 
     el_ir_proximity_options_reset();
@@ -140,9 +144,11 @@ void el_disable_ir_proximity(void){
             el_irps_samples_Ambient[i] = 0;
             el_irps_samples_Mixed[i] = 0;
             el_irps_samples_Temp[i] = 0;
+            /*
             el_irps_samples_Last[i] = 0;
             el_irps_samples_Noise[i] = 0;
             el_irps_samples_Spikes[i] = 0;
+            */
         }
     }
 }
@@ -343,7 +349,7 @@ static int el_irps_get_reflection(int i){
     r -= (int)el_irps_samples_NeutralReflection[i];
     return (r < 0)? 0:r;
 }
-
+/*
 static int el_irps_get_noise(int i){
     int r;
     r = (int)el_irps_samples_Mixed[i] - (int)el_irps_samples_Ambient[i];
@@ -357,7 +363,7 @@ static int el_irps_get_noise(int i){
     }
     return r;
 }
-
+*/
 
 
 el_uint32 el_ir_proximity_get_counter(){
@@ -390,14 +396,14 @@ int el_ir_proximity_get(el_index index,el_ir_proximity_output u,el_int16*out){
             *out = el_irps_get_reflection(i);
             return 1;
 
-        case EL_IR_NOISE:
-            *out = el_irps_get_noise(i);
+        case EL_IR_DATA:
+            *out = 0;
             return 1;
 
         case EL_IR_ALL_3V:
             out[0] = el_irps_get_ambient(i);
             out[1] = el_irps_get_reflection(i);
-            out[2] = el_irps_get_noise(i);
+            out[2] = 0;
             return 3;
 
         }

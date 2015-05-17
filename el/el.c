@@ -92,6 +92,14 @@ void el_sleep(el_time time_ms){
         NOP();
         NOP();
         NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
+        NOP();
     }
 }
 
@@ -103,7 +111,7 @@ void el_calibrate_sensors(){
     
     el_irps_is_calibrated = false;
     for(i=0;i<8;i++){
-        el_irps_samples_NeutralNoise[i] = 0;
+        //el_irps_samples_NeutralNoise[i] = 0;
         el_irps_samples_NeutralReflection[i] = 0;
     }
     

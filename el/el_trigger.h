@@ -199,7 +199,7 @@ void el_trigger_issue_internal_event(el_enum e);
 
 #include "el_clock.h"
 
-#define EL_TRIGGER_DIM   16
+#define EL_TRIGGER_DIM   12
 
 typedef struct{
     el_uint32 counter;

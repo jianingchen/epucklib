@@ -22,7 +22,9 @@ This file is released under the terms of the MIT license (see "el.h").
 
 \section Introduction
 
-(TODO)
+The functions in this module are the basic functions to use the UART bus 
+on the microcontroller. In \ref ELU_STDIO, a more user-friendly set of functions 
+are provided to transmit and receive text. 
 
 */
  

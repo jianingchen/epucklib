@@ -108,18 +108,20 @@ el_camera_param* el_camera_options();
 
 
 /*!
-    \brief reset the settings stored in ::el_camera_options to default
-
-*/
-void el_camera_options_reset();
-
-
-/*!
     \brief apply the settings stored in ::el_camera_options directly
 
     This function is equivalent to "el_config_camera( el_camera_options() )".
 */
 void el_camera_options_apply();
+
+
+/*!
+    \brief reset the settings stored in ::el_camera_options to default
+    
+    This function can be used in combination with ::el_camera_options_apply 
+    when the default configuration need to be used. 
+*/
+void el_camera_options_reset();
 
 
 /*!

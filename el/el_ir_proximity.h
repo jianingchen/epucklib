@@ -65,9 +65,9 @@ typedef enum {
     through ::el_ir_proximity_options. 
 */
 typedef struct {
-    el_ir_proximity_mode WorkingMode;
-    el_uint16 EnvironmentalAmbient;
-    el_bool SubtractEA;     ///< whether to subtract EnvironmentalAmbient in the ambient output.
+    el_ir_proximity_mode WorkingMode;///< the working mode of the proximity sensors
+    el_uint16 EnvironmentalAmbient;///< the ambient infrared intensity in the environment, used to correct the the ambient output
+    el_bool SubtractEA;     ///< whether to use EnvironmentalAmbient in the ambient output
 } el_ir_proximity_param;
 
 
@@ -80,7 +80,7 @@ typedef struct {
 typedef enum {
     EL_IR_AMBIENT,              ///< get the ambient output
     EL_IR_REFLECTION,           ///< get the reflection output
-    EL_IR_NOISE,                ///< get the noise output
+    EL_IR_DATA,                 ///< get the data encoded (not implemented yet)
     EL_IR_ALL_3V,               ///< get all of the three outputs
 } el_ir_proximity_output;
 
@@ -120,20 +120,21 @@ void el_disable_ir_proximity(void);
 */
 el_ir_proximity_param* el_ir_proximity_options();
 
-
-/*!
-    \brief reset the settings stored in ::el_ir_proximity_options to default
-
-*/
-void el_ir_proximity_options_reset();
-
-
 /*!
     \brief apply the settings stored in ::el_ir_proximity_options directly
 
     This function is equivalent to "el_config_ir_proximity( el_ir_proximity_options() )".
 */
 void el_ir_proximity_options_apply();
+
+
+/*!
+    \brief reset the settings stored in ::el_ir_proximity_options to default
+
+    This function can be used in combination with ::el_ir_proximity_options_apply 
+    when the default configuration need to be used. 
+*/
+void el_ir_proximity_options_reset();
 
 
 /*!

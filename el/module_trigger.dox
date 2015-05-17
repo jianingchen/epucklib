@@ -19,9 +19,9 @@ a set of samples ready for use.
 uses camera image as input and hence executes every time when the camera 
 is refreshed. 
 
-Here is an example of control loop that depends on the proximity sensor readings. 
+Here is an example of a control loop that takes the proximity sensors as input. 
 The example assumes that the stepper motor and the infrared proximity sensors 
-are configured and enabled properly beforehand. 
+are enabled beforehand and the proximity sensors are working in ::EL_IR_PROXIMITY_PULSE mode. 
 
 Related global variables and function prototypes:
 \code
@@ -76,7 +76,7 @@ void Trigger_ControStep_Process(el_handle this_trigger){
     // assume that our algorithm needs the average of the two front sensors
     mean = (prox_value[0] + prox_value[7])/2;
     
-    // the following code let the robot keep a distance to anything in front
+    // the following algorithm let the robot keep a distance to anything in front
     if( mean >= 900 ){
 
         el_set_wheel_speed( -500, -500 );// move backwards

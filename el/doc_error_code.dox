@@ -1,0 +1,86 @@
+
+/*!
+
+\defgroup EL_ERROR_CODE Error Number
+
+
+\section sec_error_code_intro    Introduction
+
+If some detectable problem occurs when the system is running, it is possible 
+that an error number will be sent through UART1 (Bluetooth) with an overrided 
+priority. This page provides the details about these error number. 
+
+
+
+\subsection ssec_error_code_1 <<ERROR-01>> Memory Allocation Failed
+
+A \c malloc within this library has returned NULL. This is typically caused by 
+a fully occupied heap. Currently, this library need to allocate extra memory 
+when a trigger or a timer is being created. 
+
+ - Reduce the amount of dynamically allocated memory.
+ - Check for memory leaking (e.g. 'malloc'ed but not 'free'ed).
+ - Try increasing the heap size in the project configuration in MPLABX (e.g. from 512 to 768).
+
+
+
+\subsection ssec_error_code_2 <<ERROR-02>> Process Timeout
+
+The program entered a process for too long (>50 ms). This is typically caused by 
+a polling loop without placing any ::el_process_wait or ::el_process_cooperate 
+inside. 
+
+ - Polling loops (a 'while' loop waiting for some condition) typically need one ::el_process_cooperate inside its loop body. 
+ - Find other problematic loops inside those functions used in a process. 
+ - Placing ::el_process_cooperate in appropriate place of any large loops (nested 'for' loops are most susceptible).
+
+
+
+\subsection ssec_error_code_3 <<ERROR-03>> Process Launching Failed
+
+This error is usually caused by launching a new process when the number of 
+running proceses is at maximum. Note: a process finished running when 
+its entry function returns. 
+
+ - The system can handle 7 processes at most. Do not cross that line.
+ - Use triggers instead of infinite 'while' loop to do something repeatedly. 
+
+
+
+\subsection ssec_error_code_4 <<ERROR-04>> Timer Callback Function Timeout
+
+The program entered a timer's callback function for too long (>50 ms). 
+
+ - Check for problematic loops.
+ - Try reducing the amount of work done inside the callback function of a timer. 
+
+
+
+\subsection ssec_error_code_5 <<ERROR-05>> Timer Creating Failed
+
+A ::el_create_timer returned NULL. 
+
+ - Check whether each of the created timers is deleted.
+ - The system can handle 10 timers at most. Do not cross that line.
+
+
+
+\subsection ssec_error_code_6 <<ERROR-06>> Trigger Condition Function Timeout
+
+The program entered a trigger's condition callback function for too long (>50 ms). 
+
+ - Check for problematic loops.
+ - Try reducing the amount of work done inside the condition callback of a trigger. 
+
+
+
+\subsection ssec_error_code_7 <<ERROR-07>> Trigger Creating Failed
+
+A ::el_create_trigger returned NULL. 
+
+ - Check whether each of the created triggers is deleted.
+ - The system can handle 12 triggers at most. Do not cross that line.
+
+
+*/
+ 

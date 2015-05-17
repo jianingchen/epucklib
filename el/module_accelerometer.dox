@@ -5,7 +5,8 @@
 
 \section Introduction
 
-(TODO)
+The e-puck has a 3-axis accelerometer. In this lib, the sampling rate of 
+the accelerometer is 120 Hz. \ref sec_ex02 shows its through a trigger. 
 
 */
  

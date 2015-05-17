@@ -74,11 +74,11 @@ the frame rate. For example:
     ...
     el_camera_options_reset();
     el_camera_options()->ExposureMode = EL_EXPOSURE_TIME;
-    el_camera_options()->ExposureTime = 10.0f;// 10.0 gives you about 14 fps
+    el_camera_options()->ExposureTime = 10.0f;// 10.0 gives about 14 fps
     el_camera_options_apply();
     ...
 \endcode
-In \c EL_EXPOSURE_TIME mode, the framerate will become lower than 18.4 when 
+In ::EL_EXPOSURE_TIME mode, the framerate will become lower than 18.4 when 
 the \c ExposureTime is set to be bigger than 7.5 approximately. 
 
 More detailed information about tuning the camera should be found in the 
@@ -91,16 +91,18 @@ datasheet of PO6030K.
 For reference, the setting used in our lab in Sheffield Robotics is:
 \code
     ...
+    
     el_camera_options_reset();
     el_camera_options()->ExposureMode = EL_EXPOSURE_TIME;
-    el_camera_options()->AutoDigitalGain = false;
-    el_camera_options()->AutoWhiteBalance = false;
     el_camera_options()->ExposureTime = 8.0f;// gives about 18.0 fps
+    el_camera_options()->AutoDigitalGain = false;
     el_camera_options()->DigitalGain = 1.375f;
+    el_camera_options()->AutoWhiteBalance = false;
     el_camera_options()->RedGain = 1.125f;
     el_camera_options()->GreenGain = 1.0f;
     el_camera_options()->BlueGain = 1.375f;
     el_camera_options_apply();
+    
     ...
 \endcode
 

@@ -85,19 +85,20 @@ el_stepper_motor_param*el_stepper_motor_options();
 
 
 /*!
-    \brief reset the settings stored in ::el_stepper_motor_options to default
-
-*/
-void el_stepper_motor_options_reset();
-
-
-/*!
     \brief apply the settings stored in ::el_stepper_motor_options directly
 
     This function is equivalent to "el_config_stepper_motor( el_stepper_motor_options() )".
 */
 void el_stepper_motor_options_apply();
 
+
+/*!
+    \brief reset the settings stored in ::el_stepper_motor_options to default
+
+    This function can be used in combination with ::el_stepper_motor_options_apply 
+    when the default configuration need to be used. 
+*/
+void el_stepper_motor_options_reset();
 
 
 /*!
