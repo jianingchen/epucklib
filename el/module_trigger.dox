@@ -3,6 +3,8 @@
 
 \defgroup EL_TRIGGER Trigger
 
+\brief achieving "do something when some event happens"
+
 \section sec_trg_intro Introduction
 
 A trigger can launch a process when a specified event occurs in the system. 

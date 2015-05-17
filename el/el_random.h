@@ -20,6 +20,8 @@ This file is released under the terms of the MIT license (see "el.h").
 
 \defgroup EL_RANDOM Random Generator
 
+\brief functions to generate random numbers
+
 \section Introduction
 
 This is a Pseudo random generator module. Sensor values can be used 

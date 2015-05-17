@@ -3,6 +3,8 @@
 
 \defgroup EL_CAMERA Camera
 
+\brief interface of the camera module
+
 \section sec1 Introduction
 
 In this library, the resolution of the image captured by the camera 

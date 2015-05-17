@@ -20,6 +20,8 @@ This file is released under the terms of the MIT license (see "el.h").
 
 \defgroup EL_STEPPER_MOTOR Stepper Motor
 
+\brief interface of the two stepper motors on the e-puck
+
 \section Introduction
 
 The e-puck is driven by two stepper-motors. 

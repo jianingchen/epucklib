@@ -3,6 +3,7 @@
 
 \defgroup EL_ERROR_CODE Error Number
 
+\brief Detailed explanations of the error message 
 
 \section sec_error_code_intro    Introduction
 

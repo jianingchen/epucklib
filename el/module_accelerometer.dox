@@ -3,6 +3,8 @@
 
 \defgroup EL_ACC Accelerometer
 
+\brief interface of the 3-axis accelerometer
+
 \section Introduction
 
 The e-puck has a 3-axis accelerometer. In this lib, the sampling rate of 

@@ -3,6 +3,8 @@
 
 \defgroup EL_TIMER Timer
 
+\brief providing timing related functionalties
+
 \section sec_tmr_intro Introduction
 
 Timer is the object associated with many features involving timing. 

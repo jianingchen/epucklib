@@ -3,6 +3,8 @@
 
 \defgroup EL_IR_RECEIVER Infrared Receiver
 
+\brief interface of the ir receiver on top of the e-puck
+
 \section Introduction
 
 The e-puck has a ir receiver module --- TSOP36236. It is supposed to be used with 

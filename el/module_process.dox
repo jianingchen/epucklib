@@ -3,6 +3,8 @@
 
 \defgroup EL_PROCESS Process
 
+\brief providing multitasking ability
+
 \section Introduction
 
 A Process runs concurrently with other process. 

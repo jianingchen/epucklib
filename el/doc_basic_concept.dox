@@ -3,6 +3,8 @@
 
 \defgroup EL_BASIC_CONCEPTS Basic Concepts
 
+\brief Introducing some commonly used new variable types in this library
+
 
 \section sec_new_var    New Variable Types
 
@@ -40,19 +42,12 @@ meaning. For example, for the led module, -1 ("EL_LED_RING_ALL") means
 all leds on the ring of the e-puck. 
 
 
-\subsection ssec_el_flags 'el_flags' (binary option list)
-
-This is the type used to pass a group of binary option as one variable.
-This is often used to provide a multiple choice when each of the choice
-can only be YES or NO. 
-
-
 \section sec_el_mci     Masterclock and Timing
 
 Masterclock of the system is an incremental timer that keeps 
 increasing after the system is initialized. In each real time second, 
-Masterclock will be increased by 144000. Masterclock is mainly used 
-used to calculate the interval between two time points. 
+Masterclock will be increased by 144000. Masterclock is mainly used to 
+calculate the interval between two time points. 
 
 Any time stored in the system is interpreted as a integer times of the 
 materclock unit (1/144000 sec). Therefore, masterclock determines the percesion 
@@ -67,3 +62,11 @@ or ::el_process_wait.
 
 */
  
+
+/*
+\subsection ssec_el_flags 'el_flags' (binary option list)
+
+This is the type used to pass a group of binary option as one variable.
+This is often used to provide a multiple choice when each of the choice
+can only be YES or NO. 
+*/

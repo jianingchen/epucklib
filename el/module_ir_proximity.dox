@@ -3,6 +3,8 @@
 
 \defgroup EL_IR_PROXIMITY Infrared Proximity Sensors
 
+\brief interface of the eight infrared proximity sensors
+
 \section sec_prox_intro Introduction
 
 IR proximity sensors are typically used to measure the approximate distance 

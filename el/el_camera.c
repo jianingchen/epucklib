@@ -65,7 +65,6 @@ static void el_cam_register_write_uint16(el_uint8 address,el_uint16 w){
 //------------------------------------------------------------------------------
 
 void el_init_camera(){
-    int i;
     int X,Y;
     
     CAM_VSYNC_DIR = INPUT_PIN;

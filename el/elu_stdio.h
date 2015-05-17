@@ -20,6 +20,8 @@ This file is released under the terms of the MIT license (see "el.h").
 
 \defgroup ELU_STDIO UART STDIO
 
+\brief Send/Receive text via Bluetooth using functions similar to \c scanf and \c printf
+
 \section uartstdio_sec_1 Introduction
 
 This module let the user interface UART1 in a similar fashion as the stdio 
