@@ -16,8 +16,10 @@ Hightlights:
 - A user-friendly and fast (40x15 @ 18.4 fps maximum) interface for e-puck's camera.  
 
 - Multi-tasking with 'Process' --- a mechanism based on cooperative multitasking 
- that enables several functions with time delays run concurrently 
- (see \ref sec_ex02). 
+ that enables several functions with time delays run concurrently. 
+ For example, asynchronized blinking of two LEDs can be written like this: 
+ \image html images/doc_intro_multitasking.png
+ With this library, the two \c while loops in the above code can run concurrently. 
 
 - Reshape the concept of hardware timers and interrupts using two 
  object-oriented interfacing models: 'Timer' and 'Trigger'. 
@@ -39,7 +41,7 @@ Hightlights:
 \section sec_environment Environment
 
 - MPLAB X with XC16 compiler 
-- Support only e-pucks with the camera model PO6030K. 
+- Only support e-pucks with the camera model PO6030K. 
 - A computer with Bluetooth 
 - Tiny Bootloader 
 
