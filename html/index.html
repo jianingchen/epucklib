@@ -91,7 +91,10 @@ Introduction</h1>
 <p>Hightlights:</p>
 <ul>
 <li>A user-friendly and fast (40x15 @ 18.4 fps maximum) interface for e-puck's camera.</li>
-<li>Multi-tasking with 'Process' &mdash; a mechanism based on cooperative multitasking that enables several functions with time delays run concurrently (see <a class="el" href="index.html#sec_ex02">Example 2</a>).</li>
+<li>Multi-tasking with 'Process' &mdash; a mechanism based on cooperative multitasking that enables several functions with time delays run concurrently. For example, asynchronized blinking of two LEDs can be written like this: <div class="image">
+<img src="doc_intro_multitasking.png" alt="doc_intro_multitasking.png"/>
+</div>
+ With this library, the two <code>while</code> loops in the above code can run concurrently.</li>
 <li>Reshape the concept of hardware timers and interrupts using two object-oriented interfacing models: 'Timer' and 'Trigger'.</li>
 <li>A 'Timer' can be used to produce delay, as well as creating periodic callbacks (similar to the agenda in the e-puck standard library).</li>
 <li>A 'Trigger' can automatically launch a 'Process' once some event occurs, which let you do things only interrupts can do without dealing with hardware interrupts. (This is also known as "Event-Driven Interface").</li>
@@ -103,7 +106,7 @@ Introduction</h1>
 Environment</h1>
 <ul>
 <li>MPLAB X with XC16 compiler</li>
-<li>Support only e-pucks with the camera model PO6030K.</li>
+<li>Only support e-pucks with the camera model PO6030K.</li>
 <li>A computer with Bluetooth</li>
 <li>Tiny Bootloader</li>
 </ul>
@@ -237,7 +240,7 @@ License &amp; Attributions</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 22:30:01 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:48:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
