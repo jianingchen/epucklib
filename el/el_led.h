@@ -22,7 +22,8 @@ This file is released under the terms of the MIT license (see "el.h").
 
 \section Introduction
 
-(TODO)
+The LEDs around the body of the e-puck and the selector switch on the top
+board of the e-puck. 
 
 */
  
