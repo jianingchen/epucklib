@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['new_20project_20setup',['New Project Setup',['../a00002.html',1,'']]]
+  ['embedded_20system_20library_20for_20e_2dpuck',['embedded system library for e-puck',['../index.html',1,'']]]
 ];

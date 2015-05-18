@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: New Project Setup</title>
+<title>embedded system library for e-puck: Component Index</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -80,68 +80,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">New Project Setup </div>  </div>
+<div class="title">Component Index </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><br />
- </p>
-<h1><a class="anchor" id="sec_proj_stp_01"></a>
-Create A New Project</h1>
-<ol type="1">
-<li>Click "File" -&gt; "New Project". In the dialog poped, configure as the image below: <div class="image">
-<img src="doc_setup_01.png" alt="doc_setup_01.png"/>
+<div class="textblock"><h1><a class="anchor" id="sec_comp_idx"></a>
+Index Number of Components</h1>
+<p>The image below shows the index number of various components on the e-puck. </p><div class="image">
+<img src="epuck_component_index.png" alt="epuck_component_index.png"/>
 </div>
-</li>
-<li>In "Select Device" step, set "Family" to "16-bit DSCs (dsPIC30)", "Device" to "dsPIC30F6014A".</li>
-<li>In "Select Tool" step, nothing need to be changed.</li>
-<li>In "Select Compiler" step, select "XC16".</li>
-<li>In "Select Project Name and Folder" step, choose the Folder to place the project.</li>
-</ol>
-<p><br />
- </p>
-<h1><a class="anchor" id="sec_proj_stp_02"></a>
-Configure to Link The Library</h1>
-<ol type="1">
-<li>In the "Projects" treeview on the left side of the IDE, right click on the project just created and click "Set as Main Project". This guarantees the operations in the IDE will be applied to the project.</li>
-<li>Right click "Libraries" under the project's tree and then click <b>"Add Library Object/File"</b>. Then, locate the "el.a" file.</li>
-<li>Right click the project in the treeview and then click "Properties". This opens the project properties window.</li>
-<li>In the project properties window, the configure as the following images: <div class="image">
-<img src="doc_setup_02.png" alt="doc_setup_02.png"/>
-</div>
- <div class="image">
-<img src="doc_setup_03.png" alt="doc_setup_03.png"/>
-</div>
- <div class="image">
-<img src="doc_setup_04.png" alt="doc_setup_04.png"/>
-</div>
- <div class="image">
-<img src="doc_setup_05.png" alt="doc_setup_05.png"/>
-</div>
-</li>
-</ol>
-<p><br />
- </p>
-<h1><a class="anchor" id="sec_proj_stp_03"></a>
-Test Build</h1>
-<p>The "Hello World" program based on this library may be written as follow: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="a00012.html">el.h</a>&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;elu.h&gt;</span></div>
-<div class="line"></div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc,<span class="keywordtype">char</span>*argv[]){</div>
-<div class="line"></div>
-<div class="line">    <a class="code" href="a00012.html#a3fd9026983f10bcfcad74f5750ef61b1">el_initialization</a>();</div>
-<div class="line"></div>
-<div class="line">    <a class="code" href="a00019.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led_set</a>(EL_LED_BODY,<a class="code" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">EL_ON</a>);</div>
-<div class="line">    </div>
-<div class="line">    <a class="code" href="a00027.html#a060623e0d13ddfd2baba9d51fde68cd5">elu_printf</a>(<span class="stringliteral">&quot;Hello World!\n&quot;</span>);</div>
-<div class="line"></div>
-<div class="line">    <a class="code" href="a00012.html#a3a3454994212dac73a0d27754c258f95">el_main_loop</a>();</div>
-<div class="line"></div>
-<div class="line">    <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-</div><!-- fragment --> </div></div><!-- contents -->
+ </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:01 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

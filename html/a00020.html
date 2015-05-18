@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_process.h File Reference</title>
+<title>embedded system library for e-puck: el_ir_proximity.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -86,75 +86,267 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_process.h File Reference<div class="ingroups"><a class="el" href="a00047.html">Process</a></div></div>  </div>
+<div class="title">el_ir_proximity.h File Reference<div class="ingroups"><a class="el" href="a00048.html">Infrared Proximity Sensors</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00016_source.html">el_common.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00015_source.html">el_clock.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00019_source.html">el_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00018_source.html">el_clock.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00027_source.html">el_trigger.h</a>&quot;</code><br />
 </div>
 <p><a href="a00020_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00008.html">el_ir_proximity_param</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html">el_ir_proximity_data</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a826dee916fab71936a6233a797af7d12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a826dee916fab71936a6233a797af7d12"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_PROCESS_MAX_NUM</b>&#160;&#160;&#160;7</td></tr>
-<tr class="separator:a826dee916fab71936a6233a797af7d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeba3d2aa0339b6ab5820296b077b6ee3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeba3d2aa0339b6ab5820296b077b6ee3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_PROCESS</b>&#160;&#160;&#160;void</td></tr>
-<tr class="separator:aeba3d2aa0339b6ab5820296b077b6ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bae7de15c7c8ba1e1b1b339324aab63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bae7de15c7c8ba1e1b1b339324aab63"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_VALUE_MAX</b>&#160;&#160;&#160;4095U</td></tr>
+<tr class="separator:a1bae7de15c7c8ba1e1b1b339324aab63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a147ee186a6175cf63762a2df08b0321a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a147ee186a6175cf63762a2df08b0321a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_ALL</b>&#160;&#160;&#160;-1</td></tr>
+<tr class="separator:a147ee186a6175cf63762a2df08b0321a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf85537544aeecc27ee5cd8cb62ac013"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf85537544aeecc27ee5cd8cb62ac013"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_0</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:adf85537544aeecc27ee5cd8cb62ac013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1d3bac379f56a70ce3d16186d61e1b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1d3bac379f56a70ce3d16186d61e1b8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_1</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ac1d3bac379f56a70ce3d16186d61e1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafbd20a3e19fdea7cce857a74eb79c01"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafbd20a3e19fdea7cce857a74eb79c01"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_2</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:aafbd20a3e19fdea7cce857a74eb79c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3181f89ea51d662b5a7f750ad4e86e17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3181f89ea51d662b5a7f750ad4e86e17"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_3</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a3181f89ea51d662b5a7f750ad4e86e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8027477c85fc0c007b112509e4ce2f51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8027477c85fc0c007b112509e4ce2f51"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_4</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a8027477c85fc0c007b112509e4ce2f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a424a71e6b9b5f74c4fa3d3377a568163"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a424a71e6b9b5f74c4fa3d3377a568163"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_5</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:a424a71e6b9b5f74c4fa3d3377a568163"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae99ddd8320067fc7da3e286d2127ef3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae99ddd8320067fc7da3e286d2127ef3d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_6</b>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:ae99ddd8320067fc7da3e286d2127ef3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4006a7d86e417be07708e0828cf9641d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4006a7d86e417be07708e0828cf9641d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_7</b>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:a4006a7d86e417be07708e0828cf9641d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a8ff89205918a31852ac2a39c2c742b73"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ff89205918a31852ac2a39c2c742b73"></a>
-typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>el_process</b> )(void *)</td></tr>
-<tr class="separator:a8ff89205918a31852ac2a39c2c742b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ac9313b8eea9f5c0f35c39e3d205e5b2e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ac9313b8eea9f5c0f35c39e3d205e5b2e">el_ir_proximity_mode</a> { <a class="el" href="a00020.html#ac9313b8eea9f5c0f35c39e3d205e5b2eaa26383b47022906a527084703fff729a">EL_IR_PROXIMITY_PASSIVE</a> = 0, 
+<a class="el" href="a00020.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea6e61f4edccd695b26cf205c95896ea7d">EL_IR_PROXIMITY_PULSE</a> = 1, 
+<a class="el" href="a00020.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea769fb955698ff949a598763f2f8fd368">EL_IR_PROXIMITY_EMIT</a> = 2, 
+<a class="el" href="a00020.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea8b9b22d84150db407adaf64bb8ba442d">EL_IR_PROXIMITY_COMMUNICATION</a> = 3
+ }</td></tr>
+<tr class="separator:ac9313b8eea9f5c0f35c39e3d205e5b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6777dd76bceec1ac25a170762e1331c9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a> { <a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14">EL_IR_AMBIENT</a>, 
+<a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7">EL_IR_REFLECTION</a>, 
+<a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9ac3dd17acf0f48fc5de5d9fe0dbabeead">EL_IR_DATA</a>, 
+<a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9a5a78d1b47acf4ad2d4ea96c6d6f9b79c">EL_IR_ALL_3V</a>
+ }</td></tr>
+<tr class="separator:a6777dd76bceec1ac25a170762e1331c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a15372f27d6a543de5e3e00e028bb07aa"><td class="memItemLeft" align="right" valign="top">el_index&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a15372f27d6a543de5e3e00e028bb07aa">el_launch_process</a> (el_process func, void *arg)</td></tr>
-<tr class="memdesc:a15372f27d6a543de5e3e00e028bb07aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">execute a function in a process  <a href="#a15372f27d6a543de5e3e00e028bb07aa">More...</a><br /></td></tr>
-<tr class="separator:a15372f27d6a543de5e3e00e028bb07aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ea69eb32cff9ead1640ddbc880b41c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a9ea69eb32cff9ead1640ddbc880b41c3">el_process_wait</a> (el_time t_ms)</td></tr>
-<tr class="memdesc:a9ea69eb32cff9ead1640ddbc880b41c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">wait for a period of time  <a href="#a9ea69eb32cff9ead1640ddbc880b41c3">More...</a><br /></td></tr>
-<tr class="separator:a9ea69eb32cff9ead1640ddbc880b41c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecf18603e5149c41de087ec25e262018"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#aecf18603e5149c41de087ec25e262018">el_process_wait_fraction</a> (unsigned int num, unsigned int den)</td></tr>
-<tr class="memdesc:aecf18603e5149c41de087ec25e262018"><td class="mdescLeft">&#160;</td><td class="mdescRight">wait for a period of time specified as a fraction  <a href="#aecf18603e5149c41de087ec25e262018">More...</a><br /></td></tr>
-<tr class="separator:aecf18603e5149c41de087ec25e262018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3580f38f3a753bd43cd1bcec81a53903"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a3580f38f3a753bd43cd1bcec81a53903">el_process_cooperate</a> ()</td></tr>
-<tr class="memdesc:a3580f38f3a753bd43cd1bcec81a53903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Introduce an atomic wait so other processes can be executed.  <a href="#a3580f38f3a753bd43cd1bcec81a53903">More...</a><br /></td></tr>
-<tr class="separator:a3580f38f3a753bd43cd1bcec81a53903"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb697ee0cd104c20d8d51da7bf2104ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#adb697ee0cd104c20d8d51da7bf2104ba">el_process_resume</a> (el_index process_idx)</td></tr>
-<tr class="memdesc:adb697ee0cd104c20d8d51da7bf2104ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">finish the waiting period of a process immediately  <a href="#adb697ee0cd104c20d8d51da7bf2104ba">More...</a><br /></td></tr>
-<tr class="separator:adb697ee0cd104c20d8d51da7bf2104ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae21ac89ff6b3bc144ba0e055ac36639f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ae21ac89ff6b3bc144ba0e055ac36639f">el_kill_process</a> (el_index process_idx)</td></tr>
-<tr class="memdesc:ae21ac89ff6b3bc144ba0e055ac36639f"><td class="mdescLeft">&#160;</td><td class="mdescRight">kill the process (the abnormal way to end a process)  <a href="#ae21ac89ff6b3bc144ba0e055ac36639f">More...</a><br /></td></tr>
-<tr class="separator:ae21ac89ff6b3bc144ba0e055ac36639f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2c758eedf0e39ab8a424d3ecc402b35"><td class="memItemLeft" align="right" valign="top">el_index&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ad2c758eedf0e39ab8a424d3ecc402b35">el_get_local_process_index</a> ()</td></tr>
-<tr class="memdesc:ad2c758eedf0e39ab8a424d3ecc402b35"><td class="mdescLeft">&#160;</td><td class="mdescRight">get index of the process where this function is called  <a href="#ad2c758eedf0e39ab8a424d3ecc402b35">More...</a><br /></td></tr>
-<tr class="separator:ad2c758eedf0e39ab8a424d3ecc402b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bc68f95cfccbe1b072a66d2997eaa74"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0bc68f95cfccbe1b072a66d2997eaa74"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a0bc68f95cfccbe1b072a66d2997eaa74">el_enable_ir_proximity</a> (void)</td></tr>
+<tr class="memdesc:a0bc68f95cfccbe1b072a66d2997eaa74"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable the proximity sensors module <br /></td></tr>
+<tr class="separator:a0bc68f95cfccbe1b072a66d2997eaa74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3c897238cc8f64dbf9a2d490bb8e5ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3c897238cc8f64dbf9a2d490bb8e5ef"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#af3c897238cc8f64dbf9a2d490bb8e5ef">el_disable_ir_proximity</a> (void)</td></tr>
+<tr class="memdesc:af3c897238cc8f64dbf9a2d490bb8e5ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable the proximity sensors module <br /></td></tr>
+<tr class="separator:af3c897238cc8f64dbf9a2d490bb8e5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaed16be13717633a3d1ab3ea3b31f174"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00008.html">el_ir_proximity_param</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#aaed16be13717633a3d1ab3ea3b31f174">el_ir_proximity_options</a> ()</td></tr>
+<tr class="memdesc:aaed16be13717633a3d1ab3ea3b31f174"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the pointer to a static instance of <a class="el" href="a00008.html">el_ir_proximity_param</a>  <a href="#aaed16be13717633a3d1ab3ea3b31f174">More...</a><br /></td></tr>
+<tr class="separator:aaed16be13717633a3d1ab3ea3b31f174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7251dbaf16aa9c125f535468139e57c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a7251dbaf16aa9c125f535468139e57c2">el_ir_proximity_options_apply</a> ()</td></tr>
+<tr class="memdesc:a7251dbaf16aa9c125f535468139e57c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">apply the settings stored in <a class="el" href="a00020.html#aaed16be13717633a3d1ab3ea3b31f174" title="get the pointer to a static instance of el_ir_proximity_param ">el_ir_proximity_options</a> directly  <a href="#a7251dbaf16aa9c125f535468139e57c2">More...</a><br /></td></tr>
+<tr class="separator:a7251dbaf16aa9c125f535468139e57c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d0f3c3233c1ac9e62dcb8ae8b7a4867"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a8d0f3c3233c1ac9e62dcb8ae8b7a4867">el_ir_proximity_options_reset</a> ()</td></tr>
+<tr class="memdesc:a8d0f3c3233c1ac9e62dcb8ae8b7a4867"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the settings stored in <a class="el" href="a00020.html#aaed16be13717633a3d1ab3ea3b31f174" title="get the pointer to a static instance of el_ir_proximity_param ">el_ir_proximity_options</a> to default  <a href="#a8d0f3c3233c1ac9e62dcb8ae8b7a4867">More...</a><br /></td></tr>
+<tr class="separator:a8d0f3c3233c1ac9e62dcb8ae8b7a4867"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4d37f34ba9cc081709e69c599cb715e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#ac4d37f34ba9cc081709e69c599cb715e">el_config_ir_proximity</a> (const <a class="el" href="a00008.html">el_ir_proximity_param</a> *p)</td></tr>
+<tr class="memdesc:ac4d37f34ba9cc081709e69c599cb715e"><td class="mdescLeft">&#160;</td><td class="mdescRight">apply the settings in the given structure  <a href="#ac4d37f34ba9cc081709e69c599cb715e">More...</a><br /></td></tr>
+<tr class="separator:ac4d37f34ba9cc081709e69c599cb715e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a282c79127fe99a71c2a4c92f671a7e56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#a282c79127fe99a71c2a4c92f671a7e56">el_ir_proximity_get</a> (el_index i, <a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a> u, el_int16 *out)</td></tr>
+<tr class="memdesc:a282c79127fe99a71c2a4c92f671a7e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">get output value(s) from a accelerometer  <a href="#a282c79127fe99a71c2a4c92f671a7e56">More...</a><br /></td></tr>
+<tr class="separator:a282c79127fe99a71c2a4c92f671a7e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf26870125fabdfd772c898267716adf"><td class="memItemLeft" align="right" valign="top">el_uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00020.html#abf26870125fabdfd772c898267716adf">el_ir_proximity_get_counter</a> ()</td></tr>
+<tr class="memdesc:abf26870125fabdfd772c898267716adf"><td class="mdescLeft">&#160;</td><td class="mdescRight">get total number of samples obtained since initialization  <a href="#abf26870125fabdfd772c898267716adf">More...</a><br /></td></tr>
+<tr class="separator:abf26870125fabdfd772c898267716adf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a15372f27d6a543de5e3e00e028bb07aa"></a>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">el_index el_launch_process </td>
+          <td class="memname">enum <a class="el" href="a00020.html#ac9313b8eea9f5c0f35c39e3d205e5b2e">el_ir_proximity_mode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This enum is used in <a class="el" href="a00008.html">el_ir_proximity_param</a> to specify the working mode of the IR proximity sensors.</p>
+<p>Explanation for each of the working mode can be found in the introduction section of <a class="el" href="a00048.html">Infrared Proximity Sensors</a>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2eaa26383b47022906a527084703fff729a"></a>EL_IR_PROXIMITY_PASSIVE&#160;</td><td class="fielddoc">
+<p>use the Passive Mode </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2ea6e61f4edccd695b26cf205c95896ea7d"></a>EL_IR_PROXIMITY_PULSE&#160;</td><td class="fielddoc">
+<p>use the Pulse Mode (default mode) </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2ea769fb955698ff949a598763f2f8fd368"></a>EL_IR_PROXIMITY_EMIT&#160;</td><td class="fielddoc">
+<p>use the Emit Mode </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2ea8b9b22d84150db407adaf64bb8ba442d"></a>EL_IR_PROXIMITY_COMMUNICATION&#160;</td><td class="fielddoc">
+<p>use the Communication Mode (not implemented yet) </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This enum is used in <a class="el" href="a00020.html#a282c79127fe99a71c2a4c92f671a7e56" title="get output value(s) from a accelerometer ">el_ir_proximity_get</a> to select the output type to get.</p>
+<p>Explanation for each of output group can be found in the introduction section of <a class="el" href="a00048.html">Infrared Proximity Sensors</a>. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14"></a>EL_IR_AMBIENT&#160;</td><td class="fielddoc">
+<p>get the ambient output </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7"></a>EL_IR_REFLECTION&#160;</td><td class="fielddoc">
+<p>get the reflection output </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9ac3dd17acf0f48fc5de5d9fe0dbabeead"></a>EL_IR_DATA&#160;</td><td class="fielddoc">
+<p>get the data encoded (not implemented yet) </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9a5a78d1b47acf4ad2d4ea96c6d6f9b79c"></a>EL_IR_ALL_3V&#160;</td><td class="fielddoc">
+<p>get all of the three outputs </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="aaed16be13717633a3d1ab3ea3b31f174"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00008.html">el_ir_proximity_param</a>* el_ir_proximity_options </td>
           <td>(</td>
-          <td class="paramtype">el_process&#160;</td>
-          <td class="paramname"><em>func</em>, </td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the pointer to a static instance of <a class="el" href="a00008.html">el_ir_proximity_param</a> </p>
+<dl class="section return"><dt>Returns</dt><dd>the pointer </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7251dbaf16aa9c125f535468139e57c2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_ir_proximity_options_apply </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>apply the settings stored in <a class="el" href="a00020.html#aaed16be13717633a3d1ab3ea3b31f174" title="get the pointer to a static instance of el_ir_proximity_param ">el_ir_proximity_options</a> directly </p>
+<p>This function is equivalent to "el_config_ir_proximity( el_ir_proximity_options() )". </p>
+
+</div>
+</div>
+<a class="anchor" id="a8d0f3c3233c1ac9e62dcb8ae8b7a4867"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_ir_proximity_options_reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>reset the settings stored in <a class="el" href="a00020.html#aaed16be13717633a3d1ab3ea3b31f174" title="get the pointer to a static instance of el_ir_proximity_param ">el_ir_proximity_options</a> to default </p>
+<p>This function can be used in combination with <a class="el" href="a00020.html#a7251dbaf16aa9c125f535468139e57c2" title="apply the settings stored in el_ir_proximity_options directly ">el_ir_proximity_options_apply</a> when the default configuration need to be used. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac4d37f34ba9cc081709e69c599cb715e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_config_ir_proximity </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00008.html">el_ir_proximity_param</a> *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>apply the settings in the given structure </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>pointer to the data structure</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The default setting of the ir proximity sensors can be represented by following code: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;el_ir_proximity_options()-&gt;WorkingMode = EL_IR_PROXIMITY_PULSE;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;el_ir_proximity_options()-&gt;EnvironmentalAmbient = 0;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;el_ir_proximity_options()-&gt;SubtractEA = false;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;el_config_ir_proximity( el_ir_proximity_options() );</div>
+</div><!-- fragment --> 
+</div>
+</div>
+<a class="anchor" id="a282c79127fe99a71c2a4c92f671a7e56"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int el_ir_proximity_get </td>
+          <td>(</td>
+          <td class="paramtype">el_index&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>arg</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a>&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">el_int16 *&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -164,89 +356,35 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>execute a function in a process </p>
+<p>get output value(s) from a accelerometer </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">func</td><td>the pointer to the function to be executed (entry function) </td></tr>
-    <tr><td class="paramname">arg</td><td>an arguments passed to the function to be executed</td></tr>
+    <tr><td class="paramname">i</td><td>index of the sensor </td></tr>
+    <tr><td class="paramname">u</td><td>output type (see <a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a>) </td></tr>
+    <tr><td class="paramname">out</td><td>pointer to a variable or an array of variables to store the output value(s).</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the index of the process (-1 if failed)</dd></dl>
-<p>This function can execute a function (entry function) in a process with the given argument (as "func(arg);"). Maxmum number of processes is 7.</p>
-<p>The entry function must be a function that takes a void pointer or a <code>el_handle</code> as the argument and returns void. For example: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;void my_process(void*arg){</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    ...</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;}</div>
-</div><!-- fragment --> 
+<dl class="section return"><dt>Returns</dt><dd>number of values stored into *out.</dd></dl>
+<p>See <a class="el" href="a00002.html">Component Index</a> for the index of each of the proximity sensors.</p>
+<p>The dimension the data pointed by "out" depends on the number of output values. For example, when one type of output of all eight proximity sensors need to be stored, "out" needs to point to an array of eight el_int16. </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;el_int16 ir_reflection[8];</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;...</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;el_ir_proximity_get( EL_IR_PROXIMITY_SENSOR_ALL, EL_IR_REFLECTION, ir_reflection );</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;...</div>
+</div><!-- fragment --><p>When all types of outputs of all eight proximity sensors need to be stored, An array of <a class="el" href="a00007.html">el_ir_proximity_data</a> should be used because the output values will be interlaced. For example: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;el_ir_proximity_data prox[8];</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;...</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;el_ir_proximity_get( EL_IR_PROXIMITY_SENSOR_ALL, EL_IR_ALL_3V, (el_int16*)prox );</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;...</div>
+</div><!-- fragment --><p>At present, the refreshing rate of the proximity sensors are 30 Hz, regardless of the working mode. Thus, a trigger with the event <a class="el" href="a00027.html#a8b37a76e9a384d41426690a4cb74a044a0726cee4355067c6ec484245ed5e8bdf" title="when the ir proximity sensor outputs are updated (30 Hz) ">EL_EVENT_IR_PROXIMITY_UPDATE</a> will be triggered 30 times per second. </p>
+
 </div>
 </div>
-<a class="anchor" id="a9ea69eb32cff9ead1640ddbc880b41c3"></a>
+<a class="anchor" id="abf26870125fabdfd772c898267716adf"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void el_process_wait </td>
-          <td>(</td>
-          <td class="paramtype">el_time&#160;</td>
-          <td class="paramname"><em>t_ms</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>wait for a period of time </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">t_ms</td><td>time in millisecond</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function induces a time delay. It can only be used in a process. </p>
-
-</div>
-</div>
-<a class="anchor" id="aecf18603e5149c41de087ec25e262018"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_process_wait_fraction </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>num</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>den</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>wait for a period of time specified as a fraction </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">num</td><td>numerator of the time in seconds. </td></tr>
-    <tr><td class="paramname">den</td><td>denominator of the time in seconds.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function induces a time delay of (num/den) seconds in a process. </p>
-
-</div>
-</div>
-<a class="anchor" id="a3580f38f3a753bd43cd1bcec81a53903"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_process_cooperate </td>
+          <td class="memname">el_uint32 el_ir_proximity_get_counter </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -254,101 +392,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Introduce an atomic wait so other processes can be executed. </p>
-<p>This function introduce an atomic delay, which give other processes a chance to execute. Once this process get a chance to execute again, it will continue execute. Therefore, unlike "el_process_wait", "el_process_cooperate" does not cause a notable time delay. It can be used in polling mechanism inside a process. For example, the following scheme can be used to waiting for a condition to become true: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;// wait for a condition</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;do{</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    el_process_cooperate();</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;}while(some_condition_is_not_true());</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;...</div>
-</div><!-- fragment --><p>There could be a section in a process that simply cost large amount of computation and thus make the process alone occupy the CPU for a long time. "el_process_cooperate" should be called in appropriate positions in a process of such types. For instance, in a triple-nested loop with a loop body that is also time-costly, add a "el_process_cooperate();" after the middle loop: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;// some big computation program</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;for(k=0;k&lt;15;k++){</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    for(j=0;j&lt;40;j++){</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;        for(i=0;i&lt;10;i++){</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;            some_complicated_algorithm(i,j,k);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        }</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    }</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    el_process_cooperate();</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;...</div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a class="anchor" id="adb697ee0cd104c20d8d51da7bf2104ba"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_process_resume </td>
-          <td>(</td>
-          <td class="paramtype">el_index&#160;</td>
-          <td class="paramname"><em>process_idx</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>finish the waiting period of a process immediately </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">process_idx</td><td>the index of the process</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function can make a process in <a class="el" href="a00020.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a> finish the waiting period immediately. </p>
-
-</div>
-</div>
-<a class="anchor" id="ae21ac89ff6b3bc144ba0e055ac36639f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_kill_process </td>
-          <td>(</td>
-          <td class="paramtype">el_index&#160;</td>
-          <td class="paramname"><em>process_idx</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>kill the process (the abnormal way to end a process) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">process_idx</td><td>the index of the process to be killed</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function can be used to forcefully stop a process while it is waiting (e.g. when it entered <a class="el" href="a00020.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a> or <a class="el" href="a00020.html#a3580f38f3a753bd43cd1bcec81a53903" title="Introduce an atomic wait so other processes can be executed. ">el_process_cooperate</a>). Unlike the relation between 'create' and 'delete', a launched process are not supposed to be killed. A process ends normally when its entry function returns (reach the end of the function).</p>
-<p>Note: Killing a process causes all the local variables within to be lost. If a dynamically created object is referable only through such a local variable, a memory leak is resulted (unable to 'free'/'delete' through the pointer/handle anymore). </p>
-
-</div>
-</div>
-<a class="anchor" id="ad2c758eedf0e39ab8a424d3ecc402b35"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_index el_get_local_process_index </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get index of the process where this function is called </p>
-<dl class="section return"><dt>Returns</dt><dd>index of the process</dd></dl>
-<p>When this function is not called within a process, it returns -1. </p>
+<p>get total number of samples obtained since initialization </p>
+<dl class="section return"><dt>Returns</dt><dd>number of samples</dd></dl>
+<p>When enabled, sampling frequency of the ir proximity sensors are 30Hz. </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:01 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

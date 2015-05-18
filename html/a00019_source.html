@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_led.h Source File</title>
+<title>embedded system library for e-puck: el_common.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -86,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">el_led.h</div>  </div>
+<div class="title">el_common.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00019.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -107,46 +107,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#ifndef EL_LED_H</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define EL_LED_H</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00016.html">el_common.h</a>&quot;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define EL_LED_RING_ALL -1</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define EL_LED_RING_0   0</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define EL_LED_RING_1   1</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define EL_LED_RING_2   2</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define EL_LED_RING_3   3</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define EL_LED_RING_4   4</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define EL_LED_RING_5   5</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define EL_LED_RING_6   6</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define EL_LED_RING_7   7</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define EL_LED_BODY     9</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define EL_LED_FRONT    10</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09a">   56</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span>{</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">   57</a></span>&#160;    <a class="code" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">EL_OFF</a> = 0,     </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">   58</a></span>&#160;    <a class="code" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">EL_ON</a> = 1,      </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">   59</a></span>&#160;    <a class="code" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">EL_TOGGLE</a> = -1, </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;} <a class="code" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00019.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led_set</a>(el_index w,<a class="code" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a> s);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">int</span> <a class="code" href="a00019.html#ab3823524468a2011a62d955d7277382f">el_get_selector_value</a>();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a00019_html_adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223"><div class="ttname"><a href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">EL_TOGGLE</a></div><div class="ttdoc">toggle the on/off status of the LED </div><div class="ttdef"><b>Definition:</b> el_led.h:59</div></div>
-<div class="ttc" id="a00019_html_ab3823524468a2011a62d955d7277382f"><div class="ttname"><a href="a00019.html#ab3823524468a2011a62d955d7277382f">el_get_selector_value</a></div><div class="ttdeci">int el_get_selector_value()</div><div class="ttdoc">get the selector postition </div></div>
-<div class="ttc" id="a00019_html_a074c77228ff700a17bd3e42fb7cffeb7"><div class="ttname"><a href="a00019.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led_set</a></div><div class="ttdeci">void el_led_set(el_index w, el_led_action s)</div><div class="ttdoc">set the status of a LED </div></div>
-<div class="ttc" id="a00019_html_adee7c768c6e5283520fe8b6c7a75e09a"><div class="ttname"><a href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a></div><div class="ttdeci">el_led_action</div><div class="ttdoc">used in el_led_set. </div><div class="ttdef"><b>Definition:</b> el_led.h:56</div></div>
-<div class="ttc" id="a00019_html_adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1"><div class="ttname"><a href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">EL_ON</a></div><div class="ttdoc">turn on the LED </div><div class="ttdef"><b>Definition:</b> el_led.h:58</div></div>
-<div class="ttc" id="a00019_html_adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd"><div class="ttname"><a href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">EL_OFF</a></div><div class="ttdoc">turn off the LED </div><div class="ttdef"><b>Definition:</b> el_led.h:57</div></div>
-<div class="ttc" id="a00016_html"><div class="ttname"><a href="a00016.html">el_common.h</a></div></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef EL_COMMON_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define EL_COMMON_H</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define FALSE 0</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define TRUE 1</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define false 0</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define true 1</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>   bool;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span>            el_int8;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">int</span>             el_int16;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">long</span>            el_int32;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>   el_uint8;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    el_uint16;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>   el_uint32;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span>*           el_handle;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">int</span>             el_index;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">bool</span>            el_bool;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    el_flags;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    el_enum;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define BIT(b) (1&lt;&lt;(b))</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define el_nop() {__asm__ volatile (&quot;nop&quot;);}</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define NEVER_RETURN   void __attribute__ ((noreturn))</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* EL_COMMON_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:55 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:00 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

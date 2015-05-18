@@ -15,7 +15,7 @@ var indexSectionsWithContent =
   5: "e",
   6: "e",
   7: "abceilprstu",
-  8: "en"
+  8: "cen"
 };
 
 var indexSectionNames =

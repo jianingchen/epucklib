@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_ir_proximity.h File Reference</title>
+<title>embedded system library for e-puck: el_camera.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -91,165 +91,124 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_ir_proximity.h File Reference<div class="ingroups"><a class="el" href="a00045.html">Infrared Proximity Sensors</a></div></div>  </div>
+<div class="title">el_camera.h File Reference<div class="ingroups"><a class="el" href="a00047.html">Camera</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00016_source.html">el_common.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00015_source.html">el_clock.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00024_source.html">el_trigger.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00019_source.html">el_common.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00018_source.html">el_clock.h</a>&quot;</code><br />
 </div>
 <p><a href="a00017_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html">el_ir_proximity_param</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html">el_camera_param</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html">el_ir_proximity_data</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.html">el_camera_image</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a1bae7de15c7c8ba1e1b1b339324aab63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bae7de15c7c8ba1e1b1b339324aab63"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_VALUE_MAX</b>&#160;&#160;&#160;4095U</td></tr>
-<tr class="separator:a1bae7de15c7c8ba1e1b1b339324aab63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a147ee186a6175cf63762a2df08b0321a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a147ee186a6175cf63762a2df08b0321a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_ALL</b>&#160;&#160;&#160;-1</td></tr>
-<tr class="separator:a147ee186a6175cf63762a2df08b0321a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf85537544aeecc27ee5cd8cb62ac013"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf85537544aeecc27ee5cd8cb62ac013"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_0</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:adf85537544aeecc27ee5cd8cb62ac013"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1d3bac379f56a70ce3d16186d61e1b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1d3bac379f56a70ce3d16186d61e1b8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_1</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:ac1d3bac379f56a70ce3d16186d61e1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafbd20a3e19fdea7cce857a74eb79c01"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafbd20a3e19fdea7cce857a74eb79c01"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_2</b>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:aafbd20a3e19fdea7cce857a74eb79c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3181f89ea51d662b5a7f750ad4e86e17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3181f89ea51d662b5a7f750ad4e86e17"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_3</b>&#160;&#160;&#160;3</td></tr>
-<tr class="separator:a3181f89ea51d662b5a7f750ad4e86e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8027477c85fc0c007b112509e4ce2f51"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8027477c85fc0c007b112509e4ce2f51"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_4</b>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:a8027477c85fc0c007b112509e4ce2f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a424a71e6b9b5f74c4fa3d3377a568163"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a424a71e6b9b5f74c4fa3d3377a568163"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_5</b>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:a424a71e6b9b5f74c4fa3d3377a568163"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae99ddd8320067fc7da3e286d2127ef3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae99ddd8320067fc7da3e286d2127ef3d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_6</b>&#160;&#160;&#160;6</td></tr>
-<tr class="separator:ae99ddd8320067fc7da3e286d2127ef3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4006a7d86e417be07708e0828cf9641d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4006a7d86e417be07708e0828cf9641d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_IR_PROXIMITY_SENSOR_7</b>&#160;&#160;&#160;7</td></tr>
-<tr class="separator:a4006a7d86e417be07708e0828cf9641d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4516458a5258aa2381c748431914ad8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4516458a5258aa2381c748431914ad8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_CAMERA_FRAME_DIM_X</b>&#160;&#160;&#160;40</td></tr>
+<tr class="separator:ae4516458a5258aa2381c748431914ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadd509e8a127f6d4afff0ac93f95989a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aadd509e8a127f6d4afff0ac93f95989a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_CAMERA_FRAME_DIM_Y</b>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:aadd509e8a127f6d4afff0ac93f95989a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ac9313b8eea9f5c0f35c39e3d205e5b2e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2e">el_ir_proximity_mode</a> { <a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2eaa26383b47022906a527084703fff729a">EL_IR_PROXIMITY_PASSIVE</a> = 0, 
-<a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea6e61f4edccd695b26cf205c95896ea7d">EL_IR_PROXIMITY_PULSE</a> = 1, 
-<a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea769fb955698ff949a598763f2f8fd368">EL_IR_PROXIMITY_EMIT</a> = 2, 
-<a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea8b9b22d84150db407adaf64bb8ba442d">EL_IR_PROXIMITY_COMMUNICATION</a> = 3
+<tr class="memitem:ae3dd3a05038328cf4dd7b6fc78f41fd9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ae3dd3a05038328cf4dd7b6fc78f41fd9">el_camera_exposure_mode</a> { <a class="el" href="a00017.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a75f351626ba04c17bbf9e389b880b7de">EL_AUTOMATIC</a> = 0, 
+<a class="el" href="a00017.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea">EL_EXPOSURE_TIME</a> = 1, 
+<a class="el" href="a00017.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a6015f8ad11a49088a5a993aab7ff2a08">EL_EIT_AND_ELG</a> = 2, 
+<a class="el" href="a00017.html#ae3dd3a05038328cf4dd7b6fc78f41fd9ad55b9ddeb4cfbc450513d8d1da9f366a">EL_IT_AND_GG</a> = 3
  }</td></tr>
-<tr class="separator:ac9313b8eea9f5c0f35c39e3d205e5b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6777dd76bceec1ac25a170762e1331c9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a> { <a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14">EL_IR_AMBIENT</a>, 
-<a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7">EL_IR_REFLECTION</a>, 
-<a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9ac3dd17acf0f48fc5de5d9fe0dbabeead">EL_IR_DATA</a>, 
-<a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9a5a78d1b47acf4ad2d4ea96c6d6f9b79c">EL_IR_ALL_3V</a>
- }</td></tr>
-<tr class="separator:a6777dd76bceec1ac25a170762e1331c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ae3dd3a05038328cf4dd7b6fc78f41fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0bc68f95cfccbe1b072a66d2997eaa74"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0bc68f95cfccbe1b072a66d2997eaa74"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a0bc68f95cfccbe1b072a66d2997eaa74">el_enable_ir_proximity</a> (void)</td></tr>
-<tr class="memdesc:a0bc68f95cfccbe1b072a66d2997eaa74"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable the proximity sensors module <br /></td></tr>
-<tr class="separator:a0bc68f95cfccbe1b072a66d2997eaa74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3c897238cc8f64dbf9a2d490bb8e5ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3c897238cc8f64dbf9a2d490bb8e5ef"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#af3c897238cc8f64dbf9a2d490bb8e5ef">el_disable_ir_proximity</a> (void)</td></tr>
-<tr class="memdesc:af3c897238cc8f64dbf9a2d490bb8e5ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable the proximity sensors module <br /></td></tr>
-<tr class="separator:af3c897238cc8f64dbf9a2d490bb8e5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaed16be13717633a3d1ab3ea3b31f174"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00006.html">el_ir_proximity_param</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aaed16be13717633a3d1ab3ea3b31f174">el_ir_proximity_options</a> ()</td></tr>
-<tr class="memdesc:aaed16be13717633a3d1ab3ea3b31f174"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the pointer to a static instance of <a class="el" href="a00006.html">el_ir_proximity_param</a>  <a href="#aaed16be13717633a3d1ab3ea3b31f174">More...</a><br /></td></tr>
-<tr class="separator:aaed16be13717633a3d1ab3ea3b31f174"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7251dbaf16aa9c125f535468139e57c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a7251dbaf16aa9c125f535468139e57c2">el_ir_proximity_options_apply</a> ()</td></tr>
-<tr class="memdesc:a7251dbaf16aa9c125f535468139e57c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">apply the settings stored in <a class="el" href="a00017.html#aaed16be13717633a3d1ab3ea3b31f174" title="get the pointer to a static instance of el_ir_proximity_param ">el_ir_proximity_options</a> directly  <a href="#a7251dbaf16aa9c125f535468139e57c2">More...</a><br /></td></tr>
-<tr class="separator:a7251dbaf16aa9c125f535468139e57c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d0f3c3233c1ac9e62dcb8ae8b7a4867"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a8d0f3c3233c1ac9e62dcb8ae8b7a4867">el_ir_proximity_options_reset</a> ()</td></tr>
-<tr class="memdesc:a8d0f3c3233c1ac9e62dcb8ae8b7a4867"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the settings stored in <a class="el" href="a00017.html#aaed16be13717633a3d1ab3ea3b31f174" title="get the pointer to a static instance of el_ir_proximity_param ">el_ir_proximity_options</a> to default  <a href="#a8d0f3c3233c1ac9e62dcb8ae8b7a4867">More...</a><br /></td></tr>
-<tr class="separator:a8d0f3c3233c1ac9e62dcb8ae8b7a4867"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4d37f34ba9cc081709e69c599cb715e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ac4d37f34ba9cc081709e69c599cb715e">el_config_ir_proximity</a> (const <a class="el" href="a00006.html">el_ir_proximity_param</a> *p)</td></tr>
-<tr class="memdesc:ac4d37f34ba9cc081709e69c599cb715e"><td class="mdescLeft">&#160;</td><td class="mdescRight">apply the settings in the given structure  <a href="#ac4d37f34ba9cc081709e69c599cb715e">More...</a><br /></td></tr>
-<tr class="separator:ac4d37f34ba9cc081709e69c599cb715e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a282c79127fe99a71c2a4c92f671a7e56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a282c79127fe99a71c2a4c92f671a7e56">el_ir_proximity_get</a> (el_index i, <a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a> u, el_int16 *out)</td></tr>
-<tr class="memdesc:a282c79127fe99a71c2a4c92f671a7e56"><td class="mdescLeft">&#160;</td><td class="mdescRight">get output value(s) from a accelerometer  <a href="#a282c79127fe99a71c2a4c92f671a7e56">More...</a><br /></td></tr>
-<tr class="separator:a282c79127fe99a71c2a4c92f671a7e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf26870125fabdfd772c898267716adf"><td class="memItemLeft" align="right" valign="top">el_uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#abf26870125fabdfd772c898267716adf">el_ir_proximity_get_counter</a> ()</td></tr>
-<tr class="memdesc:abf26870125fabdfd772c898267716adf"><td class="mdescLeft">&#160;</td><td class="mdescRight">get total number of samples obtained since initialization  <a href="#abf26870125fabdfd772c898267716adf">More...</a><br /></td></tr>
-<tr class="separator:abf26870125fabdfd772c898267716adf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71f0aa4aa40a1d79d430bcdd180542b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71f0aa4aa40a1d79d430bcdd180542b1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a71f0aa4aa40a1d79d430bcdd180542b1">el_enable_camera</a> ()</td></tr>
+<tr class="memdesc:a71f0aa4aa40a1d79d430bcdd180542b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable the camera <br /></td></tr>
+<tr class="separator:a71f0aa4aa40a1d79d430bcdd180542b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8431c47016be16fbef7511c697c65069"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8431c47016be16fbef7511c697c65069"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a8431c47016be16fbef7511c697c65069">el_disable_camera</a> ()</td></tr>
+<tr class="memdesc:a8431c47016be16fbef7511c697c65069"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable the camera <br /></td></tr>
+<tr class="separator:a8431c47016be16fbef7511c697c65069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c16455023d3980e9ebd50ad39a35bc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00006.html">el_camera_param</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a0c16455023d3980e9ebd50ad39a35bc1">el_camera_options</a> ()</td></tr>
+<tr class="memdesc:a0c16455023d3980e9ebd50ad39a35bc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the pointer to a static instance of <a class="el" href="a00006.html">el_camera_param</a>  <a href="#a0c16455023d3980e9ebd50ad39a35bc1">More...</a><br /></td></tr>
+<tr class="separator:a0c16455023d3980e9ebd50ad39a35bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd8ee3bbbd0f42137beee889b5ff00c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#abd8ee3bbbd0f42137beee889b5ff00c8">el_camera_options_apply</a> ()</td></tr>
+<tr class="memdesc:abd8ee3bbbd0f42137beee889b5ff00c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">apply the settings stored in <a class="el" href="a00017.html#a0c16455023d3980e9ebd50ad39a35bc1" title="get the pointer to a static instance of el_camera_param ">el_camera_options</a> directly  <a href="#abd8ee3bbbd0f42137beee889b5ff00c8">More...</a><br /></td></tr>
+<tr class="separator:abd8ee3bbbd0f42137beee889b5ff00c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83754444b81307ae4877d886fbc52abe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a83754444b81307ae4877d886fbc52abe">el_camera_options_reset</a> ()</td></tr>
+<tr class="memdesc:a83754444b81307ae4877d886fbc52abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the settings stored in <a class="el" href="a00017.html#a0c16455023d3980e9ebd50ad39a35bc1" title="get the pointer to a static instance of el_camera_param ">el_camera_options</a> to default  <a href="#a83754444b81307ae4877d886fbc52abe">More...</a><br /></td></tr>
+<tr class="separator:a83754444b81307ae4877d886fbc52abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f837179c0c63d636c19abc693e9957f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a8f837179c0c63d636c19abc693e9957f">el_config_camera</a> (const <a class="el" href="a00006.html">el_camera_param</a> *p)</td></tr>
+<tr class="memdesc:a8f837179c0c63d636c19abc693e9957f"><td class="mdescLeft">&#160;</td><td class="mdescRight">apply the settings in the given structure  <a href="#a8f837179c0c63d636c19abc693e9957f">More...</a><br /></td></tr>
+<tr class="separator:a8f837179c0c63d636c19abc693e9957f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a224a4d5a3b19984a0c9181fe667ed08b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a224a4d5a3b19984a0c9181fe667ed08b">el_camera_lock_frame</a> ()</td></tr>
+<tr class="memdesc:a224a4d5a3b19984a0c9181fe667ed08b"><td class="mdescLeft">&#160;</td><td class="mdescRight">lock the frame buffers  <a href="#a224a4d5a3b19984a0c9181fe667ed08b">More...</a><br /></td></tr>
+<tr class="separator:a224a4d5a3b19984a0c9181fe667ed08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae32672c397e15c30cbe8b7b5b5f874ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae32672c397e15c30cbe8b7b5b5f874ce"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#ae32672c397e15c30cbe8b7b5b5f874ce">el_camera_unlock_frame</a> ()</td></tr>
+<tr class="memdesc:ae32672c397e15c30cbe8b7b5b5f874ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">unlock the frame buffers <br /></td></tr>
+<tr class="separator:ae32672c397e15c30cbe8b7b5b5f874ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92f695141c5005e558a9d84f86ce6837"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a92f695141c5005e558a9d84f86ce6837">el_camera_is_frame_locked</a> ()</td></tr>
+<tr class="memdesc:a92f695141c5005e558a9d84f86ce6837"><td class="mdescLeft">&#160;</td><td class="mdescRight">check whether the frame buffers is locked  <a href="#a92f695141c5005e558a9d84f86ce6837">More...</a><br /></td></tr>
+<tr class="separator:a92f695141c5005e558a9d84f86ce6837"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6ae396b98b3a934045ee14772c69758"><td class="memItemLeft" align="right" valign="top">el_uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#af6ae396b98b3a934045ee14772c69758">el_camera_get_frame_counter</a> ()</td></tr>
+<tr class="memdesc:af6ae396b98b3a934045ee14772c69758"><td class="mdescLeft">&#160;</td><td class="mdescRight">get total number of frames captured since initialization  <a href="#af6ae396b98b3a934045ee14772c69758">More...</a><br /></td></tr>
+<tr class="separator:af6ae396b98b3a934045ee14772c69758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e31a461b852a03f3d422f98ca77428a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a0e31a461b852a03f3d422f98ca77428a">el_camera_get_frame_pixel</a> (int X, int Y, el_uint8 *out3v)</td></tr>
+<tr class="memdesc:a0e31a461b852a03f3d422f98ca77428a"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the color of a pixel in current frame buffer.  <a href="#a0e31a461b852a03f3d422f98ca77428a">More...</a><br /></td></tr>
+<tr class="separator:a0e31a461b852a03f3d422f98ca77428a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe3367f2172a48c1dcd28d974e64388e"><td class="memItemLeft" align="right" valign="top">el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#abe3367f2172a48c1dcd28d974e64388e">el_camera_get_frame_width</a> ()</td></tr>
+<tr class="memdesc:abe3367f2172a48c1dcd28d974e64388e"><td class="mdescLeft">&#160;</td><td class="mdescRight">get width (horizontal dimension) of the image in the frame buffer for reading.  <a href="#abe3367f2172a48c1dcd28d974e64388e">More...</a><br /></td></tr>
+<tr class="separator:abe3367f2172a48c1dcd28d974e64388e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f7eb3a2e184575e94274c7d4cb75436"><td class="memItemLeft" align="right" valign="top">el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#a0f7eb3a2e184575e94274c7d4cb75436">el_camera_get_frame_height</a> ()</td></tr>
+<tr class="memdesc:a0f7eb3a2e184575e94274c7d4cb75436"><td class="mdescLeft">&#160;</td><td class="mdescRight">get height (virtical dimension) of the image in the frame buffer for reading.  <a href="#a0f7eb3a2e184575e94274c7d4cb75436">More...</a><br /></td></tr>
+<tr class="separator:a0f7eb3a2e184575e94274c7d4cb75436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa133fa3b697fa5c6401c7555049954e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.html">el_camera_image</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00017.html#aa133fa3b697fa5c6401c7555049954e8">el_camera_frame</a> ()</td></tr>
+<tr class="memdesc:aa133fa3b697fa5c6401c7555049954e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the pointer to a static instance of <a class="el" href="a00005.html">el_camera_image</a> for reading  <a href="#aa133fa3b697fa5c6401c7555049954e8">More...</a><br /></td></tr>
+<tr class="separator:aa133fa3b697fa5c6401c7555049954e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2e"></a>
+<a class="anchor" id="ae3dd3a05038328cf4dd7b6fc78f41fd9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2e">el_ir_proximity_mode</a></td>
+          <td class="memname">enum <a class="el" href="a00017.html#ae3dd3a05038328cf4dd7b6fc78f41fd9">el_camera_exposure_mode</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This enum is used in <a class="el" href="a00006.html">el_ir_proximity_param</a> to specify the working mode of the IR proximity sensors.</p>
-<p>Explanation for each of the working mode can be found in the introduction section of <a class="el" href="a00045.html">Infrared Proximity Sensors</a>. </p>
+<p>This enum is used in <a class="el" href="a00006.html">el_camera_param</a> to specify the exposure mode of the camera. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2eaa26383b47022906a527084703fff729a"></a>EL_IR_PROXIMITY_PASSIVE&#160;</td><td class="fielddoc">
-<p>use the Passive Mode </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ae3dd3a05038328cf4dd7b6fc78f41fd9a75f351626ba04c17bbf9e389b880b7de"></a>EL_AUTOMATIC&#160;</td><td class="fielddoc">
+<p>automatically adjusted by the camera </p>
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2ea6e61f4edccd695b26cf205c95896ea7d"></a>EL_IR_PROXIMITY_PULSE&#160;</td><td class="fielddoc">
-<p>use the Pulse Mode (default mode) </p>
+<tr><td class="fieldname"><a class="anchor" id="ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea"></a>EL_EXPOSURE_TIME&#160;</td><td class="fielddoc">
+<p>use ExposureTime </p>
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2ea769fb955698ff949a598763f2f8fd368"></a>EL_IR_PROXIMITY_EMIT&#160;</td><td class="fielddoc">
-<p>use the Emit Mode </p>
+<tr><td class="fieldname"><a class="anchor" id="ae3dd3a05038328cf4dd7b6fc78f41fd9a6015f8ad11a49088a5a993aab7ff2a08"></a>EL_EIT_AND_ELG&#160;</td><td class="fielddoc">
+<p>use ExternalIntergationTime and ExternalLinearGain </p>
 </td></tr>
-<tr><td class="fieldname"><a class="anchor" id="ac9313b8eea9f5c0f35c39e3d205e5b2ea8b9b22d84150db407adaf64bb8ba442d"></a>EL_IR_PROXIMITY_COMMUNICATION&#160;</td><td class="fielddoc">
-<p>use the Communication Mode (not implemented yet) </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>This enum is used in <a class="el" href="a00017.html#a282c79127fe99a71c2a4c92f671a7e56" title="get output value(s) from a accelerometer ">el_ir_proximity_get</a> to select the output type to get.</p>
-<p>Explanation for each of output group can be found in the introduction section of <a class="el" href="a00045.html">Infrared Proximity Sensors</a>. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14"></a>EL_IR_AMBIENT&#160;</td><td class="fielddoc">
-<p>get the ambient output </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7"></a>EL_IR_REFLECTION&#160;</td><td class="fielddoc">
-<p>get the reflection output </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9ac3dd17acf0f48fc5de5d9fe0dbabeead"></a>EL_IR_DATA&#160;</td><td class="fielddoc">
-<p>get the data encoded (not implemented yet) </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a6777dd76bceec1ac25a170762e1331c9a5a78d1b47acf4ad2d4ea96c6d6f9b79c"></a>EL_IR_ALL_3V&#160;</td><td class="fielddoc">
-<p>get all of the three outputs </p>
+<tr><td class="fieldname"><a class="anchor" id="ae3dd3a05038328cf4dd7b6fc78f41fd9ad55b9ddeb4cfbc450513d8d1da9f366a"></a>EL_IT_AND_GG&#160;</td><td class="fielddoc">
+<p>use IntegrationTime and GlobalGain </p>
 </td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aaed16be13717633a3d1ab3ea3b31f174"></a>
+<a class="anchor" id="a0c16455023d3980e9ebd50ad39a35bc1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00006.html">el_ir_proximity_param</a>* el_ir_proximity_options </td>
+          <td class="memname"><a class="el" href="a00006.html">el_camera_param</a>* el_camera_options </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -257,17 +216,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
       </table>
 </div><div class="memdoc">
 
-<p>get the pointer to a static instance of <a class="el" href="a00006.html">el_ir_proximity_param</a> </p>
+<p>get the pointer to a static instance of <a class="el" href="a00006.html">el_camera_param</a> </p>
 <dl class="section return"><dt>Returns</dt><dd>the pointer </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a7251dbaf16aa9c125f535468139e57c2"></a>
+<a class="anchor" id="abd8ee3bbbd0f42137beee889b5ff00c8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void el_ir_proximity_options_apply </td>
+          <td class="memname">void el_camera_options_apply </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -275,17 +234,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
       </table>
 </div><div class="memdoc">
 
-<p>apply the settings stored in <a class="el" href="a00017.html#aaed16be13717633a3d1ab3ea3b31f174" title="get the pointer to a static instance of el_ir_proximity_param ">el_ir_proximity_options</a> directly </p>
-<p>This function is equivalent to "el_config_ir_proximity( el_ir_proximity_options() )". </p>
+<p>apply the settings stored in <a class="el" href="a00017.html#a0c16455023d3980e9ebd50ad39a35bc1" title="get the pointer to a static instance of el_camera_param ">el_camera_options</a> directly </p>
+<p>This function is equivalent to "el_config_camera( el_camera_options() )". </p>
 
 </div>
 </div>
-<a class="anchor" id="a8d0f3c3233c1ac9e62dcb8ae8b7a4867"></a>
+<a class="anchor" id="a83754444b81307ae4877d886fbc52abe"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void el_ir_proximity_options_reset </td>
+          <td class="memname">void el_camera_options_reset </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -293,19 +252,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
       </table>
 </div><div class="memdoc">
 
-<p>reset the settings stored in <a class="el" href="a00017.html#aaed16be13717633a3d1ab3ea3b31f174" title="get the pointer to a static instance of el_ir_proximity_param ">el_ir_proximity_options</a> to default </p>
-<p>This function can be used in combination with <a class="el" href="a00017.html#a7251dbaf16aa9c125f535468139e57c2" title="apply the settings stored in el_ir_proximity_options directly ">el_ir_proximity_options_apply</a> when the default configuration need to be used. </p>
+<p>reset the settings stored in <a class="el" href="a00017.html#a0c16455023d3980e9ebd50ad39a35bc1" title="get the pointer to a static instance of el_camera_param ">el_camera_options</a> to default </p>
+<p>This function can be used in combination with <a class="el" href="a00017.html#abd8ee3bbbd0f42137beee889b5ff00c8" title="apply the settings stored in el_camera_options directly ">el_camera_options_apply</a> when the default configuration need to be used. </p>
 
 </div>
 </div>
-<a class="anchor" id="ac4d37f34ba9cc081709e69c599cb715e"></a>
+<a class="anchor" id="a8f837179c0c63d636c19abc693e9957f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void el_config_ir_proximity </td>
+          <td class="memname">void el_config_camera </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="a00006.html">el_ir_proximity_param</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="a00006.html">el_camera_param</a> *&#160;</td>
           <td class="paramname"><em>p</em></td><td>)</td>
           <td></td>
         </tr>
@@ -319,34 +278,99 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
   </table>
   </dd>
 </dl>
-<p>The default setting of the ir proximity sensors can be represented by following code: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;el_ir_proximity_options()-&gt;WorkingMode = EL_IR_PROXIMITY_PULSE;</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;el_ir_proximity_options()-&gt;EnvironmentalAmbient = 0;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;el_ir_proximity_options()-&gt;SubtractEA = false;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;el_config_ir_proximity( el_ir_proximity_options() );</div>
-</div><!-- fragment --> 
+<p>The default parameters of the camera is equivalent to the following code: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;el_camera_options()-&gt;ExposureMode = EL_AUTOMATIC;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;el_camera_options()-&gt;AutoWhiteBalance = true;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;el_camera_options()-&gt;AutoDigitalGain = true;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;el_camera_options()-&gt;ExposureTime = 1.0f;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;el_camera_options()-&gt;RedGain = 1.0f;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;el_camera_options()-&gt;GreenGain = 1.0f;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;el_camera_options()-&gt;BlueGain = 1.0f;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;el_camera_options()-&gt;ExternalIntergationTime = 1.0f;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;el_camera_options()-&gt;ExternalLinearGain = 1.0f;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;el_camera_options()-&gt;IntegrationTime = 1.0f;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;el_camera_options()-&gt;GlobalGain = 1.0f;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;el_camera_options()-&gt;DigitalGain = 1.0f;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;el_config_camera( el_camera_options() );</div>
+</div><!-- fragment --><p>Unlike the <code>config</code> functions for other modules, the time cost to execute this function is not neglectable (around 7.1 ms), so it should not be executed frequently in a process. </p>
+
 </div>
 </div>
-<a class="anchor" id="a282c79127fe99a71c2a4c92f671a7e56"></a>
+<a class="anchor" id="a224a4d5a3b19984a0c9181fe667ed08b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int el_ir_proximity_get </td>
+          <td class="memname">void el_camera_lock_frame </td>
           <td>(</td>
-          <td class="paramtype">el_index&#160;</td>
-          <td class="paramname"><em>i</em>, </td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>lock the frame buffers </p>
+<p>When the frame buffer is locked, no buffer swapping will occur. This guarantees the image inside the frame buffer to be one frame of image. Otherwise, the image may be changed halfway through a image processing algorithm. </p>
+
+</div>
+</div>
+<a class="anchor" id="a92f695141c5005e558a9d84f86ce6837"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool el_camera_is_frame_locked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check whether the frame buffers is locked </p>
+<dl class="section return"><dt>Returns</dt><dd>locked or not </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af6ae396b98b3a934045ee14772c69758"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_uint32 el_camera_get_frame_counter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get total number of frames captured since initialization </p>
+<dl class="section return"><dt>Returns</dt><dd>total number of frames</dd></dl>
+<p>When the frame buffers are locked, the frame counter will not be increased. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0e31a461b852a03f3d422f98ca77428a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void el_camera_get_frame_pixel </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>X</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a>&#160;</td>
-          <td class="paramname"><em>u</em>, </td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Y</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">el_int16 *&#160;</td>
-          <td class="paramname"><em>out</em>&#160;</td>
+          <td class="paramtype">el_uint8 *&#160;</td>
+          <td class="paramname"><em>out3v</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -356,34 +380,25 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
       </table>
 </div><div class="memdoc">
 
-<p>get output value(s) from a accelerometer </p>
+<p>get the color of a pixel in current frame buffer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">i</td><td>index of the sensor </td></tr>
-    <tr><td class="paramname">u</td><td>output type (see <a class="el" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9">el_ir_proximity_output</a>) </td></tr>
-    <tr><td class="paramname">out</td><td>pointer to a variable or an array of variables to store the output value(s).</td></tr>
+    <tr><td class="paramname">X</td><td>x coordinate of the pixel </td></tr>
+    <tr><td class="paramname">Y</td><td>y coordinate of the pixel </td></tr>
+    <tr><td class="paramname">out3v</td><td>pointer to the array to store the RGB components.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>number of values stored into *out.</dd></dl>
-<p>The dimension the data pointed by "out" depends on the number of output values. For example, when one type of output of all eight proximity sensors need to be stored, "out" needs to point to an array of eight el_int16. </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;el_int16 ir_reflection[8];</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;...</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;el_ir_proximity_get( EL_IR_PROXIMITY_SENSOR_ALL, EL_IR_REFLECTION, ir_reflection );</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;...</div>
-</div><!-- fragment --><p>When all types of outputs of all eight proximity sensors need to be stored, An array of <a class="el" href="a00005.html">el_ir_proximity_data</a> should be used because the output values will be interlaced. For example: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;el_ir_proximity_data prox[8];</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;...</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;el_ir_proximity_get( EL_IR_PROXIMITY_SENSOR_ALL, EL_IR_ALL_3V, (el_int16*)prox );</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;...</div>
-</div><!-- fragment --><p>At present, the refreshing rate of the proximity sensors are 30 Hz, regardless of the working mode. Thus, a trigger with the event <a class="el" href="a00024.html#a8b37a76e9a384d41426690a4cb74a044a0726cee4355067c6ec484245ed5e8bdf" title="when the ir proximity sensor outputs are updated (30 Hz) ">EL_EVENT_IR_PROXIMITY_UPDATE</a> will be triggered 30 times per second. </p>
+<p>(0,0) is the bottom left corner. </p>
 
 </div>
 </div>
-<a class="anchor" id="abf26870125fabdfd772c898267716adf"></a>
+<a class="anchor" id="abe3367f2172a48c1dcd28d974e64388e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">el_uint32 el_ir_proximity_get_counter </td>
+          <td class="memname">el_uint16 el_camera_get_frame_width </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -391,16 +406,53 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
       </table>
 </div><div class="memdoc">
 
-<p>get total number of samples obtained since initialization </p>
-<dl class="section return"><dt>Returns</dt><dd>number of samples</dd></dl>
-<p>When enabled, sampling frequency of the ir proximity sensors are 30Hz. </p>
+<p>get width (horizontal dimension) of the image in the frame buffer for reading. </p>
+<dl class="section return"><dt>Returns</dt><dd>width of the frame to be locked for reading.</dd></dl>
+<p>At present, this function always return 40. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0f7eb3a2e184575e94274c7d4cb75436"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">el_uint16 el_camera_get_frame_height </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get height (virtical dimension) of the image in the frame buffer for reading. </p>
+<dl class="section return"><dt>Returns</dt><dd>height of the frame to be locked for reading.</dd></dl>
+<p>At present, this function always return 15. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa133fa3b697fa5c6401c7555049954e8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00005.html">el_camera_image</a>* el_camera_frame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the pointer to a static instance of <a class="el" href="a00005.html">el_camera_image</a> for reading </p>
+<dl class="section return"><dt>Returns</dt><dd>the pointer </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:01 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

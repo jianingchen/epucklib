@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_ir_receiver.h File Reference</title>
+<title>embedded system library for e-puck: el_clock.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -86,128 +86,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">el_ir_receiver.h File Reference<div class="ingroups"><a class="el" href="a00046.html">Infrared Receiver</a></div></div>  </div>
+<div class="title">el_clock.h File Reference<div class="ingroups"><a class="el" href="a00039.html">Basic Concepts</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00016_source.html">el_common.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00015_source.html">el_clock.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="a00024_source.html">el_trigger.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00019_source.html">el_common.h</a>&quot;</code><br />
 </div>
 <p><a href="a00018_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a9c58304416179f1578f7a218e433a87d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c58304416179f1578f7a218e433a87d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_TIME_FREQ</b>&#160;&#160;&#160;1000</td></tr>
+<tr class="separator:a9c58304416179f1578f7a218e433a87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53c2e543e31eaac99fe7b6760be2385d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53c2e543e31eaac99fe7b6760be2385d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_MASTERCLOCK_FREQ</b>&#160;&#160;&#160;(144000L)</td></tr>
+<tr class="separator:a53c2e543e31eaac99fe7b6760be2385d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:aa104a7df2b75fb88e8d4e9c0b76f1af4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa104a7df2b75fb88e8d4e9c0b76f1af4"></a>
+typedef signed short&#160;</td><td class="memItemRight" valign="bottom"><b>el_time</b></td></tr>
+<tr class="separator:aa104a7df2b75fb88e8d4e9c0b76f1af4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1373f3e90c6cea2b609e1bc86f63989"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1373f3e90c6cea2b609e1bc86f63989"></a>
+typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>el_mct</b></td></tr>
+<tr class="separator:ab1373f3e90c6cea2b609e1bc86f63989"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab35f59ce139b2944c49987e3725c9cd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab35f59ce139b2944c49987e3725c9cd3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#ab35f59ce139b2944c49987e3725c9cd3">el_enable_ir_receiver</a> ()</td></tr>
-<tr class="memdesc:ab35f59ce139b2944c49987e3725c9cd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable the ir receiver <br /></td></tr>
-<tr class="separator:ab35f59ce139b2944c49987e3725c9cd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a533e2318c63e4d95b5815942a646b12d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a533e2318c63e4d95b5815942a646b12d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a533e2318c63e4d95b5815942a646b12d">el_disable_ir_receiver</a> ()</td></tr>
-<tr class="memdesc:a533e2318c63e4d95b5815942a646b12d"><td class="mdescLeft">&#160;</td><td class="mdescRight">disable the ir receiver <br /></td></tr>
-<tr class="separator:a533e2318c63e4d95b5815942a646b12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0e7ec78afde599d7d90c73e3c258d03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a> ()</td></tr>
-<tr class="memdesc:af0e7ec78afde599d7d90c73e3c258d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset the ir receiver to prepare for any incoming message  <a href="#af0e7ec78afde599d7d90c73e3c258d03">More...</a><br /></td></tr>
-<tr class="separator:af0e7ec78afde599d7d90c73e3c258d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fae36b0456f98360cd73fa9663a2b55"><td class="memItemLeft" align="right" valign="top">el_uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a4fae36b0456f98360cd73fa9663a2b55">el_ir_receiver_get_check</a> ()</td></tr>
-<tr class="memdesc:a4fae36b0456f98360cd73fa9663a2b55"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the check bit in the message while 2 means no message  <a href="#a4fae36b0456f98360cd73fa9663a2b55">More...</a><br /></td></tr>
-<tr class="separator:a4fae36b0456f98360cd73fa9663a2b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3899efc52618671a46dc34e8523ddcb2"><td class="memItemLeft" align="right" valign="top">el_uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#a3899efc52618671a46dc34e8523ddcb2">el_ir_receiver_get_address</a> ()</td></tr>
-<tr class="memdesc:a3899efc52618671a46dc34e8523ddcb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the address field in the message  <a href="#a3899efc52618671a46dc34e8523ddcb2">More...</a><br /></td></tr>
-<tr class="separator:a3899efc52618671a46dc34e8523ddcb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5a561e70828e63b6f0ffa01ab89e298"><td class="memItemLeft" align="right" valign="top">el_uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#aa5a561e70828e63b6f0ffa01ab89e298">el_ir_receiver_get_data</a> ()</td></tr>
-<tr class="memdesc:aa5a561e70828e63b6f0ffa01ab89e298"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the data field in the message  <a href="#aa5a561e70828e63b6f0ffa01ab89e298">More...</a><br /></td></tr>
-<tr class="separator:aa5a561e70828e63b6f0ffa01ab89e298"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba65b498f8a340b859968b6b82ce7bec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba65b498f8a340b859968b6b82ce7bec"></a>
-el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00018.html#aba65b498f8a340b859968b6b82ce7bec">el_ir_receiver_get_counter</a> ()</td></tr>
-<tr class="memdesc:aba65b498f8a340b859968b6b82ce7bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the number of messages received since initialization <br /></td></tr>
-<tr class="separator:aba65b498f8a340b859968b6b82ce7bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6665c82e95225df9c62c1b47451ddcc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6665c82e95225df9c62c1b47451ddcc"></a>
+el_mct&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_masterclock</b> ()</td></tr>
+<tr class="separator:ac6665c82e95225df9c62c1b47451ddcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b73c1c598ea125fcf91aa4fe1c6552"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9b73c1c598ea125fcf91aa4fe1c6552"></a>
+el_time&#160;</td><td class="memItemRight" valign="bottom"><b>el_get_time_diff</b> (el_mct k0, el_mct k1, el_mct *residue)</td></tr>
+<tr class="separator:ae9b73c1c598ea125fcf91aa4fe1c6552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="af0e7ec78afde599d7d90c73e3c258d03"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_ir_receiver_reset </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>reset the ir receiver to prepare for any incoming message </p>
-<p>Once a message is received, the ir receiver must be reset before it can receive any further messages. The general usage is that: always reset the ir receiver before a receiving needed. </p>
-
-</div>
-</div>
-<a class="anchor" id="a4fae36b0456f98360cd73fa9663a2b55"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_uint8 el_ir_receiver_get_check </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get the check bit in the message while 2 means no message </p>
-<dl class="section return"><dt>Returns</dt><dd>0, 1 and 2</dd></dl>
-<p>For a common TV remote, the 'check' bit in the message is often used to determine whether the message is issued from a new button click or a re-transmission of a same click (holding a button). For example, if the user hold a button on the remote, the receiver will receive a series of same data with same 'check' bit (0,0,0 ... or 1,1,1 ...). Whereas, it the user is click the button repeatedly, the received messages will contain same data but their 'check' bit will be altered (0,1,0,1,0 ...).</p>
-<p>The function will return 2 if there is no message. </p>
-
-</div>
-</div>
-<a class="anchor" id="a3899efc52618671a46dc34e8523ddcb2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_uint8 el_ir_receiver_get_address </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get the address field in the message </p>
-<dl class="section return"><dt>Returns</dt><dd>the address, a 5-bit integer</dd></dl>
-<p>The message should also contain a address field, which is a 5-bit integer. One can use this to receive the message from a specific remote only. For example, use a TV remote with a unique address number so it won't turn on other appliances in the room where the robots are used. </p>
-
-</div>
-</div>
-<a class="anchor" id="aa5a561e70828e63b6f0ffa01ab89e298"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">el_uint8 el_ir_receiver_get_data </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get the data field in the message </p>
-<dl class="section return"><dt>Returns</dt><dd>the data, a 6-bit integer</dd></dl>
-<p>The payload of a incoming message is the 'data'. It is be a 6-bit integer. When the message is transmitted from a TV remote, the 'data' is usually the code of the key that is pressed.</p>
-<p>In <a class="el" href="a00046.html#ssec_irrc_usage_1">Display the Data Received</a>, an example is given to display all contents in a incoming message. </p>
-
-</div>
-</div>
-</div><!-- contents -->
+<div class="textblock"><p>This is the header file of Masterclock.</p>
+<dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:01 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

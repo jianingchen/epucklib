@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_led.h File Reference</title>
+<title>embedded system library for e-puck: el_common.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -87,156 +87,86 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">el_led.h File Reference<div class="ingroups"><a class="el" href="a00038.html">LED and Selector</a></div></div>  </div>
+<div class="title">el_common.h File Reference<div class="ingroups"><a class="el" href="a00039.html">Basic Concepts</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="a00016_source.html">el_common.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 </div>
 <p><a href="a00019_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:af5fc34db3839e58dd5edf86ff2ddec66"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af5fc34db3839e58dd5edf86ff2ddec66"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_ALL</b>&#160;&#160;&#160;-1</td></tr>
-<tr class="separator:af5fc34db3839e58dd5edf86ff2ddec66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0139f9404431aca4db6364c37c7876f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0139f9404431aca4db6364c37c7876f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_0</b>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:ab0139f9404431aca4db6364c37c7876f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47926e5a395b54ec03e13c3d2666eeb3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47926e5a395b54ec03e13c3d2666eeb3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_1</b>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a47926e5a395b54ec03e13c3d2666eeb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae447dbb5bb2eceb0b7ef27617505fb60"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae447dbb5bb2eceb0b7ef27617505fb60"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_2</b>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:ae447dbb5bb2eceb0b7ef27617505fb60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b923423e735da47a3a73643923e7f78"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b923423e735da47a3a73643923e7f78"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_3</b>&#160;&#160;&#160;3</td></tr>
-<tr class="separator:a7b923423e735da47a3a73643923e7f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaaf1c19b066ae8fec91773e576a7930"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afaaf1c19b066ae8fec91773e576a7930"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_4</b>&#160;&#160;&#160;4</td></tr>
-<tr class="separator:afaaf1c19b066ae8fec91773e576a7930"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57f3a8e40d4330ce67fa2217aa542542"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57f3a8e40d4330ce67fa2217aa542542"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_5</b>&#160;&#160;&#160;5</td></tr>
-<tr class="separator:a57f3a8e40d4330ce67fa2217aa542542"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abab175c9db09331c668048c5ba46ade5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abab175c9db09331c668048c5ba46ade5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_6</b>&#160;&#160;&#160;6</td></tr>
-<tr class="separator:abab175c9db09331c668048c5ba46ade5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f720d2a9a1ac294bf0437fdb1f7c92f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9f720d2a9a1ac294bf0437fdb1f7c92f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_RING_7</b>&#160;&#160;&#160;7</td></tr>
-<tr class="separator:a9f720d2a9a1ac294bf0437fdb1f7c92f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accec65c3e3b118fe48e0df9bb03d1511"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accec65c3e3b118fe48e0df9bb03d1511"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_BODY</b>&#160;&#160;&#160;9</td></tr>
-<tr class="separator:accec65c3e3b118fe48e0df9bb03d1511"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa06768910dac144c1fa6459fcca37d64"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa06768910dac144c1fa6459fcca37d64"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>EL_LED_FRONT</b>&#160;&#160;&#160;10</td></tr>
-<tr class="separator:aa06768910dac144c1fa6459fcca37d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa93f0eb578d23995850d61f7d61c55c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa93f0eb578d23995850d61f7d61c55c1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FALSE</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:aa93f0eb578d23995850d61f7d61c55c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8cecfc5c5c054d2875c03e77b7be15d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8cecfc5c5c054d2875c03e77b7be15d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TRUE</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:aa8cecfc5c5c054d2875c03e77b7be15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65e9886d74aaee76545e83dd09011727"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65e9886d74aaee76545e83dd09011727"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>false</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a65e9886d74aaee76545e83dd09011727"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41f9c5fb8b08eb5dc3edce4dcb37fee7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41f9c5fb8b08eb5dc3edce4dcb37fee7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>true</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a41f9c5fb8b08eb5dc3edce4dcb37fee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9324af3841c9f8dc1cd392e6864540e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9324af3841c9f8dc1cd392e6864540e4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BIT</b>(b)&#160;&#160;&#160;(1&lt;&lt;(b))</td></tr>
+<tr class="separator:a9324af3841c9f8dc1cd392e6864540e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d4f6ff7d4a85e6feeb8ab3a0279eb22"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d4f6ff7d4a85e6feeb8ab3a0279eb22"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>el_nop</b>()&#160;&#160;&#160;{__asm__ volatile (&quot;nop&quot;);}</td></tr>
+<tr class="separator:a3d4f6ff7d4a85e6feeb8ab3a0279eb22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a195e01d5ceeca9321c33bd82f1796cf4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a195e01d5ceeca9321c33bd82f1796cf4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NEVER_RETURN</b>&#160;&#160;&#160;void __attribute__ ((noreturn))</td></tr>
+<tr class="separator:a195e01d5ceeca9321c33bd82f1796cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:adee7c768c6e5283520fe8b6c7a75e09a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a> { <a class="el" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd">EL_OFF</a> = 0, 
-<a class="el" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1">EL_ON</a> = 1, 
-<a class="el" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">EL_TOGGLE</a> = -1
- }</td></tr>
-<tr class="memdesc:adee7c768c6e5283520fe8b6c7a75e09a"><td class="mdescLeft">&#160;</td><td class="mdescRight">used in <a class="el" href="a00019.html#a074c77228ff700a17bd3e42fb7cffeb7" title="set the status of a LED ">el_led_set</a>.  <a href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09a">More...</a><br /></td></tr>
-<tr class="separator:adee7c768c6e5283520fe8b6c7a75e09a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a074c77228ff700a17bd3e42fb7cffeb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led_set</a> (el_index w, <a class="el" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a> s)</td></tr>
-<tr class="memdesc:a074c77228ff700a17bd3e42fb7cffeb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the status of a LED  <a href="#a074c77228ff700a17bd3e42fb7cffeb7">More...</a><br /></td></tr>
-<tr class="separator:a074c77228ff700a17bd3e42fb7cffeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3823524468a2011a62d955d7277382f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00019.html#ab3823524468a2011a62d955d7277382f">el_get_selector_value</a> ()</td></tr>
-<tr class="memdesc:ab3823524468a2011a62d955d7277382f"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the selector postition  <a href="#ab3823524468a2011a62d955d7277382f">More...</a><br /></td></tr>
-<tr class="separator:ab3823524468a2011a62d955d7277382f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a97a80ca1602ebf2303258971a2c938e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97a80ca1602ebf2303258971a2c938e2"></a>
+typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>bool</b></td></tr>
+<tr class="separator:a97a80ca1602ebf2303258971a2c938e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afad89b347394a5cc337f7c4b1095b112"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afad89b347394a5cc337f7c4b1095b112"></a>
+typedef char&#160;</td><td class="memItemRight" valign="bottom"><b>el_int8</b></td></tr>
+<tr class="separator:afad89b347394a5cc337f7c4b1095b112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af01feb64f243d9d05468b3b6f2003bd9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af01feb64f243d9d05468b3b6f2003bd9"></a>
+typedef int&#160;</td><td class="memItemRight" valign="bottom"><b>el_int16</b></td></tr>
+<tr class="separator:af01feb64f243d9d05468b3b6f2003bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92a33d81e7e47ee5097594cc4f579dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af92a33d81e7e47ee5097594cc4f579dd"></a>
+typedef long&#160;</td><td class="memItemRight" valign="bottom"><b>el_int32</b></td></tr>
+<tr class="separator:af92a33d81e7e47ee5097594cc4f579dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ba125711b024d42dadefaa94fcbad53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ba125711b024d42dadefaa94fcbad53"></a>
+typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>el_uint8</b></td></tr>
+<tr class="separator:a2ba125711b024d42dadefaa94fcbad53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41b57241c3ba1107f62a9283081451d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41b57241c3ba1107f62a9283081451d4"></a>
+typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>el_uint16</b></td></tr>
+<tr class="separator:a41b57241c3ba1107f62a9283081451d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7117a4a41e1376d187feabcdbf396117"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7117a4a41e1376d187feabcdbf396117"></a>
+typedef unsigned long&#160;</td><td class="memItemRight" valign="bottom"><b>el_uint32</b></td></tr>
+<tr class="separator:a7117a4a41e1376d187feabcdbf396117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d22899d5a9adc72ceb7b0afa9c6106f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d22899d5a9adc72ceb7b0afa9c6106f"></a>
+typedef void *&#160;</td><td class="memItemRight" valign="bottom"><b>el_handle</b></td></tr>
+<tr class="separator:a0d22899d5a9adc72ceb7b0afa9c6106f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e7822a56a15153414e126b150347d24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e7822a56a15153414e126b150347d24"></a>
+typedef int&#160;</td><td class="memItemRight" valign="bottom"><b>el_index</b></td></tr>
+<tr class="separator:a7e7822a56a15153414e126b150347d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1264dc5790adebc370bc68c156f6e3d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1264dc5790adebc370bc68c156f6e3d4"></a>
+typedef bool&#160;</td><td class="memItemRight" valign="bottom"><b>el_bool</b></td></tr>
+<tr class="separator:a1264dc5790adebc370bc68c156f6e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0ab88d2f84e8ef3e9c1323b0519c3d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0ab88d2f84e8ef3e9c1323b0519c3d2"></a>
+typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>el_flags</b></td></tr>
+<tr class="separator:ab0ab88d2f84e8ef3e9c1323b0519c3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a359e52fe32e17d5a96129b914d57c9e3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a359e52fe32e17d5a96129b914d57c9e3"></a>
+typedef unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>el_enum</b></td></tr>
+<tr class="separator:a359e52fe32e17d5a96129b914d57c9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="adee7c768c6e5283520fe8b6c7a75e09a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>used in <a class="el" href="a00019.html#a074c77228ff700a17bd3e42fb7cffeb7" title="set the status of a LED ">el_led_set</a>. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="adee7c768c6e5283520fe8b6c7a75e09aad43673a39e57f6d825df10cab67f95dd"></a>EL_OFF&#160;</td><td class="fielddoc">
-<p>turn off the LED </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="adee7c768c6e5283520fe8b6c7a75e09aa21288898e36c8a768c4bf5aa76d94ee1"></a>EL_ON&#160;</td><td class="fielddoc">
-<p>turn on the LED </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223"></a>EL_TOGGLE&#160;</td><td class="fielddoc">
-<p>toggle the on/off status of the LED </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a074c77228ff700a17bd3e42fb7cffeb7"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void el_led_set </td>
-          <td>(</td>
-          <td class="paramtype">el_index&#160;</td>
-          <td class="paramname"><em>w</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="a00019.html#adee7c768c6e5283520fe8b6c7a75e09a">el_led_action</a>&#160;</td>
-          <td class="paramname"><em>s</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>set the status of a LED </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">i</td><td>index of the LED </td></tr>
-    <tr><td class="paramname">s</td><td>status </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="ab3823524468a2011a62d955d7277382f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int el_get_selector_value </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get the selector postition </p>
-<dl class="section return"><dt>Returns</dt><dd>the selector position ranged in [0,15] </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+<div class="textblock"><p>This header file defines 'el_enum', 'el_flags' and 'el_handle'.</p>
+<dl class="section author"><dt>Author</dt><dd>Jianing Chen </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:01 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

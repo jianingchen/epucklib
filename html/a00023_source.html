@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_timer.h Source File</title>
+<title>embedded system library for e-puck: el_process.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -86,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">el_timer.h</div>  </div>
+<div class="title">el_process.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00023.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -107,94 +107,76 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifndef EL_TIMER_H</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define EL_TIMER_H</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifndef EL_PROCESS_H</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define EL_PROCESS_H</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00016.html">el_common.h</a>&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00015.html">el_clock.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00019.html">el_common.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00018.html">el_clock.h</a>&quot;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">typedef</span> void (*el_timer_callback)(<span class="keywordtype">void</span>*);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#define EL_PROCESS_MAX_NUM        7</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;el_handle <a class="code" href="a00023.html#a32ee166a22bc99325af1bf8eba97e728">el_create_timer</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#a0b93eb04bc2b765b88ef545584b09f09">el_delete_timer</a>(el_handle h);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#ad30accc29783c1c9d16d8f75f417d77d">el_timer_set_perodic</a>(el_handle h,el_bool b);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#acfc45c94d901d73a62badce5bfe33a66">el_timer_set_callback</a>(el_handle h,el_timer_callback func,<span class="keywordtype">void</span>*arg);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#a62305e9d4d0ea903eb9672e171002d38">el_timer_start</a>(el_handle h,el_time t_ms);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#aa5b8368651839005befe9775fbb4b0a0">el_timer_start_fraction</a>(el_handle h,<span class="keywordtype">int</span> num,<span class="keywordtype">int</span> den);<span class="comment">// (num/den) second</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#a36c9529d469f770bb220e08be5f93337">el_timer_pause</a>(el_handle h);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">typedef</span> void (*el_process)(<span class="keywordtype">void</span>*);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define EL_PROCESS void</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;el_index <a class="code" href="a00023.html#a15372f27d6a543de5e3e00e028bb07aa">el_launch_process</a>(el_process func,<span class="keywordtype">void</span>*arg);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#a9ea69eb32cff9ead1640ddbc880b41c3">el_process_wait</a>(el_time t_ms);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#aecf18603e5149c41de087ec25e262018">el_process_wait_fraction</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> num,<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> den);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#a3580f38f3a753bd43cd1bcec81a53903">el_process_cooperate</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#adb697ee0cd104c20d8d51da7bf2104ba">el_process_resume</a>(el_index process_idx);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#ae21ac89ff6b3bc144ba0e055ac36639f">el_kill_process</a>(el_index process_idx);</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#af4705fb6ecdf3a8e0f601be13ea8d212">el_timer_resume</a>(el_handle h);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;el_index <a class="code" href="a00023.html#ad2c758eedf0e39ab8a424d3ecc402b35">el_get_local_process_index</a>();</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;el_handle <a class="code" href="a00023.html#a56f7a965a8b0cb8c5accc9c4ddee2a8f">el_timer_callback_get_handle</a>();</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;el_uint32 <a class="code" href="a00023.html#a8aa9281fce844f48a98cf2608281d898">el_timer_get_rounds</a>(el_handle h);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#define EL_PROCESS_STACK_OFFSET 192</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">#define EL_PROCESS_STACK_SIZE   192</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#define EL_PROCESS_DIM          EL_PROCESS_MAX_NUM</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">extern</span> el_mct el_process_mck;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keyword">extern</span> el_bool el_is_in_process;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword">extern</span> el_bool el_is_in_process_call;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keyword">extern</span> el_index el_cmt_current_process_index;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keyword">extern</span> el_uint16 el_process_overwatch;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keywordtype">void</span> el_init_process();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="keywordtype">void</span> el_routine_process();</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00023.html#af4f486e1589e2cc62aacb0e9c64a5dd2">el_timer_set_rounds</a>(el_handle h,el_uint32 n);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">--------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#define EL_TIMER_DIM      10</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    el_mct period;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    el_mct count_down;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    el_uint32 rounds;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordtype">void</span> *append_data;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    void (*callback)(<span class="keywordtype">void</span>*);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    uint8_t paused:1;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    uint8_t repeat:1;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    uint8_t <span class="keyword">remove</span>:1;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;} el_timer;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="keyword">extern</span> el_mct el_timer_mck;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="keyword">extern</span> el_bool el_is_in_timer_callback;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="keyword">extern</span> el_uint16 el_timer_overwatch;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="keywordtype">void</span> el_init_timers();</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="keywordtype">void</span> el_routine_timers();</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a00023_html_a62305e9d4d0ea903eb9672e171002d38"><div class="ttname"><a href="a00023.html#a62305e9d4d0ea903eb9672e171002d38">el_timer_start</a></div><div class="ttdeci">void el_timer_start(el_handle h, el_time t_ms)</div><div class="ttdoc">specify the countdown time and start the timer </div></div>
-<div class="ttc" id="a00015_html"><div class="ttname"><a href="a00015.html">el_clock.h</a></div></div>
-<div class="ttc" id="a00023_html_a32ee166a22bc99325af1bf8eba97e728"><div class="ttname"><a href="a00023.html#a32ee166a22bc99325af1bf8eba97e728">el_create_timer</a></div><div class="ttdeci">el_handle el_create_timer(void)</div><div class="ttdoc">create a timer in the system </div></div>
-<div class="ttc" id="a00023_html_af4f486e1589e2cc62aacb0e9c64a5dd2"><div class="ttname"><a href="a00023.html#af4f486e1589e2cc62aacb0e9c64a5dd2">el_timer_set_rounds</a></div><div class="ttdeci">void el_timer_set_rounds(el_handle h, el_uint32 n)</div><div class="ttdoc">set the rounds of the timer </div></div>
-<div class="ttc" id="a00023_html_a8aa9281fce844f48a98cf2608281d898"><div class="ttname"><a href="a00023.html#a8aa9281fce844f48a98cf2608281d898">el_timer_get_rounds</a></div><div class="ttdeci">el_uint32 el_timer_get_rounds(el_handle h)</div><div class="ttdoc">get the rounds of the timer </div></div>
-<div class="ttc" id="a00023_html_a56f7a965a8b0cb8c5accc9c4ddee2a8f"><div class="ttname"><a href="a00023.html#a56f7a965a8b0cb8c5accc9c4ddee2a8f">el_timer_callback_get_handle</a></div><div class="ttdeci">el_handle el_timer_callback_get_handle()</div><div class="ttdoc">get the handle of the timer in a timer callback </div></div>
-<div class="ttc" id="a00023_html_acfc45c94d901d73a62badce5bfe33a66"><div class="ttname"><a href="a00023.html#acfc45c94d901d73a62badce5bfe33a66">el_timer_set_callback</a></div><div class="ttdeci">void el_timer_set_callback(el_handle h, el_timer_callback func, void *arg)</div><div class="ttdoc">set the callback of a timer </div></div>
-<div class="ttc" id="a00023_html_a36c9529d469f770bb220e08be5f93337"><div class="ttname"><a href="a00023.html#a36c9529d469f770bb220e08be5f93337">el_timer_pause</a></div><div class="ttdeci">void el_timer_pause(el_handle h)</div><div class="ttdoc">pause the countdown of the timer </div></div>
-<div class="ttc" id="a00023_html_aa5b8368651839005befe9775fbb4b0a0"><div class="ttname"><a href="a00023.html#aa5b8368651839005befe9775fbb4b0a0">el_timer_start_fraction</a></div><div class="ttdeci">void el_timer_start_fraction(el_handle h, int num, int den)</div><div class="ttdoc">specify the countdown time using a fraction and start the timer </div></div>
-<div class="ttc" id="a00023_html_ad30accc29783c1c9d16d8f75f417d77d"><div class="ttname"><a href="a00023.html#ad30accc29783c1c9d16d8f75f417d77d">el_timer_set_perodic</a></div><div class="ttdeci">void el_timer_set_perodic(el_handle h, el_bool b)</div><div class="ttdoc">set whether the timer repeat the countdown process once a countdown is finished </div></div>
-<div class="ttc" id="a00016_html"><div class="ttname"><a href="a00016.html">el_common.h</a></div></div>
-<div class="ttc" id="a00023_html_a0b93eb04bc2b765b88ef545584b09f09"><div class="ttname"><a href="a00023.html#a0b93eb04bc2b765b88ef545584b09f09">el_delete_timer</a></div><div class="ttdeci">void el_delete_timer(el_handle h)</div><div class="ttdoc">delete the timer </div></div>
-<div class="ttc" id="a00023_html_af4705fb6ecdf3a8e0f601be13ea8d212"><div class="ttname"><a href="a00023.html#af4705fb6ecdf3a8e0f601be13ea8d212">el_timer_resume</a></div><div class="ttdeci">void el_timer_resume(el_handle h)</div><div class="ttdoc">resume the countdown of the timer </div></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a00023_html_adb697ee0cd104c20d8d51da7bf2104ba"><div class="ttname"><a href="a00023.html#adb697ee0cd104c20d8d51da7bf2104ba">el_process_resume</a></div><div class="ttdeci">void el_process_resume(el_index process_idx)</div><div class="ttdoc">finish the waiting period of a process immediately </div></div>
+<div class="ttc" id="a00023_html_ae21ac89ff6b3bc144ba0e055ac36639f"><div class="ttname"><a href="a00023.html#ae21ac89ff6b3bc144ba0e055ac36639f">el_kill_process</a></div><div class="ttdeci">void el_kill_process(el_index process_idx)</div><div class="ttdoc">kill the process (the abnormal way to end a process) </div></div>
+<div class="ttc" id="a00018_html"><div class="ttname"><a href="a00018.html">el_clock.h</a></div></div>
+<div class="ttc" id="a00023_html_a9ea69eb32cff9ead1640ddbc880b41c3"><div class="ttname"><a href="a00023.html#a9ea69eb32cff9ead1640ddbc880b41c3">el_process_wait</a></div><div class="ttdeci">void el_process_wait(el_time t_ms)</div><div class="ttdoc">wait for a period of time </div></div>
+<div class="ttc" id="a00023_html_aecf18603e5149c41de087ec25e262018"><div class="ttname"><a href="a00023.html#aecf18603e5149c41de087ec25e262018">el_process_wait_fraction</a></div><div class="ttdeci">void el_process_wait_fraction(unsigned int num, unsigned int den)</div><div class="ttdoc">wait for a period of time specified as a fraction </div></div>
+<div class="ttc" id="a00023_html_a15372f27d6a543de5e3e00e028bb07aa"><div class="ttname"><a href="a00023.html#a15372f27d6a543de5e3e00e028bb07aa">el_launch_process</a></div><div class="ttdeci">el_index el_launch_process(el_process func, void *arg)</div><div class="ttdoc">execute a function in a process </div></div>
+<div class="ttc" id="a00023_html_ad2c758eedf0e39ab8a424d3ecc402b35"><div class="ttname"><a href="a00023.html#ad2c758eedf0e39ab8a424d3ecc402b35">el_get_local_process_index</a></div><div class="ttdeci">el_index el_get_local_process_index()</div><div class="ttdoc">get index of the process where this function is called </div></div>
+<div class="ttc" id="a00019_html"><div class="ttname"><a href="a00019.html">el_common.h</a></div></div>
+<div class="ttc" id="a00023_html_a3580f38f3a753bd43cd1bcec81a53903"><div class="ttname"><a href="a00023.html#a3580f38f3a753bd43cd1bcec81a53903">el_process_cooperate</a></div><div class="ttdeci">void el_process_cooperate()</div><div class="ttdoc">Introduce an atomic wait so other processes can be executed. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:55 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:00 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

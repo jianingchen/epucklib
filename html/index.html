@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -161,7 +161,7 @@ Build This Library</h2>
 <h2><a class="anchor" id="sec_build_project"></a>
 Build A Project</h2>
 <p>To develop for e-puck based on this library, it is recommended to setup a standalone project that links "el.a".</p>
-<p>The example project "el_example_hw" is nearly an empty project. Therefore, it can be copied and used as a project with necessary configurations. To setup a project in MPLAB X IDE from scratch, see <a class="el" href="a00002.html">New Project Setup</a>.</p>
+<p>The example project "el_example_hw" is nearly an empty project. Therefore, it can be copied and used as a project with necessary configurations. To setup a project in MPLAB X IDE from scratch, see <a class="el" href="a00004.html">New Project Setup</a>.</p>
 <p>To get more details on using the IDE, read "MPLAB X IDE User's Guide" on the official site of Microchip.</p>
 <p>When the building process of the project is finished, a report similar to the following one will appear in the "Output" panel of the IDE: </p><div class="image">
 <img src="doc_build_project.png" alt="doc_build_project.png"/>
@@ -182,48 +182,48 @@ Example 1</h2>
 <p>(located in "./examples/el_example_01.X")</p>
 <p>In this example, the e-puck flashes some of its LEDs. Sending a char of 'f' through UART1 (the UART channel used by the Bluetooth module) will toggle the front led. In UART1, the e-puck will also report the number of seconds since start running.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00047.html">Process</a></li>
-<li><a class="el" href="a00038.html">LED and Selector</a></li>
-<li><a class="el" href="a00042.html">UART STDIO</a></li>
+<li><a class="el" href="a00050.html">Process</a></li>
+<li><a class="el" href="a00042.html">LED and Selector</a></li>
+<li><a class="el" href="a00045.html">UART STDIO</a></li>
 </ul>
 <h2><a class="anchor" id="sec_ex02"></a>
 Example 2</h2>
 <p>(located in "./examples/el_example_02.X")</p>
 <p>When the e-puck is shaken or detects an impact, it will flash all of its ring LEDs. In UART communication, sending a 'g' makes the e-puck report the outputs of the accelerometers.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00047.html">Process</a></li>
-<li><a class="el" href="a00049.html">Trigger</a></li>
-<li><a class="el" href="a00043.html">Accelerometer</a></li>
-<li><a class="el" href="a00038.html">LED and Selector</a></li>
-<li><a class="el" href="a00046.html">Infrared Receiver</a></li>
-<li><a class="el" href="a00042.html">UART STDIO</a></li>
+<li><a class="el" href="a00050.html">Process</a></li>
+<li><a class="el" href="a00053.html">Trigger</a></li>
+<li><a class="el" href="a00046.html">Accelerometer</a></li>
+<li><a class="el" href="a00042.html">LED and Selector</a></li>
+<li><a class="el" href="a00049.html">Infrared Receiver</a></li>
+<li><a class="el" href="a00045.html">UART STDIO</a></li>
 </ul>
 <h2><a class="anchor" id="sec_ex03"></a>
 Example 3</h2>
 <p>(located in "./examples/el_example_03.X")</p>
 <p>The e-puck can be remotely controlled via Bluetooth. It is recommended to use this program with the serial communciation utility of this library.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00047.html">Process</a></li>
-<li><a class="el" href="a00049.html">Trigger</a></li>
-<li><a class="el" href="a00048.html">Timer</a></li>
-<li><a class="el" href="a00044.html">Camera</a></li>
-<li><a class="el" href="a00038.html">LED and Selector</a></li>
-<li><a class="el" href="a00040.html">Stepper Motor</a></li>
-<li><a class="el" href="a00045.html">Infrared Proximity Sensors</a></li>
-<li><a class="el" href="a00042.html">UART STDIO</a></li>
+<li><a class="el" href="a00050.html">Process</a></li>
+<li><a class="el" href="a00053.html">Trigger</a></li>
+<li><a class="el" href="a00052.html">Timer</a></li>
+<li><a class="el" href="a00047.html">Camera</a></li>
+<li><a class="el" href="a00042.html">LED and Selector</a></li>
+<li><a class="el" href="a00051.html">Stepper Motor</a></li>
+<li><a class="el" href="a00048.html">Infrared Proximity Sensors</a></li>
+<li><a class="el" href="a00045.html">UART STDIO</a></li>
 </ul>
 <h2><a class="anchor" id="sec_ex04"></a>
 Example 4</h2>
 <p>(located in "./examples/el_example_04.X")</p>
 <p>The e-puck follows any green object in front of it. Through UART1, color of the object to be followed can be selected among red, green and blue.</p>
 <p>This example includes the usage of following modules:</p><ul>
-<li><a class="el" href="a00047.html">Process</a></li>
-<li><a class="el" href="a00049.html">Trigger</a></li>
-<li><a class="el" href="a00044.html">Camera</a></li>
-<li><a class="el" href="a00038.html">LED and Selector</a></li>
-<li><a class="el" href="a00040.html">Stepper Motor</a></li>
-<li><a class="el" href="a00045.html">Infrared Proximity Sensors</a></li>
-<li><a class="el" href="a00042.html">UART STDIO</a></li>
+<li><a class="el" href="a00050.html">Process</a></li>
+<li><a class="el" href="a00053.html">Trigger</a></li>
+<li><a class="el" href="a00047.html">Camera</a></li>
+<li><a class="el" href="a00042.html">LED and Selector</a></li>
+<li><a class="el" href="a00051.html">Stepper Motor</a></li>
+<li><a class="el" href="a00048.html">Infrared Proximity Sensors</a></li>
+<li><a class="el" href="a00045.html">UART STDIO</a></li>
 </ul>
 <p>An image processing technique used to tracking the object is also demonstrated in this example.</p>
 <p><br />
@@ -237,7 +237,7 @@ License &amp; Attributions</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:01 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

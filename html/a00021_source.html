@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_random.h Source File</title>
+<title>embedded system library for e-puck: el_ir_receiver.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -86,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">el_random.h</div>  </div>
+<div class="title">el_ir_receiver.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="a00021.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
@@ -107,44 +107,70 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#ifndef EL_RANDOM_H</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define EL_RANDOM_H</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00016.html">el_common.h</a>&quot;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00021.html#ac444097bd87f81e8ce08b436811bf0d1">el_random_set_seed</a>(<span class="keywordtype">int</span> seed);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifndef EL_IR_RECEIVER_H</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define EL_IR_RECEIVER_H</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00019.html">el_common.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00018.html">el_clock.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00027.html">el_trigger.h</a>&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00021.html#ab35f59ce139b2944c49987e3725c9cd3">el_enable_ir_receiver</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00021.html#a533e2318c63e4d95b5815942a646b12d">el_disable_ir_receiver</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00021.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a>();</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00021.html#a987f051a1e8591d5ccb9a85c2ce9c7e1">el_random_reset_seed</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;el_uint16 <a class="code" href="a00021.html#ace80ec1d84ebecba4808d0e5b0dad3a3">el_random_get_seed</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;el_uint16 <a class="code" href="a00021.html#a3654ea5e3a61ea09daa94c41467a4ffa">el_random_uint16</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;el_uint32  <a class="code" href="a00021.html#a2c171512231cd23a543a3797fa96f501">el_random_uint32</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;el_int16 <a class="code" href="a00021.html#a4c6af4373b35535dbb736a5000f15774">el_random_int</a>(el_int16 min,el_int16 max);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;el_bool <a class="code" href="a00021.html#a484d81d2df007f11eee83789b24364e9">el_random_rate</a>(el_uint16 num,el_uint16 den);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a00021_html_a2c171512231cd23a543a3797fa96f501"><div class="ttname"><a href="a00021.html#a2c171512231cd23a543a3797fa96f501">el_random_uint32</a></div><div class="ttdeci">el_uint32 el_random_uint32(void)</div><div class="ttdoc">returning a random unsigned long int in [0,2^32 - 1] </div></div>
-<div class="ttc" id="a00021_html_a484d81d2df007f11eee83789b24364e9"><div class="ttname"><a href="a00021.html#a484d81d2df007f11eee83789b24364e9">el_random_rate</a></div><div class="ttdeci">el_bool el_random_rate(el_uint16 num, el_uint16 den)</div><div class="ttdoc">returning true at a probablity of (num/den) </div></div>
-<div class="ttc" id="a00021_html_a4c6af4373b35535dbb736a5000f15774"><div class="ttname"><a href="a00021.html#a4c6af4373b35535dbb736a5000f15774">el_random_int</a></div><div class="ttdeci">el_int16 el_random_int(el_int16 min, el_int16 max)</div><div class="ttdoc">returning a random int in [min,max] </div></div>
-<div class="ttc" id="a00021_html_ac444097bd87f81e8ce08b436811bf0d1"><div class="ttname"><a href="a00021.html#ac444097bd87f81e8ce08b436811bf0d1">el_random_set_seed</a></div><div class="ttdeci">void el_random_set_seed(int seed)</div><div class="ttdoc">set seed of the random generator module </div></div>
-<div class="ttc" id="a00021_html_a3654ea5e3a61ea09daa94c41467a4ffa"><div class="ttname"><a href="a00021.html#a3654ea5e3a61ea09daa94c41467a4ffa">el_random_uint16</a></div><div class="ttdeci">el_uint16 el_random_uint16(void)</div><div class="ttdoc">returning a random unsigned short int in [0,65535] </div></div>
-<div class="ttc" id="a00021_html_a987f051a1e8591d5ccb9a85c2ce9c7e1"><div class="ttname"><a href="a00021.html#a987f051a1e8591d5ccb9a85c2ce9c7e1">el_random_reset_seed</a></div><div class="ttdeci">void el_random_reset_seed(void)</div><div class="ttdoc">reset the random seed to default value </div></div>
-<div class="ttc" id="a00021_html_ace80ec1d84ebecba4808d0e5b0dad3a3"><div class="ttname"><a href="a00021.html#ace80ec1d84ebecba4808d0e5b0dad3a3">el_random_get_seed</a></div><div class="ttdeci">el_uint16 el_random_get_seed(void)</div><div class="ttdoc">get seed of the current random sequence </div></div>
-<div class="ttc" id="a00016_html"><div class="ttname"><a href="a00016.html">el_common.h</a></div></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;el_uint8 <a class="code" href="a00021.html#a4fae36b0456f98360cd73fa9663a2b55">el_ir_receiver_get_check</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;el_uint8 <a class="code" href="a00021.html#a3899efc52618671a46dc34e8523ddcb2">el_ir_receiver_get_address</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;el_uint8 <a class="code" href="a00021.html#aa5a561e70828e63b6f0ffa01ab89e298">el_ir_receiver_get_data</a>();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;el_uint16 <a class="code" href="a00021.html#aba65b498f8a340b859968b6b82ce7bec">el_ir_receiver_get_counter</a>();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">--------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#ifdef EL_INCLUDE_LIB_INTERNAL_CONTEXT</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="a00018.html">el_clock.h</a>&quot;</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">extern</span> el_bool el_irrc_enabled;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">extern</span> el_uint8 el_irrc_phase;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">extern</span> el_mcd el_irrc_timer;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> el_init_ir_receiver();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span> el_routine_ir_receiver_14400hz();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keywordtype">void</span> el_irrc_inhibit(<span class="keywordtype">int</span> k);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* EL_INCLUDE_LIB_INTERNAL_CONTEXT */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">/* EL_IR_RECEIVER_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00027_html"><div class="ttname"><a href="a00027.html">el_trigger.h</a></div></div>
+<div class="ttc" id="a00018_html"><div class="ttname"><a href="a00018.html">el_clock.h</a></div></div>
+<div class="ttc" id="a00021_html_a533e2318c63e4d95b5815942a646b12d"><div class="ttname"><a href="a00021.html#a533e2318c63e4d95b5815942a646b12d">el_disable_ir_receiver</a></div><div class="ttdeci">void el_disable_ir_receiver()</div><div class="ttdoc">disable the ir receiver </div></div>
+<div class="ttc" id="a00021_html_a4fae36b0456f98360cd73fa9663a2b55"><div class="ttname"><a href="a00021.html#a4fae36b0456f98360cd73fa9663a2b55">el_ir_receiver_get_check</a></div><div class="ttdeci">el_uint8 el_ir_receiver_get_check()</div><div class="ttdoc">get the check bit in the message while 2 means no message </div></div>
+<div class="ttc" id="a00021_html_aba65b498f8a340b859968b6b82ce7bec"><div class="ttname"><a href="a00021.html#aba65b498f8a340b859968b6b82ce7bec">el_ir_receiver_get_counter</a></div><div class="ttdeci">el_uint16 el_ir_receiver_get_counter()</div><div class="ttdoc">get the number of messages received since initialization </div></div>
+<div class="ttc" id="a00021_html_ab35f59ce139b2944c49987e3725c9cd3"><div class="ttname"><a href="a00021.html#ab35f59ce139b2944c49987e3725c9cd3">el_enable_ir_receiver</a></div><div class="ttdeci">void el_enable_ir_receiver()</div><div class="ttdoc">enable the ir receiver </div></div>
+<div class="ttc" id="a00021_html_a3899efc52618671a46dc34e8523ddcb2"><div class="ttname"><a href="a00021.html#a3899efc52618671a46dc34e8523ddcb2">el_ir_receiver_get_address</a></div><div class="ttdeci">el_uint8 el_ir_receiver_get_address()</div><div class="ttdoc">get the address field in the message </div></div>
+<div class="ttc" id="a00021_html_af0e7ec78afde599d7d90c73e3c258d03"><div class="ttname"><a href="a00021.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a></div><div class="ttdeci">void el_ir_receiver_reset()</div><div class="ttdoc">reset the ir receiver to prepare for any incoming message </div></div>
+<div class="ttc" id="a00021_html_aa5a561e70828e63b6f0ffa01ab89e298"><div class="ttname"><a href="a00021.html#aa5a561e70828e63b6f0ffa01ab89e298">el_ir_receiver_get_data</a></div><div class="ttdeci">el_uint8 el_ir_receiver_get_data()</div><div class="ttdoc">get the data field in the message </div></div>
+<div class="ttc" id="a00019_html"><div class="ttname"><a href="a00019.html">el_common.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:55 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:00 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

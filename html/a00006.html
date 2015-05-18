@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_ir_proximity_param Struct Reference</title>
+<title>embedded system library for e-puck: el_camera_param Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -89,36 +89,71 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">el_ir_proximity_param Struct Reference</div>  </div>
+<div class="title">el_camera_param Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00017_source.html">el_ir_proximity.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00017_source.html">el_camera.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:ab1fcc9f3abb628c17b7cc12f1bb5ef7a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1fcc9f3abb628c17b7cc12f1bb5ef7a"></a>
-<a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2e">el_ir_proximity_mode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#ab1fcc9f3abb628c17b7cc12f1bb5ef7a">WorkingMode</a></td></tr>
-<tr class="memdesc:ab1fcc9f3abb628c17b7cc12f1bb5ef7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">the working mode of the proximity sensors <br /></td></tr>
-<tr class="separator:ab1fcc9f3abb628c17b7cc12f1bb5ef7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12f7fdb0aff8e22c26b04037ac39e68c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12f7fdb0aff8e22c26b04037ac39e68c"></a>
-el_uint16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a12f7fdb0aff8e22c26b04037ac39e68c">EnvironmentalAmbient</a></td></tr>
-<tr class="memdesc:a12f7fdb0aff8e22c26b04037ac39e68c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the ambient infrared intensity in the environment, used to correct the the ambient output <br /></td></tr>
-<tr class="separator:a12f7fdb0aff8e22c26b04037ac39e68c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34bf2d27a0309955441efa19e1471729"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34bf2d27a0309955441efa19e1471729"></a>
-el_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a34bf2d27a0309955441efa19e1471729">SubtractEA</a></td></tr>
-<tr class="memdesc:a34bf2d27a0309955441efa19e1471729"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether to use EnvironmentalAmbient in the ambient output <br /></td></tr>
-<tr class="separator:a34bf2d27a0309955441efa19e1471729"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c2725b38e0e6dda7fa8619ff17e8242"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c2725b38e0e6dda7fa8619ff17e8242"></a>
+<a class="el" href="a00017.html#ae3dd3a05038328cf4dd7b6fc78f41fd9">el_camera_exposure_mode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a5c2725b38e0e6dda7fa8619ff17e8242">ExposureMode</a></td></tr>
+<tr class="memdesc:a5c2725b38e0e6dda7fa8619ff17e8242"><td class="mdescLeft">&#160;</td><td class="mdescRight">select one of the four modes (see <a class="el" href="a00017.html#ae3dd3a05038328cf4dd7b6fc78f41fd9">el_camera_exposure_mode</a>) <br /></td></tr>
+<tr class="separator:a5c2725b38e0e6dda7fa8619ff17e8242"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62077a99ebbea56720d81c58d98381ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62077a99ebbea56720d81c58d98381ad"></a>
+el_bool&#160;</td><td class="memItemRight" valign="bottom"><b>AutoWhiteBalance</b></td></tr>
+<tr class="separator:a62077a99ebbea56720d81c58d98381ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a860bb7b0767baee3bdef89c70afb7f74"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a860bb7b0767baee3bdef89c70afb7f74"></a>
+el_bool&#160;</td><td class="memItemRight" valign="bottom"><b>AutoDigitalGain</b></td></tr>
+<tr class="separator:a860bb7b0767baee3bdef89c70afb7f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96a5f876f12e2278dd5f0fca979e368f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96a5f876f12e2278dd5f0fca979e368f"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a96a5f876f12e2278dd5f0fca979e368f">ExposureTime</a></td></tr>
+<tr class="memdesc:a96a5f876f12e2278dd5f0fca979e368f"><td class="mdescLeft">&#160;</td><td class="mdescRight">sensible range is [ 1.0, 20.0 ] <br /></td></tr>
+<tr class="separator:a96a5f876f12e2278dd5f0fca979e368f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade963299cc7b68e939d341855cbcd3c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade963299cc7b68e939d341855cbcd3c1"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#ade963299cc7b68e939d341855cbcd3c1">ExternalIntergationTime</a></td></tr>
+<tr class="memdesc:ade963299cc7b68e939d341855cbcd3c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">valid range is ( 0.0, 512.0 ) <br /></td></tr>
+<tr class="separator:ade963299cc7b68e939d341855cbcd3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1201d921ec6ac6263c62d0c08d30228f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1201d921ec6ac6263c62d0c08d30228f"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a1201d921ec6ac6263c62d0c08d30228f">ExternalLinearGain</a></td></tr>
+<tr class="memdesc:a1201d921ec6ac6263c62d0c08d30228f"><td class="mdescLeft">&#160;</td><td class="mdescRight">valid range is ( 0.0, 256.0 ) <br /></td></tr>
+<tr class="separator:a1201d921ec6ac6263c62d0c08d30228f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6806e1a071df7be85c2909064ce2ce6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6806e1a071df7be85c2909064ce2ce6e"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a6806e1a071df7be85c2909064ce2ce6e">IntegrationTime</a></td></tr>
+<tr class="memdesc:a6806e1a071df7be85c2909064ce2ce6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">valid range is ( 0.0, 512.0 ) <br /></td></tr>
+<tr class="separator:a6806e1a071df7be85c2909064ce2ce6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f2f78905db58a1485f4700da3b785ee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f2f78905db58a1485f4700da3b785ee"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a0f2f78905db58a1485f4700da3b785ee">GlobalGain</a></td></tr>
+<tr class="memdesc:a0f2f78905db58a1485f4700da3b785ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">valid range is [ 1.0, 32.0 ] <br /></td></tr>
+<tr class="separator:a0f2f78905db58a1485f4700da3b785ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c0c62073643d72f3ca970198447bff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5c0c62073643d72f3ca970198447bff"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#ac5c0c62073643d72f3ca970198447bff">DigitalGain</a></td></tr>
+<tr class="memdesc:ac5c0c62073643d72f3ca970198447bff"><td class="mdescLeft">&#160;</td><td class="mdescRight">valid range is [ 0.015, 3.98 ] <br /></td></tr>
+<tr class="separator:ac5c0c62073643d72f3ca970198447bff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7757231840033cf3410b97ed93d3481a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7757231840033cf3410b97ed93d3481a"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#a7757231840033cf3410b97ed93d3481a">RedGain</a></td></tr>
+<tr class="memdesc:a7757231840033cf3410b97ed93d3481a"><td class="mdescLeft">&#160;</td><td class="mdescRight">valid range is [ 0.015, 3.98 ] <br /></td></tr>
+<tr class="separator:a7757231840033cf3410b97ed93d3481a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa682d2e1a12d4005c02ebe61797441d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa682d2e1a12d4005c02ebe61797441d5"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#aa682d2e1a12d4005c02ebe61797441d5">GreenGain</a></td></tr>
+<tr class="memdesc:aa682d2e1a12d4005c02ebe61797441d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">valid range is [ 0.015, 3.98 ] <br /></td></tr>
+<tr class="separator:aa682d2e1a12d4005c02ebe61797441d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6e70df6cba97baad2489830dd1debf9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6e70df6cba97baad2489830dd1debf9"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.html#ae6e70df6cba97baad2489830dd1debf9">BlueGain</a></td></tr>
+<tr class="memdesc:ae6e70df6cba97baad2489830dd1debf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">valid range is [ 0.015, 3.98 ] <br /></td></tr>
+<tr class="separator:ae6e70df6cba97baad2489830dd1debf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This data structure is used in <a class="el" href="a00017.html#ac4d37f34ba9cc081709e69c599cb715e" title="apply the settings in the given structure ">el_config_ir_proximity</a>. A static instance of this struct exists internally, it can be pointed to through <a class="el" href="a00017.html#aaed16be13717633a3d1ab3ea3b31f174" title="get the pointer to a static instance of el_ir_proximity_param ">el_ir_proximity_options</a>. </p>
+<div class="textblock"><p>This data structure is used in <a class="el" href="a00017.html#a8f837179c0c63d636c19abc693e9957f" title="apply the settings in the given structure ">el_config_camera</a>. A static instance of this struct exists internally, it can be pointed to through <a class="el" href="a00017.html#a0c16455023d3980e9ebd50ad39a35bc1" title="get the pointer to a static instance of el_camera_param ">el_camera_options</a>.</p>
+<p>Detailed explanation of these parameters can be found in the datasheet of PO6030K. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="a00017_source.html">el_ir_proximity.h</a></li>
+<li><a class="el" href="a00017_source.html">el_camera.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:01 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

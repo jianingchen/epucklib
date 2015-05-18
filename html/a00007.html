@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: el_stepper_motor_param Struct Reference</title>
+<title>embedded system library for e-puck: el_ir_proximity_data Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -89,30 +89,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">el_stepper_motor_param Struct Reference</div>  </div>
+<div class="title">el_ir_proximity_data Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="a00022_source.html">el_stepper_motor.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="a00020_source.html">el_ir_proximity.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:afc03fa81717630ddad3c6daad7430bb2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc03fa81717630ddad3c6daad7430bb2"></a>
-el_bool&#160;</td><td class="memItemRight" valign="bottom"><b>UseAcceleration</b></td></tr>
-<tr class="separator:afc03fa81717630ddad3c6daad7430bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55a9881632d1dc609956f9c616d6867b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a55a9881632d1dc609956f9c616d6867b"></a>
-el_uint16&#160;</td><td class="memItemRight" valign="bottom"><b>AccelerationRate</b></td></tr>
-<tr class="separator:a55a9881632d1dc609956f9c616d6867b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab774f842e7b10cec3596e0c108fed947"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab774f842e7b10cec3596e0c108fed947"></a>
+el_int16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ab774f842e7b10cec3596e0c108fed947">Ambient</a></td></tr>
+<tr class="memdesc:ab774f842e7b10cec3596e0c108fed947"><td class="mdescLeft">&#160;</td><td class="mdescRight">This value can be used to detect nearby e-pucks in the Emit Mode. <br /></td></tr>
+<tr class="separator:ab774f842e7b10cec3596e0c108fed947"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad81a15255ae0ad3eb5c3473b335282a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad81a15255ae0ad3eb5c3473b335282a6"></a>
+el_int16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ad81a15255ae0ad3eb5c3473b335282a6">Reflection</a></td></tr>
+<tr class="memdesc:ad81a15255ae0ad3eb5c3473b335282a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">In all modes, this value can be used to detect passive things in the evnironment (e.g. obstacles and walls). <br /></td></tr>
+<tr class="separator:ad81a15255ae0ad3eb5c3473b335282a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada4fc9175832cbd95fc96ded25918865"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada4fc9175832cbd95fc96ded25918865"></a>
+el_int16&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.html#ada4fc9175832cbd95fc96ded25918865">Message</a></td></tr>
+<tr class="memdesc:ada4fc9175832cbd95fc96ded25918865"><td class="mdescLeft">&#160;</td><td class="mdescRight">(not implemented yet) <br /></td></tr>
+<tr class="separator:ada4fc9175832cbd95fc96ded25918865"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This data structure is used in <a class="el" href="a00022.html#aba08c18b0c17d7d7ab38671cc9c9ea97" title="apply the settings in the given structure ">el_config_stepper_motor</a>. A static instance of this struct exists internally, it can be pointed to through <a class="el" href="a00022.html#aacdf94e1a3dc67b0c3f3fa974b2d7d4b" title="get the pointer to a static instance of el_stepper_motor_param ">el_stepper_motor_options</a>. </p>
+<div class="textblock"><p>This struct can be used in <a class="el" href="a00020.html#a282c79127fe99a71c2a4c92f671a7e56" title="get output value(s) from a accelerometer ">el_ir_proximity_get</a> when all types of outputs from all sensors need to be obtained. </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="a00022_source.html">el_stepper_motor.h</a></li>
+<li><a class="el" href="a00020_source.html">el_ir_proximity.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:01 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>embedded system library for e-puck: Trigger</title>
+<title>embedded system library for e-puck: Infrared Receiver</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0alpha</span>
+   &#160;<span id="projectnumber">1.0</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -82,98 +82,149 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#files">Files</a>  </div>
   <div class="headertitle">
-<div class="title">Trigger</div>  </div>
+<div class="title">Infrared Receiver</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>achieving "do something when some event happens"  
+<p>interface of the ir receiver on top of the e-puck  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:a00024"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html">el_trigger.h</a></td></tr>
+<tr class="memitem:a00021"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00021.html">el_ir_receiver.h</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>achieving "do something when some event happens" </p>
-<h1><a class="anchor" id="sec_trg_intro"></a>
+<p>interface of the ir receiver on top of the e-puck </p>
+<h1><a class="anchor" id="Introduction"></a>
 Introduction</h1>
-<p>A trigger can launch a process when a specified event occurs in the system. For example, a process can be launched automatically when the proximity sensors has a set of samples ready for use.</p>
-<h1><a class="anchor" id="sec_trg_usage"></a>
+<p>The e-puck has a ir receiver module &mdash; TSOP36236. It is supposed to be used with remote control based RC5 protocol, which are typically used in TV remote.</p>
+<h1><a class="anchor" id="sec_irrc_usage"></a>
 Example Usage</h1>
-<h2><a class="anchor" id="ssec_trg_usage_fcl"></a>
-Feedback Control Loop</h2>
-<p><a class="el" href="index.html#sec_ex04">Example 4</a> used the trigger mechanism to realize a control algorithm that uses camera image as input and hence executes every time when the camera is refreshed.</p>
-<p>Here is an example of a control loop that takes the proximity sensors as input. The example assumes that the stepper motor and the infrared proximity sensors are enabled beforehand and the proximity sensors are working in <a class="el" href="a00017.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea6e61f4edccd695b26cf205c95896ea7d" title="use the Pulse Mode (default mode) ">EL_IR_PROXIMITY_PULSE</a> mode.</p>
-<p>Related global variables and function prototypes: </p><div class="fragment"><div class="line">el_handle trg_control_step;</div>
+<p>In the example, we want all robots to toggle their body LED when we press a key on a TV remote. Two approaches to achieve this are given.</p>
+<h2><a class="anchor" id="ssec_irrc_usage_1"></a>
+Display the Data Received</h2>
+<p>The ir receiver module should be able to receive all remote based on RC5 protocol which is a protocol used by TV remote. For example, Philip and Toshiba are known to use the protocol. However, on still need to study what exactly the data received are. In this example, any valid transmission is received and the data obtained are displayed via serial communication.</p>
+<div class="fragment"><div class="line"><span class="comment">// assume that the following process is launched properly in somewhere</span></div>
+<div class="line"><span class="keywordtype">void</span> IrReceiver_Process(<span class="keywordtype">void</span>*unused){</div>
+<div class="line">    <span class="keywordtype">int</span> check;</div>
+<div class="line">    <span class="keywordtype">int</span> address;</div>
+<div class="line">    <span class="keywordtype">int</span> key_value;</div>
 <div class="line"></div>
-<div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Setup();</div>
-<div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Clear();</div>
-<div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Process(el_handle this_trigger);</div>
-</div><!-- fragment --><p>Code to setup/clear the trigger: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Setup(){</div>
+<div class="line">    <span class="keywordflow">while</span>(1){</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// ir receiver requires a reset before a potential income</span></div>
+<div class="line">        <a class="code" href="a00021.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a>();</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// wait for a new income (&#39;check&#39; becoming either 0 or 1)</span></div>
+<div class="line">        <span class="keywordflow">do</span>{</div>
+<div class="line">            <a class="code" href="a00023.html#a3580f38f3a753bd43cd1bcec81a53903">el_process_cooperate</a>();</div>
+<div class="line">            check = <a class="code" href="a00021.html#a4fae36b0456f98360cd73fa9663a2b55">el_ir_receiver_get_check</a>();</div>
+<div class="line">        }<span class="keywordflow">while</span>( (check != 0)&amp;&amp;(check != 1) );</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// grab the data</span></div>
+<div class="line">        address = <a class="code" href="a00021.html#a3899efc52618671a46dc34e8523ddcb2">el_ir_receiver_get_address</a>();</div>
+<div class="line">        key_value = <a class="code" href="a00021.html#aa5a561e70828e63b6f0ffa01ab89e298">el_ir_receiver_get_data</a>();</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// display the received data</span></div>
+<div class="line">        <a class="code" href="a00030.html#a08425935f3540a12afdb0b0da013144e">elu_println</a>(<span class="stringliteral">&quot;[IRRC]&quot;</span>);</div>
+<div class="line">        <a class="code" href="a00030.html#a08425935f3540a12afdb0b0da013144e">elu_println</a>(<span class="stringliteral">&quot;%d\t%d\t%d&quot;</span>,check,address,key_value);</div>
+<div class="line"></div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Note: the part to enable the ir receiver (<a class="el" href="a00021.html#ab35f59ce139b2944c49987e3725c9cd3" title="enable the ir receiver ">el_enable_ir_receiver</a>) and launching the process is not shown in the code section above.</p>
+<h2><a class="anchor" id="ssec_irrc_usage_2"></a>
+Use As Trigger</h2>
+<p>In <a class="el" href="a00049.html#ssec_irrc_usage_1">Display the Data Received</a>, the ir receiver is used in an infinite loop within a process. A disadvantage of doing so is that it constantly occupies a process. The maximum number of processes is limited, which may run out if all components occupy a process of their own. Using a trigger to handle the ir receiver is a better design choice.</p>
+<p>Related global variables and function prototypes: </p><div class="fragment"><div class="line"><span class="preprocessor">#define THE_ADDRESS_WE_WANT 5</span></div>
+<div class="line"><span class="preprocessor">#define THE_VALUE_WE_WANT   1</span></div>
+<div class="line"></div>
+<div class="line">el_handle trg_remote_control;</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> Trigger_RemoteControl_Setup();</div>
+<div class="line"><span class="keywordtype">void</span> Trigger_RemoteControl_Clear();</div>
+<div class="line"><span class="keywordtype">bool</span> Trigger_RemoteControl_Condition(el_handle this_trigger);</div>
+<div class="line"><span class="keywordtype">void</span> Trigger_RemoteControl_Process(el_handle this_trigger);</div>
+</div><!-- fragment --><p>Code to setup/clear the trigger: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> Trigger_RemoteControl_Setup(){</div>
 <div class="line">    </div>
-<div class="line">    trg_control_step = <a class="code" href="a00024.html#a8ac98c499857cb3c18cd4093d5724264">el_create_trigger</a>();</div>
+<div class="line">    trg_remote_control = <a class="code" href="a00027.html#a8ac98c499857cb3c18cd4093d5724264">el_create_trigger</a>();</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// specify the event of triggering</span></div>
-<div class="line">    <a class="code" href="a00024.html#a988d439b2dd5ee47173299dcc2666f16">el_trigger_set_event</a>( trg_control_step, <a class="code" href="a00024.html#a8b37a76e9a384d41426690a4cb74a044a0726cee4355067c6ec484245ed5e8bdf">EL_EVENT_IR_PROXIMITY_UPDATE</a> );</div>
+<div class="line">    <a class="code" href="a00027.html#a988d439b2dd5ee47173299dcc2666f16">el_trigger_set_event</a>( trg_remote_control, <a class="code" href="a00027.html#a8b37a76e9a384d41426690a4cb74a044aefffca9a468c39af73979a6108810a66">EL_EVENT_IR_RECEIVER_INCOME</a> );</div>
 <div class="line">    </div>
-<div class="line">    <span class="comment">// a condition callback is not essential for all triggers</span></div>
-<div class="line">    <a class="code" href="a00024.html#a40e49c09f2deb3a73b9c2c42d784c04a">el_trigger_set_condition</a>( trg_control_step, NULL );</div>
+<div class="line">    <span class="comment">// this trigger is a typical case where a condition callback may be used</span></div>
+<div class="line">    <a class="code" href="a00027.html#a40e49c09f2deb3a73b9c2c42d784c04a">el_trigger_set_condition</a>( trg_remote_control, Trigger_RemoteControl_Condition );</div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// specify the process to launch when the event occurs</span></div>
-<div class="line">    <a class="code" href="a00024.html#a4d4c08d0d4af965e7288feceb7ed50f6">el_trigger_set_process</a>( trg_control_step, Trigger_ControStep_Process );</div>
+<div class="line">    <a class="code" href="a00027.html#a4d4c08d0d4af965e7288feceb7ed50f6">el_trigger_set_process</a>( trg_remote_control, Trigger_RemoteControl_Process );</div>
 <div class="line">}</div>
 <div class="line"></div>
-<div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Clear(){</div>
-<div class="line">    <a class="code" href="a00024.html#ad7941dead60d00b66ba64a8a7c952b1f">el_delete_trigger</a>( trg_control_step );</div>
+<div class="line"><span class="keywordtype">void</span> Trigger_RemoteControl_Clear(){</div>
+<div class="line">    <a class="code" href="a00027.html#ad7941dead60d00b66ba64a8a7c952b1f">el_delete_trigger</a>( trg_remote_control );</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Code of the trigger's process: </p><div class="fragment"><div class="line"><span class="comment">/* </span></div>
+</div><!-- fragment --><p>Code of the trigger's condition callback and process: </p><div class="fragment"><div class="line"><span class="comment">/* </span></div>
+<div class="line"><span class="comment"> * Note: </span></div>
+<div class="line"><span class="comment"> * In real world, the IR receiver will receive a lot of noise. So the event </span></div>
+<div class="line"><span class="comment"> * EL_EVENT_IR_RECEIVER_INCOME will typically occur more frequently than true signals. </span></div>
+<div class="line"><span class="comment"> * As a result, most of times, the packet received contains corrupted data. </span></div>
+<div class="line"><span class="comment"> * To save the effort to launch a process in such a case, a condition callback </span></div>
+<div class="line"><span class="comment"> * is used for this trigger to filter unwanted events. </span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"><span class="keywordtype">bool</span> Trigger_RemoteControl_Condition(el_handle this_trigger){</div>
+<div class="line">    <span class="keywordflow">if</span>( <a class="code" href="a00021.html#a3899efc52618671a46dc34e8523ddcb2">el_ir_receiver_get_address</a>() != THE_ADDRESS_WE_WANT ){</div>
+<div class="line">        <a class="code" href="a00021.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a>();</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">false</span>;<span class="comment">// do not launch the process</span></div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> <span class="keyword">true</span>;<span class="comment">// proceed to launch the process</span></div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* </span></div>
 <div class="line"><span class="comment"> * Note: </span></div>
 <div class="line"><span class="comment"> * For a trigger-launched process, the argument given to the entry function</span></div>
 <div class="line"><span class="comment"> * is the handle of the trigger. </span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="line"><span class="keywordtype">void</span> Trigger_ControStep_Process(el_handle this_trigger){</div>
-<div class="line">    el_int16 prox_value[8];</div>
-<div class="line">    el_int16 mean;</div>
+<div class="line"><span class="keywordtype">void</span> Trigger_RemoteControl_Process(el_handle this_trigger){</div>
+<div class="line">    <span class="keywordtype">int</span> key_value;</div>
 <div class="line">    </div>
-<div class="line">    <span class="comment">// grab the reflection readings into an array</span></div>
-<div class="line">    <a class="code" href="a00017.html#a282c79127fe99a71c2a4c92f671a7e56">el_ir_proximity_get</a>( EL_IR_PROXIMITY_SENSOR_ALL, <a class="code" href="a00017.html#a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7">EL_IR_REFLECTION</a>, prox_value );</div>
+<div class="line">    key_value = <a class="code" href="a00021.html#aa5a561e70828e63b6f0ffa01ab89e298">el_ir_receiver_get_data</a>();</div>
 <div class="line">    </div>
-<div class="line">    <span class="comment">// assume that our algorithm needs the average of the two front sensors</span></div>
-<div class="line">    mean = (prox_value[0] + prox_value[7])/2;</div>
-<div class="line">    </div>
-<div class="line">    <span class="comment">// the following algorithm let the robot keep a distance to anything in front</span></div>
-<div class="line">    <span class="keywordflow">if</span>( mean &gt;= 900 ){</div>
-<div class="line"></div>
-<div class="line">        <a class="code" href="a00022.html#ac598d24601f69e215db8a5e364fa1f0d">el_set_wheel_speed</a>( -500, -500 );<span class="comment">// move backwards</span></div>
-<div class="line"></div>
-<div class="line">    }<span class="keywordflow">else</span></div>
-<div class="line">    <span class="keywordflow">if</span>( mean &gt;= 300 ){<span class="comment">// with an implict condition: mean &lt; 900</span></div>
-<div class="line"></div>
-<div class="line">        <a class="code" href="a00022.html#ac598d24601f69e215db8a5e364fa1f0d">el_set_wheel_speed</a>( 0, 0 );<span class="comment">// don&#39;t move (distance is OK)</span></div>
-<div class="line"></div>
-<div class="line">    }<span class="keywordflow">else</span></div>
-<div class="line">    <span class="keywordflow">if</span>( mean &gt;= 60 ){<span class="comment">// with an implict condition: mean &lt; 300</span></div>
-<div class="line"></div>
-<div class="line">        <a class="code" href="a00022.html#ac598d24601f69e215db8a5e364fa1f0d">el_set_wheel_speed</a>( 500, 500 );<span class="comment">// move forwards</span></div>
-<div class="line"></div>
-<div class="line">    }<span class="keywordflow">else</span>{<span class="comment">// with an implict condition: mean &lt; 60</span></div>
-<div class="line"></div>
-<div class="line">        <a class="code" href="a00022.html#ac598d24601f69e215db8a5e364fa1f0d">el_set_wheel_speed</a>( 0, 0 );<span class="comment">// no motion (nothing in front)</span></div>
-<div class="line"></div>
+<div class="line">    <span class="keywordflow">if</span>( key_value == THE_VALUE_WE_WANT ){</div>
+<div class="line">        <a class="code" href="a00022.html#a074c77228ff700a17bd3e42fb7cffeb7">el_led_set</a>( EL_LED_BODY, <a class="code" href="a00022.html#adee7c768c6e5283520fe8b6c7a75e09aa548568869df644c0a3e38d6844241223">EL_TOGGLE</a> );</div>
 <div class="line">    }</div>
 <div class="line">    </div>
-<div class="line">    <span class="comment">/* </span></div>
-<div class="line"><span class="comment">     * After a trigger&#39;s process is launched, the trigger will be disabled. </span></div>
-<div class="line"><span class="comment">     * So re-enable the trigger after the process is done is necessary </span></div>
-<div class="line"><span class="comment">     */</span></div>
-<div class="line">    <a class="code" href="a00024.html#ae8ee35672fb010ce11467750f6bfc63b">el_trigger_enable</a>( this_trigger );</div>
-<div class="line">    </div>
+<div class="line">    <a class="code" href="a00027.html#ae8ee35672fb010ce11467750f6bfc63b">el_trigger_enable</a>( this_trigger );</div>
+<div class="line">    <a class="code" href="a00021.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a>();<span class="comment">// get ready for next incoming transmission</span></div>
 <div class="line">}</div>
+</div><!-- fragment --><p>For the above trigger, it is also valid to place the program within the process inside the condition because the program does not require any timing (e.g. <a class="el" href="a00023.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a>). If that's the case, a process is no longer required.</p>
+<h2><a class="anchor" id="ssec_irrc_appendix"></a>
+Appendix</h2>
+<p>The address and key values from the universal remote (emulating a Philip VCR remote) used in Sheffield Robotics: </p><div class="fragment"><div class="line"><span class="preprocessor">#define IR_REMOTE_ADDRESS       5</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_PLAY      53</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_STOP      54</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_PAUSE     41</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_REW       37</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_FF        38</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_REC       55</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_POWER     12</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_MUTE      13</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_PRESET    14</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_PLUS      16</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_MINUS     17</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_INFO      18</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_NUM_0     0</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_NUM_1     1</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_NUM_2     2</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_NUM_3     3</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_NUM_4     4</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_NUM_5     5</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_NUM_6     6</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_NUM_7     7</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_NUM_8     8</span></div>
+<div class="line"><span class="preprocessor">#define IR_REMOTE_KEY_NUM_9     9</span></div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 17 2015 22:23:56 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 18 2015 22:30:01 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
