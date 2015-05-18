@@ -164,6 +164,8 @@ void el_config_ir_proximity(const el_ir_proximity_param*p);
     
     \return         number of values stored into *out.
     
+    See \ref PAGE_COMP_INDEX for the index of each of the proximity sensors. 
+    
     The dimension the data pointed by "out" depends on the number of output 
     values. For example, when one type of output of all eight proximity sensors 
     need to be stored, "out" needs to point to an array of eight el_int16.
@@ -173,7 +175,6 @@ void el_config_ir_proximity(const el_ir_proximity_param*p);
     el_ir_proximity_get( EL_IR_PROXIMITY_SENSOR_ALL, EL_IR_REFLECTION, ir_reflection );
     ...
     \endcode
-    
     
     When all types of outputs of all eight proximity sensors need to be stored, 
     An array of \ref el_ir_proximity_data should be used because the output 

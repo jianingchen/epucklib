@@ -18,19 +18,6 @@ This file is released under the terms of the MIT license (see "el.h").
 
 /*!
 
-\defgroup EL_STEPPER_MOTOR Stepper Motor
-
-\brief interface of the two stepper motors on the e-puck
-
-\section Introduction
-
-The e-puck is driven by two stepper-motors. 
-The maximum speed of these motors are 1000 steps per second. 
-
-*/
- 
-/*!
-
 \file
 \ingroup EL_STEPPER_MOTOR
 
@@ -145,6 +132,7 @@ void el_stepper_motor_set_speed(el_index i,int u);
     
     \return number of steps
     
+    Note: negative motor speeds contribute negative number of steps. 
 */
 el_int16 el_stepper_motor_get_steps(el_index i);
 

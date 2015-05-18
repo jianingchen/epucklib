@@ -218,8 +218,9 @@ EL_PROCESS Process_UART(void*data){
             break;
 
         case 'c':
+            elu_println("[IRNR]");
             for(i=0;i<8;i++){
-                elu_printf("IRNR:\t%d",el_irps_samples_NeutralReflection[i]);
+                elu_printf("%d\t",el_irps_samples_NeutralReflection[i]);
             }
             elu_putchar('\n');
             break;

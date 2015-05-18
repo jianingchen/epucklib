@@ -66,8 +66,10 @@ typedef enum{
     \param i    index of the LED
     \param s    status
     
+    See \ref PAGE_COMP_INDEX for the index of each of the LEDs.
 */
 void el_led_set(el_index w,el_led_action s);
+
 
 /*! 
     \brief get the selector postition
@@ -76,5 +78,6 @@ void el_led_set(el_index w,el_led_action s);
     
 */
 int el_get_selector_value();
+
 
 #endif

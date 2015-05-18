@@ -1,0 +1,64 @@
+
+/*!
+
+\defgroup EL_STEPPER_MOTOR Stepper Motor
+
+\brief interface of the two stepper motors on the e-puck
+
+\section Introduction
+
+The e-puck is driven by two stepper-motors. 
+The maximum speed of these motors are 1000 steps per second. 
+
+\section Example
+
+Since these are stepper motors, it is possible to estimate the angle 
+(and thus distance) traveled by each of the wheels. 
+
+In the following example, the robot does a counterclockwise rotation of 180 deg. 
+
+\code
+
+void Process_Rotate180(void*unused){
+    int steps_l,steps_r;
+    int steps_required;
+    
+    // turn off artificial motor acceleration so the rotation will stop immediately
+    el_stepper_motor_options()->UseAcceleration = false;
+    el_stepper_motor_options_apply();
+    
+    el_enable_stepper_motor();
+    
+    // reset step counters
+    el_stepper_motor_set_steps( EL_STEPPER_MOTOR_LEFT, 0 );
+    el_stepper_motor_set_steps( EL_STEPPER_MOTOR_RIGHT, 0 );
+    
+    el_set_wheel_speed( -250, 250 );// begin a counterclockwise rotation
+    
+    steps_required = EL_EPUCK_FULL_REVOLUTION_STEPS/2;
+    
+    // wait until the step difference reaching the required amount
+    do{
+    
+        el_process_cooperate();
+        
+        steps_l = el_stepper_motor_get_steps(EL_STEPPER_MOTOR_LEFT);
+        steps_r = el_stepper_motor_get_steps(EL_STEPPER_MOTOR_RIGHT);
+        
+    }while( (steps_r - steps_l) < steps_required );
+    
+    el_set_wheel_speed( 0, 0 );
+    
+    el_disable_stepper_motor();
+}
+
+\endcode
+
+Note:
+The step counters are 16-bit signed integers, so their limit (-32768 to 32767) 
+will reach quickly if the robot keeps moving. If a long period of step 
+counting is needed, one should read the step counters, add them to wider 
+variables (e.g. long int) and then reset them before they are overflowed. 
+
+*/
+ 
