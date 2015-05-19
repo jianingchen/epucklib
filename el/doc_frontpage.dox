@@ -7,7 +7,7 @@
 \section sec_intro Introduction
 
 This library provides a straight forward programming interface to the hardwares 
-on the e-puck, including proximity senors, leds, stepper motors, etc. 
+on the e-puck, including proximity sensors, leds, stepper motors, etc. 
 Unlike the standard e-puck lib (has several modules), this library used 
 all-in-one design (one header path, one .a file). 
 
