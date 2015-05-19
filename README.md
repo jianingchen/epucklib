@@ -50,8 +50,9 @@ embedded system library for e-puck
 
 ### License: 
 
- - All source files starting with "e_" are from the official e-puck library, 
- and attribute to whom ever own the copyright of them. 
+ - All source files starting with "e_" are from the official e-puck library 
+ (http://gna.org/projects/e-puck), and attribute to whom ever own the copyright 
+ of them. 
  
  - This library is released under the terms of the MIT license:
 
