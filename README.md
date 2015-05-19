@@ -8,7 +8,7 @@ embedded system library for e-puck
 
 ![GitHub Logo](/el/el_logo_heading.png)
 
-### Hightlights: 
+### Highlights: 
 
  - This is a library for developing the embedded system of the e-puck robot. 
  
