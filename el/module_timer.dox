@@ -30,7 +30,7 @@ In the following examples, the code section is within a process.
     elu_println("<send 'g' in 5 sec to enter debug mode>");
 
     T = el_create_timer();
-    el_timer_set_perodic(T,false);
+    el_timer_set_periodic(T,false);
     el_timer_start(T,5000);
 
     IsInDebugMode = false;
