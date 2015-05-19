@@ -23,14 +23,14 @@
 \n 
 \section sec_proj_stp_02 Configure to Link The Library
 
-1. In the "Projects" treeview on the left side of the IDE, right click on 
+1. In the "Projects" tree view on the left side of the IDE, right click on 
 the project just created and click "Set as Main Project". This guarantees 
 the operations in the IDE will be applied to the project. 
 
 2. Right click "Libraries" under the project's tree and then click 
 <b>"Add Library Object/File"</b>. Then, locate the "el.a" file. 
 
-3. Right click the project in the treeview and then click "Properties". 
+3. Right click the project in the tree view and then click "Properties". 
 This opens the project properties window. 
 
 4. In the project properties window, the configure as the following images: 

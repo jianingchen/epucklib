@@ -45,13 +45,13 @@ void Task_ObjectFollowing_Setup(){
     // configure involved components
     el_stepper_motor_options_reset();
     el_stepper_motor_options()->UseAcceleration = true;
-    el_stepper_motor_options()->AccelerationRate = 2000;
+    el_stepper_motor_options()->AccelerationRate = 3300;
     el_stepper_motor_options_apply();
     
     el_camera_options()->ExposureMode = EL_AUTOMATIC;
     el_camera_options()->AutoWhiteBalance = true;
     el_camera_options()->AutoDigitalGain = true;
-    el_camera_options_apply();// the above setting are same as default
+    el_camera_options_apply();// the above camera setting are same as default
 
     // enable involved components
     el_enable_camera();
@@ -85,6 +85,7 @@ void Trigger_ObjectFollowing_Process(el_handle this_trigger){
     int LinearSpeed,AngularSpeed;
     int SpeedLeft,SpeedRight;
     
+    // pick the required color
     switch(Task_ObjectColor){
         
     case TASK_OBJECT_RED:
@@ -113,7 +114,7 @@ void Trigger_ObjectFollowing_Process(el_handle this_trigger){
     el_ir_proximity_get(EL_IR_PROXIMITY_SENSOR_7,EL_IR_REFLECTION,&ir7);
     
     // calculate the angular speed according to the horizontal bias of the color
-    if(w >= 8){
+    if(w >= 10){
         LinearSpeed = 600;
         AngularSpeed = -4*x;
         el_led_set(EL_LED_RING_0,EL_ON);
@@ -131,6 +132,7 @@ void Trigger_ObjectFollowing_Process(el_handle this_trigger){
         el_led_set(EL_LED_RING_4,EL_OFF);
     }
     
+    // convert linear speed and angular speed to the speed for each wheel
     SpeedLeft = LinearSpeed - AngularSpeed;
     SpeedRight = LinearSpeed + AngularSpeed;
 

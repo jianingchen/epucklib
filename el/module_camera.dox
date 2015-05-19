@@ -8,31 +8,30 @@
 \section sec1 Introduction
 
 In this library, the resolution of the image captured by the camera 
-is fixed to 40x15 with a maximum frame rate of 18.432. 
+is fixed to 40x15 in RGB mode with a maximum frame rate of 18.432. 
 This resolution is a result of subsampling, which means field of view (FOV) 
 of the image is not lost. The horizontal FOV of the camera is about 56 deg 
 while the vertical FOV is about 42 deg. Both FOV are almost fully covered in 
 the captured image. 
 
 The camera module in this library uses dual-buffer-swapping mechanism. At 
-any moment, data acquired from the camera are written to frame buffer A 
-(the front buffer) while any reading functions read data from frame buffer B 
-(the back buffer). Once a frame is fully written, pointers to the two buffers 
-will be swapped. This mechanism allows a frame of image to be processed 
-concurrently with the acquisition of next frame. 
-
+any moment, data acquired from the camera are written to the front buffer 
+while any reading functions read data from the back buffer. Once a frame is 
+fully written, pointers to the two buffers will be swapped. This mechanism 
+allows a frame of image to be processed concurrently with the acquisition 
+of next frame. 
 
 
 \section sec2 Usage
 
 To run something when a frame of image is ready, create a trigger 
-with EL_EVENT_CAMERA_FRAME_UPDATE event. 
+with ::EL_EVENT_CAMERA_FRAME_UPDATE event. 
 
 Before reading data in the frame buffer, it (the back buffer) needs 
-to be locked. The following mechanism is a typical loop to process a frame:
+to be locked. The following structure is a typical loop to process a frame:
 \code
-    ...
-    el_uint8 RGB[3];
+void CertainImageProcessingAlgorithm(){
+    el_uint8 pixel_rgb[3];
     int X,Y,W,H;
     
     ...
@@ -40,33 +39,37 @@ to be locked. The following mechanism is a typical loop to process a frame:
     el_camera_lock_frame();
     W = el_camera_get_frame_width();
     H = el_camera_get_frame_height();
-    for(X=0;X<W;X++){
-        for(Y=0;Y<H;Y++){
+    for( Y=0; Y<H; Y++ ){
+        for( X=0; X<W; X++ ){
             
-            el_camera_get_frame_pixel( X, Y, RGB );
+            el_camera_get_frame_pixel( X, Y, pixel_rgb );
             
-            // image processing algorithm
+            // pixel-wise image processing algorithm applied on RGB
             ...
         }
     }
     el_camera_unlock_frame();
+    
     ...
+    
+}
 \endcode
 When the frame buffer is locked, no further buffer swapping will occur. 
 Therefore, the time cost of the image processing code ought to be less 
 than the update interval of the frames if each of the frames from the camera 
 need to be processed. 
 
-See \ref sec_ex02 for a systematic usage of the camera module with some image 
+See \ref sec_ex04 for a systematic usage of the camera module with some image 
 processing techniques. 
 
 
 
 \section sec3 Configuration
 
-In Example 3, the robot can transmit camera images via UART1. While using 
-the serial communication utility of this lib, the incoming images will be saved 
-as BMP files. A suitable camera configuration can be tuned based on the images. 
+In \ref sec_ex03, the robot can transmit camera images via UART1. While using 
+the serial communication utility of this library, the incoming images will be 
+saved as BMP files. A suitable camera configuration can be tuned based on 
+the images. 
 
 The actual frame rate achieved depends on the exposure mode used. When 
 automatic exposure control is used and the environment is not well illuminated, 
@@ -90,7 +93,7 @@ datasheet of PO6030K.
 
 \section ssec_cam_appendix Appendix
 
-For reference, the setting used in our lab in Sheffield Robotics is:
+For reference, the setting used in the laboratory in Sheffield Robotics is:
 \code
     ...
     

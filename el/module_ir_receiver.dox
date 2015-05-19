@@ -3,27 +3,24 @@
 
 \defgroup EL_IR_RECEIVER Infrared Receiver
 
-\brief interface of the ir receiver on top of the e-puck
+\brief interface of the IR receiver on top of the e-puck
 
 \section Introduction
 
-The e-puck has a ir receiver module --- TSOP36236. It is supposed to be used with 
-remote control based RC5 protocol, which are typically used in TV remote. 
+The e-puck has a IR receiver module --- TSOP36236. It is able to receive  
+transmissions based on RC5 protocol which is a protocol used by domestic 
+appliances (e.g. a TV remote). 
+For example, Philip and Toshiba are known to use the protocol. 
 
 
 \section sec_irrc_usage Example Usage
 
-In the example, we want all robots to toggle their body LED when 
-we press a key on a TV remote. Two approaches to achieve this are given. 
-
-
 \subsection ssec_irrc_usage_1 Display the Data Received
 
-The ir receiver module should be able to receive all remote based on 
-RC5 protocol which is a protocol used by TV remote. For example, Philip and 
-Toshiba are known to use the protocol. However, on still need to study what 
-exactly the data received are. In this example, any valid transmission is 
-received and the data obtained are displayed via serial communication. 
+To utilize a TV remote to command one or a group of e-pucks, the first thing to 
+do it to study what exactly the data received are. In this example, any valid 
+transmission is received and the data obtained are displayed via 
+serial communication. 
 
 \code
 // assume that the following process is launched properly in somewhere
@@ -34,7 +31,7 @@ void IrReceiver_Process(void*unused){
 
     while(1){
 
-        // ir receiver requires a reset before a potential income
+        // ir receiver requires a reset before a potential receiving
         el_ir_receiver_reset();
 
         // wait for a new income ('check' becoming either 0 or 1)
@@ -47,7 +44,7 @@ void IrReceiver_Process(void*unused){
         address = el_ir_receiver_get_address();
         key_value = el_ir_receiver_get_data();
 
-        // display the received data
+        // display the contents in the received transmission
         elu_println("[IRRC]");
         elu_println("%d\t%d\t%d",check,address,key_value);
 
@@ -55,19 +52,21 @@ void IrReceiver_Process(void*unused){
 }
 \endcode
 
-Note: the part to enable the ir receiver (::el_enable_ir_receiver)
-and launching the process is not shown in the code section above.
+Note: the code to enable the ir receiver (::el_enable_ir_receiver)
+and launching of the process is not shown in the code section above.
 
 
 
 \subsection ssec_irrc_usage_2 Use As Trigger
 
-In \ref ssec_irrc_usage_1, the ir receiver is used in an infinite loop within 
+In \ref ssec_irrc_usage_1, the IR receiver is used in an infinite loop within 
 a process. A disadvantage of doing so is that it constantly occupies a process. 
 The maximum number of processes is limited, which may run out if all 
 components occupy a process of their own. Using a trigger to handle the 
-ir receiver is a better design choice.
+IR receiver is a better design choice.
 
+In this example, a trigger is written to make a LED on the robot controlled by
+a key on the remote. 
 
 Related global variables and function prototypes:
 \code
@@ -108,6 +107,7 @@ void Trigger_RemoteControl_Clear(){
 
 \endcode
 
+
 Code of the trigger's condition callback and process:
 \code
 
@@ -147,9 +147,10 @@ void Trigger_RemoteControl_Process(el_handle this_trigger){
 
 \endcode
 
-For the above trigger, it is also valid to place the program within the process
-inside the condition because the program does not require any timing 
-(e.g. ::el_process_wait). If that's the case, a process is no longer required. 
+For the above trigger, it is also valid to move the code in the process function
+to the condition function because the program does not require any timing 
+(e.g. ::el_process_wait). If that's the case, a process is no longer required 
+and no ::el_trigger_enable is needed at the end. 
 
 
 \subsection ssec_irrc_appendix Appendix

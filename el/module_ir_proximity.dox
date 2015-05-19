@@ -8,22 +8,23 @@
 \section sec_prox_intro Introduction
 
 IR proximity sensors are typically used to measure the approximate distance 
-to an object that is in proximity to the sensors. 
-A typical IR proximity sensor contains one IR LED and one IR optical transistor, 
-which are both pointed to the same direction. 
-The IR LED emit a cone of infrared light towards a direction. If there is an 
+to an object that is in proximity to the sensors. A typical IR proximity sensor 
+contains one IR LED and one IR optical transistor, both of which are pointed to 
+the same direction. 
+The IR LED emit a cone of infrared light towards the direction. If there is an 
 entity that can reflect infrared light, the reflect infrared light will 
-be sensed by the IR optical transistor. The voltage accross the transistor
+be sensed by the IR optical transistor. The voltage across the transistor
 are related to the infrared light intensity going in to the transistor. 
 
 For e-pucks, the maximum range of the eight IR proximity sensors is around 
 7.5 cm. These sensors give analog output and are sampled by the 12-bit ADC in 
 the microcontroller, which means the raw readings of the sensors are ranged 
 from \c 0 to \c 4095. The higher the reading, the closer is the object in front of 
-a sensor. Note, as the principle of the IR proximity sensors relys on reflection, 
+a sensor. Note, as the principle of the IR proximity sensors rely on reflection, 
 the reflection property of objects' surface can affect the relation between the 
-raw readings and distance. For example, objects painted in black can hardly be 
-detected wheras objects with bright surface can produce reliable readings. 
+readings and the actual distance. For example, objects painted in black can 
+hardly be detected whereas objects with bright surface may produce reliable 
+readings. 
 
 
 \section sec_prox_modes Working Modes
@@ -72,7 +73,7 @@ scheme has been designed to improved the e-puck to e-puck detection by making
 e-pucks actively emitting infrared light. This may be used when a swarm of e-pucks
 need to work together.
 
-In this mode, the IR LEDs are initally turn on. In each sampling procedure, 
+In this mode, the IR LEDs are initially turn on. In each sampling procedure, 
 the ADC samples the transistors once. These samples are the mixed infrared 
 light intensity (\c M). Then the IR LEDs are switched off. Shortly after 
 (about 600 ns), the ADC samples the transistors for the second time and 
@@ -80,7 +81,7 @@ then the IR LEDs are turned on again. These samples are the ambient infrared
 light intensity (\c A). 
 
 The ::EL_IR_REFLECTION readings are calculated by \c R = \c M - \c A, which 
-again is the proximity to any objects that can relfect infrared light efficiently. 
+again is the proximity to any objects that can reflect infrared light efficiently. 
 
 In contrast to the Pulse mode, the ::EL_IR_AMBIENT readings in this mode 
 can be used to determine the proximity to nearby e-pucks that also have their 

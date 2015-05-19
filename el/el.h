@@ -90,7 +90,7 @@ void el_initialization();
     
     Currently, this function calibrate the proximity sensors on the robot as 
     well as generate a random seed based on the noisy sensor readings. 
-    If one finds the random seed not diverse enough accross a number of robots, 
+    If one finds the random seed not diverse enough across a number of robots, 
     ::el_random_set_seed can be used to apply a random seed using any 
     improved method. 
     
@@ -127,10 +127,10 @@ void el_main_loop();
     
     This function breaks the loop inside ::el_main_loop and let it returns. 
     At the moment when this function is called, all of the software components 
-    are virtually freezed. This means: any process in waiting/cooperating will 
+    are virtually frozen. This means: any process in waiting/cooperating will 
     no longer be resumed and no further trigger/timer actions will happen. 
     
-    It is recommanded that el_main_loop is only entered once in a program's 
+    It is recommended that el_main_loop is only entered once in a program's 
     life time. Thus, after el_main_loop returns, the program should just 
     clear things up and proceed to reset, rather than re-entering el_main_loop 
     at some time. 

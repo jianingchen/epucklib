@@ -8,7 +8,7 @@
 \section sec_error_code_intro    Introduction
 
 If some detectable problem occurs when the system is running, it is possible 
-that an error number will be sent through UART1 (Bluetooth) with an overrided 
+that an error number will be sent through UART1 (Bluetooth) with an override 
 priority. This page provides the details about these error number. 
 
 

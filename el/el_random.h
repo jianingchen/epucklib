@@ -96,15 +96,15 @@ el_int16 el_random_int(el_int16 min,el_int16 max);
 
 
 /*! 
-    \brief returning true at a probablity of (num/den)
+    \brief returning true at a probability of (num/den)
 
-    \param num      numerator of the probablity
-    \param den      denominator of the probablity
+    \param num      numerator of the probability
+    \param den      denominator of the probability
     
     \return a Boolean result
 
     This function has a (num/den) chance of returning true. 
-    It can be used in probablity based branch. For example:
+    It can be used in probability based branch. For example:
     \code
     ...
     if(el_random_rate(1,5)){

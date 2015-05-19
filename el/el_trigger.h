@@ -149,7 +149,7 @@ void el_trigger_set_condition(el_handle h,el_condition f);
     automatically. 
     
     The parameter of the process function of a trigger will be assigned with 
-    the handle of the trigger. The following code can be used to make the hanlde
+    the handle of the trigger. The following code can be used to make the handle
     more explicit: 
     \code
     void TriggerA_Process(void*arg){
@@ -158,7 +158,7 @@ void el_trigger_set_condition(el_handle h,el_condition f);
         // the program to be executed
         ...
         
-        // re-enable the trigger if the trigger is supposed to be perodic. 
+        // re-enable the trigger if the trigger is supposed to be periodic. 
         el_trigger_enable(this_trigger);
         
     }

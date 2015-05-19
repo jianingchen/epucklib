@@ -11,7 +11,7 @@ A Process runs concurrently with other process.
 
 \section Usage
 
-This library has multi-tasking capability --- upto 7 functions with time delays 
+This library has multi-tasking capability --- up to 7 functions with time delays 
 can run concurrently when each of these functions is executed within a 'process'. 
 
 Use ::el_launch_process to start a process. 

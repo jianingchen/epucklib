@@ -48,7 +48,7 @@ are provided to transmit and receive text.
 
 
 /*!
-    \brief Setup a value that: upon receving that value, reset the chip. 
+    \brief Setup a value that: upon receiving that value, reset the chip. 
 
     \param k        whether to use such a feature or not
     \param x        the value that triggers a hardware reset

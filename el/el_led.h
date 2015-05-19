@@ -73,7 +73,7 @@ void el_led_set(el_index w,el_led_action s);
 
 
 /*! 
-    \brief get the selector postition
+    \brief get the selector position
 
     \return the selector position ranged in [0,15]
     

@@ -93,10 +93,10 @@ void Process_ConsoleLoop(void*arg){
     CameraFrameRateTimer = el_create_timer();
     el_timer_set_callback(CameraFrameRateTimer,TimerCallback_MeasureCameraFPS,NULL);
     el_timer_start(CameraFrameRateTimer,1000);// 1000 milliseconds
-
+    
     // setup a timer to stop moving automatically after last motion command
     MotionTimer = el_create_timer();
-    el_timer_set_perodic(MotionTimer,false);
+    el_timer_set_periodic(MotionTimer,false);
     el_timer_set_callback(MotionTimer,TimerCallback_MotionAutoStop,NULL);
 
     el_uart_flush_char(EL_UART_1);

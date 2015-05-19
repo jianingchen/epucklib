@@ -26,12 +26,12 @@ This file is released under the terms of the MIT license (see "el.h").
 
 This module let the user interface UART1 in a similar fashion as the stdio 
 functions. For example, sending formated string using \c printf alike functions 
-and recieving string using \c scanf alike functions. 
+and receiving string using \c scanf alike functions. 
 
 Compared to the relatively native interfacing functions in \ref EL_UART, 
-the functions provide more convience. However, it is only ok to use them inside 
+the functions provide more convenience. However, it is only ok to use them inside 
 one process at same time. In other word, one should avoid call these functions 
-concurently in more than one process in the system. 
+concurrently in more than one process in the system. 
 
 
 \section uartstdio_sec_2 Important Notice

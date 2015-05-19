@@ -213,7 +213,7 @@ el_uint16 el_camera_get_frame_width();
 
 
 /*!
-    \brief get height (virtical dimension) of the image in the frame buffer for reading.
+    \brief get height (vertical dimension) of the image in the frame buffer for reading.
 
     \return     height of the frame to be locked for reading.
 

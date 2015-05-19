@@ -7,11 +7,11 @@
 \section sec_intro Introduction
 
 This library provides a straight forward programming interface to the hardwares 
-on the e-puck, including proximity sensors, leds, stepper motors, etc. 
+on the e-puck, including proximity sensors, LEDs, stepper motors, etc. 
 Unlike the standard e-puck lib (has several modules), this library used 
 all-in-one design (one header path, one .a file). 
 
-Hightlights: 
+Highlights: 
 
 - A user-friendly and fast (40x15 @ 18.4 fps maximum) interface for e-puck's camera.  
 
@@ -66,7 +66,7 @@ The repository should contains the following items:
 - el --- This is the library directory. All headers and sources are inside. 
 
 - el_serial_utility
-    + el_serial_com --- This is the serial communication utlility of the library.
+    + el_serial_com --- This is the serial communication utility of the library.
     + Serial --- This is the CSerail lib 
     (see http://www.codeproject.com/Articles/992/Serial-library-for-C).
 
@@ -180,7 +180,7 @@ This example includes the usage of following modules:
 (located in "./examples/el_example_03.X")
 
 The e-puck can be remotely controlled via Bluetooth. It is recommended to use 
-this program with the serial communciation utility of this library. 
+this program with the serial communication utility of this library. 
 
 This example includes the usage of following modules:
 - \ref EL_PROCESS

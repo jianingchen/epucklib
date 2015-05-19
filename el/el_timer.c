@@ -174,9 +174,9 @@ void el_timer_set_callback(el_handle h,el_timer_callback f,void*arg){
     p->callback = f;
 }
 
-void el_timer_set_perodic(el_handle h,bool is_perodic){
+void el_timer_set_periodic(el_handle h,bool is_periodic){
     el_timer *p = (el_timer*)EL_HANDLE_TO_POINTER(h);
-    p->repeat = is_perodic;
+    p->repeat = is_periodic;
 }
 
 void el_timer_pause(el_handle h){

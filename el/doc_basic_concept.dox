@@ -10,7 +10,7 @@
 
 \subsection ssec_el_handle 'el_handle' (reference of an internal object)
 
-This is the handle type to be used in this library for refering dynamically 
+This is the handle type to be used in this library for referring dynamically 
 created objects. A 'handle' is similar to a pointer to an object, which are 
 generally used to refer to some object. However, a handle does not include any 
 information about structure of the object. Thus, a handle can only be used to 
@@ -50,7 +50,7 @@ Masterclock will be increased by 144000. Masterclock is mainly used to
 calculate the interval between two time points. 
 
 Any time stored in the system is interpreted as a integer times of the 
-materclock unit (1/144000 sec). Therefore, masterclock determines the percesion 
+materclock unit (1/144000 sec). Therefore, masterclock determines the precision 
 of time stored in the system. 
 For instance, 1/60 sec and 1/1000 sec can both be stored as a integer 
 without any loss as 2400 and 144 correspondingly. Whereas, the integer 

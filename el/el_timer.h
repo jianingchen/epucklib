@@ -59,9 +59,9 @@ void el_delete_timer(el_handle h);
     \brief set whether the timer repeat the countdown process once a countdown is finished
 
     \param h       handle of the timer
-    \param b       is perodic or not
+    \param b       is periodic or not
 */
-void el_timer_set_perodic(el_handle h,el_bool b);
+void el_timer_set_periodic(el_handle h,el_bool b);
 
 
 /*!
@@ -75,12 +75,12 @@ void el_timer_set_perodic(el_handle h,el_bool b);
     called as "func(arg);". This callback need to be a function with no 
     wait/delay inside or any code with high computational cost. 
     
-    A perodic timer with a callback can achieve the similar functionalility of 
-    the 'agenda' in the official e-puck library, which creates a perodic 
+    A periodic timer with a callback can achieve the similar functionality of 
+    the 'agenda' in the official e-puck library, which creates a periodic 
     routine in the system. 
     
     Compared to a loop with time wait in a process, using timer callback to 
-    run a perodic routine has no accumulated error. For example, a timer with 
+    run a periodic routine has no accumulated error. For example, a timer with 
     50 ms period can accurately run its callback for 72000 times in one hour. 
     If it is written inside a process as a loop with 50 ms wait, the looping 
     times will be slightly less than 72000 due to the time cost of the loop body. 
@@ -180,7 +180,7 @@ el_handle el_timer_callback_get_handle();
     This function returns the number of times that the countdown has been finished. 
     When the timer is started, its round counter will be set to 0. 
     Each time the timer's countdown finishes, its 'rounds' will +1. 
-    Thus, for a on-going timer that is perodic (set via "el_timer_set_perodic"), 
+    Thus, for a on-going timer that is periodic (set using ::el_timer_set_periodic), 
     its rounds will keep increasing. 
 */
 el_uint32 el_timer_get_rounds(el_handle h);

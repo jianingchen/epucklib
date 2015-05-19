@@ -18,15 +18,14 @@ embedded system library for e-puck
  - The online documentation page of this library is 
  http://jianingchen.github.io/epucklib/html/.
  
- - Support pretty much everything on the e-puck but the sound related and fft 
- functionalities. 
+ - Support pretty much everything on the e-puck but the audio related functionalities. 
  
  - A user-friendly and fast (40x15 @ ~18.4 fps) interface for e-puck's camera.  
  
  - Multi-tasking through _Process_ --- so several loop with time delays can run 
  concurrently. 
 
- - Organize the development using two object-oriented concepts: 
+ - Simplify the development using two object-oriented concepts: 
  _Timer_ and _Trigger_. 
 
  - _Timer_ can be used to produce delay, as well as creating periodic callbacks 
