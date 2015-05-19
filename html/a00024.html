@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -117,7 +117,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
 <tr class="memdesc:a4c6af4373b35535dbb736a5000f15774"><td class="mdescLeft">&#160;</td><td class="mdescRight">returning a random int in [min,max]  <a href="#a4c6af4373b35535dbb736a5000f15774">More...</a><br /></td></tr>
 <tr class="separator:a4c6af4373b35535dbb736a5000f15774"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a484d81d2df007f11eee83789b24364e9"><td class="memItemLeft" align="right" valign="top">el_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00024.html#a484d81d2df007f11eee83789b24364e9">el_random_rate</a> (el_uint16 num, el_uint16 den)</td></tr>
-<tr class="memdesc:a484d81d2df007f11eee83789b24364e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">returning true at a probablity of (num/den)  <a href="#a484d81d2df007f11eee83789b24364e9">More...</a><br /></td></tr>
+<tr class="memdesc:a484d81d2df007f11eee83789b24364e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">returning true at a probability of (num/den)  <a href="#a484d81d2df007f11eee83789b24364e9">More...</a><br /></td></tr>
 <tr class="separator:a484d81d2df007f11eee83789b24364e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -258,16 +258,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
       </table>
 </div><div class="memdoc">
 
-<p>returning true at a probablity of (num/den) </p>
+<p>returning true at a probability of (num/den) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">num</td><td>numerator of the probablity </td></tr>
-    <tr><td class="paramname">den</td><td>denominator of the probablity</td></tr>
+    <tr><td class="paramname">num</td><td>numerator of the probability </td></tr>
+    <tr><td class="paramname">den</td><td>denominator of the probability</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a Boolean result</dd></dl>
-<p>This function has a (num/den) chance of returning true. It can be used in probablity based branch. For example: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
+<p>This function has a (num/den) chance of returning true. It can be used in probability based branch. For example: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;...</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;if(el_random_rate(1,5)){</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    // do A (20 percent of chance)</div>
@@ -284,7 +284,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a000
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 22:57:47 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2015 18:37:53 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

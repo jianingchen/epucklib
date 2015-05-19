@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -98,36 +98,39 @@ Files</h2></td></tr>
 <p>interface of the camera module </p>
 <h1><a class="anchor" id="sec1"></a>
 Introduction</h1>
-<p>In this library, the resolution of the image captured by the camera is fixed to 40x15 with a maximum frame rate of 18.432. This resolution is a result of subsampling, which means field of view (FOV) of the image is not lost. The horizontal FOV of the camera is about 56 deg while the vertical FOV is about 42 deg. Both FOV are almost fully covered in the captured image.</p>
-<p>The camera module in this library uses dual-buffer-swapping mechanism. At any moment, data acquired from the camera are written to frame buffer A (the front buffer) while any reading functions read data from frame buffer B (the back buffer). Once a frame is fully written, pointers to the two buffers will be swapped. This mechanism allows a frame of image to be processed concurrently with the acquisition of next frame.</p>
+<p>In this library, the resolution of the image captured by the camera is fixed to 40x15 in RGB mode with a maximum frame rate of 18.432. This resolution is a result of subsampling, which means field of view (FOV) of the image is not lost. The horizontal FOV of the camera is about 56 deg while the vertical FOV is about 42 deg. Both FOV are almost fully covered in the captured image.</p>
+<p>The camera module in this library uses dual-buffer-swapping mechanism. At any moment, data acquired from the camera are written to the front buffer while any reading functions read data from the back buffer. Once a frame is fully written, pointers to the two buffers will be swapped. This mechanism allows a frame of image to be processed concurrently with the acquisition of next frame.</p>
 <h1><a class="anchor" id="sec2"></a>
 Usage</h1>
-<p>To run something when a frame of image is ready, create a trigger with EL_EVENT_CAMERA_FRAME_UPDATE event.</p>
-<p>Before reading data in the frame buffer, it (the back buffer) needs to be locked. The following mechanism is a typical loop to process a frame: </p><div class="fragment"><div class="line">...</div>
-<div class="line">el_uint8 RGB[3];</div>
-<div class="line"><span class="keywordtype">int</span> X,Y,W,H;</div>
-<div class="line"></div>
-<div class="line">...</div>
-<div class="line"></div>
-<div class="line">el_camera_lock_frame();</div>
-<div class="line">W = <a class="code" href="a00017.html#abe3367f2172a48c1dcd28d974e64388e">el_camera_get_frame_width</a>();</div>
-<div class="line">H = <a class="code" href="a00017.html#a0f7eb3a2e184575e94274c7d4cb75436">el_camera_get_frame_height</a>();</div>
-<div class="line"><span class="keywordflow">for</span>(X=0;X&lt;W;X++){</div>
-<div class="line">    <span class="keywordflow">for</span>(Y=0;Y&lt;H;Y++){</div>
-<div class="line">        </div>
-<div class="line">        <a class="code" href="a00017.html#a0e31a461b852a03f3d422f98ca77428a">el_camera_get_frame_pixel</a>( X, Y, RGB );</div>
-<div class="line">        </div>
-<div class="line">        <span class="comment">// image processing algorithm</span></div>
-<div class="line">        ...</div>
+<p>To run something when a frame of image is ready, create a trigger with <a class="el" href="a00027.html#a8b37a76e9a384d41426690a4cb74a044a40a0621bbde35c65729003228527207b" title="when a new image frame from the camera is ready (9~18 fps) ">EL_EVENT_CAMERA_FRAME_UPDATE</a> event.</p>
+<p>Before reading data in the frame buffer, it (the back buffer) needs to be locked. The following structure is a typical loop to process a frame: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span> CertainImageProcessingAlgorithm(){</div>
+<div class="line">    el_uint8 pixel_rgb[3];</div>
+<div class="line">    <span class="keywordtype">int</span> X,Y,W,H;</div>
+<div class="line">    </div>
+<div class="line">    ...</div>
+<div class="line">    </div>
+<div class="line">    <a class="code" href="a00017.html#a224a4d5a3b19984a0c9181fe667ed08b">el_camera_lock_frame</a>();</div>
+<div class="line">    W = <a class="code" href="a00017.html#abe3367f2172a48c1dcd28d974e64388e">el_camera_get_frame_width</a>();</div>
+<div class="line">    H = <a class="code" href="a00017.html#a0f7eb3a2e184575e94274c7d4cb75436">el_camera_get_frame_height</a>();</div>
+<div class="line">    <span class="keywordflow">for</span>( Y=0; Y&lt;H; Y++ ){</div>
+<div class="line">        <span class="keywordflow">for</span>( X=0; X&lt;W; X++ ){</div>
+<div class="line">            </div>
+<div class="line">            <a class="code" href="a00017.html#a0e31a461b852a03f3d422f98ca77428a">el_camera_get_frame_pixel</a>( X, Y, pixel_rgb );</div>
+<div class="line">            </div>
+<div class="line">            <span class="comment">// pixel-wise image processing algorithm applied on RGB</span></div>
+<div class="line">            ...</div>
+<div class="line">        }</div>
 <div class="line">    }</div>
+<div class="line">    <a class="code" href="a00017.html#ae32672c397e15c30cbe8b7b5b5f874ce">el_camera_unlock_frame</a>();</div>
+<div class="line">    </div>
+<div class="line">    ...</div>
+<div class="line">    </div>
 <div class="line">}</div>
-<div class="line"><a class="code" href="a00017.html#ae32672c397e15c30cbe8b7b5b5f874ce">el_camera_unlock_frame</a>();</div>
-<div class="line">...</div>
 </div><!-- fragment --><p> When the frame buffer is locked, no further buffer swapping will occur. Therefore, the time cost of the image processing code ought to be less than the update interval of the frames if each of the frames from the camera need to be processed.</p>
-<p>See <a class="el" href="index.html#sec_ex02">Example 2</a> for a systematic usage of the camera module with some image processing techniques.</p>
+<p>See <a class="el" href="index.html#sec_ex04">Example 4</a> for a systematic usage of the camera module with some image processing techniques.</p>
 <h1><a class="anchor" id="sec3"></a>
 Configuration</h1>
-<p>In Example 3, the robot can transmit camera images via UART1. While using the serial communication utility of this lib, the incoming images will be saved as BMP files. A suitable camera configuration can be tuned based on the images.</p>
+<p>In <a class="el" href="index.html#sec_ex03">Example 3</a>, the robot can transmit camera images via UART1. While using the serial communication utility of this library, the incoming images will be saved as BMP files. A suitable camera configuration can be tuned based on the images.</p>
 <p>The actual frame rate achieved depends on the exposure mode used. When automatic exposure control is used and the environment is not well illuminated, the frame rate may drop to ~9. Fixed time exposure mode can be used to stablize the frame rate. For example: </p><div class="fragment"><div class="line">...</div>
 <div class="line">el_camera_options_reset();</div>
 <div class="line"><a class="code" href="a00017.html#a0c16455023d3980e9ebd50ad39a35bc1">el_camera_options</a>()-&gt;<a class="code" href="a00006.html#a5c2725b38e0e6dda7fa8619ff17e8242">ExposureMode</a> = <a class="code" href="a00017.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea">EL_EXPOSURE_TIME</a>;</div>
@@ -138,7 +141,7 @@ Configuration</h1>
 <p>More detailed information about tuning the camera should be found in the datasheet of PO6030K.</p>
 <h1><a class="anchor" id="ssec_cam_appendix"></a>
 Appendix</h1>
-<p>For reference, the setting used in our lab in Sheffield Robotics is: </p><div class="fragment"><div class="line">...</div>
+<p>For reference, the setting used in the laboratory in Sheffield Robotics is: </p><div class="fragment"><div class="line">...</div>
 <div class="line"></div>
 <div class="line">el_camera_options_reset();</div>
 <div class="line"><a class="code" href="a00017.html#a0c16455023d3980e9ebd50ad39a35bc1">el_camera_options</a>()-&gt;<a class="code" href="a00006.html#a5c2725b38e0e6dda7fa8619ff17e8242">ExposureMode</a> = <a class="code" href="a00017.html#ae3dd3a05038328cf4dd7b6fc78f41fd9a5ad03bb29714b2671b3e125788352aea">EL_EXPOSURE_TIME</a>;</div>
@@ -155,7 +158,7 @@ Appendix</h1>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 22:57:47 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2015 18:37:53 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -102,7 +102,7 @@ Files</h2></td></tr>
 New Variable Types</h1>
 <h2><a class="anchor" id="ssec_el_handle"></a>
 'el_handle' (reference of an internal object)</h2>
-<p>This is the handle type to be used in this library for refering dynamically created objects. A 'handle' is similar to a pointer to an object, which are generally used to refer to some object. However, a handle does not include any information about structure of the object. Thus, a handle can only be used to refer to an object but not access the data inside the object. All operations towards such type of object need to be achieved by its related functions.</p>
+<p>This is the handle type to be used in this library for referring dynamically created objects. A 'handle' is similar to a pointer to an object, which are generally used to refer to some object. However, a handle does not include any information about structure of the object. Thus, a handle can only be used to refer to an object but not access the data inside the object. All operations towards such type of object need to be achieved by its related functions.</p>
 <h2><a class="anchor" id="ssec_el_time"></a>
 'el_time' (a time duration in millisecond)</h2>
 <p>Any function argument uses 'el_time' as its type means that the argument is a time duration that given by a integer millisecond.</p>
@@ -114,11 +114,11 @@ New Variable Types</h1>
 <h1><a class="anchor" id="sec_el_mci"></a>
 Masterclock and Timing</h1>
 <p>Masterclock of the system is an incremental timer that keeps increasing after the system is initialized. In each real time second, Masterclock will be increased by 144000. Masterclock is mainly used to calculate the interval between two time points.</p>
-<p>Any time stored in the system is interpreted as a integer times of the materclock unit (1/144000 sec). Therefore, masterclock determines the percesion of time stored in the system. For instance, 1/60 sec and 1/1000 sec can both be stored as a integer without any loss as 2400 and 144 correspondingly. Whereas, the integer interpretation of 1/70 sec (about 14.2857142 ms) will be rounded to 2057, which causes the actual time stored in the system become 14.2847222 ms. This applies to all timing related functions such as <a class="el" href="a00026.html#a62305e9d4d0ea903eb9672e171002d38" title="specify the countdown time and start the timer ">el_timer_start</a> or <a class="el" href="a00023.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a>. </p>
+<p>Any time stored in the system is interpreted as a integer times of the materclock unit (1/144000 sec). Therefore, masterclock determines the precision of time stored in the system. For instance, 1/60 sec and 1/1000 sec can both be stored as a integer without any loss as 2400 and 144 correspondingly. Whereas, the integer interpretation of 1/70 sec (about 14.2857142 ms) will be rounded to 2057, which causes the actual time stored in the system become 14.2847222 ms. This applies to all timing related functions such as <a class="el" href="a00026.html#a62305e9d4d0ea903eb9672e171002d38" title="specify the countdown time and start the timer ">el_timer_start</a> or <a class="el" href="a00023.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a>. </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 22:57:47 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2015 18:37:53 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

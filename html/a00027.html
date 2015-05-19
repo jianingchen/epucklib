@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -442,13 +442,13 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <p>When the trigger passes its condition and it has a registered process, the process will be launched while the trigger will be disabled automatically.</p>
-<p>The parameter of the process function of a trigger will be assigned with the handle of the trigger. The following code can be used to make the hanlde more explicit: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;void TriggerA_Process(void*arg){</div>
+<p>The parameter of the process function of a trigger will be assigned with the handle of the trigger. The following code can be used to make the handle more explicit: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;void TriggerA_Process(void*arg){</div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    el_handle this_trigger = arg;</div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    // the program to be executed</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    ...</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    // re-enable the trigger if the trigger is supposed to be perodic. </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    // re-enable the trigger if the trigger is supposed to be periodic. </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    el_trigger_enable(this_trigger);</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
@@ -510,7 +510,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 22:57:47 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2015 18:37:53 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

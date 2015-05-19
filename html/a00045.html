@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -98,15 +98,15 @@ Files</h2></td></tr>
 <p>Send/Receive text via Bluetooth using functions similar to <code>scanf</code> and <code>printf</code>. </p>
 <h1><a class="anchor" id="uartstdio_sec_1"></a>
 Introduction</h1>
-<p>This module let the user interface UART1 in a similar fashion as the stdio functions. For example, sending formated string using <code>printf</code> alike functions and recieving string using <code>scanf</code> alike functions.</p>
-<p>Compared to the relatively native interfacing functions in <a class="el" href="a00044.html">UART Serial Communication</a>, the functions provide more convience. However, it is only ok to use them inside one process at same time. In other word, one should avoid call these functions concurently in more than one process in the system.</p>
+<p>This module let the user interface UART1 in a similar fashion as the stdio functions. For example, sending formated string using <code>printf</code> alike functions and receiving string using <code>scanf</code> alike functions.</p>
+<p>Compared to the relatively native interfacing functions in <a class="el" href="a00044.html">UART Serial Communication</a>, the functions provide more convenience. However, it is only ok to use them inside one process at same time. In other word, one should avoid call these functions concurrently in more than one process in the system.</p>
 <h1><a class="anchor" id="uartstdio_sec_2"></a>
 Important Notice</h1>
 <p>The <code>sprintf</code> and <code>sscanf</code> (and other formatted string functions) in the C standard library are unlikely to work in a process here due to the stack size they required. In this library, <a class="el" href="a00030.html#a5aa4f9b88807ca98c69f4038e1d89f34" title="sscanf to be used here ">elu_sscanf</a> and <a class="el" href="a00030.html#a6c5344ecf2f2b40091f06d1440ab7ff9" title="snprintf to be used here ">elu_snprintf</a> are provided to achieve the same functionalities. </p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 22:57:47 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2015 18:37:53 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

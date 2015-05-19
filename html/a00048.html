@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -98,8 +98,8 @@ Files</h2></td></tr>
 <p>interface of the eight infrared proximity sensors </p>
 <h1><a class="anchor" id="sec_prox_intro"></a>
 Introduction</h1>
-<p>IR proximity sensors are typically used to measure the approximate distance to an object that is in proximity to the sensors. A typical IR proximity sensor contains one IR LED and one IR optical transistor, which are both pointed to the same direction. The IR LED emit a cone of infrared light towards a direction. If there is an entity that can reflect infrared light, the reflect infrared light will be sensed by the IR optical transistor. The voltage accross the transistor are related to the infrared light intensity going in to the transistor.</p>
-<p>For e-pucks, the maximum range of the eight IR proximity sensors is around 7.5 cm. These sensors give analog output and are sampled by the 12-bit ADC in the microcontroller, which means the raw readings of the sensors are ranged from <code>0</code> to <code>4095</code>. The higher the reading, the closer is the object in front of a sensor. Note, as the principle of the IR proximity sensors relys on reflection, the reflection property of objects' surface can affect the relation between the raw readings and distance. For example, objects painted in black can hardly be detected wheras objects with bright surface can produce reliable readings.</p>
+<p>IR proximity sensors are typically used to measure the approximate distance to an object that is in proximity to the sensors. A typical IR proximity sensor contains one IR LED and one IR optical transistor, both of which are pointed to the same direction. The IR LED emit a cone of infrared light towards the direction. If there is an entity that can reflect infrared light, the reflect infrared light will be sensed by the IR optical transistor. The voltage across the transistor are related to the infrared light intensity going in to the transistor.</p>
+<p>For e-pucks, the maximum range of the eight IR proximity sensors is around 7.5 cm. These sensors give analog output and are sampled by the 12-bit ADC in the microcontroller, which means the raw readings of the sensors are ranged from <code>0</code> to <code>4095</code>. The higher the reading, the closer is the object in front of a sensor. Note, as the principle of the IR proximity sensors rely on reflection, the reflection property of objects' surface can affect the relation between the readings and the actual distance. For example, objects painted in black can hardly be detected whereas objects with bright surface may produce reliable readings.</p>
 <h1><a class="anchor" id="sec_prox_modes"></a>
 Working Modes</h1>
 <p>This library provides three working modes for the IR proximity sensors.</p>
@@ -118,8 +118,8 @@ The Pulse Mode</h2>
 The Emit Mode</h2>
 <p>(<a class="el" href="a00020.html#ac9313b8eea9f5c0f35c39e3d205e5b2ea769fb955698ff949a598763f2f8fd368" title="use the Emit Mode ">EL_IR_PROXIMITY_EMIT</a>)</p>
 <p>Because the original e-puck is not a good infrared reflector, this working scheme has been designed to improved the e-puck to e-puck detection by making e-pucks actively emitting infrared light. This may be used when a swarm of e-pucks need to work together.</p>
-<p>In this mode, the IR LEDs are initally turn on. In each sampling procedure, the ADC samples the transistors once. These samples are the mixed infrared light intensity (<code>M</code>). Then the IR LEDs are switched off. Shortly after (about 600 ns), the ADC samples the transistors for the second time and then the IR LEDs are turned on again. These samples are the ambient infrared light intensity (<code>A</code>).</p>
-<p>The <a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7" title="get the reflection output ">EL_IR_REFLECTION</a> readings are calculated by <code>R</code> = <code>M</code> - <code>A</code>, which again is the proximity to any objects that can relfect infrared light efficiently.</p>
+<p>In this mode, the IR LEDs are initially turn on. In each sampling procedure, the ADC samples the transistors once. These samples are the mixed infrared light intensity (<code>M</code>). Then the IR LEDs are switched off. Shortly after (about 600 ns), the ADC samples the transistors for the second time and then the IR LEDs are turned on again. These samples are the ambient infrared light intensity (<code>A</code>).</p>
+<p>The <a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9ae5a4bd267c0a73a9a30f2e8cd5aca1d7" title="get the reflection output ">EL_IR_REFLECTION</a> readings are calculated by <code>R</code> = <code>M</code> - <code>A</code>, which again is the proximity to any objects that can reflect infrared light efficiently.</p>
 <p>In contrast to the Pulse mode, the <a class="el" href="a00020.html#a6777dd76bceec1ac25a170762e1331c9a027a87d7dedc5ca3203751f81af00f14" title="get the ambient output ">EL_IR_AMBIENT</a> readings in this mode can be used to determine the proximity to nearby e-pucks that also have their proximity sensors working in the Emit mode. Note, this is based on a assumption that there is no other significant infrared source in the environment, such as incandescent light bulb or day light from a window.</p>
 <h1><a class="anchor" id="sec_prox_example"></a>
 Example</h1>
@@ -127,7 +127,7 @@ Example</h1>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 22:57:47 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2015 18:37:53 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

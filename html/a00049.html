@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -86,7 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>interface of the ir receiver on top of the e-puck  
+<p>interface of the IR receiver on top of the e-puck  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
@@ -95,16 +95,15 @@ Files</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>interface of the ir receiver on top of the e-puck </p>
+<p>interface of the IR receiver on top of the e-puck </p>
 <h1><a class="anchor" id="Introduction"></a>
 Introduction</h1>
-<p>The e-puck has a ir receiver module &mdash; TSOP36236. It is supposed to be used with remote control based RC5 protocol, which are typically used in TV remote.</p>
+<p>The e-puck has a IR receiver module &mdash; TSOP36236. It is able to receive transmissions based on RC5 protocol which is a protocol used by domestic appliances (e.g. a TV remote). For example, Philip and Toshiba are known to use the protocol.</p>
 <h1><a class="anchor" id="sec_irrc_usage"></a>
 Example Usage</h1>
-<p>In the example, we want all robots to toggle their body LED when we press a key on a TV remote. Two approaches to achieve this are given.</p>
 <h2><a class="anchor" id="ssec_irrc_usage_1"></a>
 Display the Data Received</h2>
-<p>The ir receiver module should be able to receive all remote based on RC5 protocol which is a protocol used by TV remote. For example, Philip and Toshiba are known to use the protocol. However, on still need to study what exactly the data received are. In this example, any valid transmission is received and the data obtained are displayed via serial communication.</p>
+<p>To utilize a TV remote to command one or a group of e-pucks, the first thing to do it to study what exactly the data received are. In this example, any valid transmission is received and the data obtained are displayed via serial communication.</p>
 <div class="fragment"><div class="line"><span class="comment">// assume that the following process is launched properly in somewhere</span></div>
 <div class="line"><span class="keywordtype">void</span> IrReceiver_Process(<span class="keywordtype">void</span>*unused){</div>
 <div class="line">    <span class="keywordtype">int</span> check;</div>
@@ -113,7 +112,7 @@ Display the Data Received</h2>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">while</span>(1){</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">// ir receiver requires a reset before a potential income</span></div>
+<div class="line">        <span class="comment">// ir receiver requires a reset before a potential receiving</span></div>
 <div class="line">        <a class="code" href="a00021.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a>();</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// wait for a new income (&#39;check&#39; becoming either 0 or 1)</span></div>
@@ -126,16 +125,17 @@ Display the Data Received</h2>
 <div class="line">        address = <a class="code" href="a00021.html#a3899efc52618671a46dc34e8523ddcb2">el_ir_receiver_get_address</a>();</div>
 <div class="line">        key_value = <a class="code" href="a00021.html#aa5a561e70828e63b6f0ffa01ab89e298">el_ir_receiver_get_data</a>();</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">// display the received data</span></div>
+<div class="line">        <span class="comment">// display the contents in the received transmission</span></div>
 <div class="line">        <a class="code" href="a00030.html#a08425935f3540a12afdb0b0da013144e">elu_println</a>(<span class="stringliteral">&quot;[IRRC]&quot;</span>);</div>
 <div class="line">        <a class="code" href="a00030.html#a08425935f3540a12afdb0b0da013144e">elu_println</a>(<span class="stringliteral">&quot;%d\t%d\t%d&quot;</span>,check,address,key_value);</div>
 <div class="line"></div>
 <div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Note: the part to enable the ir receiver (<a class="el" href="a00021.html#ab35f59ce139b2944c49987e3725c9cd3" title="enable the ir receiver ">el_enable_ir_receiver</a>) and launching the process is not shown in the code section above.</p>
+</div><!-- fragment --><p>Note: the code to enable the ir receiver (<a class="el" href="a00021.html#ab35f59ce139b2944c49987e3725c9cd3" title="enable the ir receiver ">el_enable_ir_receiver</a>) and launching of the process is not shown in the code section above.</p>
 <h2><a class="anchor" id="ssec_irrc_usage_2"></a>
 Use As Trigger</h2>
-<p>In <a class="el" href="a00049.html#ssec_irrc_usage_1">Display the Data Received</a>, the ir receiver is used in an infinite loop within a process. A disadvantage of doing so is that it constantly occupies a process. The maximum number of processes is limited, which may run out if all components occupy a process of their own. Using a trigger to handle the ir receiver is a better design choice.</p>
+<p>In <a class="el" href="a00049.html#ssec_irrc_usage_1">Display the Data Received</a>, the IR receiver is used in an infinite loop within a process. A disadvantage of doing so is that it constantly occupies a process. The maximum number of processes is limited, which may run out if all components occupy a process of their own. Using a trigger to handle the IR receiver is a better design choice.</p>
+<p>In this example, a trigger is written to make a LED on the robot controlled by a key on the remote.</p>
 <p>Related global variables and function prototypes: </p><div class="fragment"><div class="line"><span class="preprocessor">#define THE_ADDRESS_WE_WANT 5</span></div>
 <div class="line"><span class="preprocessor">#define THE_VALUE_WE_WANT   1</span></div>
 <div class="line"></div>
@@ -195,7 +195,7 @@ Use As Trigger</h2>
 <div class="line">    <a class="code" href="a00027.html#ae8ee35672fb010ce11467750f6bfc63b">el_trigger_enable</a>( this_trigger );</div>
 <div class="line">    <a class="code" href="a00021.html#af0e7ec78afde599d7d90c73e3c258d03">el_ir_receiver_reset</a>();<span class="comment">// get ready for next incoming transmission</span></div>
 <div class="line">}</div>
-</div><!-- fragment --><p>For the above trigger, it is also valid to place the program within the process inside the condition because the program does not require any timing (e.g. <a class="el" href="a00023.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a>). If that's the case, a process is no longer required.</p>
+</div><!-- fragment --><p>For the above trigger, it is also valid to move the code in the process function to the condition function because the program does not require any timing (e.g. <a class="el" href="a00023.html#a9ea69eb32cff9ead1640ddbc880b41c3" title="wait for a period of time ">el_process_wait</a>). If that's the case, a process is no longer required and no <a class="el" href="a00027.html#ae8ee35672fb010ce11467750f6bfc63b" title="enable a trigger ">el_trigger_enable</a> is needed at the end.</p>
 <h2><a class="anchor" id="ssec_irrc_appendix"></a>
 Appendix</h2>
 <p>The address and key values from the universal remote (emulating a Philip VCR remote) used in Sheffield Robotics: </p><div class="fragment"><div class="line"><span class="preprocessor">#define IR_REMOTE_ADDRESS       5</span></div>
@@ -224,7 +224,7 @@ Appendix</h2>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 22:57:48 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2015 18:37:53 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

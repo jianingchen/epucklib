@@ -25,7 +25,7 @@
   <td id="projectlogo"><img alt="Logo" src="el_logo_color_icon.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">embedded system library for e-puck
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
    <div id="projectbrief">A redesigned API library for the e-puck robot platform</div>
   </td>
@@ -121,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00026.html#a0b93eb04bc2b765b88ef545584b09f09">el_delete_timer</a>(el_handle h);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00026.html#ad30accc29783c1c9d16d8f75f417d77d">el_timer_set_perodic</a>(el_handle h,el_bool b);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00026.html#a97d38d08ca9ec9aba76c9e48d03f195f">el_timer_set_periodic</a>(el_handle h,el_bool b);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">void</span> <a class="code" href="a00026.html#acfc45c94d901d73a62badce5bfe33a66">el_timer_set_callback</a>(el_handle h,el_timer_callback func,<span class="keywordtype">void</span>*arg);</div>
@@ -181,11 +181,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="a00026_html_acfc45c94d901d73a62badce5bfe33a66"><div class="ttname"><a href="a00026.html#acfc45c94d901d73a62badce5bfe33a66">el_timer_set_callback</a></div><div class="ttdeci">void el_timer_set_callback(el_handle h, el_timer_callback func, void *arg)</div><div class="ttdoc">set the callback of a timer </div></div>
 <div class="ttc" id="a00026_html_a36c9529d469f770bb220e08be5f93337"><div class="ttname"><a href="a00026.html#a36c9529d469f770bb220e08be5f93337">el_timer_pause</a></div><div class="ttdeci">void el_timer_pause(el_handle h)</div><div class="ttdoc">pause the countdown of the timer </div></div>
 <div class="ttc" id="a00026_html_aa5b8368651839005befe9775fbb4b0a0"><div class="ttname"><a href="a00026.html#aa5b8368651839005befe9775fbb4b0a0">el_timer_start_fraction</a></div><div class="ttdeci">void el_timer_start_fraction(el_handle h, int num, int den)</div><div class="ttdoc">specify the countdown time using a fraction and start the timer </div></div>
-<div class="ttc" id="a00026_html_ad30accc29783c1c9d16d8f75f417d77d"><div class="ttname"><a href="a00026.html#ad30accc29783c1c9d16d8f75f417d77d">el_timer_set_perodic</a></div><div class="ttdeci">void el_timer_set_perodic(el_handle h, el_bool b)</div><div class="ttdoc">set whether the timer repeat the countdown process once a countdown is finished </div></div>
 <div class="ttc" id="a00018_html"><div class="ttname"><a href="a00018.html">el_clock.h</a></div></div>
 <div class="ttc" id="a00026_html_af4705fb6ecdf3a8e0f601be13ea8d212"><div class="ttname"><a href="a00026.html#af4705fb6ecdf3a8e0f601be13ea8d212">el_timer_resume</a></div><div class="ttdeci">void el_timer_resume(el_handle h)</div><div class="ttdoc">resume the countdown of the timer </div></div>
 <div class="ttc" id="a00026_html_a62305e9d4d0ea903eb9672e171002d38"><div class="ttname"><a href="a00026.html#a62305e9d4d0ea903eb9672e171002d38">el_timer_start</a></div><div class="ttdeci">void el_timer_start(el_handle h, el_time t_ms)</div><div class="ttdoc">specify the countdown time and start the timer </div></div>
 <div class="ttc" id="a00026_html_a0b93eb04bc2b765b88ef545584b09f09"><div class="ttname"><a href="a00026.html#a0b93eb04bc2b765b88ef545584b09f09">el_delete_timer</a></div><div class="ttdeci">void el_delete_timer(el_handle h)</div><div class="ttdoc">delete the timer </div></div>
+<div class="ttc" id="a00026_html_a97d38d08ca9ec9aba76c9e48d03f195f"><div class="ttname"><a href="a00026.html#a97d38d08ca9ec9aba76c9e48d03f195f">el_timer_set_periodic</a></div><div class="ttdeci">void el_timer_set_periodic(el_handle h, el_bool b)</div><div class="ttdoc">set whether the timer repeat the countdown process once a countdown is finished </div></div>
 <div class="ttc" id="a00026_html_a32ee166a22bc99325af1bf8eba97e728"><div class="ttname"><a href="a00026.html#a32ee166a22bc99325af1bf8eba97e728">el_create_timer</a></div><div class="ttdeci">el_handle el_create_timer(void)</div><div class="ttdoc">create a timer in the system </div></div>
 <div class="ttc" id="a00026_html_a8aa9281fce844f48a98cf2608281d898"><div class="ttname"><a href="a00026.html#a8aa9281fce844f48a98cf2608281d898">el_timer_get_rounds</a></div><div class="ttdeci">el_uint32 el_timer_get_rounds(el_handle h)</div><div class="ttdoc">get the rounds of the timer </div></div>
 <div class="ttc" id="a00026_html_af4f486e1589e2cc62aacb0e9c64a5dd2"><div class="ttname"><a href="a00026.html#af4f486e1589e2cc62aacb0e9c64a5dd2">el_timer_set_rounds</a></div><div class="ttdeci">void el_timer_set_rounds(el_handle h, el_uint32 n)</div><div class="ttdoc">set the rounds of the timer </div></div>
@@ -194,7 +194,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 18 2015 22:57:47 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 19 2015 18:37:53 for embedded system library for e-puck by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

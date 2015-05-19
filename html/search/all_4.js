@@ -127,7 +127,7 @@ var searchData=
   ['el_5ftimer_5fpause',['el_timer_pause',['../a00026.html#a36c9529d469f770bb220e08be5f93337',1,'el_timer.h']]],
   ['el_5ftimer_5fresume',['el_timer_resume',['../a00026.html#af4705fb6ecdf3a8e0f601be13ea8d212',1,'el_timer.h']]],
   ['el_5ftimer_5fset_5fcallback',['el_timer_set_callback',['../a00026.html#acfc45c94d901d73a62badce5bfe33a66',1,'el_timer.h']]],
-  ['el_5ftimer_5fset_5fperodic',['el_timer_set_perodic',['../a00026.html#ad30accc29783c1c9d16d8f75f417d77d',1,'el_timer.h']]],
+  ['el_5ftimer_5fset_5fperiodic',['el_timer_set_periodic',['../a00026.html#a97d38d08ca9ec9aba76c9e48d03f195f',1,'el_timer.h']]],
   ['el_5ftimer_5fset_5frounds',['el_timer_set_rounds',['../a00026.html#af4f486e1589e2cc62aacb0e9c64a5dd2',1,'el_timer.h']]],
   ['el_5ftimer_5fstart',['el_timer_start',['../a00026.html#a62305e9d4d0ea903eb9672e171002d38',1,'el_timer.h']]],
   ['el_5ftimer_5fstart_5ffraction',['el_timer_start_fraction',['../a00026.html#aa5b8368651839005befe9775fbb4b0a0',1,'el_timer.h']]],
