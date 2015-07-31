@@ -1,7 +1,7 @@
 
 Jianing Chen
 
-j.n.chen@sheffield.ac.uk
+c.jianing@yahoo.com
 
 embedded system library for e-puck 
 ==================================
